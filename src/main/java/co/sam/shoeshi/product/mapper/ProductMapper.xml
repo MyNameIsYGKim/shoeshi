@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.sam.shoeshi.product.mapper.ProductMapper">
+	<select id="productSelectList" resultType="co.sam.shoeshi.product.service.ProductVO">
+		SELECT * FROM PRODUCT
+	</select>
+	
+	<select id="productSelect" resultType="co.sam.shoeshi.bid.service.BidVO">
+		SELECT * FROM PRODUCT WHERE PRODUCT_ID = #{productId}
+	</select>
+	
+	<insert id="productInsert" parameterType="co.sam.shoeshi.bid.service.BidVO">
+		INSERT INTO PRODUCT(product_id, product_img, product_img_path, product_co, product_name, product_price, product_size)
+		VALUES(#{productId}, #{productImg}, #{productImgPath}, #{productCo}, #{productName}, #{productPrice}, #{productSize})
+	</insert>
+	
+	<update id="productUpdate">
+		UPDATE PRODUCT
+		<set>
+			<!-- 한개만 있어도 무조건 콤마, 마지막거 제외 -->
+			<if test="productId != null">PRODUCT_ID = #{productId},</if>
+			<if test="productImg != null">PRODUCT_IMG = #{productImg},</if>
+			<if test="productImgPath != null">PRODUCTIMGPATH = #{productImgPath},</if>
+			<if test="productCo != null">PRODUCT_CO = #{productCo},</if>
+			<if test="productName != null">PRODUCT_NAME = #{productName},</if>
+			<if test="productPrice != null">PRODUCT_PRICE = #{productPrice},</if>
+			<if test="productSize != null">PRODUCT_SIZE = #{productSize},</if>
+		</set>
+		WHERE PRODUCT_ID = #{productId}
+	</update>
+	
+	<delete id="productDelete" parameterType="co.sam.shoeshi.bid.service.BidVO">
+		DELETE FROM PRODUCT WHERE PRODUCT_ID = #{productId}
+	</delete>
+
+</mapper>
