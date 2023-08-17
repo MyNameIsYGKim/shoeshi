@@ -10,9 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import co.sam.shoeshi.bid.serviceImpl.ClientServiceImpl;
 import co.sam.shoeshi.client.service.ClientService;
 import co.sam.shoeshi.client.service.ClientVO;
+import co.sam.shoeshi.client.serviceImpl.ClientServiceImpl;
 import co.sam.shoeshi.common.ViewResolve;
 
 /**
