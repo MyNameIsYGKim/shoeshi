@@ -1,4 +1,4 @@
-package co.sam.shoeshi.bid.serviceImpl;
+package co.sam.shoeshi.client.serviceImpl;
 
 import java.util.List;
 
