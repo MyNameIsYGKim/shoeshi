@@ -23,8 +23,7 @@
 	rel="stylesheet">
 
 <!-- Css Styles -->
-<!-- <link rel="stylesheet" href="ashion/css/bootstrap.min.css"
-	type="text/css"> -->
+
 <link rel="stylesheet" href="ashion/css/font-awesome.min.css"
 	type="text/css">
 <link rel="stylesheet" href="ashion/css/elegant-icons.css"
@@ -88,12 +87,12 @@
 				<ul class="nav">
 					<li class="nav-item"><a href="loginform.do"
 						class="nav-link link-dark px-2">로그인</a></li>
-					<li class="nav-item"><a href="#"
+					<li class="nav-item"><a href="mypage.do"
 						class="nav-link link-dark px-2">마이페이지</a></li>
 				</ul>
 			</div>
 		</nav>
-		<header class="pyyy123 mb-4 border-bottom">
+		<header class="pyyy123 ">
 			<div class="container d-flex flex-wrap justify-content-center">
 				<a href="home.do"
 					class="align-items-center mb-3 mb-lg-0 me-lg-auto "> <span
