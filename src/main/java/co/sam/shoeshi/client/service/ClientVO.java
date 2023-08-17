@@ -1,4 +1,4 @@
-package co.sam.shoeshi.clientService;
+package co.sam.shoeshi.client.service;
 
 public class ClientVO {
 String clientId;

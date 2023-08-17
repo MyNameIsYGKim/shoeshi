@@ -1,4 +1,4 @@
-package co.sam.shoeshi.dealService;
+package co.sam.shoeshi.deal.service;
 
 import java.time.LocalDate;
 

@@ -1,4 +1,4 @@
-package co.sam.shoeshi.productService;
+package co.sam.shoeshi.product.service;
 
 import java.util.List;
 
