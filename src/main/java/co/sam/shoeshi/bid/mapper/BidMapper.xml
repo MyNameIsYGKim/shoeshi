@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.sam.shoeshi.bid.mapper.BidMapper">
+	<select id="bidSelectList" resultType="co.sam.shoeshi.bid.service.BidVO">
+		SELECT * FROM BID
+	</select>
+	
+	<select id="bidSelect" resultType="co.sam.shoeshi.bid.service.BidVO">
+		SELECT * FROM BID WHERE BID_NO = #{bidNo}
+		<if test="clientId != null">
+			AND CLIENT_ID = #{clientId}
+		</if>
+	</select>
+	
+	<insert id="bidInsert" parameterType="co.sam.shoeshi.bid.service.BidVO">
+		INSERT INTO BID(BID_NO, PRODUCT_ID, BID_PRICE, BID_TYPE, CLIENT_ID)
+		VALUES(#{bidNo}, #{productId}, #{bidPrice}, #{bidType}, #{clientId})
+	</insert>
+	
+	<update id="bidUpdate">
+		UPDATE BID
+		<set>
+			<!-- 한개만 있어도 무조건 콤마, 마지막거 제외 -->
+			<if test="bidNo != null">BID_NO = #{bidNo},</if>
+			<if test="productId != null">PRODUCT_ID = #{productId},</if>
+			<if test="bidPrice != null">BID_PRICE = #{bidPrice},</if>
+			<if test="bidType != null">BID_TYPE = #{BIDTYPE},</if>
+			<if test="clientId != null">CLIENT_ID = #{clientId}</if>
+		</set>
+		WHERE BID_NO = #{bidNo}
+	</update>
+	
+	<delete id="bidDelete" parameterType="co.sam.shoeshi.bid.service.BidVO">
+		DELETE FROM BID WHERE BID_NO = #{bidNo}
+	</delete>
+
+</mapper>
+
+

@@ -86,7 +86,11 @@
     <div class="flex-w p-b-10">
         <div class="flex-c-m respon6">
             <div class="size-217">
-                <button class="flex-c-m stext-101 cl0 size-150 bg1 bor1 hov-btn1 p-lr-15 trans-04" onclick="location.href='naverpay.do'">
+
+             
+
+                <button class="flex-c-m stext-101 cl0 size-150 bg1 bor1 hov-btn1 p-lr-15 trans-04">
+
                     <span>1,200,000원</span><span>구매</span>
                 </button>
             </div>
