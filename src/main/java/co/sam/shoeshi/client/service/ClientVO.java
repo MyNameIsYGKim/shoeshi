@@ -1,9 +1,14 @@
 package co.sam.shoeshi.client.service;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 public class ClientVO {
 String clientId;
-int bankAccount;
-String bankName;
-int cardNum;
-String cardCo;
+String clientPassword;
+String clientName;
+String clientAddress;
+String clientTel;
+String clientAuthor;
 }

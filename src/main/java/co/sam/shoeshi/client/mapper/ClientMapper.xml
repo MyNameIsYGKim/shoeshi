@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.sam.shoeshi.client.mapper.ClientMapper">
+	<select id="clientSelectList"
+		resultType="co.sam.shoeshi.client.service.ClientVO">
+		SELECT * FROM CLIENT
+	</select>
+	<select id="clientIdFind"
+		resultType="co.sam.shoeshi.client.service.ClientVO">
+		SELECT CLIENTID FROM CLIENT WHERE CLIENT_NAME =
+		#{clientName} AND CLIENT_TEL = #{clientTel}
+	</select>
+	<select id="clientSelect"
+		resultType="co.sam.shoeshi.client.service.ClientVO">
+		SELECT * FROM CLIENT WHERE CLIENT_ID = #{clientId}
+	</select>
+	<insert id="clientInsert"
+		parameterType="co.sam.shoeshi.client.service.ClientVO">
+		INSERT INTO CLIENT(CLIENT_ID, CLIENT_PASSWORD,
+		CLIENT_NAME, CLIENT_ADDRESS, CLIENT_TEL)
+		VALUES(#{clientId},#{clientPassword},#{clientName},#{clientAddress},#{clientTel})
+	</insert>
+	<update id="clientUpdate"
+		parameterType="co.sam.shoeshi.client.service.ClientVO">
+		UPDATE CLIENT
+		<set>
+			<if test="clientPassword != null">CLIENT_PASSWORD = #{clientPassword},</if>
+			<if test="clientAddress !=null">CLIENT_ADDRESS = #{clientAddress},</if>
+			<if test="clientTel !=null">CLIENT_TEL = #{clientTel},</if>
+		</set>
+		WHERE CLIENT_ID = #{clientId}
+	</update>
+	<delete id="clientDelete"
+		parameterType="co.sam.shoeshi.client.service.ClientVO">
+		DELETE FROM CLIENT WHERE CLIENT_ID = #{clientId}
+	</delete>
+</mapper>
