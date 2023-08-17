@@ -1,124 +1,119 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author"
+	content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+<meta name="generator" content="Hugo 0.84.0">
+<title>Headers · Bootstrap v5.0</title>
+
+<link rel="canonical"
+	href="https://getbootstrap.com/docs/5.0/examples/headers/">
+
+
+<link
+	href="https://fonts.googleapis.com/css2?family=Cookie&display=swap"
+	rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap"
+	rel="stylesheet">
+
+<!-- Css Styles -->
+<!-- <link rel="stylesheet" href="ashion/css/bootstrap.min.css"
+	type="text/css"> -->
+<link rel="stylesheet" href="ashion/css/font-awesome.min.css"
+	type="text/css">
+<link rel="stylesheet" href="ashion/css/elegant-icons.css"
+	type="text/css">
+<link rel="stylesheet" href="ashion/css/jquery-ui.min.css"
+	type="text/css">
+<link rel="stylesheet" href="ashion/css/magnific-popup.css"
+	type="text/css">
+<link rel="stylesheet" href="ashion/css/owl.carousel.min.css"
+	type="text/css">
+<link rel="stylesheet" href="ashion/css/slicknav.min.css"
+	type="text/css">
+<link rel="stylesheet" href="ashion/css/style.css" type="text/css">
+<!-- Bootstrap core CSS -->
+<link href="dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+.bd-placeholder-img {
+	font-size: 1.125rem;
+	text-anchor: middle;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	user-select: none;
+}
+
+@media ( min-width : 768px) {
+	.bd-placeholder-img-lg {
+		font-size: 3.5rem;
+	}
+}
+
+.rdg-image {
+	image-rendering: -moz-crisp-edges; /* Firefox */
+	image-rendering: -o-crisp-edges; /* Opera */
+	image-rendering: -webkit-optimize-contrast; /* Webkit 표준 X */
+	image-rendering: crisp-edges;
+	-ms-interpolation-mode: nearest-neighbor; /* IE 표준 X */
+	height: 50px;
+	
+}
+</style>
+
+
+<!-- Custom styles for this template -->
+<link href="headers.css" rel="stylesheet">
 </head>
 <body>
-<header id="header">
-      <div id="header-wrap">
-        <nav class="secondary-nav border-bottom">
-          <div class="container">
-            <div class="row d-flex align-items-center">
-              <div class="col-md-4 header-contact">
-                <p>Let's talk! <strong>+57 444 11 00 35</strong>
-                </p>
-              </div>
-              <div class="col-md-4 shipping-purchase text-center">
-                <p>Free shipping on a purchase value of $200</p>
-              </div>
-              <div class="col-md-4 col-sm-12 user-items">
-                <ul class="d-flex justify-content-end list-unstyled">
-                  <li>
-                    <a href="login.html">
-                      <i class="icon icon-user"></i>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="cart.html">
-                      <i class="icon icon-shopping-cart"></i>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="wishlist.html">
-                      <i class="icon icon-heart"></i>
-                    </a>
-                  </li>
-                  <li class="user-items search-item pe-3">
-                    <a href="#" class="search-button">
-                      <i class="icon icon-search"></i>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </nav>
-        <nav class="primary-nav padding-small">
-          <div class="container">
-            <div class="row d-flex align-items-center">
-              <div class="col-lg-2 col-md-2">
-                <div class="main-logo">
-                  <a href="index.html">
-                    <img src="logo/sww.png" alt="logo">
-                  </a>
-                </div>
-              </div>
-              <div class="col-lg-10 col-md-10">
-                <div class="navbar">
 
-                  <div id="main-nav" class="stellarnav d-flex justify-content-end right">
-                    <ul class="menu-list">
 
-                      <li class="menu-item has-sub">
-                        <a href="index.html" class="item-anchor active d-flex align-item-center" data-effect="Home">Home<i class="icon icon-chevron-down"></i></a>
-                        <ul class="submenu">
-                          <li><a href="index.html" class="item-anchor active">Home</a></li>
-                          <li><a href="home2.html" class="item-anchor">Home v2<span class="text-primary"> (PRO)</span></a></li>
-                        </ul>
-                      </li>
 
-                      <li><a href="about.html" class="item-anchor" data-effect="About">About</a></li>
+	<main>
+		<h1 class="visually-hidden">Headers examples</h1>
+		<!-- 요기 -->
+		<nav class="pyyy123">
+			<div class="container d-flex flex-wrap ">
+				<ul class="nav me-auto">
+					<li class="nav-item"><a href="#"
+						class="nav-link link-dark px-2 active" aria-current="page"></a></li>
+				
+				</ul>
+				<ul class="nav">
+					<li class="nav-item"><a href="loginform.do"
+						class="nav-link link-dark px-2">로그인</a></li>
+					<li class="nav-item"><a href="#"
+						class="nav-link link-dark px-2">마이페이지</a></li>
+				</ul>
+			</div>
+		</nav>
+		<header class="pyyy123 mb-4 border-bottom">
+			<div class="container d-flex flex-wrap justify-content-center">
+				<a href="home.do"
+					class="align-items-center mb-3 mb-lg-0 me-lg-auto "> <span
+					class="fs-4"><img class="rdg-image" alt="logo"
+						src="logo/logowhite1.svg"></span>
+				</a>
+				<form class="col-12 col-lg-auto mb-3 mb-lg-0">
+					<input type="search" class="form-control"
+						placeholder="검색어를 입력해주세요." aria-label="Search">
+				</form>
+				
+			</div>
+		</header>
 
-                      <li class="menu-item has-sub">
-                        <a href="shop.html" class="item-anchor d-flex align-item-center" data-effect="Shop">Shop<i class="icon icon-chevron-down"></i></a>
-                        <ul class="submenu">
-                          <li><a href="shop.html" class="item-anchor">Shop</a></li>
-                          <li><a href="shop-slider.html" class="item-anchor">Shop slider<span class="text-primary"> (PRO)</span></a></li>
-                          <li><a href="shop-grid.html" class="item-anchor">Shop grid<span class="text-primary"> (PRO)</span></a></li>
-                          <li><a href="shop-list.html" class="item-anchor">Shop list<span class="text-primary"> (PRO)</span></a></li>
-                          <li><a href="single-product.html" class="item-anchor">Single product<span class="text-primary"> (PRO)</span></a></li>
-                          <li><a href="cart.html" class="item-anchor">Cart<span class="text-primary"> (PRO)</span></a></li>
-                          <li><a href="wishlist.html" class="item-anchor">Wishlist<span class="text-primary"> (PRO)</span></a></li>
-                          <li><a href="checkout.html" class="item-anchor">Checkout<span class="text-primary"> (PRO)</span></a></li>
-                        </ul>
-                      </li>
+		<!-- 요기 끝 -->
+	</main>
 
-                      <li class="menu-item has-sub">
-                        <a href="#" class="item-anchor d-flex align-item-center" data-effect="Pages">Pages<i class="icon icon-chevron-down"></i></a>
-                        <ul class="submenu">
-                          <li><a href="coming-soon.html" class="item-anchor">Coming soon<span class="text-primary"> (PRO)</span></a></li>
-                          <li><a href="login.html" class="item-anchor">Login<span class="text-primary"> (PRO)</span></a></li>
-                          <li><a href="faqs.html" class="item-anchor">FAQs<span class="text-primary"> (PRO)</span></a></li>
-                          <li><a href="styles.html" class="item-anchor">Styles</a></li>
-                          <li><a href="thank-you.html" class="item-anchor">Thankyou</a></li>
-                          <li><a href="error.html" class="item-anchor">Error page<span class="text-primary"> (PRO)</span></a></li>
-                        </ul>
-                      </li>
 
-                      <li class="menu-item has-sub">
-                        <a href="blog.html" class="item-anchor d-flex align-item-center" data-effect="Blog">Blog<i class="icon icon-chevron-down"></i></a>
-                        <ul class="submenu">
-                          <li><a href="blog.html" class="item-anchor">Blog</a></li>
-                          <li><a href="blog-sidebar.html" class="item-anchor">Blog with sidebar<span class="text-primary"> (PRO)</span></a></li>
-                          <li><a href="blog-masonry.html" class="item-anchor">Blog masonry<span class="text-primary"> (PRO)</span></a></li>
-                          <li><a href="single-post.html" class="item-anchor">Single post</a></li>
-                        </ul>
-                      </li>
+	<script src="dist/js/bootstrap.bundle.min.js"></script>
 
-                      <li><a href="contact.html" class="item-anchor" data-effect="Contact">Contact</a></li>
 
-                    </ul>
-                  </div>
-
-                </div>
-              </div>
-            </div>
-          </div>
-        </nav>
-      </div>
-    </header>
 </body>
 </html>

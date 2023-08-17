@@ -2,88 +2,191 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <!DOCTYPE html>
+<html>
 <head>
-<title>Ultras - Clothing Store eCommerce Store HTML Website
-	Template</title>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="format-detection" content="telephone=no">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="author" content="">
-<meta name="keywords" content="">
-<meta name="description" content="">
-<link rel="stylesheet" type="text/css" href="ultras/css/normalize.css">
-<link rel="stylesheet" type="text/css" href="ultras/icomoon/icomoon.css">
-<link rel="stylesheet" type="text/css" media="all"
-	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" type="text/css" href="ultras/css/vendor.css">
-<link rel="stylesheet" type="text/css" href="ultras/style.css">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link
-	href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
-	rel="stylesheet">
-<!-- script
-    ================================================== -->
-<script src="ultras/js/modernizr.js"></script>
+<title><tiles:getAsString name="title" /></title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+<link rel="icon" type="image/png" href="coza/images/icons/favicon.png" />
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+	href="coza/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+	href="coza/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+	href="coza/fonts/iconic/css/material-design-iconic-font.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+	href="coza/fonts/linearicons-v1.0.0/icon-font.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+	href="coza/vendor/animate/animate.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+	href="coza/vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+	href="coza/vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+	href="coza/vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+	href="coza/vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+	href="coza/vendor/slick/slick.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+	href="coza/vendor/MagnificPopup/magnific-popup.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+	href="coza/vendor/perfect-scrollbar/perfect-scrollbar.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="coza/css/util.css">
+<link rel="stylesheet" type="text/css" href="coza/css/main.css">
+<!--===============================================================================================-->
 </head>
+<body class="animsition">
+
+	<!-- Header -->
+	<tiles:insertAttribute name="header" />
 
 
-<div class="preloader-wrapper">
-	<div class="preloader"></div>
-</div>
 
-<div class="search-popup">
-	<div class="search-popup-container">
 
-		<form role="search" method="get" class="search-form" action="">
-			<input type="search" id="search-form" class="search-field"
-				placeholder="Type and press enter" value="" name="s" />
-			<button type="submit" class="search-submit">
-				<a href="#"><i class="icon icon-search"></i></a>
-			</button>
-		</form>
 
-		<h5 class="cat-list-title">Browse Categories</h5>
 
-		<ul class="cat-list">
-			<li class="cat-list-item"><a href="shop.html"
-				title="Men Jackets">Men Jackets</a></li>
-			<li class="cat-list-item"><a href="shop.html" title="Fashion">Fashion</a>
-			</li>
-			<li class="cat-list-item"><a href="shop.html"
-				title="Casual Wears">Casual Wears</a></li>
-			<li class="cat-list-item"><a href="shop.html" title="Women">Women</a>
-			</li>
-			<li class="cat-list-item"><a href="shop.html" title="Trending">Trending</a>
-			</li>
-			<li class="cat-list-item"><a href="shop.html" title="Hoodie">Hoodie</a>
-			</li>
-			<li class="cat-list-item"><a href="shop.html" title="Kids">Kids</a>
-			</li>
-		</ul>
+
+
+
+
+	<!-- Product -->
+	<tiles:insertAttribute name="body" />
+
+
+	<!-- Footer -->
+	<tiles:insertAttribute name="footer" />
+
+
+	<!-- Back to top -->
+	<div class="btn-back-to-top" id="myBtn">
+		<span class="symbol-btn-back-to-top"> <i
+			class="zmdi zmdi-chevron-up"></i>
+		</span>
 	</div>
-</div>
-<!-- header 시작-->
-<tiles:insertAttribute name="header" />
-<!-- header 끝-->
-
-<!-- body시작 -->
-
-<tiles:insertAttribute name="body" />
-
-
-<!-- body 끝 -->
 
 
 
-<!-- footer 시작 -->
-<tiles:insertAttribute name="footer" />
-<!-- footer 끝 -->
+	<!--===============================================================================================-->
+	<script src="coza/vendor/jquery/jquery-3.2.1.min.js"></script>
+	<!--===============================================================================================-->
+	<script src="coza/vendor/animsition/js/animsition.min.js"></script>
+	<!--===============================================================================================-->
+	<script src="coza/vendor/bootstrap/js/popper.js"></script>
+	<script src="coza/vendor/bootstrap/js/bootstrap.min.js"></script>
+	<!--===============================================================================================-->
+	<script src="coza/vendor/select2/select2.min.js"></script>
+	<script>
+		$(".js-select2").each(function() {
+			$(this).select2({
+				minimumResultsForSearch : 20,
+				dropdownParent : $(this).next('.dropDownSelect2')
+			});
+		})
+	</script>
+	<!--===============================================================================================-->
+	<script src="coza/vendor/daterangepicker/moment.min.js"></script>
+	<script src="coza/vendor/daterangepicker/daterangepicker.js"></script>
+	<!--===============================================================================================-->
+	<script src="coza/vendor/slick/slick.min.js"></script>
+	<script src="coza/js/slick-custom.js"></script>
+	<!--===============================================================================================-->
+	<script src="coza/vendor/parallax100/parallax100.js"></script>
+	<script>
+		$('.parallax100').parallax100();
+	</script>
+	<!--===============================================================================================-->
+	<script src="coza/vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>
+	<script>
+		$('.gallery-lb').each(function() { // the containers for all your galleries
+			$(this).magnificPopup({
+				delegate : 'a', // the selector for gallery item
+				type : 'image',
+				gallery : {
+					enabled : true
+				},
+				mainClass : 'mfp-fade'
+			});
+		});
+	</script>
+	<!--===============================================================================================-->
+	<script src="coza/vendor/isotope/isotope.pkgd.min.js"></script>
+	<!--===============================================================================================-->
+	<script src="coza/vendor/sweetalert/sweetalert.min.js"></script>
+	<script>
+		$('.js-addwish-b2').on('click', function(e) {
+			e.preventDefault();
+		});
 
-<script src="ultras/js/jquery-1.11.0.min.js"></script>
-<script src="ultras/js/plugins.js"></script>
-<script src="ultras/js/script.js"></script>
+		$('.js-addwish-b2').each(
+				function() {
+					var nameProduct = $(this).parent().parent().find(
+							'.js-name-b2').html();
+					$(this).on('click', function() {
+						swal(nameProduct, "is added to wishlist !", "success");
+
+						$(this).addClass('js-addedwish-b2');
+						$(this).off('click');
+					});
+				});
+
+		$('.js-addwish-detail').each(
+				function() {
+					var nameProduct = $(this).parent().parent().parent().find(
+							'.js-name-detail').html();
+
+					$(this).on('click', function() {
+						swal(nameProduct, "is added to wishlist !", "success");
+
+						$(this).addClass('js-addedwish-detail');
+						$(this).off('click');
+					});
+				});
+
+		/*---------------------------------------------*/
+
+		$('.js-addcart-detail').each(
+				function() {
+					var nameProduct = $(this).parent().parent().parent()
+							.parent().find('.js-name-detail').html();
+					$(this).on('click', function() {
+						swal(nameProduct, "is added to cart !", "success");
+					});
+				});
+	</script>
+	<!--===============================================================================================-->
+	<script src="coza/vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+	<script>
+		$('.js-pscroll').each(function() {
+			$(this).css('position', 'relative');
+			$(this).css('overflow', 'hidden');
+			var ps = new PerfectScrollbar(this, {
+				wheelSpeed : 1,
+				scrollingThreshold : 1000,
+				wheelPropagation : false,
+			});
+
+			$(window).on('resize', function() {
+				ps.update();
+			})
+		});
+	</script>
+	<!--===============================================================================================-->
+	<script src="coza/js/main.js"></script>
+
 </body>
 </html>
