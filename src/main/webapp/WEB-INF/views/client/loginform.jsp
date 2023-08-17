@@ -134,17 +134,17 @@ a[target='_blank'] {
 						<h3 class="pt-3 font-weight-bold">로그인</h3>
 					</div>
 					<div class="panel-body p-3">
-						<form action="login_script.php" method="POST">
+						<form action="login.do" method="GET">
 							<div class="form-group py-2">
 								<div class="input-field">
 									<span class="far p-2"></span> <input type="text"
-										placeholder="아이디" required>
+										placeholder="아이디" name="clientId" autofocus="autofocus" required>
 								</div>
 							</div>
 							<div class="form-group py-1 pb-2">
 								<div class="input-field">
 									<span class="fas px-2"></span> <input type="password"
-										placeholder="비밀번호" required>
+										placeholder="비밀번호" name="clientPassword" required>
 									<button class="btn bg-white text-muted">
 										<span class="far "></span>
 									</button>
@@ -152,12 +152,12 @@ a[target='_blank'] {
 							</div>
 							<div class="form-inline">
 								<a
-									href="#" class="font-weight-bold">회원가입</a> <a
+									href="#" class="font-weight-bold">아이디 찾기</a> <a
 									href="#" id="forgot" class="font-weight-bold">비밀번호 찾기</a>
 							</div>
-							<div class="btn btn-primary btn-block mt-3">Login</div>
+							<div ><input class="btn btn-primary btn-block mt-3" type="submit" value="로그인"></div>
 							<div class="text-center pt-4 text-muted">
-								Don't have an account? <a href="#">Sign up</a>
+								회원이 아니신가요? <a href="joinform.do">회원가입</a>
 							</div>
 						</form>
 					</div>

@@ -20,7 +20,7 @@ public class LoginForm extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String viewName = "user/loginform";
+		String viewName = "client/loginform";
 		ViewResolve.forward(request, response, viewName);
 	}
 
