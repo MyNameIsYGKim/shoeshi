@@ -1,4 +1,4 @@
-package co.sam.shoeshi.bidService;
+package co.sam.shoeshi.bid.service;
 
 import java.util.List;
 

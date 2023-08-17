@@ -1,8 +1,8 @@
-package co.sam.shoeshi.bidMapper;
+package co.sam.shoeshi.bid.mapper;
 
 import java.util.List;
 
-import co.sam.shoeshi.bidService.BidVO;
+import co.sam.shoeshi.bid.service.BidVO;
 
 public interface BidMapper {
 	List<BidVO> bidSelectList();

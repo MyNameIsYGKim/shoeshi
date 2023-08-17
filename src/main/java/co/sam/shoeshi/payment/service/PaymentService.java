@@ -1,4 +1,4 @@
-package co.sam.shoeshi.paymentService;
+package co.sam.shoeshi.payment.service;
 
 import java.util.List;
 
