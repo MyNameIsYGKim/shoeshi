@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.sam.shoeshi.client.mapper.ClientMapper">
+	<select id="clientSelectList" resultType="co.sam.shoeshi.client.service.ClientVO">
+		SELECT * FROM CLIENT
+	</select>
+	
+	<select id="clientSelect" resultType="co.sam.shoeshi.client.service.ClientVO">
+		SELECT * FROM CLIENT WHERE CLIENT_ID = #{clientId}
+		<if test="clientPassword != null">
+			AND CLIENT_PASSWORD = #{clientPassword}
+		</if>
+	</select>
+	
+	<insert id="clientInsert" parameterType="co.sam.shoeshi.client.service.ClientVO">
+		insert into client(client_id, client_password, client_name, client_address, client_tel, client_author)
+		values(#{clientId}, #{clientPassword}, #{clientName}, #{clientAddress}, #{clientTel}, #{clientAuthor})
+	</insert>
+	
+	<update id="clientUpdate">
+		UPDATE CLIENT
+		<set>
+			<!-- 한개만 있어도 무조건 콤마, 마지막거 제외 -->
+			<if test="clientPassword != null">CLIENT_PASSWORD = #{clientPassword},</if>
+			<if test="clientName != null">client_name = #{clientName},</if>
+			<if test="clientAddress != null">client_address = #{clientAddress},</if>
+			<if test="clientTel != null">client_tel = #{clientTel},</if>
+			<if test="clientAuthor != null">client_author = #{clientAuthor}</if>
+		</set>
+		WHERE CLIENT_ID = #{clientId}
+	</update>
+	
+	<delete id="clientDelete" parameterType="co.sam.shoeshi.client.service.ClientVO">
+		DELETE FROM CLIENT WHERE CLIENT_ID = #{clientId}
+	</delete>
+
+</mapper>

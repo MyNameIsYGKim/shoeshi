@@ -4,7 +4,7 @@
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
 	<definition name="admin.homepage"
-		template="/WEB-INF/views/layouts/adminform.jsp">
+		template="/WEB-INF/views/admin/adminhome.jsp">
 		<put-attribute name="title" value="SHOESHI" />
 		<put-attribute name="header"
 			value="/WEB-INF/views/layout/header.jsp" />
