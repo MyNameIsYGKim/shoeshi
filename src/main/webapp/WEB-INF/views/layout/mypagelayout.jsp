@@ -66,16 +66,19 @@
 	<!-- Header -->
 	<tiles:insertAttribute name="header" />
 	<div id="body-wrapper">
-		<div id="body-content">
-			<div class="main-content">
-				<!-- Sidebar -->
-				<div class="sidebar123">
-					<tiles:insertAttribute name="menu" />
+		<div class="container">
+			<div id="body-content">
+				<div class="main-content">
+					<!-- Sidebar -->
+					<div class="sidebar123">
+						<tiles:insertAttribute name="menu" />
 
+					</div>
+
+					<!-- Product -->
+
+					<tiles:insertAttribute name="body" />
 				</div>
-
-				<!-- Product -->
-				<tiles:insertAttribute name="body" />
 			</div>
 		</div>
 		<tiles:insertAttribute name="footer" />

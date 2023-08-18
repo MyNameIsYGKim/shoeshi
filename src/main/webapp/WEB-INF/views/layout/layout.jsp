@@ -65,7 +65,7 @@
 
 
 	<!-- Product -->
-	<tiles:insertAttribute name="body" />
+	<div class="container"><tiles:insertAttribute name="body" /></div>
 
 
 	<!-- Footer -->
