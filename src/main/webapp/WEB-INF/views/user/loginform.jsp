@@ -122,6 +122,16 @@ a[target='_blank'] {
 		left: 25%
 	}
 }
+
+.login-menu-font {
+	font-weight: bold;
+	text-align: center;
+	text-decoration: none;
+	float: right;
+	padding: 0px 10px;
+	font-size: 13px;
+}
+
 </style>
 
 </head>
@@ -150,15 +160,13 @@ a[target='_blank'] {
 									</button>
 								</div>
 							</div>
-							<div class="form-inline">
+							<div class="text-aline-center">
+									<a	href="searchpassword.do" id="forgot" class="login-menu-font">비밀번호 찾기</a>
+									<a href="searchid.do" id="forgotID" class="login-menu-font">아이디 찾기</a>
 								<a
-									href="#" class="font-weight-bold">회원가입</a> <a
-									href="#" id="forgot" class="font-weight-bold">비밀번호 찾기</a>
+									href="signupform.do" class="login-menu-font">회원가입</a>
 							</div>
 							<div class="btn btn-primary btn-block mt-3">Login</div>
-							<div class="text-center pt-4 text-muted">
-								Don't have an account? <a href="#">Sign up</a>
-							</div>
 						</form>
 					</div>
 				
