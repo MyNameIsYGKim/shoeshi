@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.sam.shoeshi.deal.mapper.DealMapper">
+	<select id="dealSelectList" resultType="co.sam.shoeshi.deal.service.DealVO">
+		SELECT * FROM deal
+	</select>
+	
+	<select id="dealSelect" resultType="co.sam.shoeshi.deal.service.DealVO">
+		SELECT * FROM BID WHERE DEAL_NO = #{dealNo}
+	</select>
+	
+	<insert id="dealInsert" parameterType="co.sam.shoeshi.deal.service.DealVO">
+		INSERT INTO DEAL(DEAL_NO, DEAL_DATE, DEAL_STATE, DEAL_PRICE, DEAL_BUYER, DEAL_SELLER)
+		VALUES(#{dealNo}, #{dealDate}, #{dealState}, #{dealPrice}, #{dealBuyer}, #{dealSeller})
+	</insert>
+	
+	<update id="dealUpdate" parameterType="co.sam.shoeshi.deal.service.DealVO">
+		UPDATE DEAL
+		<set>
+			<if test="dealNo != null">DEAL_NO = #{dealNo},</if>
+			<if test="dealDate != null">DEAL_DATE = #{dealDate},</if>
+			<if test="dealState != null">DEAL_STATE = #{dealState},</if>
+			<if test="dealPrice != null">DEAL_PRICE = #{dealPrice},</if>
+			<if test="dealBuyer != null">DEAL_BUYER = #{dealBuyer},</if>
+			<if test="dealSeller != null">DEAL_SELLER = #{dealSeller},</if>
+		</set>
+		WHERE DEAL_NO = #{dealNo}
+	</update>
+	
+	<delete id="dealDelete" parameterType="co.sam.shoeshi.deal.service.DealVO">
+		DELETE FROM DEAL WHERE DEAL_NO = #{dealNo}
+	</delete>
+
+</mapper>

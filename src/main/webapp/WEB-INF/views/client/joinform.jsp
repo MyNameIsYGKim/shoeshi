@@ -168,9 +168,12 @@ a {
 
 </head>
 <body>
+
+
 	<h3 class="signup-title">회원가입</h3>
 	<div class="member">
 		<!-- 2. 필드 -->
+
 		<form id="frm" action="join.do" onsubmit="return formCheck()"
 			method="post" enctype="multipart/form-data">
 			<!-- 첨부파일있을때는 enctype="multipart/form-data" 필수 -->
@@ -197,6 +200,7 @@ a {
 			<div class="field">
 				<b>이름</b> <input type="text" id="clientName" name="clientName"
 					required="required" placeholder="이름 입력">
+
 			</div>
 
 			<!-- 5. 이메일_전화번호 -->
@@ -229,6 +233,7 @@ a {
 			<input type="submit" value="가입하기">
 		</form>
 	</div>
+
 	<script type="text/javascript">
 	
 		function idCheck() { // ajax 통신을 이용해서 아이디 중복체크를 한다.
@@ -271,5 +276,6 @@ a {
 
 		}
 	</script>
+
 </body>
 </html>

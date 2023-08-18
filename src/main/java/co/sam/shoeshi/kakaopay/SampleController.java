@@ -1,5 +1,11 @@
 package co.sam.shoeshi.kakaopay;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import lombok.Setter;
+
 public class SampleController {
 	@Setter(onMethod_ = @Autowired)
     private KakaoPay kakaopay;

@@ -1,8 +1,7 @@
 package co.sam.shoeshi.kakaopay;
 import java.net.URI;
 import java.net.URISyntaxException;
- 
-import org.salem.domain.KakaoPayApprovalVO;
+
 import org.salem.domain.KakaoPayReadyVO;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -12,7 +11,7 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
- 
+
 import lombok.extern.java.Log;
  
 @Service
