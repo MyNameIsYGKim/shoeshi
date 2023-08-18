@@ -161,7 +161,7 @@ a[target='_blank'] {
 								</div>
 							</div>
 							<div class="text-aline-center">
-									<a	href="searchpassword.do" id="forgot" class="login-menu-font">비밀번호 찾기</a>
+									<a href="searchpassword.do" id="forgot" class="login-menu-font">비밀번호 찾기</a>
 									<a href="searchid.do" id="forgotID" class="login-menu-font">아이디 찾기</a>
 								<a
 									href="signupform.do" class="login-menu-font">회원가입</a>

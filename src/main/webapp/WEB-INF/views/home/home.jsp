@@ -173,7 +173,7 @@
 					<div class="block2">
 						<div class="block2-pic hov-img0">
 							<a href="product-detail.html"><img src="img/6.png"
-								alt="IMG-PRODUCT"></a> 
+								alt="IMG-PRODUCT"></a>
 						</div>
 
 						<div class="block2-txt flex-w flex-t p-t-14">
@@ -231,12 +231,12 @@
 					<div class="block2">
 						<div class="block2-pic hov-img0">
 							<a href="product-detail.html"><img src="img/8.png"
-								alt="IMG-PRODUCT"></a> 
+								alt="IMG-PRODUCT"></a>
 						</div>
 
 						<div class="block2-txt flex-w flex-t p-t-14">
 							<div class="block2-txt-child1 flex-col-l ">
-								<a href="product-detail.html"
+								<a href="adminhome.do"
 									class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
 									Pieces Metallic Printed </a> <span class="stext-105 cl3">
 									$18.96 </span>
