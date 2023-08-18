@@ -27,7 +27,7 @@
 		<set>
 			<if test="clientPassword != null">CLIENT_PASSWORD = #{clientPassword},</if>
 			<if test="clientAddress !=null">CLIENT_ADDRESS = #{clientAddress},</if>
-			<if test="clientTel !=null">CLIENT_TEL = #{clientTel},</if>
+			<if test="clientTel !=null">CLIENT_TEL = #{clientTel}</if>
 		</set>
 		WHERE CLIENT_ID = #{clientId}
 	</update>
