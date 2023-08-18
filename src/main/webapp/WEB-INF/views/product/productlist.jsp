@@ -14,8 +14,8 @@
 				<h3 class="ltext-103 cl5">Product Overview</h3>
 			</div>
 
-			<c:forEach items="${products}" var="p">
-				<div class="row isotope-grid">
+			<div class="row isotope-grid">
+				<c:forEach items="${products}" var="p">
 					<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
 						<!-- Block2 -->
 						<div class="block2">
@@ -48,8 +48,8 @@
 							</div>
 						</div>
 					</div>
-				</div>
-			</c:forEach>
+				</c:forEach>
+			</div>
 
 
 
