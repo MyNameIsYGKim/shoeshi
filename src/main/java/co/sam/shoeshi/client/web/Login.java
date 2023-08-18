@@ -10,14 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-<<<<<<< HEAD
-import co.sam.shoeshi.client.serviceImpl.ClientServiceImpl;
-=======
->>>>>>> branch 'master' of https://github.com/MyNameIsYGKim/shoeshi.git
+
 import co.sam.shoeshi.client.service.ClientService;
 import co.sam.shoeshi.client.service.ClientVO;
 import co.sam.shoeshi.client.serviceImpl.ClientServiceImpl;
-import co.sam.shoeshi.common.ViewResolve;
+
 
 @WebServlet("/login.do")
 public class Login extends HttpServlet {
@@ -33,7 +30,6 @@ public class Login extends HttpServlet {
 		ClientVO vo = new ClientVO();
 		ClientService dao = new ClientServiceImpl();
 		HttpSession session = request.getSession();
-		String message = null;
 
 		String id = request.getParameter("clientId");
 		String pwd = request.getParameter("clientPassword");
