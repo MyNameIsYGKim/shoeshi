@@ -49,16 +49,23 @@ public class Login extends HttpServlet {
 				session.setAttribute("address", vo.getClientAddress());
 				session.setAttribute("tel", vo.getClientTel());
 				session.setAttribute("author", vo.getClientAuthor());
-				request.setAttribute("message", vo.getClientName() + "님 로그인 중");
+				response.setContentType("text/html; charset=UTF-8");
+				PrintWriter writer = response.getWriter();
+				writer.println("<script>alert('로그인 되었습니다.'); location.href='http://localhost/example/home.do'</script>");
+				writer.close();	
 			} else {
-				request.setAttribute("message", "비밀번호가 틀립니다.");
+				response.setContentType("text/html; charset=UTF-8");
+				PrintWriter writer = response.getWriter();
+				writer.println("<script>alert('비밀번호가 틀렸습니다.'); location.href='http://localhost/example/loginform.do'</script>");
+				writer.close();	
 			}
 		} else {
-			request.setAttribute("message", "존재하지 않는 아이디.");
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter writer = response.getWriter();
+			writer.println("<script>alert('존재하지 않는 아이디입니다.'); location.href='http://localhost/example/loginform.do'</script>");
+			writer.close();	
 		}
 
-		String viewName = "clinet/clientmessage";
-		ViewResolve.forward(request, response, viewName);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

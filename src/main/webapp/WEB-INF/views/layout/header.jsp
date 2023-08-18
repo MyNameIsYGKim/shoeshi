@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -50,15 +51,15 @@
 	image-rendering: crisp-edges;
 	-ms-interpolation-mode: nearest-neighbor; /* IE 표준 X */
 	height: 50px;
-	
 }
 
-.fontw{
-color: white;
+.fontw {
+	color: white;
 }
-#hd{
-z-index: 10;
-position: inherit;
+
+#hd {
+	z-index: 10;
+	position: inherit;
 }
 </style>
 
@@ -78,15 +79,26 @@ position: inherit;
 				<ul class="nav me-auto">
 					<li class="nav-item"><a href="#"
 						class="nav-link link-dark px-2 active" aria-current="page"></a></li>
-				
+
 				</ul>
 				<ul class="nav">
-					<li class="nav-item"><a href="loginform.do"
-						class="nav-link px-2 fontw">로그인</a></li>
 
-					<li class="nav-item"><a href="mypage.do"
 
-						class="nav-link px-2 fontw">마이페이지</a></li>
+
+					<c:if test="${author eq 'ADMIN'}">
+						<li><a class="nav-link px-2 fontw" href="#">관리자페이지</a></li>
+					</c:if>
+					<c:if test="${empty id}">
+						<li class="nav-item"><a href="loginform.do"
+							class="nav-link px-2 fontw">로그인</a></li>
+					</c:if>
+					<c:if test="${not empty id }">
+						<li class="nav-item"><a href="mypage.do"
+							class="nav-link px-2 fontw">마이페이지</a></li>
+						<li class="nav-item"><a href="logout.do"
+							class="nav-link px-2 fontw">로그아웃</a></li>
+						<li class="nav-link px-2 fontw">${name }님 접속 중</li>
+					</c:if>
 				</ul>
 			</div>
 		</nav>
@@ -103,7 +115,7 @@ position: inherit;
 					<input type="search" class="form-control"
 						placeholder="검색어를 입력해주세요." aria-label="Search">
 				</form>
-				
+
 			</div>
 		</header>
 
