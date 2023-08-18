@@ -20,7 +20,7 @@
 						<!-- Block2 -->
 						<div class="block2">
 							<div class="block2-pic hov-img0">
-								<a href="productdetail.do"><img src="img/1.png"
+								<a href="selectProduct(${p.productId})"><img src="img/1.png"
 									alt="IMG-PRODUCT"></a>
 
 
@@ -28,9 +28,9 @@
 
 							<div class="block2-txt flex-w flex-t p-t-14">
 								<div class="block2-txt-child1 flex-col-l ">
-									<a href="product-detail.html"
+									<a href=""
 										class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6"> <!-- 제조사 -->${p.productMaker}
-									</a> <a href="product-detail.html"
+									</a> <a href="selectProduct(${p.productId})"
 										class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6"> <!-- 상품명 -->${p.productName}
 									</a> <span class="stext-105 cl3"> <!-- 가격 -->${p.productPrice}
 									</span>
@@ -61,7 +61,18 @@
 					더보기 </a>
 			</div>
 		</div>
-
+		<div>
+			<form id="form" action="productselect.do" method="get">
+				<input type="hidden" id="productId" name="productId">
+			</form>
+		</div>
 	</section>
+	<script type="text/javascript">
+		function selectProduct(n) {
+			document.getElementById("productId").value = n;
+			alert(n);
+			document.getElementById("form").submit();
+		}
+	</script>
 </body>
 </html>
