@@ -2,11 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="co.sam.shoeshi.deal.mapper.DealMapper">
 	<select id="dealSelectList" resultType="co.sam.shoeshi.deal.service.DealVO">
-		SELECT * FROM deal
+		SELECT * FROM DEAL
 	</select>
 	
 	<select id="dealSelect" resultType="co.sam.shoeshi.deal.service.DealVO">
-		SELECT * FROM BID WHERE DEAL_NO = #{dealNo}
+		SELECT * FROM DEAL WHERE DEAL_NO = #{dealNo}
 	</select>
 	
 	<insert id="dealInsert" parameterType="co.sam.shoeshi.deal.service.DealVO">

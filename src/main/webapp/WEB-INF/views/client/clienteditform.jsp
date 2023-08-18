@@ -174,8 +174,7 @@ a {
 	<div class="member">
 		<!-- 2. 필드 -->
 
-		<form id="frm" action="clientedit.do" method="post"
-			enctype="multipart/form-data">
+		<form action="clientedit.do" method="post" id="frm">
 			<!-- 첨부파일있을때는 enctype="multipart/form-data" 필수 -->
 
 			<div class="field">
@@ -184,54 +183,35 @@ a {
 			</div>
 			<div class="field">
 				<b>비밀번호 재확인</b> <input class="userpw-confirm" placeholder="비밀번호 확인"
-					type="password" id="passwordCheck">
+					type="password" id="passwordCheck" name="passwordCheck">
 			</div>
-			
 
-			<!-- 5. 이메일_전화번호 -->
-			<!-- <div class="field">
-				<b>본인 확인 이메일<small>(선택)</small></b> <input type="email"
-					placeholder="선택입력">
-			</div> -->
 
 			<div class="field">
-				<!-- <div class="field tel-number"> -->
 				<b>휴대전화</b>
-				<!-- <select>
-					<option value="">대한민국 +82</option>
-				</select> -->
 				<div>
 					<input type="tel" placeholder="전화번호 입력" id="clientTel"
 						name="clientTel">
-					<!-- <input type="button" value="인증번호 받기"> -->
 				</div>
-				<!-- <input type="number" placeholder="인증번호를 입력하세요"> -->
 			</div>
 			<div class="field">
 				<b>주소</b> <input type="text" placeholder="주소 입력" id="clientAddress"
 					name="clientAddress">
-
 			</div>
 
-			
-			<input type="submit" value="수정">
-			
-			<input type="hidden" id="clientId" name="clientId"
-					value="${c.clientId}">
+			<div>
+				<input type="submit" value="수정">
+			</div>
 		</form>
 	</div>
 
 	<script type="text/javascript">
-	
-		
-		
-		
+	System.out.println(document.getElementById("clientPassword") + " "
+			+ document.getElementById("clientAddress") + " " + document.getElementById("clientTel"));
 		function formCheck() {
 			document.getElementById("clientPassword").value;
 			document.getElementById("passwordCheck").value;
-		
 
-			
 			if (password != passcheck) {
 				alert("패스워드가 일치하지 않습니다.")
 				return false;
