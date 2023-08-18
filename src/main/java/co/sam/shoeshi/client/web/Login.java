@@ -32,7 +32,6 @@ public class Login extends HttpServlet {
 		ClientVO vo = new ClientVO();
 		ClientService dao = new ClientServiceImpl();
 		HttpSession session = request.getSession();
-		String message = null;
 
 		String id = request.getParameter("clientId");
 		String pwd = request.getParameter("clientPassword");
