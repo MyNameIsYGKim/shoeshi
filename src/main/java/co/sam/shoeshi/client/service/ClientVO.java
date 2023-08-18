@@ -1,4 +1,5 @@
 package co.sam.shoeshi.client.service;
+
 import lombok.Getter;
 import lombok.Setter;
 
