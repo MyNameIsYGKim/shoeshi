@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,21 +24,8 @@
 	rel="stylesheet">
 
 <!-- Css Styles -->
-<!-- <link rel="stylesheet" href="ashion/css/bootstrap.min.css"
-	type="text/css"> -->
-<link rel="stylesheet" href="ashion/css/font-awesome.min.css"
-	type="text/css">
-<link rel="stylesheet" href="ashion/css/elegant-icons.css"
-	type="text/css">
-<link rel="stylesheet" href="ashion/css/jquery-ui.min.css"
-	type="text/css">
-<link rel="stylesheet" href="ashion/css/magnific-popup.css"
-	type="text/css">
-<link rel="stylesheet" href="ashion/css/owl.carousel.min.css"
-	type="text/css">
-<link rel="stylesheet" href="ashion/css/slicknav.min.css"
-	type="text/css">
-<link rel="stylesheet" href="ashion/css/style.css" type="text/css">
+
+
 <!-- Bootstrap core CSS -->
 <link href="dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -63,19 +51,27 @@
 	image-rendering: crisp-edges;
 	-ms-interpolation-mode: nearest-neighbor; /* IE 표준 X */
 	height: 50px;
-	
+}
+
+.fontw {
+	color: white;
+}
+
+#hd {
+	z-index: 10;
+	position: inherit;
 }
 </style>
 
 
 <!-- Custom styles for this template -->
-<link href="headers.css" rel="stylesheet">
+
 </head>
 <body>
 
 
 
-	<main>
+	<div id="hd">
 		<h1 class="visually-hidden">Headers examples</h1>
 		<!-- 요기 -->
 		<nav class="pyyy123">
@@ -83,17 +79,32 @@
 				<ul class="nav me-auto">
 					<li class="nav-item"><a href="#"
 						class="nav-link link-dark px-2 active" aria-current="page"></a></li>
-				
+
 				</ul>
 				<ul class="nav">
-					<li class="nav-item"><a href="loginform.do"
-						class="nav-link link-dark px-2">로그인</a></li>
-					<li class="nav-item"><a href="#"
-						class="nav-link link-dark px-2">마이페이지</a></li>
+
+
+
+					<c:if test="${author eq 'ADMIN'}">
+						<li><a class="nav-link px-2 fontw" href="#">관리자페이지</a></li>
+					</c:if>
+					<c:if test="${empty id}">
+						<li class="nav-item"><a href="loginform.do"
+							class="nav-link px-2 fontw">로그인</a></li>
+					</c:if>
+					<c:if test="${not empty id }">
+						<li class="nav-item"><a href="mypage.do"
+							class="nav-link px-2 fontw">마이페이지</a></li>
+						<li class="nav-item"><a href="logout.do"
+							class="nav-link px-2 fontw">로그아웃</a></li>
+						<li class="nav-link px-2 fontw">${name }님 접속 중</li>
+					</c:if>
 				</ul>
 			</div>
 		</nav>
-		<header class="pyyy123 mb-4 border-bottom">
+
+		<header class="pyyy123 ">
+
 			<div class="container d-flex flex-wrap justify-content-center">
 				<a href="home.do"
 					class="align-items-center mb-3 mb-lg-0 me-lg-auto "> <span
@@ -104,12 +115,12 @@
 					<input type="search" class="form-control"
 						placeholder="검색어를 입력해주세요." aria-label="Search">
 				</form>
-				
+
 			</div>
 		</header>
 
 		<!-- 요기 끝 -->
-	</main>
+	</div>
 
 
 	<script src="dist/js/bootstrap.bundle.min.js"></script>
