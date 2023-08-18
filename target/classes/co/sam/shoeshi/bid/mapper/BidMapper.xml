@@ -17,7 +17,7 @@
 		VALUES(#{bidNo}, #{productId}, #{bidPrice}, #{bidType}, #{clientId})
 	</insert>
 	
-	<update id="bidUpdate">
+	<update id="bidUpdate" parameterType="co.sam.shoeshi.bid.service.BidVO">
 		UPDATE BID
 		<set>
 			<!-- 한개만 있어도 무조건 콤마, 마지막거 제외 -->
