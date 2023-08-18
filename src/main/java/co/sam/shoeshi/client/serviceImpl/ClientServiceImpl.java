@@ -38,4 +38,9 @@ public class ClientServiceImpl implements ClientService {
 		return map.clientDelete(vo);
 	}
 
+	@Override
+	public ClientVO clientIdFind(ClientVO vo) {
+		return map.clientIdFind(vo);
+	}
+
 }

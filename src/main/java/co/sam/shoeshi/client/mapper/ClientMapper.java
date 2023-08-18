@@ -6,6 +6,7 @@ import co.sam.shoeshi.client.service.ClientVO;
 
 public interface ClientMapper {
 	List<ClientVO> clientSelectList();
+	ClientVO clientIdFind(ClientVO vo);
 	ClientVO clientSelect(ClientVO vo);
 	int clientInsert(ClientVO vo);
 	int clientUpdate(ClientVO vo);

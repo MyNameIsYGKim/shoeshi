@@ -7,97 +7,148 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<footer id="footer">
+	<footer class="bg3 p-t-75 p-b-32">
 		<div class="container">
-			<div class="footer-menu-list">
-				<div class="row d-flex flex-wrap justify-content-between">
-					<div class="col-lg-3 col-md-6 col-sm-6">
-						<div class="footer-menu">
-							<h5 class="widget-title">Ultras</h5>
-							<ul class="menu-list list-unstyled">
-								<li class="menu-item"><a href="about.html">About us</a></li>
-								<li class="menu-item"><a href="#">Conditions </a></li>
-								<li class="menu-item"><a href="blog.html">Our Journals</a>
-								</li>
-								<li class="menu-item"><a href="#">Careers</a></li>
-								<li class="menu-item"><a href="#">Affiliate Programme</a></li>
-								<li class="menu-item"><a href="#">Ultras Press</a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="col-lg-3 col-md-6 col-sm-6">
-						<div class="footer-menu">
-							<h5 class="widget-title">Customer Service</h5>
-							<ul class="menu-list list-unstyled">
-								<li class="menu-item"><a href="faqs.html">FAQ</a></li>
-								<li class="menu-item"><a href="contact.html">Contact</a></li>
-								<li class="menu-item"><a href="#">Privacy Policy</a></li>
-								<li class="menu-item"><a href="#">Returns & Refunds</a></li>
-								<li class="menu-item"><a href="#">Cookie Guidelines</a></li>
-								<li class="menu-item"><a href="#">Delivery Information</a>
-								</li>
-							</ul>
-						</div>
-					</div>
-					<div class="col-lg-3 col-md-6 col-sm-6">
-						<div class="footer-menu">
-							<h5 class="widget-title">Contact Us</h5>
-							<p>
-								Do you have any questions or suggestions? <a href="#"
-									class="email">ourservices@ultras.com</a>
-							</p>
-							<p>
-								Do you need assistance? Give us a call. <br> <strong>+57
-									444 11 00 35</strong>
-							</p>
-						</div>
-					</div>
-					<div class="col-lg-3 col-md-6 col-sm-6">
-						<div class="footer-menu">
-							<h5 class="widget-title">Forever 2018</h5>
-							<p>Cras mattis sit ornare in metus eu amet adipiscing enim.
-								Ullamcorper in orci, ultrices integer eget arcu. Consectetur leo
-								dignissim lacus, lacus sagittis dictumst.</p>
-							<div class="social-links">
-								<ul class="d-flex list-unstyled">
-									<li><a href="#"> <i class="icon icon-facebook"></i>
-									</a></li>
-									<li><a href="#"> <i class="icon icon-twitter"></i>
-									</a></li>
-									<li><a href="#"> <i class="icon icon-youtube-play"></i>
-									</a></li>
-									<li><a href="#"> <i class="icon icon-behance-square"></i>
-									</a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<hr>
-	</footer>
+			<div class="row">
+				<div class="col-sm-6 col-lg-3 p-b-50">
+					<h4 class="stext-301 cl0 p-b-30">
+						Categories
+					</h4>
 
-	<div id="footer-bottom">
-		<div class="container">
-			<div
-				class="d-flex align-items-center flex-wrap justify-content-between">
-				<div class="copyright">
-					<p>
-						Freebies by <a href="https://templatesjungle.com/">Templates
-							Jungle</a> Distributed by <a href="https://themewagon.com">ThemeWagon</a>
-					</p>
+					<ul>
+						<li class="p-b-10">
+							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+								Women
+							</a>
+						</li>
+
+						<li class="p-b-10">
+							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+								Men
+							</a>
+						</li>
+
+						<li class="p-b-10">
+							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+								Shoes
+							</a>
+						</li>
+
+						<li class="p-b-10">
+							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+								Watches
+							</a>
+						</li>
+					</ul>
 				</div>
-				<div class="payment-method">
-					<p>Payment options :</p>
-					<div class="card-wrap">
-						<img src="ultras/images/visa-icon.jpg" alt="visa"> <img
-							src="ultras/images/mastercard.png" alt="mastercard"> <img
-							src="ultras/images/american-express.jpg" alt="american-express">
+
+				<div class="col-sm-6 col-lg-3 p-b-50">
+					<h4 class="stext-301 cl0 p-b-30">
+						Help
+					</h4>
+
+					<ul>
+						<li class="p-b-10">
+							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+								Track Order
+							</a>
+						</li>
+
+						<li class="p-b-10">
+							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+								Returns 
+							</a>
+						</li>
+
+						<li class="p-b-10">
+							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+								Shipping
+							</a>
+						</li>
+
+						<li class="p-b-10">
+							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+								FAQs
+							</a>
+						</li>
+					</ul>
+				</div>
+
+				<div class="col-sm-6 col-lg-3 p-b-50">
+					<h4 class="stext-301 cl0 p-b-30">
+						GET IN TOUCH
+					</h4>
+
+					<p class="stext-107 cl7 size-201">
+						Any questions? Let us know in store at 8th floor, 379 Hudson St, New York, NY 10018 or call us on (+1) 96 716 6879
+					</p>
+
+					<div class="p-t-27">
+						<a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+							<i class="fa fa-facebook"></i>
+						</a>
+
+						<a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+							<i class="fa fa-instagram"></i>
+						</a>
+
+						<a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+							<i class="fa fa-pinterest-p"></i>
+						</a>
 					</div>
 				</div>
+
+				<div class="col-sm-6 col-lg-3 p-b-50">
+					<h4 class="stext-301 cl0 p-b-30">
+						Newsletter
+					</h4>
+
+					<form>
+						<div class="wrap-input1 w-full p-b-4">
+							<input class="input1 bg-none plh1 stext-107 cl7" type="text" name="email" placeholder="email@example.com">
+							<div class="focus-input1 trans-04"></div>
+						</div>
+
+						<div class="p-t-18">
+							<button class="flex-c-m stext-101 cl0 size-103 bg1 bor1 hov-btn2 p-lr-15 trans-04">
+								Subscribe
+							</button>
+						</div>
+					</form>
+				</div>
+			</div>
+
+			<div class="p-t-40">
+				<div class="flex-c-m flex-w p-b-18">
+					<a href="#" class="m-all-1">
+						<img src="coza/images/icons/icon-pay-01.png" alt="ICON-PAY">
+					</a>
+
+					<a href="#" class="m-all-1">
+						<img src="coza/images/icons/icon-pay-02.png" alt="ICON-PAY">
+					</a>
+
+					<a href="#" class="m-all-1">
+						<img src="coza/images/icons/icon-pay-03.png" alt="ICON-PAY">
+					</a>
+
+					<a href="#" class="m-all-1">
+						<img src="coza/images/icons/icon-pay-04.png" alt="ICON-PAY">
+					</a>
+
+					<a href="#" class="m-all-1">
+						<img src="coza/images/icons/icon-pay-05.png" alt="ICON-PAY">
+					</a>
+				</div>
+
+				<p class="stext-107 cl6 txt-center">
+					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a> &amp; distributed by <a href="https://themewagon.com" target="_blank">ThemeWagon</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+
+				</p>
 			</div>
 		</div>
-	</div>
+	</footer>
 </body>
 </html>
