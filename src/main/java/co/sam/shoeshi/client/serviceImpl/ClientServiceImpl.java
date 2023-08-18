@@ -10,7 +10,6 @@ import co.sam.shoeshi.client.service.ClientVO;
 import co.sam.shoeshi.common.DataSource;
 
 public class ClientServiceImpl implements ClientService {
-<<<<<<< HEAD
 	private SqlSession sqlSession = DataSource.getInstance().openSession(true);
 	private ClientMapper map = sqlSession.getMapper(ClientMapper.class);
 	
@@ -43,40 +42,4 @@ public class ClientServiceImpl implements ClientService {
 	public ClientVO clientIdFind(ClientVO vo) {
 		return map.clientIdFind(vo);
 	}
-
-=======
-
-	private SqlSession sqlSession = DataSource.getInstance().openSession(true);
-	private ClientMapper map = sqlSession.getMapper(ClientMapper.class);
-
-	@Override
-	public List<ClientVO> clientSelectList() {
-		return map.clientSelectList();
-	}
-
-	@Override
-	public ClientVO clientIdFind(ClientVO vo) {
-		return map.clientIdFind(vo);
-	}
-
-	@Override
-	public ClientVO clientSelect(ClientVO vo) {
-		return map.clientSelect(vo);
-	}
-
-	@Override
-	public int clientInsert(ClientVO vo) {
-		return map.clientInsert(vo);
-	}
-
-	@Override
-	public int clientUpdate(ClientVO vo) {
-		return map.clientUpdate(vo);
-	}
-
-	@Override
-	public int clientDelete(ClientVO vo) {
-		return map.clientDelete(vo);
-	}
->>>>>>> branch 'master' of https://github.com/MyNameIsYGKim/shoeshi.git
 }

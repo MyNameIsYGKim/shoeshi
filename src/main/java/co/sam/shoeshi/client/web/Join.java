@@ -8,12 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-<<<<<<< HEAD
-import co.sam.shoeshi.client.serviceImpl.ClientServiceImpl;
-=======
->>>>>>> branch 'master' of https://github.com/MyNameIsYGKim/shoeshi.git
 import co.sam.shoeshi.client.service.ClientService;
 import co.sam.shoeshi.client.service.ClientVO;
 import co.sam.shoeshi.client.serviceImpl.ClientServiceImpl;
@@ -21,24 +16,13 @@ import co.sam.shoeshi.client.serviceImpl.ClientServiceImpl;
 @WebServlet("/join.do")
 public class Join extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-<<<<<<< HEAD
 
     public Join() {
         super();
     }
-=======
->>>>>>> branch 'master' of https://github.com/MyNameIsYGKim/shoeshi.git
-
-<<<<<<< HEAD
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-=======
-	public Join() {
-		super();
-	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
->>>>>>> branch 'master' of https://github.com/MyNameIsYGKim/shoeshi.git
 		ClientVO vo = new ClientVO();
 		ClientService dao = new ClientServiceImpl();
 		
@@ -63,12 +47,9 @@ public class Join extends HttpServlet {
 		writer.close();
 	}
 
-<<<<<<< HEAD
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-=======
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
->>>>>>> branch 'master' of https://github.com/MyNameIsYGKim/shoeshi.git
 		doGet(request, response);
 	}
 

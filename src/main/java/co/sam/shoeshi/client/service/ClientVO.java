@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 package co.sam.shoeshi.client.service;
-=======
-package co.sam.shoeshi.client.service;
->>>>>>> branch 'master' of https://github.com/MyNameIsYGKim/shoeshi.git
 
 import lombok.Getter;
 import lombok.Setter;
