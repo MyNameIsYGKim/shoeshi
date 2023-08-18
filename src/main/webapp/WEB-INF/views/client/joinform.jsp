@@ -14,12 +14,12 @@
 				<form class="validation-form" action="join.do" method="GET" novalidate>
 					<div class="col-md-4 mb-3">
 						<label for="id">아이디</label> <input type="text"
-							class="form-control" id="id" placeholder="" value="" required>
+							class="form-control" name="id" placeholder="" value="" required>
 						<div class="invalid-feedback">아이디를 입력해주세요.</div>
 					</div>
 					<div class="col-md-4 mb-3">
 						<label for="password">비밀번호</label> <input type="password"
-							class="form-control" id="password" placeholder="" value=""
+							class="form-control" name="password" placeholder="" value=""
 							required>
 						<div class="invalid-feedback">비밀번호를 입력하시오.</div>
 					</div>
@@ -33,20 +33,20 @@
 
 					<div class="col-md-4 mb-3">
 						<label for="name">이름</label> <input type="text"
-							class="form-control" id="name" placeholder="" value="" required>
+							class="form-control" name="name" placeholder="" value="" required>
 						<div class="invalid-feedback">이름을 입력해주세요.</div>
 					</div>
 
 					<div class="col-md-4 mb-3">
 						<label for="address">주소</label> <input type="text"
-							class="form-control" id="address" placeholder="ex)서울특별시 강남구"
+							class="form-control" name="address" placeholder="ex)서울특별시 강남구"
 							required>
 						<div class="invalid-feedback">주소를 입력해주세요.</div>
 					</div>
 
 					<div class="col-md-4 mb-3">
 						<label for="tel">전화번호</label> <input type="tel"
-							class="form-control" id="tel" placeholder="" value="" required>
+							class="form-control" name="tel" placeholder="" value="" required>
 						<div class="invalid-feedback">전화번호를 입력해주세요.</div>
 
 

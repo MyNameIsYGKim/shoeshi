@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import co.sam.shoeshi.client.service.ClientService;
 import co.sam.shoeshi.client.service.ClientVO;
@@ -27,10 +28,33 @@ public class Login extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ClientVO vo = new ClientVO();
 		ClientService dao= new ClientServiceImpl();
+		HttpSession session = request.getSession()	;
+		String message = null;
+		
 		String id = request.getParameter("clientId");
 		String pwd = request.getParameter("clientPassword");
 		vo.setClientId(id);
+		vo.setClientPassword(pwd);
+		
 		vo = dao.clientSelect(vo);
+		
+		if(vo != null) {
+			session.setAttribute("id", vo.getClientId());
+			session.setAttribute("password", vo.getClientPassword());
+			session.setAttribute("name", vo.getClientName());
+			session.setAttribute("address", vo.getClientAddress());
+			session.setAttribute("tel", vo.getClientTel());
+			session.setAttribute("author", vo.getClientAuthor());
+			request.setAttribute("message", vo.getClientName()+"님 로그인 중");
+		}else {
+			request.setAttribute("message",  "아이디 또는 패스워드가 틀립니다.");
+		}
+		
+		String view
+		
+		
+		
+		
 		try {
 		if(id.equals(vo.getClientId())) {
 			if(pwd.equals(vo.getClientPassword())) {
