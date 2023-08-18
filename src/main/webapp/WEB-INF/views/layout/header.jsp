@@ -23,21 +23,8 @@
 	rel="stylesheet">
 
 <!-- Css Styles -->
-<!-- <link rel="stylesheet" href="ashion/css/bootstrap.min.css"
-	type="text/css"> -->
-<link rel="stylesheet" href="ashion/css/font-awesome.min.css"
-	type="text/css">
-<link rel="stylesheet" href="ashion/css/elegant-icons.css"
-	type="text/css">
-<link rel="stylesheet" href="ashion/css/jquery-ui.min.css"
-	type="text/css">
-<link rel="stylesheet" href="ashion/css/magnific-popup.css"
-	type="text/css">
-<link rel="stylesheet" href="ashion/css/owl.carousel.min.css"
-	type="text/css">
-<link rel="stylesheet" href="ashion/css/slicknav.min.css"
-	type="text/css">
-<link rel="stylesheet" href="ashion/css/style.css" type="text/css">
+
+
 <!-- Bootstrap core CSS -->
 <link href="dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -65,17 +52,25 @@
 	height: 50px;
 	
 }
+
+.fontw{
+color: white;
+}
+#hd{
+z-index: 10;
+position: inherit;
+}
 </style>
 
 
 <!-- Custom styles for this template -->
-<link href="headers.css" rel="stylesheet">
+
 </head>
 <body>
 
 
 
-	<main>
+	<div id="hd">
 		<h1 class="visually-hidden">Headers examples</h1>
 		<!-- 요기 -->
 		<nav class="pyyy123">
@@ -87,13 +82,17 @@
 				</ul>
 				<ul class="nav">
 					<li class="nav-item"><a href="loginform.do"
-						class="nav-link link-dark px-2">로그인</a></li>
-					<li class="nav-item"><a href="#"
-						class="nav-link link-dark px-2">마이페이지</a></li>
+						class="nav-link px-2 fontw">로그인</a></li>
+
+					<li class="nav-item"><a href="mypage.do"
+
+						class="nav-link px-2 fontw">마이페이지</a></li>
 				</ul>
 			</div>
 		</nav>
-		<header class="pyyy123 mb-4 border-bottom">
+
+		<header class="pyyy123 ">
+
 			<div class="container d-flex flex-wrap justify-content-center">
 				<a href="home.do"
 					class="align-items-center mb-3 mb-lg-0 me-lg-auto "> <span
@@ -109,7 +108,7 @@
 		</header>
 
 		<!-- 요기 끝 -->
-	</main>
+	</div>
 
 
 	<script src="dist/js/bootstrap.bundle.min.js"></script>
