@@ -214,35 +214,34 @@ a {
 		</header>
 
 		<!--로그인 부분-->
-		<section class="login-wrap">
+		<form action="login.do" method="GET">
+			<section class="login-wrap">
 
-			<div class="login-id-wrap">
-				<input placeholder="아이디" type="text" class="input-id"></input>
-			</div>
-			<div class="login-pw-wrap">
-				<input placeholder="비밀번호" type="password" class="input-pw"></input>
-			</div>
-			<div class="login-btn-wrap">
-				<button class="login-btn">로그인</button>
-			</div>
-
-
-
-		</section>
+				<div class="login-id-wrap">
+					<input placeholder="아이디" type="text" class="input-id"></input>
+				</div>
+				<div class="login-pw-wrap">
+					<input placeholder="비밀번호" type="password" class="input-pw"></input>
+				</div>
+				<div class="login-btn-wrap">
+					<button class="login-btn" type="submit">로그인</button>
+				</div>
 
 
-		<!--class,PW 찾기 및 회원가입 부분-->
-		<section class="find-signup-wrap">
 
-			<span class="find-id"> <a href="findid.do">아이디 찾기</a>
-			</span> <span class="find-pw"> <a
-				href="findpassword.do">비밀번호
-					찾기</a>
-			</span> <span class="sign-up"> <a href="joinform.do">회원가입</a>
-			</span>
+			</section>
 
-		</section>
 
+			<!--class,PW 찾기 및 회원가입 부분-->
+			<section class="find-signup-wrap">
+
+				<span class="find-id"> <a href="findid.do">아이디 찾기</a>
+				</span> <span class="find-pw"> <a href="findpassword.do">비밀번호 찾기</a>
+				</span> <span class="sign-up"> <a href="joinform.do">회원가입</a>
+				</span>
+
+			</section>
+		</form>
 
 
 	</div>
