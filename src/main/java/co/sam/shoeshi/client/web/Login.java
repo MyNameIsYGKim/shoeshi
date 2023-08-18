@@ -28,7 +28,6 @@ public class Login extends HttpServlet {
 		ClientVO vo = new ClientVO();
 		ClientService dao = new ClientServiceImpl();
 		HttpSession session = request.getSession();
-		String message = null;
 
 		String id = request.getParameter("clientId");
 		String pwd = request.getParameter("clientPassword");
@@ -44,7 +43,6 @@ public class Login extends HttpServlet {
 				session.setAttribute("name", vo.getClientName());
 				session.setAttribute("address", vo.getClientAddress());
 				session.setAttribute("tel", vo.getClientTel());
-				session.setAttribute("author", vo.getClientAuthor());
 				response.setContentType("text/html; charset=UTF-8");
 				PrintWriter writer = response.getWriter();
 				writer.println("<script>alert('로그인 되었습니다.'); location.href='http://localhost/example/home.do'</script>");

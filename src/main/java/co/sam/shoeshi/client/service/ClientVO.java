@@ -11,5 +11,4 @@ public class ClientVO {
 	String clientName;
 	String clientAddress;
 	String clientTel;
-	String clientAuthor;
 }

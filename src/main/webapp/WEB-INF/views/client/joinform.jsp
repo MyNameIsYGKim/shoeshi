@@ -64,7 +64,8 @@ a {
 	margin-bottom: 5px;
 }
 
-.member input[type=button], .member input[type=submit] {
+.member input[type=button], .member input[type=submit], .member button[type=button]
+	{
 	background-color: #000000;
 	color: #fff
 }
@@ -123,9 +124,26 @@ a {
 	top: 0;
 	bottom: 0;
 	right: 5px;
-	margin: auto 0;
+	margin: 100% 0;
 	background-color: #ff9370db;
 	font-weight: bold;
+}
+
+#clientId {
+	margin: 0;
+}
+
+#btn {
+	/* position: absolute; */
+	width: 75px;
+	height: 100%;
+	top: 0;
+	bottom: 0;
+	right: 5px;
+	margin: auto 0;
+	/* background-color: #ff9370db; */
+	font-weight: bold;
+	padding: 11px 0;
 }
 
 .signup-title {
@@ -143,7 +161,7 @@ a {
 	flex: 2;
 }
 
-.field.id div input:nth-child(3) {
+.field.id div button:nth-child(3) {
 	flex: 1;
 }
 </style>
@@ -155,47 +173,109 @@ a {
 	<h3 class="signup-title">회원가입</h3>
 	<div class="member">
 		<!-- 2. 필드 -->
-		<div class="field id">
-			<b>아이디</b>
-			<div>
-				<input type="text" placeholder="아이디 입력"> <input type="button"
-					value="중복확인">
+
+		<form id="frm" action="join.do" onsubmit="return formCheck()"
+			method="post" enctype="multipart/form-data">
+			<!-- 첨부파일있을때는 enctype="multipart/form-data" 필수 -->
+			<div class="field id">
+				<b>아이디</b>
+				<div>
+					<input type="text" placeholder="아이디 입력" id="clientId"
+						name="clientId" required="required">
+					<button type="button" id="btn" value="No" onclick="idCheck()">중복확인</button>
+
+					<!-- <input type="button"
+						value="중복확인" id="btn" value="No" onclick="idCheck()"> -->
+				</div>
 			</div>
-		</div>
 
-		<div class="field">
-			<b>비밀번호</b> <input class="userpw" type="password">
-		</div>
-		<div class="field">
-			<b>비밀번호 재확인</b> <input class="userpw-confirm" type="password">
-		</div>
-		<div class="field">
-			<b>이름</b> <input type="text">
-		</div>
-
-		<!-- 5. 이메일_전화번호 -->
-		<div class="field">
-			<b>본인 확인 이메일<small>(선택)</small></b> <input type="email"
-				placeholder="선택입력">
-		</div>
-
-		<div class="field tel-number">
-			<b>휴대전화</b> <select>
-				<option value="">대한민국 +82</option>
-			</select>
-			<div>
-				<input type="tel" placeholder="전화번호 입력"> <input
-					type="button" value="인증번호 받기">
+			<div class="field">
+				<b>비밀번호</b> <input placeholder="비밀번호 입력" class="userpw"
+					type="password" id="clientPassword" name="clientPassword">
 			</div>
-			<input type="number" placeholder="인증번호를 입력하세요">
-		</div>
-		<div class="field">
-			<b>주소</b> <input type="text" placeholder="주소 입력"> <input
-				type="text" placeholder="상세 주소">
-		</div>
+			<div class="field">
+				<b>비밀번호 재확인</b> <input class="userpw-confirm" placeholder="비밀번호 확인"
+					type="password" id="passwordCheck" required="required">
+			</div>
+			<div class="field">
+				<b>이름</b> <input type="text" id="clientName" name="clientName"
+					required="required" placeholder="이름 입력">
 
-		<!-- 6. 가입하기 버튼 -->
-		<input type="submit" value="가입하기">
+			</div>
+
+			<!-- 5. 이메일_전화번호 -->
+			<!-- <div class="field">
+				<b>본인 확인 이메일<small>(선택)</small></b> <input type="email"
+					placeholder="선택입력">
+			</div> -->
+
+			<div class="field">
+				<!-- <div class="field tel-number"> -->
+				<b>휴대전화</b>
+				<!-- <select>
+					<option value="">대한민국 +82</option>
+				</select> -->
+				<div>
+					<input type="tel" placeholder="전화번호 입력" id="clientTel"
+						name="clientTel">
+					<!-- <input type="button" value="인증번호 받기"> -->
+				</div>
+				<!-- <input type="number" placeholder="인증번호를 입력하세요"> -->
+			</div>
+			<div class="field">
+				<b>주소</b> <input type="text" placeholder="주소 입력" id="clientAddress"
+					name="clientAddress">
+				<!-- <input
+					type="text" placeholder="상세 주소"> -->
+			</div>
+
+			<!-- 6. 가입하기 버튼 -->
+			<input type="submit" value="가입하기">
+		</form>
 	</div>
+
+	<script type="text/javascript">
+	
+		function idCheck() { // ajax 통신을 이용해서 아이디 중복체크를 한다.
+			let clientId = document.getElementById("clientId").value;
+			//get방식 ajax호출
+			let url = "ajaxClientIdCheck.do?clientId="+clientId; 
+			fetch(url)
+				.then(response => response.text())
+				.then(text => checkId(text));
+		}
+		function checkId(text){
+			if(text == 'yes'){
+				alert("사용 가능한 아이디 입니다.");
+				document.getElementById("btn").disabled = true;
+				document.getElementById("btn").value = "Yes";
+				document.getElementById("clientPassword").focus();
+			}else{
+				alert("중복된 아이디 입니다.");
+				document.getElementById("clientId").value = "";
+				document.getElementById("clientId").focus();
+			}
+		}
+		
+		function formCheck() {
+			document.getElementById("clientPassword").value;
+			document.getElementById("passwordCheck").value;
+			let id = document.getElementById("btn").value;
+
+			if (id == 'No') {
+				alert("아이디 중복체크를 하세요");
+				return false;
+			}
+			
+			if (password != passcheck) {
+				alert("패스워드가 일치하지 않습니다.")
+				return false;
+			}
+
+			return true;
+
+		}
+	</script>
+
 </body>
 </html>

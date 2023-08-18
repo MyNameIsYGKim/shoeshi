@@ -30,7 +30,6 @@ public class ClientJoin extends HttpServlet {
 		vo.setClientName(getInitParameter("clientName"));
 		vo.setClientAddress(getInitParameter("clientAddress"));
 		vo.setClientTel(getInitParameter("clientTel"));
-		vo.setClientAuthor(getInitParameter("clientAuthor"));
 		
 		String viewName = "client/clientlist";
 		ViewResolve.forward(request, response, viewName);

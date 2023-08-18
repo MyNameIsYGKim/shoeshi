@@ -30,7 +30,6 @@ public class ClientEdit extends HttpServlet {
 		vo.setClientName(request.getParameter("clientName"));
 		vo.setClientAddress(request.getParameter("clientAddress"));
 		vo.setClientTel(request.getParameter("clientTel"));
-		vo.setClientAuthor(request.getParameter("clientAuthor"));
 		
 		String viewName = "client/clientselect";
 		int n = dao.clientUpdate(vo);

@@ -19,11 +19,6 @@ public class ClientServiceImpl implements ClientService {
 	}
 
 	@Override
-	public ClientVO clientSelect(ClientVO vo) {
-		return map.clientSelect(vo);
-	}
-
-	@Override
 	public int clientInsert(ClientVO vo) {
 		return map.clientInsert(vo);
 	}
@@ -42,4 +37,12 @@ public class ClientServiceImpl implements ClientService {
 	public ClientVO clientIdFind(ClientVO vo) {
 		return map.clientIdFind(vo);
 	}
+
+	@Override
+	public ClientVO clientSelect(ClientVO vo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
+
