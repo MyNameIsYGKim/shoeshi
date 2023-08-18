@@ -10,12 +10,20 @@ import co.sam.shoeshi.client.service.ClientVO;
 import co.sam.shoeshi.common.DataSource;
 
 public class ClientServiceImpl implements ClientService {
+
+
+
 	private SqlSession sqlSession = DataSource.getInstance().openSession(true);
 	private ClientMapper map = sqlSession.getMapper(ClientMapper.class);
-	
+
 	@Override
 	public List<ClientVO> clientSelectList() {
 		return map.clientSelectList();
+	}
+
+	@Override
+	public ClientVO clientIdFind(ClientVO vo) {
+		return map.clientIdFind(vo);
 	}
 
 	@Override
@@ -38,9 +46,5 @@ public class ClientServiceImpl implements ClientService {
 		return map.clientDelete(vo);
 	}
 
-	@Override
-	public ClientVO clientIdFind(ClientVO vo) {
-		return map.clientIdFind(vo);
-	}
-
 }
+
