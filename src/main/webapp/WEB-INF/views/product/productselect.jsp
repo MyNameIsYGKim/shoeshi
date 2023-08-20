@@ -17,36 +17,36 @@
 							<div class="wrap-slick3-arrows flex-sb-m flex-w"></div>
 
 							<div class="slick3 gallery-lb">
-								<div class="item-slick3" data-thumb="img/1.png">
+								<div class="item-slick3" data-thumb="${p.productimgPath}/${p.productimgName1}">
 									<div class="wrap-pic-w pos-relative">
-										<img src="img/1.png" alt="IMG-PRODUCT"> <a
+										<img src="${p.productimgPath}/${p.productimgName1}" alt="IMG-PRODUCT"> <a
 											class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-											href="img/1.png"> <i class="fa fa-expand"></i>
+											href="${p.productimgPath}/${p.productimgName1}"> <i class="fa fa-expand"></i>
 										</a>
 									</div>
 								</div>
 
 								<div class="item-slick3"
-									data-thumb="img/1-2.png">
+									data-thumb="${p.productimgPath}/${p.productimgName2}">
 									<div class="wrap-pic-w pos-relative">
-										<img src="img/1-2.png" alt="IMG-PRODUCT">
+										<img src="${p.productimgPath}/${p.productimgName2}" alt="IMG-PRODUCT">
 
 										<a
 											class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-											href="img/1-2.png"> <i
+											href="${p.productimgPath}/${p.productimgName2}"> <i
 											class="fa fa-expand"></i>
 										</a>
 									</div>
 								</div>
 
 								<div class="item-slick3"
-									data-thumb="img/1-3.png">
+									data-thumb="${p.productimgPath}/${p.productimgName3}">
 									<div class="wrap-pic-w pos-relative">
-										<img src="img/1-3.png" alt="IMG-PRODUCT">
+										<img src="${p.productimgPath}/${p.productimgName3}" alt="IMG-PRODUCT">
 
 										<a
 											class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-											href="img/1-3.png"> <i
+											href="${p.productimgPath}/${p.productimgName3}"> <i
 											class="fa fa-expand"></i>
 										</a>
 									</div>

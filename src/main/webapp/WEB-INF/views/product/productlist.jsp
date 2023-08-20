@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,7 +21,8 @@
 						<!-- Block2 -->
 						<div class="block2">
 							<div class="block2-pic hov-img0">
-								<a href="selectProduct(${p.productId})"><img src="img/1.png"
+								<a href="productselect.do?productId=1"><img
+									src="${p.productimgPath}/${p.productimgName1}"
 									alt="IMG-PRODUCT"></a>
 
 
@@ -30,9 +32,12 @@
 								<div class="block2-txt-child1 flex-col-l ">
 									<a href=""
 										class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6"> <!-- 제조사 -->${p.productMaker}
-									</a> <a href="selectProduct(${p.productId})"
-										class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6"> <!-- 상품명 -->${p.productName}
-									</a> <span class="stext-105 cl3"> <!-- 가격 -->${p.productPrice}
+									</a> <a
+										class="move stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6"
+										href='<c:out value="${p.productId}" />'> <c:out
+											value=" <!-- 상품명 -->${p.productName}" />
+									</a> <span class="stext-105 cl3"> <!-- 가격 --> <fmt:formatNumber
+											value="${p.productPrice}" pattern="###,###,###원" />
 									</span>
 								</div>
 
@@ -70,7 +75,6 @@
 	<script type="text/javascript">
 		function selectProduct(n) {
 			document.getElementById("productId").value = n;
-			alert(n);
 			document.getElementById("form").submit();
 		}
 	</script>

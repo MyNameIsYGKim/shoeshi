@@ -1,5 +1,6 @@
 package co.sam.shoeshi.product.serviceImpl;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -16,6 +17,10 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public List<ProductVO> productSelectList() {
 		return map.productSelectList();
+	}
+	@Override
+	public List<HashMap<String, Object>>productJoinSelect(){
+	return map.productJoinSelect();
 	}
 
 	@Override

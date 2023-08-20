@@ -1,10 +1,9 @@
 package co.sam.shoeshi.product.web;
 
 import java.io.IOException;
-
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,10 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
 import co.sam.shoeshi.common.ViewResolve;
 import co.sam.shoeshi.product.service.ProductService;
-import co.sam.shoeshi.product.service.ProductVO;
 import co.sam.shoeshi.product.serviceImpl.ProductServiceImpl;
 
 
@@ -30,9 +27,9 @@ public class ProductList extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ProductService dao = new ProductServiceImpl();
-		List<ProductVO> products = new ArrayList<>();
+		List<HashMap<String, Object>> products = new ArrayList<>();
 		
-		products = dao.productSelectList();
+		products = dao.productJoinSelect();
 		request.setAttribute("products", products);
 		
 		String viewName = "product/productlist";

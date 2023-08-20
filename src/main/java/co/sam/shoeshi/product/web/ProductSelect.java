@@ -26,7 +26,7 @@ public class ProductSelect extends HttpServlet {
 		ProductService dao = new ProductServiceImpl();
 		ProductVO vo = new ProductVO();
 		vo.setProductId(request.getParameter("productId"));
-System.out.println(request.getParameter("productId"));
+		System.out.println(request.getParameter("productId"));
 		vo = dao.productSelect(vo);
 
 		request.setAttribute("n", vo);

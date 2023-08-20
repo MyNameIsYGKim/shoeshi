@@ -40,7 +40,7 @@
 
 	<select id="productJoinSelect"
 		resultType="co.sam.shoeshi.common.CamelHashMap">
-		SELECT I*, P.PRODUCT_ID
+		SELECT I.PRODUCTIMG_PATH,I.PRODUCTIMG_NAME1,I.PRODUCTIMG_NAME2,I.PRODUCTIMG_NAME3, P.*
 		FROM PRODUCTIMG I, PRODUCT P
 		WHERE
 		P.PRODUCT_ID = I.PRODUCT_ID
