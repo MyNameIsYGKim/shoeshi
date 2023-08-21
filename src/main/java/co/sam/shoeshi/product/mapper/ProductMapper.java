@@ -7,7 +7,9 @@ import co.sam.shoeshi.product.service.ProductVO;
 
 public interface ProductMapper {
 	List<ProductVO>	productSelectList();
-	List<HashMap<String, Object>>productJoinSelect();
+	List<HashMap<String, Object>>productJoinSelectList();
+	List<HashMap<String, Object>>productJoinSearchList(String val);
+	HashMap<String, Object>productJoinSelect(ProductVO vo);
 	ProductVO productSelect(ProductVO vo);
 	int productInsert(ProductVO vo);
 	int productUpdate(ProductVO vo);

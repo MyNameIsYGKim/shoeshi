@@ -11,28 +11,41 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import co.sam.shoeshi.common.ViewResolve;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+
 import co.sam.shoeshi.product.service.ProductService;
 import co.sam.shoeshi.product.serviceImpl.ProductServiceImpl;
 
-@WebServlet("/productlist.do")
-public class ProductList extends HttpServlet {
+@WebServlet("/ajaxproductsearch.do")
+public class AjaxProductSearch extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public ProductList() {
+	public AjaxProductSearch() {
 		super();
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
 		ProductService dao = new ProductServiceImpl();
 		List<HashMap<String, Object>> products = new ArrayList<>();
 
-		products = dao.productJoinSelectList();
-		request.setAttribute("products", products);
+		String key = request.getParameter("key");
+		String val = request.getParameter("val");
+		products = dao.productJoinSearchList(val);
 
-		String viewName = "product/productlist";
-		ViewResolve.forward(request, response, viewName);
+		ObjectMapper objectMapper = new ObjectMapper(); // json 객체를 만들기 위해 필요한 객체
+
+		objectMapper.registerModule(new JavaTimeModule()); // LocalDate 처리
+		objectMapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS); // LocalDate 처리
+
+		String data = objectMapper.writeValueAsString(products); // json 형태로 결과를 만들어 줌
+
+		response.setContentType("text/html; charset=UTF-8");
+		response.getWriter().append(data);
+		return;
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

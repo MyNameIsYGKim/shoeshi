@@ -6,9 +6,10 @@ import lombok.Setter;
 @Getter
 @Setter
 public class ProductImgVO {
-	private String productId;
+	private int productId;
 	private String productimgPath;
 	private String productimgName1;
 	private String productimgName2;
 	private String productimgName3;
 }
+	

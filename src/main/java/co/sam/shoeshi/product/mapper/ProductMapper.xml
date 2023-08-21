@@ -38,14 +38,41 @@
 		DELETE FROM PRODUCT WHERE PRODUCT_ID = #{productId}
 	</delete>
 
-	<select id="productJoinSelect"
+	<select id="productJoinSelectList"
 		resultType="co.sam.shoeshi.common.CamelHashMap">
-		SELECT I.PRODUCTIMG_PATH,I.PRODUCTIMG_NAME1,I.PRODUCTIMG_NAME2,I.PRODUCTIMG_NAME3, P.*
-		FROM PRODUCTIMG I, PRODUCT P
-		WHERE
-		P.PRODUCT_ID = I.PRODUCT_ID
+		SELECT P.*, I.PRODUCTIMG_PATH, I.PRODUCTIMG_NAME1,
+		I.PRODUCTIMG_NAME2, I.PRODUCTIMG_NAME3
+		FROM PRODUCTIMG I RIGHT OUTER JOIN PRODUCT P
+		ON P.PRODUCT_ID = I.PRODUCT_ID
+
 	</select>
 
+	<select id="productJoinSearchList"
+		resultType="co.sam.shoeshi.common.CamelHashMap">
+		SELECT P.*, I.PRODUCTIMG_PATH, I.PRODUCTIMG_NAME1,
+		I.PRODUCTIMG_NAME2,
+		I.PRODUCTIMG_NAME3
+		FROM PRODUCTIMG I RIGHT OUTER JOIN PRODUCT P
+		ON P.PRODUCT_ID =
+		I.PRODUCT_ID
+		WHERE
+		LOWER(P.PRODUCT_NAME) LIKE
+		'%'||LOWER(#{val})||'%'
+		OR
+		LOWER(P.PRODUCT_MAKER) LIKE '%'||LOWER(#{val})||'%'
+		ORDER BY P.PRODUCT_ID DESC
+	</select>
+
+
+	<select id="productJoinSelect"
+		resultType="co.sam.shoeshi.common.CamelHashMap">
+		SELECT
+		P.*,I.PRODUCTIMG_PATH,I.PRODUCTIMG_NAME1,I.PRODUCTIMG_NAME2,I.PRODUCTIMG_NAME3
+		FROM PRODUCTIMG I RIGHT OUTER JOIN PRODUCT P ON P.PRODUCT_ID = I.PRODUCT_ID
+		WHERE
+		I.PRODUCT_ID = #{productId}
+
+	</select>
 
 
 </mapper>

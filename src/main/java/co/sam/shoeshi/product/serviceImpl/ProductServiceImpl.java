@@ -19,8 +19,17 @@ public class ProductServiceImpl implements ProductService {
 		return map.productSelectList();
 	}
 	@Override
-	public List<HashMap<String, Object>>productJoinSelect(){
-	return map.productJoinSelect();
+	public List<HashMap<String, Object>>productJoinSelectList(){
+	return map.productJoinSelectList();
+	}
+	@Override
+	public List<HashMap<String, Object>>productJoinSearchList(String val){
+	return map.productJoinSearchList(val);
+	}
+	
+	@Override
+	public HashMap<String, Object>productJoinSelect(ProductVO vo){
+	return map.productJoinSelect(vo);
 	}
 
 	@Override
