@@ -1,4 +1,4 @@
-package co.sam.shoeshi.product.web;
+package co.sam.shoeshi.admin.product.web;
 
 import java.io.IOException;
 
@@ -8,16 +8,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+
 import co.sam.shoeshi.common.ViewResolve;
 import co.sam.shoeshi.product.service.ProductService;
 import co.sam.shoeshi.product.service.ProductVO;
 import co.sam.shoeshi.product.serviceImpl.ProductServiceImpl;
 
-@WebServlet("/productselect.do")
-public class ProductSelect extends HttpServlet {
+@WebServlet("/adminproductedit.do")
+public class AdminProductEdit extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public ProductSelect() {
+    public AdminProductEdit() {
         super();
     }
 
@@ -25,13 +28,22 @@ public class ProductSelect extends HttpServlet {
 		ProductService dao = new ProductServiceImpl();
 		ProductVO vo = new ProductVO();
 		
-		vo.setProductId(Integer.valueOf(request.getParameter("productId")));
+		String saveDir = getServletContext().getRealPath("attech/product/");
+		int sizeLimit = 1024 * 1024;
+		
+		MultipartRequest multi = new MultipartRequest(request, saveDir, sizeLimit, "utf-8", new DefaultFileRenamePolicy());
+		
+		vo.setProductId(Integer.valueOf(multi.getParameter("productId")));
+		vo.setProductMaker(multi.getParameter("productMaker"));
+		vo.setProductName(multi.getParameter("productName"));
+		vo.setProductPrice(Integer.valueOf(multi.getParameter("productPrice")));
+		
+		String viewName = "admin/product/adminproductselect";
+		
+		int n = dao.productUpdate(vo);
 		
 		vo = dao.productSelect(vo);
-		
 		request.setAttribute("n", vo);
-		String viewName = "product/productselect";
-		
 		ViewResolve.forward(request, response, viewName);
 	}
 

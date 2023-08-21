@@ -13,8 +13,8 @@
 	</select>
 	
 	<insert id="bidInsert" parameterType="co.sam.shoeshi.bid.service.BidVO">
-		INSERT INTO BID(BID_NO, PRODUCT_ID, BID_PRICE, BID_TYPE, CLIENT_ID)
-		VALUES(#{bidNo}, #{productId}, #{bidPrice}, #{bidType}, #{clientId})
+		INSERT INTO BID(BID_NO, PRODUCT_ID, BID_PRICE, BID_TYPE, CLIENT_ID, PRODUCT_SIZE)
+		VALUES(#{bidNo}, #{productId}, #{bidPrice}, #{bidType}, #{clientId}, #{productSize)
 	</insert>
 	
 	<update id="bidUpdate" parameterType="co.sam.shoeshi.bid.service.BidVO">
@@ -25,7 +25,8 @@
 			<if test="productId != null">PRODUCT_ID = #{productId},</if>
 			<if test="bidPrice != null">BID_PRICE = #{bidPrice},</if>
 			<if test="bidType != null">BID_TYPE = #{BIDTYPE},</if>
-			<if test="clientId != null">CLIENT_ID = #{clientId}</if>
+			<if test="clientId != null">CLIENT_ID = #{clientId},</if>
+			<if test="productSize != null">PRODUCT_SIZE = #{productSize}</if>
 		</set>
 		WHERE BID_NO = #{bidNo}
 	</update>

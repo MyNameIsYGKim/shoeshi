@@ -32,8 +32,7 @@ public class AjaxProductSearch extends HttpServlet {
 		
 		String key = request.getParameter("key");
 		String val = request.getParameter("val");
-		products = dao.productSearchList(key, val);
-		System.out.println(key + val);
+		products = dao.productSelectList(key, val);
 		
 		ObjectMapper ObjectMapper = new ObjectMapper(); // json 객체를 만들기 위해 필요한 객체.
 		

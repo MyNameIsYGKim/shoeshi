@@ -38,4 +38,14 @@ public class ProductServiceImpl implements ProductService {
 		return map.productDelete(vo);
 	}
 
+	@Override
+	public List<ProductVO> productSelectList(String key, String val) {
+		return map.productSelectList(key, val);
+	}
+
+	@Override
+	public List<ProductVO> productSearchList(String key, String val) {
+		return map.productSearchList(key, val);
+	}
+
 }

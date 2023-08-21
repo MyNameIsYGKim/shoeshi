@@ -1,7 +1,6 @@
-package co.sam.shoeshi.product.web;
+package co.sam.shoeshi.admin.product.web;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,29 +8,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import co.sam.shoeshi.common.ViewResolve;
-import co.sam.shoeshi.product.service.ProductService;
-import co.sam.shoeshi.product.service.ProductVO;
-import co.sam.shoeshi.product.serviceImpl.ProductServiceImpl;
 
-@WebServlet("/productselect.do")
-public class ProductSelect extends HttpServlet {
+@WebServlet("/adminproductform.do")
+public class AdminProductForm extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public ProductSelect() {
+    public AdminProductForm() {
         super();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ProductService dao = new ProductServiceImpl();
-		ProductVO vo = new ProductVO();
-		
-		vo.setProductId(Integer.valueOf(request.getParameter("productId")));
-		
-		vo = dao.productSelect(vo);
-		
-		request.setAttribute("n", vo);
-		String viewName = "product/productselect";
-		
+		String viewName = "admin/product/adminproductinsert";
 		ViewResolve.forward(request, response, viewName);
 	}
 

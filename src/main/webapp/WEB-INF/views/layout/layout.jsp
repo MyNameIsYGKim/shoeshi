@@ -50,27 +50,17 @@
 <link rel="stylesheet" type="text/css" href="coza/css/main.css">
 <!--===============================================================================================-->
 </head>
+
 <body class="animsition">
 
 	<!-- Header -->
 	<tiles:insertAttribute name="header" />
 
-
-
-
-
-
-
-
-
-
 	<!-- Product -->
-	<div class="container"><tiles:insertAttribute name="body" /></div>
-
+	<div class="container"><tiles:insertAttribute name="body" ignore="true"/></div>
 
 	<!-- Footer -->
 	<tiles:insertAttribute name="footer" />
-
 
 	<!-- Back to top -->
 	<div class="btn-back-to-top" id="myBtn">
@@ -78,8 +68,6 @@
 			class="zmdi zmdi-chevron-up"></i>
 		</span>
 	</div>
-
-
 
 	<!--===============================================================================================-->
 	<script src="coza/vendor/jquery/jquery-3.2.1.min.js"></script>

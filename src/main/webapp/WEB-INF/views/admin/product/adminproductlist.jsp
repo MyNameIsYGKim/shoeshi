@@ -10,25 +10,27 @@
 <body>
 	<div align="center">
 		<div>
+			<h1>제품 목록</h1>
+		</div>
+		<div>
 			<form id=frm method="post">
 				<select id="key" name="key">
 					<option value="id">ID</option>
 					<option value="maker">Maker</option>
 					<option value="name">Name</option>
 				</select>
-				<input type="text" id="val" name="val">
-				<input type="button" onclick="searchList()" value="검색">
-				<input type="button" onclick="#" value="등록">
+				<input type="text" id="val" name="val" autofocus>
+				<input type="button" onclick="searchList()" value="검색">&nbsp;
 			</form>
+				<input type="button" onclick="location.href='adminproductform.do'" value="등록">&nbsp;
 			<div>
 				<table border="1">
 					<thead>
 						<tr>
 							<th width="50">번호</th>
-							<th width="100">메이커</th>
-							<th width="150">제품명</th>
-							<th width="100">출시가격</th>
-							<th width="100">사이즈</th>
+							<th width="150">메이커</th>
+							<th width="300">제품명</th>
+							<th width="150">출시가격</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -42,7 +44,6 @@
 									<td align="center">${n.productMaker }</td>
 									<td>${n.productName }</td>
 									<td align="center">${n.productPrice }</td>
-									<td align="center">${n.productSize }</td>
 								</tr>
 							</c:forEach>
 						</c:if>
@@ -84,7 +85,7 @@
 				.then(json => htmlConvert(json));
 		}
 		
-		funtion htmlConvert(datas){
+		function htmlConvert(datas){
 			document.querySelector('tbody').remove();
 			const tbody = document.createElement('tbody');
 			
@@ -105,7 +106,6 @@
 						<td align="center">\${data.productMaker }</td>
 						<td>\${data.productName }</td>
 						<td align="center">\${data.productPrice }</td>
-						<td align="center">\${data.productSize }</td>
 					</tr>
 			`
 		}
