@@ -13,7 +13,7 @@
 	</select>
 	
 	<insert id="bidInsert" parameterType="co.sam.shoeshi.bid.service.BidVO">
-		INSERT INTO BID(BID_NO, PRODUCT_ID, BID_PRICE, BID_TYPE, CLIENT_ID)
+		INSERT INTO BID(BID_NO, PRODUCT_ID, BID_PRICE, BID_TYPE, CLIENT_ID, PRODUCT_SIZE)
 		VALUES(#{bidNo}, #{productId}, #{bidPrice}, #{bidType}, #{clientId}, #{productSize})
 	</insert>
 	
