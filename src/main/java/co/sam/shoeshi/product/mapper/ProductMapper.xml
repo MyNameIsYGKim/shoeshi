@@ -10,8 +10,8 @@
 	</select>
 	
 	<insert id="productInsert" parameterType="co.sam.shoeshi.bid.service.BidVO">
-		INSERT INTO PRODUCT(product_id, product_img, product_img_path, product_co, product_name, product_price, product_size)
-		VALUES(#{productId}, #{productImg}, #{productImgPath}, #{productCo}, #{productName}, #{productPrice}, #{productSize})
+		INSERT INTO PRODUCT(PRODUCT_ID, PRODUCT_MAKER, PRODUCT_NAME, PRODUCT_PRICE)
+		VALUES(#{productId}, #{productMaker}, #{productName}, #{productPrice})
 	</insert>
 	
 	<update id="productUpdate" parameterType="co.sam.shoeshi.bid.service.BidVO">
@@ -19,9 +19,7 @@
 		<set>
 			<!-- 한개만 있어도 무조건 콤마, 마지막거 제외 -->
 			<if test="productId != null">PRODUCT_ID = #{productId},</if>
-			<if test="productImg != null">PRODUCT_IMG = #{productImg},</if>
-			<if test="productImgPath != null">PRODUCTIMGPATH = #{productImgPath},</if>
-			<if test="productCo != null">PRODUCT_CO = #{productCo},</if>
+			<if test="productCo != null">PRODUCT_MAKER = #{productMaker},</if>
 			<if test="productName != null">PRODUCT_NAME = #{productName},</if>
 			<if test="productPrice != null">PRODUCT_PRICE = #{productPrice},</if>
 			<if test="productSize != null">PRODUCT_SIZE = #{productSize},</if>
