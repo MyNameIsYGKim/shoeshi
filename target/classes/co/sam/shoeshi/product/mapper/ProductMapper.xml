@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.sam.shoeshi.product.mapper.ProductMapper">
+	<select id="productSelectList" resultType="co.sam.shoeshi.product.service.ProductVO">
+		SELECT * FROM PRODUCT
+		<if test='key == "id"'>WHERE PRODUCT_ID LIKE '%'||#{val}||'%'</if>
+		<if test='key == "maker"'>WHERE PRODUCT_MAKER LIKE '%'||#{val}||'%'</if>
+		<if test='key == "name"'>WHERE PRODUCT_NAME LIKE '%'||#{val}||'%'</if>
+		ORDER BY PRODUCT_ID
+	</select>
+	
+	<select id="productSelect" resultType="co.sam.shoeshi.product.service.ProductVO">
+		SELECT * FROM PRODUCT WHERE PRODUCT_ID = #{productId}
+	</select>
+	
+	<insert id="productInsert" parameterType="co.sam.shoeshi.product.service.ProductVO">
+		INSERT INTO PRODUCT(product_id, product_maker, product_name, product_price)
+		VALUES(#{productId}, #{productMaker}, #{productName}, #{productPrice})
+	</insert>
+	
+	<update id="productUpdate" parameterType="co.sam.shoeshi.product.service.ProductVO">
+		UPDATE PRODUCT
+		<set>
+			<!-- 한개만 있어도 무조건 콤마, 마지막거 제외 -->
+			<if test="productId != null">PRODUCT_ID = #{productId},</if>
+			<if test="productMaker != null">PRODUCT_MAKER = #{productMaker},</if>
+			<if test="productName != null">PRODUCT_NAME = #{productName},</if>
+			<if test="productPrice != null">PRODUCT_PRICE = #{productPrice},</if>
+		</set>
+		WHERE PRODUCT_ID = #{productId}
+	</update>
+	
+	<delete id="productDelete" parameterType="co.sam.shoeshi.product.service.ProductVO">
+		DELETE FROM PRODUCT WHERE PRODUCT_ID = #{productId}
+	</delete>
+
+</mapper>
