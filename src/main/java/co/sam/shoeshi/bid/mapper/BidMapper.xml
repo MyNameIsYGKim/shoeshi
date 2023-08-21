@@ -14,10 +14,10 @@
 	
 	<insert id="bidInsert" parameterType="co.sam.shoeshi.bid.service.BidVO">
 		INSERT INTO BID(BID_NO, PRODUCT_ID, BID_PRICE, BID_TYPE, CLIENT_ID)
-		VALUES(#{bidNo}, #{productId}, #{bidPrice}, #{bidType}, #{clientId})
+		VALUES(#{bidNo}, #{productId}, #{bidPrice}, #{bidType}, #{clientId}, #{productSize})
 	</insert>
 	
-	<update id="bidUpdate">
+	<update id="bidUpdate" parameterType="co.sam.shoeshi.bid.service.BidVO">
 		UPDATE BID
 		<set>
 			<!-- 한개만 있어도 무조건 콤마, 마지막거 제외 -->
@@ -26,6 +26,7 @@
 			<if test="bidPrice != null">BID_PRICE = #{bidPrice},</if>
 			<if test="bidType != null">BID_TYPE = #{BIDTYPE},</if>
 			<if test="clientId != null">CLIENT_ID = #{clientId}</if>
+			<if test="productSize != null">PRODUCT_SIZE = #{productSize}</if>
 		</set>
 		WHERE BID_NO = #{bidNo}
 	</update>
