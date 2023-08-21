@@ -22,11 +22,10 @@ public class BidInsert extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		BidService dao = new BidServiceImpl();
 		BidVO vo = new BidVO();
 		
 		vo.setBidNo(request.getIntHeader("bidNo"));
-		vo.setProductId(request.getParameter("productId"));
+		vo.setProductId(request.getIntHeader("productId"));
 		vo.setBidPrice(request.getIntHeader("bidPrice"));
 		vo.setBidType(request.getParameter("bidType"));
 		vo.setClientId(request.getParameter("clientId"));

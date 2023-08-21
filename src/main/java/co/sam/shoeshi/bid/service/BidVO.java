@@ -7,7 +7,7 @@ import lombok.Setter;
 @Setter
 public class BidVO {
 	private int bidNo;
-	private String productId;
+	private int productId;
 	private int bidPrice;
 	private String bidType;
 	private String clientId;

@@ -26,22 +26,12 @@ public class ClientEdit extends HttpServlet {
 		ClientService dao = new ClientServiceImpl();
 		ClientVO vo = new ClientVO();
 		HttpSession session = request.getSession();
-		System.out.println((String) session.getAttribute("id") + " " + request.getParameter("clientPassword") + " "
-				+ request.getParameter("clientAddress") + " " + request.getParameter("clientTel"));
-		String pwd = request.getParameter("clientPassword");
-		String add = request.getParameter("clientAddress");
-		String tel = request.getParameter("clientTel");
+		request.setCharacterEncoding("UTF-8");
 		
-		System.out.println(pwd + " " + add + " "+ tel);
-
 		vo.setClientId((String) session.getAttribute("id"));
 		vo.setClientPassword(request.getParameter("clientPassword"));
 		vo.setClientAddress(request.getParameter("clientAddress"));
 		vo.setClientTel(request.getParameter("clientTel"));
-
-		session.setAttribute("password", request.getParameter("clientPassword"));
-		session.setAttribute("address", request.getParameter("clientAddress"));
-		session.setAttribute("tel", request.getParameter("clientTel"));
 
 		int n = dao.clientUpdate(vo);
 		if (n == 0) {

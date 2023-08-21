@@ -65,6 +65,7 @@
 		<ul>
 			<li><a href="mypage.do"><h3>마이페이지</h3></a></li>
 			<li><a href="clienteditform.do">회원정보 수정</a></li>
+			<li><a href="paymenteditform.do">거래정보 수정</a></li>
 			<li><a href="deallist.do">거래내역</a></li>
 			<li><a href="#">Cart</a></li>
 

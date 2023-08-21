@@ -1,9 +1,14 @@
 package co.sam.shoeshi.payment.service;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class PaymentVO {
 String clientId;
-int bankAccount;
+long bankAccount;
 String bankName;
-int cardNum;
+long cardNum;
 String cardCo;
 }

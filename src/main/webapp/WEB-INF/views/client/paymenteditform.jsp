@@ -1,12 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>회원가입</title>
+<title>거래정보 수정</title>
 <link rel="icon" href="./images/images2/favicon.png">
 <link rel="stylesheet" href="./quiz07.css">
 <style type="text/css">
@@ -38,7 +39,7 @@ a {
 }
 
 /*member sign in*/
-.member {
+.payment {
 	width: 400px;
 	/* border: 1px solid #000; */
 	margin: auto; /*중앙 정렬*/
@@ -46,31 +47,31 @@ a {
 	margin-bottom: 100px;
 }
 
-.member .field {
+.payment .field {
 	margin: 5px 0; /*상하로 좀 띄워주기*/
 }
 
-.member b {
+.payment b {
 	/* border: 1px solid #000; */
 	display: block; /*수직 정렬하기 */
 	margin-bottom: 5px;
 }
 
 /*input 중 radio 는 width 가 100%면 안되니까 */
-.member input:not(input[type=radio]), .member select {
+.payment input:not(input[type=radio]), .payment select {
 	border: 1px solid #dadada;
 	padding: 10px;
 	width: 100%;
 	margin-bottom: 5px;
 }
 
-.member input[type=button], .member input[type=submit], .member button[type=button]
+.payment input[type=button], .payment input[type=submit], .payment button[type=button]
 	{
 	background-color: #000000;
 	color: #fff
 }
 
-.member input:focus, .member select:focus {
+.payment input:focus, .payment select:focus {
 	border: 1px solid #2db400;
 }
 
@@ -171,40 +172,27 @@ a {
 
 
 	<h3 class="signup-title">회원정보 수정</h3>
-	<div class="member">
-		<!-- 2. 필드 -->
+	<div class="payment">
 
-		<form action="clientedit.do" method="post" id="frm"
+		<form action="paymentedit.do" method="post" id="frm"
 			onsubmit="return formCheck()">
 			<div class="field">
-				<b>성명</b> <input style="background: silver;" class="useranme"
-					type="text" id="clientName" name="clientName" readonly="readonly"
-					value="${n.clientName }">
-			</div>
-
-			<div class="field">
-				<b>비밀번호</b> <input placeholder="비밀번호 입력" class="userpw"
-					type="password" id="clientPassword" name="clientPassword"
-					value="${n.clientPassword }" required="required">
+				<b>카드</b> <input placeholder="ex)현대카드, 비씨카드" class="cardco"
+					type="text" id="cardCo" name="cardCo" value="${pay.cardCo }">
 			</div>
 			<div class="field">
-				<b>비밀번호 확인</b> <input class="userpw-confirm" placeholder="비밀번호 확인"
-					type="password" id="passwordCheck" name="passwordCheck"
-					required="required">
-			</div>
-
-
-			<div class="field">
-				<b>휴대전화</b>
-				<div>
-					<input type="tel" placeholder="ex)01000000000 -제외" id="clientTel"
-						name="clientTel" value="0${n.clientTel }" required="required">
-				</div>
+				<b>카드번호</b> <input placeholder="카드번호 입력(16자리)" class="cardnum"
+					type="text" id="cardNum" name="cardNum" maxlength="16"
+					value="${pay.cardNum }">
 			</div>
 			<div class="field">
-				<b>주소</b> <input type="text" placeholder="ex)대구시, 포항시"
-					id="clientAddress" name="clientAddress" value="${n.clientAddress }"
-					required="required" maxlength="5">
+				<b>은행</b> <input placeholder="ex)농협은행, 수협은행" class="bankname"
+					type="text" id="bankName" name="bankName" value="${pay.bankName }">
+			</div>
+			<div class="field">
+				<b>정산 계좌번호</b> <input placeholder="계좌번호 입력(14자리 이하)"
+					class="bankaccount" type="text" id="bankAccount" name="bankAccount"
+					maxlength="14" value="${pay.bankAccount }">
 			</div>
 
 			<div>
@@ -214,43 +202,28 @@ a {
 	</div>
 
 	<script type="text/javascript">
-		function formCheck() {
-			let address = document.getElementById("clientAddress").value;
-			let password = document.getElementById("clientPassword").value;
-			let passcheck = document.getElementById("passwordCheck").value;
-			let tel = document.getElementById("clientTel").value;
-			if (password != passcheck) {
-				alert("패스워드가 일치하지 않습니다.");
-				document.getElementById("clientPassword").value = "";
-				document.getElementById("passwordCheck").value = "";
-				document.getElementById("clientPassword").focus();
-				return false;
-			}
-			if (tel.length < 11 || isNaN(tel) == true) {
-				alert("잘못된 번호 입니다.");
+function formCheck() {
+			let ba = document.getElementById("bankAccount").value;
+			let cn = document.getElementById("cardNum").value;
 
-				document.getElementById("clientTel").value = "";
-				document.getElementById("clientTel").focus();
+
+
+			if (ba.length < 12 || isNaN(ba) == true) {
+				alert("잘못된 계좌번호입니다.")
+				document.getElementById("bankAccount").focus();
 				return false;
 			}
-			var regExp = /[ \{\}\[\]\/?.,;:|\)*~`!^\-_+┼<>@\#$%&\'\"\\\(\=]/gi;
-			if (regExp.test(password)) {
-				alert("특수문자는 입력하실수 없습니다.");
-				document.getElementById("clientPassword").value = "";
-				document.getElementById("passwordCheck").value = "";
-				document.getElementById("clientPassword").focus();
+			if (cn.length < 16 || isNaN(cn) == true) {
+				alert("잘못된 카드번호입니다.")
+				document.getElementById("cardNum").focus();
 				return false;
 			}
-			if (regExp.test(address)) {
-				alert("특수문자는 입력하실수 없습니다.");
-				document.getElementById("clientAddress").value = "";
-				document.getElementById("clientAddress").focus();
-				return false;
-			}
+
 			return true;
 
+			
+			
 		}
 	</script>
-
 </body>
 </html>

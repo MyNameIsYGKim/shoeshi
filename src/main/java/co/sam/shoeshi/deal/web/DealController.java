@@ -26,14 +26,18 @@ public class DealController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		DealService dao = new DealServiceImpl();
-		List<DealVO> vo = new ArrayList<DealVO>();
 		HttpSession session = request.getSession();
-
-		vo = dao.dealSelectList();
-		request.setAttribute("deallist", vo);
-		request.setAttribute("loginid", (String)session.getAttribute("id"));
-		String viewName = "deal/deallist";
+		DealVO vo = new DealVO(); 
+		DealService dao = new DealServiceImpl();
+		List<DealVO> vos = new ArrayList<DealVO>();
+		List<DealVO> vob = new ArrayList<DealVO>();
+		vo.setDealSeller((String)session.getAttribute("id"));
+		vo.setDealBuyer((String)session.getAttribute("id"));
+		vos = dao.dealSelectS(vo);
+		vob = dao.dealSelectB(vo);
+		request.setAttribute("deallists", vos);
+		request.setAttribute("deallistb", vob);
+		String viewName = "client/deallist";
 		ViewResolve.forward(request, response, viewName);
 	}
 
