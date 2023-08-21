@@ -13,4 +13,5 @@ String dealState;
 int dealPrice;
 String dealBuyer;
 String dealSeller;
+private int productSize;
 }

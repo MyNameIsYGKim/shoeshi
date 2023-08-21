@@ -11,4 +11,5 @@ public class BidVO {
 	private int bidPrice;
 	private String bidType;
 	private String clientId;
+	private int productSize;
 }
