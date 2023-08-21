@@ -11,7 +11,7 @@
 	
 	<insert id="dealInsert" parameterType="co.sam.shoeshi.deal.service.DealVO">
 		INSERT INTO DEAL(DEAL_NO, DEAL_DATE, DEAL_STATE, DEAL_PRICE, DEAL_BUYER, DEAL_SELLER)
-		VALUES(#{dealNo}, #{dealDate}, #{dealState}, #{dealPrice}, #{dealBuyer}, #{dealSeller})
+		VALUES(#{dealNo}, #{dealDate}, #{dealState}, #{dealPrice}, #{dealBuyer}, #{dealSeller}, #{productSize})
 	</insert>
 	
 	<update id="dealUpdate" parameterType="co.sam.shoeshi.deal.service.DealVO">
@@ -23,6 +23,7 @@
 			<if test="dealPrice != null">DEAL_PRICE = #{dealPrice},</if>
 			<if test="dealBuyer != null">DEAL_BUYER = #{dealBuyer},</if>
 			<if test="dealSeller != null">DEAL_SELLER = #{dealSeller},</if>
+			<if test="productSize != null">PRODUCT_SIZE = #{productSize}</if>
 		</set>
 		WHERE DEAL_NO = #{dealNo}
 	</update>

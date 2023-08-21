@@ -22,7 +22,7 @@
 			<if test="productCo != null">PRODUCT_MAKER = #{productMaker},</if>
 			<if test="productName != null">PRODUCT_NAME = #{productName},</if>
 			<if test="productPrice != null">PRODUCT_PRICE = #{productPrice},</if>
-			<if test="productSize != null">PRODUCT_SIZE = #{productSize},</if>
+			<if test="productSize != null">PRODUCT_SIZE = #{productSize}</if>
 		</set>
 		WHERE PRODUCT_ID = #{productId}
 	</update>

@@ -14,4 +14,5 @@ public class DealVO {
 	int dealPrice;
 	String dealBuyer;
 	String dealSeller;
+	private int productSize;
 }

@@ -8,11 +8,6 @@ import lombok.Setter;
 @Setter
 public class ProductVO {
 	private String productId;
-<<<<<<< HEAD
-=======
-	private String productImg;
-	private String productImgPath;
->>>>>>> refs/remotes/origin/master
 	private String productMaker;
 	private String productName;
 	private int productPrice;
