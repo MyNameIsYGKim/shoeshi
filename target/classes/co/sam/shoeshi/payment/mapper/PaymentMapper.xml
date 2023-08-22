@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.sam.shoeshi.payment.mapper.PaymentMapper">
+	<select id="paymentSelectList" resultType="co.sam.shoeshi.payment.service.PaymentVO">
+		SELECT * FROM PAYMENT
+	</select>
+	
+	<select id="paymentSelect" resultType="co.sam.shoeshi.payment.service.PaymentVO">
+		SELECT * FROM PAYMENT WHERE CLIENT_ID = #{clientId}
+	</select>
+	
+	<insert id="paymentInsert" parameterType="co.sam.shoeshi.payment.service.PaymentVO">
+		INSERT INTO PAYMENT(CLIENT_ID, BANK_ACCOUNT, BANK_NAME, CARD_NAME, CARD_CO)
+		VALUES(#{clientId}, #{bankAccount}, #{bankName}, #{cardName}, #{cardCo})
+	</insert>
+	
+	<update id="paymentUpdate" parameterType="co.sam.shoeshi.payment.service.PaymentVO">
+		UPDATE PAYMENT
+		<set>
+			<if test="clientId != null">CLIENT_ID = #{clientId},</if>
+			<if test="bankAccount != null">BANK_ACCOUNT = #{bankAccount},</if>
+			<if test="bankName != null">BANK_NAME = #{bankName},</if>
+			<if test="cardNum != null">CARD_NUM = #{cardNum},</if>
+			<if test="cardCo != null">CARD_CO = #{cardCo},</if>
+		</set>
+		WHERE CLIENT_ID = #{clientId}
+	</update>
+	
+	<delete id="paymentDelete" parameterType="co.sam.shoeshi.payment.service.PaymentVO">
+		DELETE FROM PAYMENT WHERE CLIENT_ID = #{clientId}
+	</delete>
+
+</mapper>

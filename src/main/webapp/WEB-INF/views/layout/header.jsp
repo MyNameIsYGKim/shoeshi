@@ -97,7 +97,7 @@
 							class="nav-link px-2 fontw">마이페이지</a></li>
 						<li class="nav-item"><a href="logout.do"
 							class="nav-link px-2 fontw">로그아웃</a></li>
-						<li class="nav-link px-2 fontw">${name }님 접속 중</li>
+						<li class="nav-link px-2 fontw">${name }님</li>
 					</c:if>
 				</ul>
 			</div>
@@ -111,9 +111,11 @@
 					class="fs-4"><img class="rdg-image" alt="logo"
 						src="logo/logowhite1.svg"></span>
 				</a>
-				<form class="col-12 col-lg-auto mb-3 mb-lg-0">
-					<input type="search" class="form-control"
-						placeholder="검색어를 입력해주세요." aria-label="Search">
+				<form id="searchform" class="col-12 col-lg-auto mb-3 mb-lg-0"
+					action="productsearchlist.do">
+					<input type="text" class="form-control"
+						onKeypress="if(event.keyCode==13) {searchList()}"
+						placeholder="검색어를 입력해주세요." aria-label="Search" id="val" name="val">
 				</form>
 
 			</div>
@@ -123,7 +125,17 @@
 	</div>
 
 
-	<script src="dist/js/bootstrap.bundle.min.js"></script>
+	<script type="text/javascript">
+		function searchList() {
+			document.getElementById("val").value = p;
+			document.getElementById("searchform").submit();
+			var input = document.getElementById("val");
+			input = null;
+		}
+	</script>
+	<script src="dist/js/bootstrap.bundle.min.js">
+		
+	</script>
 
 
 </body>

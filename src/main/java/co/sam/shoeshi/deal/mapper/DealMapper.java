@@ -12,4 +12,5 @@ public interface DealMapper {
 	int dealInsert(DealVO vo);
 	int dealUpdate(DealVO vo);
 	int dealDelete(DealVO vo);
+	
 }

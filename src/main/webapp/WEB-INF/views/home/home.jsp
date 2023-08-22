@@ -27,7 +27,7 @@
 
 						<div class="block2-txt flex-w flex-t p-t-14">
 							<div class="block2-txt-child1 flex-col-l ">
-								<a href="product-detail.html"
+								<a href="productdetail.do"
 									class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6"> <!-- 상품명 -->Esprit
 									Ruffle Shirt
 								</a> <span class="stext-105 cl3"> <!-- 가격 --> $16.64
@@ -51,7 +51,7 @@
 					<!-- Block2 -->
 					<div class="block2">
 						<div class="block2-pic hov-img0">
-							<a href="product-detail.html"><img src="img/2.png"
+							<a href="productdetail.do"><img src="img/2.png"
 								alt="IMG-PRODUCT"></a>
 
 
@@ -59,7 +59,7 @@
 
 						<div class="block2-txt flex-w flex-t p-t-14">
 							<div class="block2-txt-child1 flex-col-l ">
-								<a href="product-detail.html"
+								<a href="productdetail.do"
 									class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
 									Herschel supply </a> <span class="stext-105 cl3"> $35.31 </span>
 							</div>
@@ -81,7 +81,7 @@
 					<!-- Block2 -->
 					<div class="block2">
 						<div class="block2-pic hov-img0">
-							<a href="product-detail.html"><img src="img/3.png"
+							<a href="productdetail.do"><img src="img/3.png"
 								alt="IMG-PRODUCT"></a>
 
 
@@ -89,7 +89,7 @@
 
 						<div class="block2-txt flex-w flex-t p-t-14">
 							<div class="block2-txt-child1 flex-col-l ">
-								<a href="product-detail.html"
+								<a href="productdetail.do"
 									class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
 									Only Check Trouser </a> <span class="stext-105 cl3"> $25.50
 								</span>
@@ -112,7 +112,7 @@
 					<!-- Block2 -->
 					<div class="block2">
 						<div class="block2-pic hov-img0">
-							<a href="product-detail.html"><img src="img/4.png"
+							<a href="productdetail.do"><img src="img/4.png"
 								alt="IMG-PRODUCT"></a>
 
 
@@ -120,7 +120,7 @@
 
 						<div class="block2-txt flex-w flex-t p-t-14">
 							<div class="block2-txt-child1 flex-col-l ">
-								<a href="product-detail.html"
+								<a href="productdetail.do"
 									class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
 									Classic Trench Coat </a> <span class="stext-105 cl3"> $75.00
 								</span>
@@ -143,13 +143,13 @@
 					<!-- Block2 -->
 					<div class="block2">
 						<div class="block2-pic hov-img0">
-							<a href="product-detail.html"><img src="img/5.png"
+							<a href="productdetail.do"><img src="img/5.png"
 								alt="IMG-PRODUCT"></a>
 						</div>
 
 						<div class="block2-txt flex-w flex-t p-t-14">
 							<div class="block2-txt-child1 flex-col-l ">
-								<a href="product-detail.html"
+								<a href="productdetail.do"
 									class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
 									Front Pocket Jumper </a> <span class="stext-105 cl3"> $34.75
 								</span>
@@ -171,14 +171,14 @@
 				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item watches">
 					<!-- Block2 -->
 					<div class="block2">
-						<div class="block2-pic hov-img0">
+						<div class="block2-pic productdetail.do">
 							<a href="product-detail.html"><img src="img/6.png"
-								alt="IMG-PRODUCT"></a> 
+								alt="IMG-PRODUCT"></a>
 						</div>
 
 						<div class="block2-txt flex-w flex-t p-t-14">
 							<div class="block2-txt-child1 flex-col-l ">
-								<a href="product-detail.html"
+								<a href="productdetail.do"
 									class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
 									Vintage Inspired Classic </a> <span class="stext-105 cl3">
 									$93.20 </span>
@@ -201,13 +201,13 @@
 					<!-- Block2 -->
 					<div class="block2">
 						<div class="block2-pic hov-img0">
-							<a href="product-detail.html"><img src="img/7.png"
+							<a href="productdetail.do"><img src="img/7.png"
 								alt="IMG-PRODUCT"></a>
 						</div>
 
 						<div class="block2-txt flex-w flex-t p-t-14">
 							<div class="block2-txt-child1 flex-col-l ">
-								<a href="product-detail.html"
+								<a href="productdetail.do"
 									class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
 									Shirt in Stretch Cotton </a> <span class="stext-105 cl3">
 									$52.66 </span>
@@ -230,13 +230,13 @@
 					<!-- Block2 -->
 					<div class="block2">
 						<div class="block2-pic hov-img0">
-							<a href="product-detail.html"><img src="img/8.png"
+							<a href="productdetail.do"><img src="img/8.png"
 								alt="IMG-PRODUCT"></a> 
 						</div>
 
 						<div class="block2-txt flex-w flex-t p-t-14">
 							<div class="block2-txt-child1 flex-col-l ">
-								<a href="product-detail.html"
+								<a href="productdetail.do"
 									class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
 									Pieces Metallic Printed </a> <span class="stext-105 cl3">
 									$18.96 </span>

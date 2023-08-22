@@ -25,11 +25,12 @@ public class BidEdit extends HttpServlet {
 		BidService dao = new BidServiceImpl();
 		BidVO vo = new BidVO();
 		
-		vo.setBidNo(Integer.parseInt(request.getParameter("bidNo")));
-		vo.setProductId(Integer.parseInt(request.getParameter("productId")));
-		vo.setBidPrice(Integer.parseInt(request.getParameter("bidPrice")));
+		vo.setBidNo(Integer.valueOf(request.getParameter("bidNo")));
+		vo.setProductId(Integer.valueOf(request.getParameter("productId")));
+		vo.setBidPrice(Integer.valueOf(request.getParameter("bidPrice")));
 		vo.setBidType(request.getParameter("bidType"));
 		vo.setClientId(request.getParameter("clientId"));
+		vo.setProductSize(Integer.valueOf(request.getParameter("productSize")));
 		
 		String viewName = "bid/bidselect";
 		vo = dao.bidSelect(vo);

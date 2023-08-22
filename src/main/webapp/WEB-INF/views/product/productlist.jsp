@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,7 +21,7 @@
 						<!-- Block2 -->
 						<div class="block2">
 							<div class="block2-pic hov-img0">
-								<a href="productdetail.do"><img src="img/1.png"
+								<a onclick="selectProduct(${p.productId})" href="#"><img src="${p.productimgPath}${p.productimgName1}"
 									alt="IMG-PRODUCT"></a>
 
 
@@ -28,11 +29,13 @@
 
 							<div class="block2-txt flex-w flex-t p-t-14">
 								<div class="block2-txt-child1 flex-col-l ">
-									<a href="product-detail.html"
+									<a href="#"
 										class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6"> <!-- 제조사 -->${p.productMaker}
-									</a> <a href="product-detail.html"
-										class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6"> <!-- 상품명 -->${p.productName}
-									</a> <span class="stext-105 cl3"> <!-- 가격 -->${p.productPrice}
+									</a> <a
+										class="move stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6"
+										href ="#" onclick="selectProduct(${p.productId})"> ${p.productName}</a>
+									<span class="stext-105 cl3"> <!-- 가격 --> <fmt:formatNumber
+											value="${p.productPrice}" pattern="###,###,###원" />
 									</span>
 								</div>
 
@@ -56,12 +59,22 @@
 			<!-- Load more -->
 
 			<div class="flex-c-m flex-w w-full p-t-45">
-				<a href="#"
+				<a href="productlist.do"
 					class="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04">
 					더보기 </a>
 			</div>
 		</div>
-
+		<div>
+			<form id="frm" action="productselect.do" method="get">
+				<input type="hidden" id="productId" name="productId">
+			</form>
+		</div>
 	</section>
+	<script type="text/javascript">
+		function selectProduct(p) {
+			document.getElementById("productId").value = p;
+			document.getElementById("frm").submit();
+		}
+	</script>
 </body>
 </html>
