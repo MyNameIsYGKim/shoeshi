@@ -171,7 +171,7 @@ a {
 <body>
 
 
-	<h3 class="signup-title">회원정보 수정</h3>
+	<h3 class="signup-title">거래정보 수정</h3>
 	<div class="payment">
 
 		<form action="paymentedit.do" method="post" id="frm"
