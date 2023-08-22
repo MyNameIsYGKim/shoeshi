@@ -57,9 +57,4 @@ public class ProductServiceImpl implements ProductService {
 		return map.productSelectList(key, val);
 	}
 
-	@Override
-	public List<ProductVO> productSearchList(String key, String val) {
-		return map.productSearchList(key, val);
-	}
-
 }

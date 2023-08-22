@@ -3,6 +3,11 @@
 <mapper namespace="co.sam.shoeshi.bid.mapper.BidMapper">
 	<select id="bidSelectList" resultType="co.sam.shoeshi.bid.service.BidVO">
 		SELECT * FROM BID
+		<if test='key == "bidNo"'>WHERE BID_NO LIKE '%'||#{val}||'%'</if>
+		<if test='key == "productId"'>WHERE PRODUCT_ID LIKE '%'||#{val}||'%'</if>
+		<if test='key == "bidType"'>WHERE BID_TYPE LIKE '%'||#{val}||'%'</if>
+		<if test='key == "clientId"'>WHERE CLIENT_ID LIKE '%'||#{val}||'%'</if>
+		ORDER BY BID_NO
 	</select>
 	
 	<select id="bidSelect" resultType="co.sam.shoeshi.bid.service.BidVO">

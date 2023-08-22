@@ -27,7 +27,6 @@ public class AdminProductInsert extends HttpServlet {
 		ProductService dao = new ProductServiceImpl();
 		ProductVO vo = new ProductVO();
 		
-		
 		vo.setProductId(Integer.valueOf(request.getParameter("productId")));
 		vo.setProductMaker(request.getParameter("productMaker"));
 		vo.setProductName(request.getParameter("productName"));
