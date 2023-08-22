@@ -10,8 +10,8 @@
 	</select>
 	
 	<insert id="paymentInsert" parameterType="co.sam.shoeshi.payment.service.PaymentVO">
-		INSERT INTO PAYMENT(CLIENT_ID, BANK_ACCOUNT, BANK_NAME, CARD_NAME, CARD_CO)
-		VALUES(#{clientId}, #{bankAccount}, #{bankName}, #{cardName}, #{cardCo})
+		INSERT INTO PAYMENT(CLIENT_ID, BANK_ACCOUNT, BANK_NAME, CARD_NUM, CARD_CO)
+		VALUES(#{clientId}, #{bankAccount}, #{bankName}, #{cardNum}, #{cardCo})
 	</insert>
 	
 	<update id="paymentUpdate" parameterType="co.sam.shoeshi.payment.service.PaymentVO">

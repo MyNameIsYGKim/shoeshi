@@ -1,4 +1,4 @@
-package co.sam.shoeshi.bid.web;
+package co.sam.shoeshi.payment.web;
 
 import java.io.IOException;
 
@@ -7,26 +7,29 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import co.sam.shoeshi.bid.service.BidService;
-import co.sam.shoeshi.bid.service.BidVO;
-import co.sam.shoeshi.bid.serviceImpl.BidServiceImpl;
 import co.sam.shoeshi.common.ViewResolve;
+import co.sam.shoeshi.payment.service.PaymentService;
+import co.sam.shoeshi.payment.service.PaymentVO;
+import co.sam.shoeshi.payment.serviceImple.PaymentServiceImpl;
 
-@WebServlet("/biddelete.do")
-public class BidDelete extends HttpServlet {
+@WebServlet("/paymenteditform.do")
+public class PaymentEditForm extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-    public BidDelete() {
+       
+    public PaymentEditForm() {
         super();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		BidVO vo = new BidVO();
-		
-		vo.setBidNo(Integer.parseInt(getInitParameter("bidNo")));
-		
-		String viewName = "bid/bidlist";
+		HttpSession session = request.getSession();
+		PaymentVO vo = new PaymentVO();
+		PaymentService dao = new PaymentServiceImpl();
+		vo.setClientId((String)session.getAttribute("id"));
+		vo = dao.paymentSelect(vo);
+		request.setAttribute("pay", vo);
+		String viewName = "client/paymenteditform";
 		ViewResolve.forward(request, response, viewName);
 		
 	}

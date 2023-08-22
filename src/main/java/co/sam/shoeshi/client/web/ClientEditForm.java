@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import co.sam.shoeshi.client.service.ClientService;
 import co.sam.shoeshi.client.service.ClientVO;
@@ -22,10 +23,11 @@ public class ClientEditForm extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
 		ClientService dao = new ClientServiceImpl();
 		ClientVO vo = new ClientVO();
 		
-		vo.setClientId(request.getParameter("clientId"));
+		vo.setClientId((String)session.getAttribute("id"));
 		vo = dao.clientSelect(vo);
 		request.setAttribute("n", vo);
 		String viewName = "client/clienteditform";

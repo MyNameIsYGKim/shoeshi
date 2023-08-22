@@ -15,7 +15,7 @@
 	</select>
 	
 	<insert id="productInsert" parameterType="co.sam.shoeshi.product.service.ProductVO">
-		INSERT INTO PRODUCT(product_id, product_maker, product_name, product_price)
+		INSERT INTO PRODUCT(PRODUCT_ID, PRODUCT_MAKER, PRODUCT_NAME, PRODUCT_PRICE)
 		VALUES(#{productId}, #{productMaker}, #{productName}, #{productPrice})
 	</insert>
 	
