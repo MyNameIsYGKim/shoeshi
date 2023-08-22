@@ -14,7 +14,7 @@
 	
 	<insert id="bidInsert" parameterType="co.sam.shoeshi.bid.service.BidVO">
 		INSERT INTO BID(BID_NO, PRODUCT_ID, BID_PRICE, BID_TYPE, CLIENT_ID, PRODUCT_SIZE)
-		VALUES(#{bidNo}, #{productId}, #{bidPrice}, #{bidType}, #{clientId}, #{productSize)
+		VALUES(#{bidNo}, #{productId}, #{bidPrice}, #{bidType}, #{clientId}, #{productSize})
 	</insert>
 	
 	<update id="bidUpdate" parameterType="co.sam.shoeshi.bid.service.BidVO">
