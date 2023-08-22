@@ -31,8 +31,9 @@
 		WHERE PRODUCT_ID = #{productId}
 	</update>
 
-	<delete id="productDelete"
-		parameterType="co.sam.shoeshi.bid.service.BidVO">
+	
+	<delete id="productDelete" parameterType="co.sam.shoeshi.product.service.ProductVO">
+
 		DELETE FROM PRODUCT WHERE PRODUCT_ID = #{productId}
 	</delete>
 
