@@ -174,69 +174,79 @@ a {
 	<div class="member">
 		<!-- 2. 필드 -->
 
-		<form id="frm" action="clientedit.do" method="post"
-			enctype="multipart/form-data">
-			<!-- 첨부파일있을때는 enctype="multipart/form-data" 필수 -->
+		<form action="clientedit.do" method="post" id="frm"
+			onsubmit="return formCheck()">
+			<div class="field">
+				<b>성명</b> <input style="background: silver;" class="useranme"
+					type="text" id="clientName" name="clientName" readonly="readonly"
+					value="${n.clientName }">
+			</div>
 
 			<div class="field">
 				<b>비밀번호</b> <input placeholder="비밀번호 입력" class="userpw"
-					type="password" id="clientPassword" name="clientPassword">
+					type="password" id="clientPassword" name="clientPassword"
+					value="${n.clientPassword }" required="required">
 			</div>
 			<div class="field">
-				<b>비밀번호 재확인</b> <input class="userpw-confirm" placeholder="비밀번호 확인"
-					type="password" id="passwordCheck">
+				<b>비밀번호 확인</b> <input class="userpw-confirm" placeholder="비밀번호 확인"
+					type="password" id="passwordCheck" name="passwordCheck"
+					required="required">
 			</div>
-			
 
-			<!-- 5. 이메일_전화번호 -->
-			<!-- <div class="field">
-				<b>본인 확인 이메일<small>(선택)</small></b> <input type="email"
-					placeholder="선택입력">
-			</div> -->
 
 			<div class="field">
-				<!-- <div class="field tel-number"> -->
 				<b>휴대전화</b>
-				<!-- <select>
-					<option value="">대한민국 +82</option>
-				</select> -->
 				<div>
-					<input type="tel" placeholder="전화번호 입력" id="clientTel"
-						name="clientTel">
-					<!-- <input type="button" value="인증번호 받기"> -->
+					<input type="tel" placeholder="ex)01000000000 -제외" id="clientTel"
+						name="clientTel" value="0${n.clientTel }" required="required">
 				</div>
-				<!-- <input type="number" placeholder="인증번호를 입력하세요"> -->
 			</div>
 			<div class="field">
-				<b>주소</b> <input type="text" placeholder="주소 입력" id="clientAddress"
-					name="clientAddress">
-
+				<b>주소</b> <input type="text" placeholder="ex)대구시, 포항시"
+					id="clientAddress" name="clientAddress" value="${n.clientAddress }"
+					required="required" maxlength="5">
 			</div>
 
-			
-			<input type="submit" value="수정">
-			
-			<input type="hidden" id="clientId" name="clientId"
-					value="${c.clientId}">
+			<div>
+				<input type="submit" value="수정">
+			</div>
 		</form>
 	</div>
 
 	<script type="text/javascript">
-	
-		
-		
-		
 		function formCheck() {
-			document.getElementById("clientPassword").value;
-			document.getElementById("passwordCheck").value;
-		
-
-			
+			let address = document.getElementById("clientAddress").value;
+			let password = document.getElementById("clientPassword").value;
+			let passcheck = document.getElementById("passwordCheck").value;
+			let tel = document.getElementById("clientTel").value;
 			if (password != passcheck) {
-				alert("패스워드가 일치하지 않습니다.")
+				alert("패스워드가 일치하지 않습니다.");
+				document.getElementById("clientPassword").value = "";
+				document.getElementById("passwordCheck").value = "";
+				document.getElementById("clientPassword").focus();
 				return false;
 			}
+			if (tel.length < 11 || isNaN(tel) == true) {
+				alert("잘못된 번호 입니다.");
 
+				document.getElementById("clientTel").value = "";
+				document.getElementById("clientTel").focus();
+				return false;
+			}
+			var regExp = /[ \{\}\[\]\/?.,;:|\)*~`!^\-_+┼<>@\#$%&\'\"\\\(\=]/gi;
+			if (regExp.test(password)) {
+				alert("특수문자는 입력하실수 없습니다.");
+				document.getElementById("clientPassword").value = "";
+				document.getElementById("passwordCheck").value = "";
+				document.getElementById("clientPassword").focus();
+				return false;
+			}
+			if (regExp.test(address)) {
+				alert("특수문자는 입력하실수 없습니다.");
+				document.getElementById("clientAddress").value = "";
+				document.getElementById("clientAddress").focus();
+				return false;
+			}
 			return true;
 
 		}

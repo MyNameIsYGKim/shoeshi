@@ -22,12 +22,10 @@ public class BidDelete extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		BidService dao = new BidServiceImpl();
 		BidVO vo = new BidVO();
 		
 		vo.setBidNo(Integer.parseInt(getInitParameter("bidNo")));
 		
-		int n = dao.bidDelete(vo);
 		String viewName = "bid/bidlist";
 		ViewResolve.forward(request, response, viewName);
 		

@@ -33,7 +33,6 @@ public class BidEdit extends HttpServlet {
 		vo.setProductSize(Integer.valueOf(request.getParameter("productSize")));
 		
 		String viewName = "bid/bidselect";
-		int n = dao.bidUpdate(vo);
 		vo = dao.bidSelect(vo);
 		request.setAttribute("n", vo);
 		ViewResolve.forward(request, response, viewName);

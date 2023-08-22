@@ -2,6 +2,7 @@ package co.sam.shoeshi.product.web;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -15,21 +16,22 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 import co.sam.shoeshi.product.service.ProductService;
-import co.sam.shoeshi.product.service.ProductVO;
 import co.sam.shoeshi.product.serviceImpl.ProductServiceImpl;
 
 @WebServlet("/ajaxproductsearch.do")
 public class AjaxProductSearch extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public AjaxProductSearch() {
-        super();
-    }
+	public AjaxProductSearch() {
+		super();
+	}
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
 		ProductService dao = new ProductServiceImpl();
-		List<ProductVO> products = new ArrayList<>();
-		
+		List<HashMap<String, Object>> products = new ArrayList<>();
+
 		String key = request.getParameter("key");
 		String val = request.getParameter("val");
 		products = dao.productSelectList(key, val);
@@ -46,7 +48,9 @@ public class AjaxProductSearch extends HttpServlet {
 		return;
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
 		doGet(request, response);
 	}
 

@@ -14,6 +14,6 @@ public class CamelHashMap extends HashMap {
 	}
 
 	private static String toLowerCamel(String key) {
-		return CaseFormat.UPPER_UNDERSCORE.to(CaseFormat.LOWER_CAMEL, key);
+		return CaseFormat.UPPER_UNDERSCORE.to(CaseFormat.LOWER_CAMEL,(String) key);
 	}
 }

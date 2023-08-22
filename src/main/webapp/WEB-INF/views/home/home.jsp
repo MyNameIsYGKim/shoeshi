@@ -173,7 +173,7 @@
 					<div class="block2">
 						<div class="block2-pic productdetail.do">
 							<a href="product-detail.html"><img src="img/6.png"
-								alt="IMG-PRODUCT"></a> 
+								alt="IMG-PRODUCT"></a>
 						</div>
 
 						<div class="block2-txt flex-w flex-t p-t-14">

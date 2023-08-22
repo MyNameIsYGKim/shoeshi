@@ -38,4 +38,14 @@ public class DealServiceImpl implements DealService {
 		return map.dealDelete(vo);
 	}
 
+	@Override
+	public List<DealVO> dealSelectB(DealVO vo) {
+		return map.dealSelectB(vo);
+	}
+
+	@Override
+	public List<DealVO> dealSelectS(DealVO vo) {
+		return map.dealSelectS(vo);
+	}
+
 }

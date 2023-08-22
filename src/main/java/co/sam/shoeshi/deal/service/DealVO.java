@@ -8,10 +8,12 @@ import lombok.Setter;
 @Getter
 @Setter
 public class DealVO {
-	int dealNo;
-	LocalDate dealDate;
-	String dealState;
-	int dealPrice;
-	String dealBuyer;
-	String dealSeller;
+	private int dealNo;
+	private LocalDate dealDate;
+	private String dealState;
+	private int dealPrice;
+	private String dealBuyer;
+	private String dealSeller;
+	private int productId;
+	private int productSize;
 }
