@@ -20,7 +20,7 @@
 					<option value="name">Name</option>
 				</select>
 				<input type="text" id="val" name="val" autofocus>
-				<input type="button" onclick="searchList()" value="검색">&nbsp;
+				<input type="button" value="검색" onclick="searchList()">&nbsp;
 			</form>
 				<input type="button" onclick="location.href='adminproductform.do'" value="등록">&nbsp;
 			<div>
@@ -57,7 +57,7 @@
 			</div>
 		</div>
 		<div>
-			<form id="productfrm" action="adminproductselect.do" method="post">
+			<form id="productfrm" method="post">
 				<input type="hidden" id="productId" name="productId">
 			</form>
 		</div>
@@ -65,6 +65,7 @@
 	<script type="text/javascript">
 		function selectProduct(n){
 			document.getElementById("productId").value = n;
+			document.getElementById("productfrm").action = "adminproductselect.do";
 			document.getElementById("productfrm").submit();
 		}
 		

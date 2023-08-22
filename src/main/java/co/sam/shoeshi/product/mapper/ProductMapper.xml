@@ -5,7 +5,8 @@
 		resultType="co.sam.shoeshi.product.service.ProductVO">
 		SELECT * FROM PRODUCT
 		<if test='key == "id"'>WHERE PRODUCT_ID LIKE '%'||#{val}||'%'</if>
-		<if test='key == "maker"'>WHERE PRODUCT_MAKER LIKE '%'||#{val}||'%'</if>
+		<if test='key == "maker"'>WHERE PRODUCT_MAKER LIKE LOWER('%'||#{val}||'%')
+			OR PRODUCT_MAKER LIKE UPPER('%'||#{val}||'%')</if>
 		<if test='key == "name"'>WHERE PRODUCT_NAME LIKE '%'||#{val}||'%'</if>
 		ORDER BY PRODUCT_ID
 	</select>
