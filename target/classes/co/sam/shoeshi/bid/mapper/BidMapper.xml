@@ -17,26 +17,15 @@
 	<select id="bidSearchList"
 		resultType="co.sam.shoeshi.common.CamelHashMap">
 		
-		SELECT * FROM (SELECT ROWNUM, B.* FROM
-		(SELECT COUNT(*) AS B_COUNT, PRODUCT_SIZE AS B_SIZE, BID_PRICE AS B_PRICE
+		SELECT * FROM
+		(SELECT COUNT(*)as B_COUNT, PRODUCT_SIZE , BID_PRICE
 		FROM BID
-		WHERE PRODUCT_ID = #{productId}
+		WHERE PRODUCT_ID = #{pid}
 		AND BID_TYPE = 'B'
-		<if test='val != null'>AND PRODUCT_SZIE = #{val}</if>
-		GROUP BY PRODUCT_SIZE,BID_PRICE,PRODUCT_ID
-		ORDER BY BID_PRICE DESC) B
-		WHERE ROWNUM lt 6)
-		NATURAL JOIN
-		(SELECT ROWNUM, S.* FROM
-		(SELECT COUNT(*) AS S_COUNT, PRODUCT_SIZE AS S_SIZE, BID_PRICE AS S_PRICE
-		FROM BID
-		WHERE PRODUCT_ID = #{productId}
-		AND BID_TYPE = 'S'
-		<if test='val != null'>AND PRODUCT_SZIE = #{val}</if>
+		<if test='size != 0'>AND PRODUCT_SIZE = #{size}</if>
 		GROUP BY PRODUCT_SIZE,BID_PRICE
-		ORDER BY BID_PRICE) S
-		WHERE ROWNUM lt 6)
-		ORDER BY ROWNUM
+		ORDER BY BID_PRICE DESC)
+ 		<![CDATA[ WHERE ROWNUM < 6 ]]>
 
 	</select>
 

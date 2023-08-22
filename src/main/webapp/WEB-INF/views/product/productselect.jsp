@@ -125,14 +125,15 @@ ul.tabs li.current {
 								<div class="sizef respon6-next">
 									<div class="rs1-select2 bor8 bg0">
 										<form id="searchfrm">
-											<select class="js-select2" id="val" name="val" onchange="searchList()">
-												<option>모든 사이즈</option>
-												<option>260</option>
-												<option>270</option>
-												<option>280</option>
-												<option>290</option>
+											<select class="js-select2" id="size" name="size"
+												onchange="searchList('B')">
+												<option value="0">모든 사이즈</option>
+												<option value="260">260</option>
+												<option value="270">270</option>
+												<option value="280">280</option>
+												<option value="290">290</option>
 											</select>
-										<div class="dropDownSelect2"></div>
+											<div class="dropDownSelect2"></div>
 										</form>
 									</div>
 								</div>
@@ -165,7 +166,7 @@ ul.tabs li.current {
 									</ul>
 
 									<div id="tab-1" class="tab-content current">
-										<table class="table">
+										<table class="table" id="BTb">
 											<thead class="thead-dark">
 												<tr>
 													<th>수량</th>
@@ -173,27 +174,22 @@ ul.tabs li.current {
 													<th>구매 입찰가</th>
 												</tr>
 											</thead>
-											<tbody>
-												<c:if test="${not empty bidList}">
-													<c:forEach items="${bidList}" var="l">
-														<tr class="alert" role="alert">
-															<td>${l.bCount}</td>
-															<td>${l.bSize}</td>
-															<td>${l.bPrice}</td>
-														</tr>
-													</c:forEach>
-												</c:if>
-												<c:if test="">
-													<tr>
-														<td colspan="3">데이터가 존재하지 않습니다.</td>
+											<tbody id="BTbody">
+
+												<c:forEach items="${bidList}" var="l">
+													<tr class="alert" role="alert">
+														<td></td>
+														<td></td>
+														<td></td>
 													</tr>
-												</c:if>
+												</c:forEach>
+
 											</tbody>
 
 										</table>
 									</div>
 									<div id="tab-2" class="tab-content">
-										<table class="table">
+										<table class="table" id="STb">
 											<thead class="thead-dark">
 												<tr>
 													<th>수량</th>
@@ -201,21 +197,16 @@ ul.tabs li.current {
 													<th>판매 입찰가</th>
 												</tr>
 											</thead>
-											<tbody>
-												<c:if test="${not empty bidList}">
-													<c:forEach items="${bidList}" var="l">
-														<tr class="alert" role="alert">
-															<td>${l.sCount}</td>
-															<td>${l.sSize}</td>
-															<td>${l.sPrice}</td>
-														</tr>
-													</c:forEach>
-												</c:if>
-												<c:if test="">
-													<tr>
-														<td colspan="3">데이터가 존재하지 않습니다.</td>
+											<tbody id="STbody">
+
+												<c:forEach items="${bidList}" var="l">
+													<tr class="alert" role="alert">
+														<td></td>
+														<td></td>
+														<td></td>
 													</tr>
-												</c:if>
+												</c:forEach>
+
 											</tbody>
 										</table>
 									</div>
@@ -327,7 +318,7 @@ ul.tabs li.current {
 									<!-- Review -->
 									<div class="flex-w flex-t p-b-68">
 										<div class="wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6">
-											<img src="images/avatar-01.jpg" alt="AVATAR">
+											<img src="coza/images/avatar-01.jpg" alt="AVATAR">
 										</div>
 
 										<div class="size-207">
@@ -410,56 +401,64 @@ ul.tabs li.current {
 	<script type="text/javascript">
 	
 		$(document).ready(function() {
-
+			searchList('B');
 			$('ul.tabs li').click(function() {
-				var tab_id = $(this).attr('data-tab');
+			 var tab_id = $(this).attr('data-tab');
 
 				$('ul.tabs li').removeClass('current');
 				$('.tab-content').removeClass('current');
 
 				$(this).addClass('current');
 				$("#" + tab_id).addClass('current');
+			if(tab_id == 'tab-1'){
+				searchList('B');
+			}else{
+				searchList('S');
+			}
 			})
-
+				
 		})
 	</script>
 
 	<script type="text/javascript">
-	function searchList() {
+	
+	function searchList(t) {
 		// ajax를 이용해서 검색결과를 화면에 출력
-		let productId = document.getElementById("${p.productId}").value;
-		let val = document.getElementById("val").value;
-		if(val == '모든 사이즈'){
-			val = null;
-		}
-		let payload = "productId=" + productId + "&val="+val;
-		let url = "ajaxnoticesearch.do";
+		let pid = ${p.productId};
+		let size = document.getElementById("size").value;
+		let type = t;
+		let payload = "pid=" + pid + "&size="+size;
+		
+		let url = "ajaxbidsearchlist.do";
 		
 		fetch(url, {
 			method:"POST",
 			headers:{"content-Type": "application/x-www-form-urlencoded",},
 			body: payload
 		}).then(response => response.json())
-		  .then(json => htmlConvert(json));
+		  .then(json => htmlConvert(json,t));
 	}
 	
-	function htmlConvert(datas) {
-		document.querySelector('tbody').remove();
+	function htmlConvert(datas,t) {
+		document.getElementById(t+'Tbody').remove();
 		const tbody = document.createElement('tbody');
+		tbody.id = t+'Tbody';
 		// tbody에 data 추가
 		tbody.innerHTML = datas.map(data => htmlView(data)).join('');
 		
 		// table tbody 추가
-		document.querySelector('table').appendChild(tbody);
+		/* document.querySelector('table').appendChild(tbody); */
+		/* document.getElementById('buyTb').appendChild(tbody); */
+		document.getElementById(t+'Tb').appendChild(tbody);
 	}
 	
 	function htmlView(data) {
 		return `
 		<tr class="alert" role="alert">
-		<td>${l.bCount}</td>
-		<td>${l.bSize}</td>
-		<td>${l.bPrice}</td>
-	</tr>
+			<td>\${data.bCount}</td>
+			<td>\${data.productSize}</td>
+			<td>\${data.bidPrice}</td>
+		</tr>
 		`
 		
 	}

@@ -15,7 +15,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import co.sam.shoeshi.bid.service.BidService;
 
-@WebServlet("/ajaxbidsearchlist.do;")
+@WebServlet("/ajaxbidsearchlist.do")
 public class AjaxBidSearchList extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -29,13 +29,12 @@ public class AjaxBidSearchList extends HttpServlet {
 
 		BidService dao = new BidServiceImpl();
 		List<HashMap<String, Object>> bidList = new ArrayList<>();
-		int productId = Integer.valueOf(request.getParameter("productId"));
-		if (request.getParameter("val") == null) {
-			bidList = dao.bidSearchList(productId);
-		} else {
-			int val = Integer.valueOf(request.getParameter("val"));
-			bidList = dao.bidSearchList(productId, val);
-		}
+		int pid = Integer.valueOf(request.getParameter("pid"));
+		int size = Integer.valueOf(request.getParameter("size"));
+		System.out.println(size);
+
+		
+		bidList = dao.bidSearchList(pid, size);
 
 		ObjectMapper ObjectMapper = new ObjectMapper();
 
