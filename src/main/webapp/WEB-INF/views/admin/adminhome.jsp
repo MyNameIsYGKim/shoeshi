@@ -145,48 +145,7 @@ divstyle2 {
 </head>
 <body>
 	<div id="layoutSidenav">
-		<div>
-			<nav class="sb-sidenav accordion sb-sidenav-dark">
-				<div class="sb-sidenav-menu">
-					<div class="nav">
-						<div class="sb-sidenav-menu-heading">Core</div>
-						<a class="nav-link" href="adminhome.do">
-							<div>Admin</div>
-						</a>
-						<div class="sb-sidenav-menu-heading">물품관리</div>
-						<nav class="sb-sidenav-menu-nested nav">
-							<a class="nav-link" href="adminproductmanage.do">물품조회(수정, 삭제)</a>
-						</nav>
-
-						<div class="collapse" id="collapseLayouts"
-							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-						</div>
-
-						<div class="sb-sidenav-menu-heading">거래관리</div>
-						<nav class="sb-sidenav-menu-nested nav">
-							<a class="nav-link" href="admintrans.do">거래목록</a>
-						</nav>
-
-						<div class="collapse" id="collapseLayouts"
-							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-						</div>
-						<nav class="sb-sidenav-menu-nested nav">
-							<a class="nav-link" href="admintranschange.do">거래상태 변경</a>
-						</nav>
-
-						<div class="collapse" id="collapseLayouts"
-							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-						</div>
-
-
-						<div class="sb-sidenav-menu-heading">회원관리</div>
-						<nav class="sb-sidenav-menu-nested nav">
-							<a class="nav-link" href="adminusermanage.do">회원목록</a>
-						</nav>
-					</div>
-				</div>
-			</nav>
-		</div>
+		<jsp:include page="../layout/sidebar.jsp" />
 		<div class="container bodymargin">
 			<h1 class="admintitle">관리자 페이지</h1>
 
