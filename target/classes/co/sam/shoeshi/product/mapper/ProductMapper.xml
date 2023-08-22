@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="co.sam.shoeshi.product.mapper.ProductMapper">
-	<select id="productSelectList" resultType="co.sam.shoeshi.product.service.ProductVO">
+	<select id="productSelectList"
+		resultType="co.sam.shoeshi.product.service.ProductVO">
 		SELECT * FROM PRODUCT
 		<if test='key == "id"'>WHERE PRODUCT_ID LIKE '%'||#{val}||'%'</if>
 		<if test='key == "maker"'>WHERE PRODUCT_MAKER LIKE LOWER('%'||#{val}||'%')
@@ -15,7 +16,7 @@
 	</select>
 	
 	<insert id="productInsert" parameterType="co.sam.shoeshi.product.service.ProductVO">
-		INSERT INTO PRODUCT(product_id, product_maker, product_name, product_price)
+		INSERT INTO PRODUCT(PRODUCT_ID, PRODUCT_MAKER, PRODUCT_NAME, PRODUCT_PRICE)
 		VALUES(#{productId}, #{productMaker}, #{productName}, #{productPrice})
 	</insert>
 	
@@ -26,13 +27,51 @@
 			<if test="productId != null">PRODUCT_ID = #{productId},</if>
 			<if test="productMaker != null">PRODUCT_MAKER = #{productMaker},</if>
 			<if test="productName != null">PRODUCT_NAME = #{productName},</if>
-			<if test="productPrice != null">PRODUCT_PRICE = #{productPrice},</if>
+			<if test="productPrice != null">PRODUCT_PRICE = #{productPrice}</if>
 		</set>
 		WHERE PRODUCT_ID = #{productId}
 	</update>
-	
-	<delete id="productDelete" parameterType="co.sam.shoeshi.product.service.ProductVO">
+
+	<delete id="productDelete"
+		parameterType="co.sam.shoeshi.bid.service.BidVO">
 		DELETE FROM PRODUCT WHERE PRODUCT_ID = #{productId}
 	</delete>
+
+	<select id="productJoinSelectList"
+		resultType="co.sam.shoeshi.common.CamelHashMap">
+		SELECT P.*, I.PRODUCTIMG_PATH, I.PRODUCTIMG_NAME1,
+		I.PRODUCTIMG_NAME2, I.PRODUCTIMG_NAME3
+		FROM PRODUCTIMG I RIGHT OUTER JOIN PRODUCT P
+		ON P.PRODUCT_ID = I.PRODUCT_ID
+
+	</select>
+
+	<select id="productJoinSearchList"
+		resultType="co.sam.shoeshi.common.CamelHashMap">
+		SELECT P.*, I.PRODUCTIMG_PATH, I.PRODUCTIMG_NAME1,
+		I.PRODUCTIMG_NAME2,
+		I.PRODUCTIMG_NAME3
+		FROM PRODUCTIMG I RIGHT OUTER JOIN PRODUCT P
+		ON P.PRODUCT_ID =
+		I.PRODUCT_ID
+		WHERE
+		LOWER(P.PRODUCT_NAME) LIKE
+		'%'||LOWER(#{val})||'%'
+		OR
+		LOWER(P.PRODUCT_MAKER) LIKE '%'||LOWER(#{val})||'%'
+		ORDER BY P.PRODUCT_ID DESC
+	</select>
+
+
+	<select id="productJoinSelect"
+		resultType="co.sam.shoeshi.common.CamelHashMap">
+		SELECT
+		P.*,I.PRODUCTIMG_PATH,I.PRODUCTIMG_NAME1,I.PRODUCTIMG_NAME2,I.PRODUCTIMG_NAME3
+		FROM PRODUCTIMG I RIGHT OUTER JOIN PRODUCT P ON P.PRODUCT_ID = I.PRODUCT_ID
+		WHERE
+		I.PRODUCT_ID = #{productId}
+
+	</select>
+
 
 </mapper>

@@ -1,5 +1,6 @@
 package co.sam.shoeshi.bid.serviceImpl;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -13,6 +14,16 @@ public class BidServiceImpl implements BidService {
 	private SqlSession sqlSession = DataSource.getInstance().openSession(true);
 	private BidMapper map = sqlSession.getMapper(BidMapper.class);
 	
+	@Override
+	public
+	List<HashMap<String, Object>>bidSearchList(int productId){
+		return map.bidSearchList(productId);
+	}
+	@Override
+	public
+	List<HashMap<String, Object>>bidSearchList(int productId, int val){
+		return map.bidSearchList(productId, val);
+	}
 	@Override
 	public List<BidVO> bidSelectList() {
 		return map.bidSelectList();

@@ -171,7 +171,7 @@
 				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item watches">
 					<!-- Block2 -->
 					<div class="block2">
-						<div class="block2-pic productdetail.do">
+						<div class="block2-pic hov-img0">
 							<a href="product-detail.html"><img src="img/6.png"
 								alt="IMG-PRODUCT"></a>
 						</div>

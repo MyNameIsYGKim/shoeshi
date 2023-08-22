@@ -1,23 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="co.sam.shoeshi.bid.mapper.BidMapper">
-	<select id="bidSelectList" resultType="co.sam.shoeshi.bid.service.BidVO">
+	<select id="bidSelectList"
+		resultType="co.sam.shoeshi.bid.service.BidVO">
 		SELECT * FROM BID
 	</select>
-	
-	<select id="bidSelect" resultType="co.sam.shoeshi.bid.service.BidVO">
+
+	<select id="bidSelect"
+		resultType="co.sam.shoeshi.bid.service.BidVO">
 		SELECT * FROM BID WHERE BID_NO = #{bidNo}
 		<if test="clientId != null">
 			AND CLIENT_ID = #{clientId}
 		</if>
 	</select>
-	
-	<insert id="bidInsert" parameterType="co.sam.shoeshi.bid.service.BidVO">
-		INSERT INTO BID(BID_NO, PRODUCT_ID, BID_PRICE, BID_TYPE, CLIENT_ID, PRODUCT_SIZE)
-		VALUES(#{bidNo}, #{productId}, #{bidPrice}, #{bidType}, #{clientId}, #{productSize})
+
+	<select id="bidSearchList"
+		resultType="co.sam.shoeshi.common.CamelHashMap">
+		
+		SELECT * FROM (SELECT ROWNUM, B.* FROM
+		(SELECT COUNT(*) AS B_COUNT, PRODUCT_SIZE AS B_SIZE, BID_PRICE AS B_PRICE
+		FROM BID
+		WHERE PRODUCT_ID = #{productId}
+		AND BID_TYPE = 'B'
+		<if test='val != null'>AND PRODUCT_SZIE = #{val}</if>
+		GROUP BY PRODUCT_SIZE,BID_PRICE,PRODUCT_ID
+		ORDER BY BID_PRICE DESC) B
+		WHERE ROWNUM lt 6)
+		NATURAL JOIN
+		(SELECT ROWNUM, S.* FROM
+		(SELECT COUNT(*) AS S_COUNT, PRODUCT_SIZE AS S_SIZE, BID_PRICE AS S_PRICE
+		FROM BID
+		WHERE PRODUCT_ID = #{productId}
+		AND BID_TYPE = 'S'
+		<if test='val != null'>AND PRODUCT_SZIE = #{val}</if>
+		GROUP BY PRODUCT_SIZE,BID_PRICE
+		ORDER BY BID_PRICE) S
+		WHERE ROWNUM lt 6)
+		ORDER BY ROWNUM
+
+	</select>
+
+	<insert id="bidInsert"
+		parameterType="co.sam.shoeshi.bid.service.BidVO">
+		INSERT INTO BID(BID_NO, PRODUCT_ID, BID_PRICE, BID_TYPE,
+		CLIENT_ID, PRODUCT_SIZE)
+		VALUES(#{bidNo}, #{productId}, #{bidPrice},
+		#{bidType}, #{clientId}, #{productSize})
 	</insert>
-	
-	<update id="bidUpdate" parameterType="co.sam.shoeshi.bid.service.BidVO">
+
+	<update id="bidUpdate"
+		parameterType="co.sam.shoeshi.bid.service.BidVO">
 		UPDATE BID
 		<set>
 			<!-- 한개만 있어도 무조건 콤마, 마지막거 제외 -->
@@ -30,8 +62,9 @@
 		</set>
 		WHERE BID_NO = #{bidNo}
 	</update>
-	
-	<delete id="bidDelete" parameterType="co.sam.shoeshi.bid.service.BidVO">
+
+	<delete id="bidDelete"
+		parameterType="co.sam.shoeshi.bid.service.BidVO">
 		DELETE FROM BID WHERE BID_NO = #{bidNo}
 	</delete>
 

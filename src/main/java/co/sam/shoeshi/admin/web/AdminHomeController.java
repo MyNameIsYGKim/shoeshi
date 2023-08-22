@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import co.sam.shoeshi.common.ViewResolve;
 
-@WebServlet("/admin.do")
+@WebServlet("/adminhome.do")
 public class AdminHomeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
