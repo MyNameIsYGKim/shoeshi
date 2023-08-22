@@ -17,115 +17,97 @@
 <link href="css/styles.css" rel="stylesheet" />
 <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
 	crossorigin="anonymous"></script>
-	
-	<style>
-.tablestyle{
-border: 1px solid #ccc;
-text-align: center;
+
+<style>
+.tablestyle {
+	border: 1px solid #ccc;
+	text-align: center;
 }
-	</style>
-	
+</style>
+
 </head>
 <body>
 	<div id="layoutSidenav">
+		<jsp:include page="../layout/sidebar.jsp" />
 		<div>
-			<nav class="sb-sidenav accordion sb-sidenav-dark">
-				<div class="sb-sidenav-menu">
-					<div class="nav">
-						<div class="sb-sidenav-menu-heading">Core</div>
-						<a class="nav-link" href="adminhome.do">
-							<div>Admin</div>
-						</a>
-						<div class="sb-sidenav-menu-heading">물품관리</div>
-						<nav class="sb-sidenav-menu-nested nav">
-							<a class="nav-link" href="adminproductmanage.do">물품조회(수정, 삭제)</a>
-						</nav>
-
-						<div class="collapse" id="collapseLayouts"
-							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+			<div class="jumbotron">
+				<div class="container">
+					<h1 class="display-3">상품등록</h1>
+				</div>
+			</div>
+			<div class="container">
+				<form name="newProduct" action="addProduct_process.jsp"
+					method="post" class="form-horizontal">
+					<div class="form-group row">
+						<label class="col-sm-2">상품코드</label>
+						<div class="col-sm-3">
+							<input type="text" name="productId" class="form-control" />
 						</div>
-
-						<div class="sb-sidenav-menu-heading">거래관리</div>
-						<nav class="sb-sidenav-menu-nested nav">
-							<a class="nav-link" href="admintrans.do">거래목록</a>
-						</nav>
-
-						<div class="collapse" id="collapseLayouts"
-							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-						</div>
-						<nav class="sb-sidenav-menu-nested nav">
-							<a class="nav-link" href="admintranschange.do">거래상태 변경</a>
-						</nav>
-
-						<div class="collapse" id="collapseLayouts"
-							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-						</div>
-
-						<div class="sb-sidenav-menu-heading">회원관리</div>
-						<nav class="sb-sidenav-menu-nested nav">
-							<a class="nav-link" href="adminusermanage.do">회원목록</a>
-						</nav>
 					</div>
-				</div>
-			</nav>
+
+					<div class="form-group row">
+						<label class="col-sm-2">상품명</label>
+						<div class="col-sm-3">
+							<input type="text" name="pname" class="form-control" />
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<label class="col-sm-2">가격</label>
+						<div class="col-sm-3">
+							<input type="text" name="uniPrice" class="form-control" />
+						</div>
+					</div>
+
+
+					<div class="form-group row">
+						<label class="col-sm-2">상세정보</label>
+						<div class="col-sm-5">
+							<textarea name="description" class="form-control"></textarea>
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<label class="col-sm-2">제조사</label>
+						<div class="col-sm-3">
+							<input type="text" name="menfacturer" class="form-control" />
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<label class="col-sm-2">분류</label>
+						<div class="col-sm-3">
+							<input type="text" name="category" class="form-control" />
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<label class="col-sm-2">재고수</label>
+						<div class="col-sm-3">
+							<input type="text" name="uniInStock" class="form-control" />
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<label class="col-sm-2">상태</label>
+						<div class="col-sm-5">
+							<input type="radio" name="condition" id="condition1" value="new" />
+							<label for="condition1">신규제품</label> <input type="radio"
+								name="condition" id="condition2" value="Old" /> <label
+								for="condition2">중고제품</label> <input type="radio"
+								name="condition" id="condition3" value="Refurbished" /> <label
+								for="condition3">재생제품</label>
+						</div>
+					</div>
+					<div class="form-group row">
+						<div class="col-sm-offset-2 col-sm-10">
+							<input type="submit" class="btn btn-primary" value="등록" />
+						</div>
+					</div>
+				</form>
+			</div>
+
 		</div>
-
-
-<div>
-			<form id="frm" action="noticeedit.do" method="post"
-				enctype="multipart/form-data">
-				<div>
-					<table class="tablestyle">
-						<tr>
-							<td>&nbsp;</td>
-							<th width="100">제품명</th>
-							<td width="300"><input type="text"></td>
-
-							<th width="100">제품등록일</th>
-							<td width="300"><input type="date" id="noticeDate"
-								name="noticeDate" value="${n.noticeDate }"></td>
-							<td>&nbsp;</td>
-						</tr>
-						<tr height="1" bgcolor="#dddddd">
-							<td colspan="5"></td>
-						</tr>
-						<tr height="1" bgcolor="#dddddd">
-							<td colspan="5"></td>
-						</tr>
-						<tr>
-							<td>&nbsp;</td>
-							<th>제품 설명</th>
-							<td colspan="3"><textarea id="noticeSubject"
-									name="noticeSubject" cols="80" rows="15">${n.noticeSubject }</textarea></td>
-							<td>&nbsp;</td>
-						</tr>
-						<tr height="1" bgcolor="#dddddd">
-							<td colspan="5"></td>
-						</tr>
-						<tr>
-						
-							<th>첨부파일</th>
-							<td>${n.noticeAttach }</td>
-							<td colspan="2"><input type="file" id="file" name="file">
-							</td>
-							<td>&nbsp;</td>
-						</tr>
-						<tr height="1" bgcolor="#dddddd">
-							<td colspan="5"></td>
-						</tr>
-					</table>
-				</div>
-				<br>
-				<div>
-					<input type="submit" value="수정">&nbsp;&nbsp;&nbsp;&nbsp; <input
-						type="button" onclick="location.href='noticelist.do'" value="취소">
-				</div>
-				<input type="hidden" id="noticeId" name="noticeId"
-					value="${n.noticeId }">					
-			</form>
-		</div>
-
-
 
 	</div>
 </body>
