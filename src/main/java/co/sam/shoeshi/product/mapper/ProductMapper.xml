@@ -1,34 +1,78 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="co.sam.shoeshi.product.mapper.ProductMapper">
-	<select id="productSelectList" resultType="co.sam.shoeshi.product.service.ProductVO">
+	<select id="productSelectList"
+		resultType="co.sam.shoeshi.product.service.ProductVO">
 		SELECT * FROM PRODUCT
 	</select>
-	
-	<select id="productSelect" resultType="co.sam.shoeshi.bid.service.BidVO">
+
+	<select id="productSelect"
+		resultType="co.sam.shoeshi.product.service.ProductVO">
 		SELECT * FROM PRODUCT WHERE PRODUCT_ID = #{productId}
 	</select>
-	
-	<insert id="productInsert" parameterType="co.sam.shoeshi.bid.service.BidVO">
-		INSERT INTO PRODUCT(product_id, product_maker, product_name, product_price, product_size)
-		VALUES(#{productId}, #{productMaker}, #{productName}, #{productPrice}, #{productSize})
+
+	<insert id="productInsert"
+		parameterType="co.sam.shoeshi.product.service.ProductVO">
+		INSERT INTO PRODUCT(PRODUCT_ID, PRODUCT_IMG,
+		PRODUCT_MAKER, PRODUCT_NAME, PRODUCT_PRIC
+		)
+		VALUES(#{productId},
+		#{productMaker}, #{productName}, #{productPrice})
 	</insert>
-	
-	<update id="productUpdate" parameterType="co.sam.shoeshi.bid.service.BidVO">
+
+	<update id="productUpdate"
+		parameterType="co.sam.shoeshi.product.service.ProductVO">
 		UPDATE PRODUCT
 		<set>
 			<!-- 한개만 있어도 무조건 콤마, 마지막거 제외 -->
 			<if test="productId != null">PRODUCT_ID = #{productId},</if>
-			<if test="productCo != null">PRODUCT_MAKER = #{productMaker},</if>
+			<if test="productMaker != null">PRODUCT_MAKER = #{productMaker},</if>
 			<if test="productName != null">PRODUCT_NAME = #{productName},</if>
-			<if test="productPrice != null">PRODUCT_PRICE = #{productPrice},</if>
-			<if test="productSize != null">PRODUCT_SIZE = #{productSize}</if>
+			<if test="productPrice != null">PRODUCT_PRICE = #{productPrice}</if>
 		</set>
 		WHERE PRODUCT_ID = #{productId}
 	</update>
-	
-	<delete id="productDelete" parameterType="co.sam.shoeshi.bid.service.BidVO">
+
+	<delete id="productDelete"
+		parameterType="co.sam.shoeshi.bid.service.BidVO">
 		DELETE FROM PRODUCT WHERE PRODUCT_ID = #{productId}
 	</delete>
+
+	<select id="productJoinSelectList"
+		resultType="co.sam.shoeshi.common.CamelHashMap">
+		SELECT P.*, I.PRODUCTIMG_PATH, I.PRODUCTIMG_NAME1,
+		I.PRODUCTIMG_NAME2, I.PRODUCTIMG_NAME3
+		FROM PRODUCTIMG I RIGHT OUTER JOIN PRODUCT P
+		ON P.PRODUCT_ID = I.PRODUCT_ID
+
+	</select>
+
+	<select id="productJoinSearchList"
+		resultType="co.sam.shoeshi.common.CamelHashMap">
+		SELECT P.*, I.PRODUCTIMG_PATH, I.PRODUCTIMG_NAME1,
+		I.PRODUCTIMG_NAME2,
+		I.PRODUCTIMG_NAME3
+		FROM PRODUCTIMG I RIGHT OUTER JOIN PRODUCT P
+		ON P.PRODUCT_ID =
+		I.PRODUCT_ID
+		WHERE
+		LOWER(P.PRODUCT_NAME) LIKE
+		'%'||LOWER(#{val})||'%'
+		OR
+		LOWER(P.PRODUCT_MAKER) LIKE '%'||LOWER(#{val})||'%'
+		ORDER BY P.PRODUCT_ID DESC
+	</select>
+
+
+	<select id="productJoinSelect"
+		resultType="co.sam.shoeshi.common.CamelHashMap">
+		SELECT
+		P.*,I.PRODUCTIMG_PATH,I.PRODUCTIMG_NAME1,I.PRODUCTIMG_NAME2,I.PRODUCTIMG_NAME3
+		FROM PRODUCTIMG I RIGHT OUTER JOIN PRODUCT P ON P.PRODUCT_ID = I.PRODUCT_ID
+		WHERE
+		I.PRODUCT_ID = #{productId}
+
+	</select>
+
 
 </mapper>
