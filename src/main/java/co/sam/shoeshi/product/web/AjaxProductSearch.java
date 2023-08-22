@@ -34,15 +34,15 @@ public class AjaxProductSearch extends HttpServlet {
 
 		String key = request.getParameter("key");
 		String val = request.getParameter("val");
-		products = dao.productJoinSearchList(val);
-
-		ObjectMapper objectMapper = new ObjectMapper(); // json 객체를 만들기 위해 필요한 객체
-
-		objectMapper.registerModule(new JavaTimeModule()); // LocalDate 처리
-		objectMapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS); // LocalDate 처리
-
-		String data = objectMapper.writeValueAsString(products); // json 형태로 결과를 만들어 줌
-
+		products = dao.productSelectList(key, val);
+		
+		ObjectMapper ObjectMapper = new ObjectMapper(); // json 객체를 만들기 위해 필요한 객체.
+		
+		ObjectMapper.registerModule(new JavaTimeModule()); // LocalDate 처리
+		ObjectMapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS); // LocalDate 처리
+		
+		String data = ObjectMapper.writeValueAsString(products); // json 형태로 결과를 만들어줌.
+		
 		response.setContentType("text/html; charset=UTF-8");
 		response.getWriter().append(data);
 		return;

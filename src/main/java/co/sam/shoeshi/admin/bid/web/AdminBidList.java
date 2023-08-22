@@ -1,4 +1,4 @@
-package co.sam.shoeshi.admin.web;
+package co.sam.shoeshi.admin.bid.web;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -10,27 +10,27 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import co.sam.shoeshi.bid.service.BidService;
+import co.sam.shoeshi.bid.service.BidVO;
+import co.sam.shoeshi.bid.serviceImpl.BidServiceImpl;
 import co.sam.shoeshi.common.ViewResolve;
-import co.sam.shoeshi.product.service.ProductService;
-import co.sam.shoeshi.product.service.ProductVO;
-import co.sam.shoeshi.product.serviceImpl.ProductServiceImpl;
 
-@WebServlet("/adminproductlist.do")
-public class AdminProductList extends HttpServlet {
+@WebServlet("/adminbidlist.do")
+public class AdminBidList extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public AdminProductList() {
+    public AdminBidList() {
         super();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ProductService dao = new ProductServiceImpl();
-		List<ProductVO> products = new ArrayList<>();
+		BidService dao = new BidServiceImpl();
+		List<BidVO> bids = new ArrayList<>();
 		
-		products = dao.productSelectList();
-		request.setAttribute("products", products);
+		bids = dao.bidSelectList();
+		request.setAttribute("bids", bids);
 		
-		String viewName = "admin/admin/adminproductlist";
+		String viewName = "admin/bid/adminbidlist";
 		ViewResolve.forward(request, response, viewName);
 	}
 

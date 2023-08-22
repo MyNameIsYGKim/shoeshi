@@ -25,11 +25,12 @@ public class BidInsert extends HttpServlet {
 		BidService dao = new BidServiceImpl();
 		BidVO vo = new BidVO();
 		
-		vo.setBidNo(request.getIntHeader("bidNo"));
-		vo.setProductId(request.getParameter("productId"));
-		vo.setBidPrice(request.getIntHeader("bidPrice"));
+		vo.setBidNo(Integer.valueOf(request.getParameter("bidNo")));
+		vo.setProductId(Integer.valueOf(request.getParameter("productId")));
+		vo.setBidPrice(Integer.valueOf(request.getParameter("bidPrice")));
 		vo.setBidType(request.getParameter("bidType"));
 		vo.setClientId(request.getParameter("clientId"));
+		vo.setProductSize(Integer.valueOf(request.getParameter("productSize")));
 		
 		String viewName = "bid/bidlist";
 		ViewResolve.forward(request, response, viewName);

@@ -12,12 +12,11 @@
 		<div>
 			<table border="1">
 				<thead>
-					<tr>
+					<tr align="center">
 						<th width="50">번호</th>
-						<th width="100">메이커</th>
-						<th width="150">제품명</th>
-						<th width="100">출시가격</th>
-						<th width="100">사이즈</th>
+						<th width="150">메이커</th>
+						<th width="300">제품명</th>
+						<th width="150">출시가격</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -26,7 +25,6 @@
 						<td align="center">${n.productMaker }</td>
 						<td>${n.productName }</td>
 						<td align="center">${n.productPrice }</td>
-						<td align="center">${n.productSize }</td>
 					</tr>
 				</tbody>
 			</table>
@@ -45,9 +43,9 @@
 	<script type="text/javascript">
 		function productUpdate(str){
 			if(str == 'E'){
-				document.getElementById("frm").action="producteditform.do";
+				document.getElementById("frm").action="adminproducteditform.do";
 			}else{
-				document.getElementById("frm").action="productdelete.do";
+				document.getElementById("frm").action="adminproductdelete.do";
 			}
 			document.getElementById("frm").submit();
 		}

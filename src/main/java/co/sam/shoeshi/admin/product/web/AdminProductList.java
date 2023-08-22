@@ -1,6 +1,9 @@
-package co.sam.shoeshi.admin.web;
+package co.sam.shoeshi.admin.product.web;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,25 +15,22 @@ import co.sam.shoeshi.product.service.ProductService;
 import co.sam.shoeshi.product.service.ProductVO;
 import co.sam.shoeshi.product.serviceImpl.ProductServiceImpl;
 
-@WebServlet("/adminproductselect.do")
-public class AdminProductSelect extends HttpServlet {
+@WebServlet("/adminproductlist.do")
+public class AdminProductList extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public AdminProductSelect() {
+    public AdminProductList() {
         super();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ProductService dao = new ProductServiceImpl();
-		ProductVO vo = new ProductVO();
+		List<ProductVO> products = new ArrayList<>();
 		
-		vo.setProductId(request.getParameter("productId"));
+		products = dao.productSelectList();
+		request.setAttribute("products", products);
 		
-		vo = dao.productSelect(vo);
-		
-		request.setAttribute("n", vo);
-		String viewName = "admin/admin/adminproductselect";
-		
+		String viewName = "admin/product/adminproductlist";
 		ViewResolve.forward(request, response, viewName);
 	}
 
@@ -39,4 +39,3 @@ public class AdminProductSelect extends HttpServlet {
 	}
 
 }
-
