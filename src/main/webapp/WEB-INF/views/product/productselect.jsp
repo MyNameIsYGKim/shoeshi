@@ -143,15 +143,17 @@ ul.tabs li.current {
 								<div class="size45">
 
 									<button
-										class="flex-c-m stext-101 cl0 sizef bg1 bor999 hov-btn1 p-lr-15 trans-04">
+										class="flex-c-m stext-101 cl0 sizef bg1 bor999 hov-btn1 p-lr-15 trans-04"
+										id="BUYBtn">
 
-										<span>1,200,000원</span><span>구매</span>
+										<span id="BUYPrice"></span><span>구매</span>
 									</button>
 								</div>
 								<div class="size45">
 									<button
-										class="flex-c-m stext-101 cl0 bg10000 sizef bor999 hov-btn1 p-lr-15 trans-04">
-										<span>1,300,000원</span><span>판매</span>
+										class="flex-c-m stext-101 cl0 bg10000 sizef bor999 hov-btn1 p-lr-15 trans-04"
+										id="SellBtn">
+										<span id="SELLPrice"></span><span>판매</span>
 									</button>
 								</div>
 							</div>
@@ -440,18 +442,41 @@ ul.tabs li.current {
 	}
 	
 	function htmlConvert(datas,t) {
+		
 		document.getElementById(t+'Tbody').remove();
+		
+		
 		const tbody = document.createElement('tbody');
 		tbody.id = t+'Tbody';
+		
+		
 		// tbody에 data 추가
 		tbody.innerHTML = datas.map(data => htmlView(data)).join('');
 		
 		// table tbody 추가
 		
 		document.getElementById(t+'Tb').appendChild(tbody);
+		document.getElementById('BUYPrice').innerHTML = datas.map(data => htmlViewB(data));
+		document.getElementById('SELLPrice').innerHTML = datas.map(data => htmlViewS(data));
 	}
 	
+/* function htmlConvertB(datas) {
+			
+		document.getElementById('BUYPrice').innerHTML = datas.map(data => htmlViewB(data));
+				
+	}
+function htmlConvertS(datas) {
+	
+	
+	
+	document.getElementById('SELLPrice').innerHTML = datas.map(data => htmlViewS(data));
+	// table tbody 추가
+			
+} */
+	
 	function htmlView(data) {
+		console.log(data)
+		if(data.hasOwnProperty('bCount')){
 		return `
 		<tr class="alert" role="alert">
 			<td>\${data.bCount}</td>
@@ -459,6 +484,32 @@ ul.tabs li.current {
 			<td>\${data.bidPrice}</td>
 		</tr>
 		`
+		}else{
+			return `
+			<tr class="alert" role="alert">
+				<td cols="3">입찰 내역이 없습니다.</td>
+				
+			</tr>
+			`
+		}
+		
+	}
+	
+	function htmlViewS(data) {
+		
+		return 
+		
+		${data.sellPrice}
+		
+		
+	}
+	
+	function htmlViewB(data) {
+		return 
+		
+		${data.buyPrice}
+		
+		
 		
 	}
 	</script>
