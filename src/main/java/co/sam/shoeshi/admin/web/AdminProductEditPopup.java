@@ -10,22 +10,22 @@ import javax.servlet.http.HttpServletResponse;
 import co.sam.shoeshi.common.ViewResolve;
 
 
-@WebServlet("/adminproductupload.do")
-public class AdminProductUpload extends HttpServlet {
+@WebServlet("/adminproducteditpopup.do")
+public class AdminProductEditPopup extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 
-    public AdminProductUpload() {
+    public AdminProductEditPopup() {
         super();
-     
+      
     }
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String viewName = "admin/home/adminproductupload";
+		String viewName = "admin/admin/adminproducteditpopup";
 		ViewResolve.forward(request, response, viewName);
+		
 	}
-
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);

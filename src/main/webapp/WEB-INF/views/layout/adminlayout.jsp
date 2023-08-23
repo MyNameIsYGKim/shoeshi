@@ -58,12 +58,12 @@
 
 	<!-- Product -->
 	
-	
+	<div style="float: left;" >
 	<tiles:insertAttribute name="sidebar" />
+	</div>
 	
 	
 	<tiles:insertAttribute name="body" ignore="true" />
-	
 
 
 	<!-- Footer -->

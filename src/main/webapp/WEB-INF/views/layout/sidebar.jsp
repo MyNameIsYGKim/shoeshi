@@ -41,7 +41,7 @@
 </style>
 </head>
 <body>
-	<div id="layoutSidenav">
+	<div id="layoutSidenav" style="height: 100vh;">
 		<div>
 			<nav class="sb-sidenav accordion sb-sidenav-dark">
 				<div class="sb-sidenav-menu">
@@ -59,16 +59,12 @@
 							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 						</div>
 
+
+
+
 						<div class="sb-sidenav-menu-heading">거래관리</div>
 						<nav class="sb-sidenav-menu-nested nav">
-							<a class="nav-link" href="admintrans.do">거래목록</a>
-						</nav>
-
-						<div class="collapse" id="collapseLayouts"
-							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-						</div>
-						<nav class="sb-sidenav-menu-nested nav">
-							<a class="nav-link" href="admintranschange.do">거래상태 변경</a>
+							<a class="nav-link" href="admintranschange.do">거래 목록(검수)</a>
 						</nav>
 
 						<div class="collapse" id="collapseLayouts"

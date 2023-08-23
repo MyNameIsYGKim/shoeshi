@@ -10,26 +10,22 @@ import javax.servlet.http.HttpServletResponse;
 
 import co.sam.shoeshi.common.ViewResolve;
 
-
-@WebServlet("/admintrans.do")
-public class AdminTrans extends HttpServlet {
+@WebServlet("/adminproductmodify.do")
+public class AdminProductModify extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
 
-    public AdminTrans() {
+    public AdminProductModify() {
         super();
-      
+       
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String viewName = "admin/admintrans";
+		String viewName = "admin/home/adminproductmodify";
 		ViewResolve.forward(request, response, viewName);
-		
 	}
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		doGet(request, response);
 	}
 
