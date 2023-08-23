@@ -22,8 +22,8 @@
 		FROM BID
 		WHERE PRODUCT_ID = #{pid}
 		AND BID_TYPE = #{type}
-		GROUP BY PRODUCT_SIZE,BID_PRICE
 		<if test='size != 0'>AND PRODUCT_SIZE = #{size}</if>
+		GROUP BY PRODUCT_SIZE,BID_PRICE
 		<if test='type == "BUY"'>ORDER BY BID_PRICE DESC</if>
 		<if test='type == "SELL"'>ORDER BY BID_PRICE ASC</if>
 		)
@@ -32,7 +32,7 @@
 	</select>
 
 	<insert id="bidInsert"
-		parameterType="co.sam.shoeshi.bid.service.BidVO">
+	parameterType="co.sam.shoeshi.bid.service.BidVO">
 		INSERT INTO BID(BID_NO, PRODUCT_ID, BID_PRICE, BID_TYPE,
 		CLIENT_ID, PRODUCT_SIZE)
 		VALUES(#{bidNo}, #{productId}, #{bidPrice},
