@@ -126,7 +126,7 @@ ul.tabs li.current {
 									<div class="rs1-select2 bor8 bg0">
 										<form id="searchfrm">
 											<select class="js-select2" id="size" name="size"
-												onchange="searchList('B')">
+												onchange="searchList('BUY')">
 												<option value="0">모든 사이즈</option>
 												<option value="260">260</option>
 												<option value="270">270</option>
@@ -166,7 +166,7 @@ ul.tabs li.current {
 									</ul>
 
 									<div id="tab-1" class="tab-content current">
-										<table class="table" id="BTb">
+										<table class="table" id="BUYTb">
 											<thead class="thead-dark">
 												<tr>
 													<th>수량</th>
@@ -174,7 +174,7 @@ ul.tabs li.current {
 													<th>구매 입찰가</th>
 												</tr>
 											</thead>
-											<tbody id="BTbody">
+											<tbody id="BUYTbody">
 
 												<c:forEach items="${bidList}" var="l">
 													<tr class="alert" role="alert">
@@ -189,7 +189,7 @@ ul.tabs li.current {
 										</table>
 									</div>
 									<div id="tab-2" class="tab-content">
-										<table class="table" id="STb">
+										<table class="table" id="SELLTb">
 											<thead class="thead-dark">
 												<tr>
 													<th>수량</th>
@@ -197,7 +197,7 @@ ul.tabs li.current {
 													<th>판매 입찰가</th>
 												</tr>
 											</thead>
-											<tbody id="STbody">
+											<tbody id="SELLTbody">
 
 												<c:forEach items="${bidList}" var="l">
 													<tr class="alert" role="alert">
@@ -401,7 +401,7 @@ ul.tabs li.current {
 	<script type="text/javascript">
 	
 		$(document).ready(function() {
-			searchList('B');
+			searchList('BUY');
 			$('ul.tabs li').click(function() {
 			 var tab_id = $(this).attr('data-tab');
 
@@ -411,9 +411,9 @@ ul.tabs li.current {
 				$(this).addClass('current');
 				$("#" + tab_id).addClass('current');
 			if(tab_id == 'tab-1'){
-				searchList('B');
+				searchList('BUY');
 			}else{
-				searchList('S');
+				searchList('SELL');
 			}
 			})
 				
@@ -427,7 +427,7 @@ ul.tabs li.current {
 		let pid = ${p.productId};
 		let size = document.getElementById("size").value;
 		let type = t;
-		let payload = "pid=" + pid + "&size="+size;
+		let payload = "pid=" + pid + "&size=" + size + "&type=" + type;
 		
 		let url = "ajaxbidsearchlist.do";
 		
@@ -447,8 +447,7 @@ ul.tabs li.current {
 		tbody.innerHTML = datas.map(data => htmlView(data)).join('');
 		
 		// table tbody 추가
-		/* document.querySelector('table').appendChild(tbody); */
-		/* document.getElementById('buyTb').appendChild(tbody); */
+		
 		document.getElementById(t+'Tb').appendChild(tbody);
 	}
 	

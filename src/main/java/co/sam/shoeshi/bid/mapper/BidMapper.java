@@ -8,8 +8,8 @@ import org.apache.ibatis.annotations.Param;
 import co.sam.shoeshi.bid.service.BidVO;
 
 public interface BidMapper {
-	List<HashMap<String, Object>>bidSearchList(int productId);
-	List<HashMap<String, Object>>bidSearchList(@Param("pid")int pid, @Param("size")int size);
+	List<HashMap<String, Object>>bidSearchList(@Param("pid")int productId,@Param("size")String type);
+	List<HashMap<String, Object>>bidSearchList(@Param("pid")int productId, @Param("size")int size,@Param("type")String type);
 	List<BidVO> bidSelectList();
 	BidVO bidSelect(BidVO vo);
 	int bidInsert(BidVO vo);

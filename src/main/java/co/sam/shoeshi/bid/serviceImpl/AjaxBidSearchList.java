@@ -31,10 +31,11 @@ public class AjaxBidSearchList extends HttpServlet {
 		List<HashMap<String, Object>> bidList = new ArrayList<>();
 		int pid = Integer.valueOf(request.getParameter("pid"));
 		int size = Integer.valueOf(request.getParameter("size"));
-		System.out.println(size);
-
+		String type = request.getParameter("type");
+				
+		System.out.println("pid ="+pid+"size ="+ size+ "type ="+type);
 		
-		bidList = dao.bidSearchList(pid, size);
+		bidList = dao.bidSearchList(pid, size, type);
 
 		ObjectMapper ObjectMapper = new ObjectMapper();
 

@@ -21,10 +21,12 @@
 		(SELECT COUNT(*)as B_COUNT, PRODUCT_SIZE , BID_PRICE
 		FROM BID
 		WHERE PRODUCT_ID = #{pid}
-		AND BID_TYPE = 'B'
-		<if test='size != 0'>AND PRODUCT_SIZE = #{size}</if>
+		AND BID_TYPE = #{type}
 		GROUP BY PRODUCT_SIZE,BID_PRICE
-		ORDER BY BID_PRICE DESC)
+		<if test='size != 0'>AND PRODUCT_SIZE = #{size}</if>
+		<if test='type == "BUY"'>ORDER BY BID_PRICE DESC</if>
+		<if test='type == "SELL"'>ORDER BY BID_PRICE ASC</if>
+		)
  		<![CDATA[ WHERE ROWNUM < 6 ]]>
 
 	</select>
@@ -58,5 +60,3 @@
 	</delete>
 
 </mapper>
-
-

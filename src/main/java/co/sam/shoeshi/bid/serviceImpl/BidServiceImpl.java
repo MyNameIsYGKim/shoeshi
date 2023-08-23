@@ -16,13 +16,13 @@ public class BidServiceImpl implements BidService {
 	
 	@Override
 	public
-	List<HashMap<String, Object>>bidSearchList(int productId){
-		return map.bidSearchList(productId);
+	List<HashMap<String, Object>>bidSearchList(int productId,String type){
+		return map.bidSearchList(productId,type);
 	}
 	@Override
 	public
-	List<HashMap<String, Object>>bidSearchList(int productId, int val){
-		return map.bidSearchList(productId, val);
+	List<HashMap<String, Object>>bidSearchList(int productId, int size,String type){
+		return map.bidSearchList(productId, size, type);
 	}
 	@Override
 	public List<BidVO> bidSelectList() {
