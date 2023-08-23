@@ -1,6 +1,8 @@
 package co.sam.shoeshi.admin.productimg.web;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,28 +15,22 @@ import co.sam.shoeshi.productimg.service.ProductimgService;
 import co.sam.shoeshi.productimg.service.ProductimgVO;
 import co.sam.shoeshi.productimg.serviceImpl.ProductimgServiceImpl;
 
-@WebServlet("/adminproductimginsert.do")
-public class AdminProductimgInsert extends HttpServlet {
+@WebServlet("/adminproductimgdelete.do")
+public class AdminProductimgDelete extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public AdminProductimgInsert() {
+    public AdminProductimgDelete() {
         super();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ProductimgService dao = new ProductimgServiceImpl();
-		ProductimgVO vo = new ProductimgVO();
+		List<ProductimgVO> productimgs = new ArrayList<>();
 		
-		vo.setProductId(Integer.valueOf(request.getParameter("productId")));
-		vo.setProductimgPath(request.getParameter("productimgPath"));
-		vo.setProductimgName1(request.getParameter("productimgName1"));
-		vo.setProductimgName2(request.getParameter("productimgName2"));
-		vo.setProductimgName3(request.getParameter("productimgName3"));
+		productimgs = dao.productimgSelectList();
+		request.setAttribute("productimgs", productimgs);
 		
 		String viewName = "admin/productimg/adminproductimglist";
-		
-		int n = dao.productimgInsert(vo);
-		vo = dao.productimgSelect(vo);
 		ViewResolve.forward(request, response, viewName);
 	}
 

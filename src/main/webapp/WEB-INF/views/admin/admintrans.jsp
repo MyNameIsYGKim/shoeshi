@@ -173,7 +173,6 @@
 												</tbody>
 												<!-- 더미 데이터 끝 -->
 											</table>
-											<jsp:include page="../layout/sidebar.jsp" />
 										</div>
 									</div>
 								</div>

@@ -38,4 +38,9 @@ public class BidServiceImpl implements BidService {
 		return map.bidDelete(vo);
 	}
 
+	@Override
+	public List<BidVO> bidSelectList(String key, String val) {
+		return map.bidSelectList(key, val);
+	}
+
 }

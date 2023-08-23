@@ -1,4 +1,4 @@
-package co.sam.shoeshi.admin.web;
+package co.sam.shoeshi.admin.productimg.web;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -9,22 +9,18 @@ import javax.servlet.http.HttpServletResponse;
 
 import co.sam.shoeshi.common.ViewResolve;
 
-
-@WebServlet("/adminhome.do")
-public class AdminHome extends HttpServlet {
+@WebServlet("/adminproductimgform.do")
+public class AdminProductimgForm extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public AdminHome() {
+    public AdminProductimgForm() {
         super();
-
     }
 
-
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String viewName = "admin/adminhome";
+		String viewName = "admin/productimg/adminproductimginsert";
 		ViewResolve.forward(request, response, viewName);
 	}
-
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);

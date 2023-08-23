@@ -13,11 +13,11 @@ import co.sam.shoeshi.productimg.service.ProductimgService;
 import co.sam.shoeshi.productimg.service.ProductimgVO;
 import co.sam.shoeshi.productimg.serviceImpl.ProductimgServiceImpl;
 
-@WebServlet("/adminproductimginsert.do")
-public class AdminProductimgInsert extends HttpServlet {
+@WebServlet("/adminproductimgedit.do")
+public class AdminProductimgEdit extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public AdminProductimgInsert() {
+    public AdminProductimgEdit() {
         super();
     }
 
@@ -31,10 +31,12 @@ public class AdminProductimgInsert extends HttpServlet {
 		vo.setProductimgName2(request.getParameter("productimgName2"));
 		vo.setProductimgName3(request.getParameter("productimgName3"));
 		
-		String viewName = "admin/productimg/adminproductimglist";
+		String viewName = "admin/productimg/adminproductimgselect";
 		
-		int n = dao.productimgInsert(vo);
+		int n = dao.productimgUpdate(vo);
+		
 		vo = dao.productimgSelect(vo);
+		request.setAttribute("n", vo);
 		ViewResolve.forward(request, response, viewName);
 	}
 
