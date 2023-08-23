@@ -16,9 +16,13 @@
 	</select>
 	<insert id="clientInsert"
 		parameterType="co.sam.shoeshi.client.service.ClientVO">
+		BEGIN
 		INSERT INTO CLIENT(CLIENT_ID, CLIENT_PASSWORD,
 		CLIENT_NAME, CLIENT_ADDRESS, CLIENT_TEL)
-		VALUES(#{clientId},#{clientPassword},#{clientName},#{clientAddress},#{clientTel})
+		VALUES(#{clientId},#{clientPassword},#{clientName},#{clientAddress},#{clientTel});
+		INSERT INTO PAYMENT(CLIENT_ID)
+		VALUES(#{clientId});
+		END;
 	</insert>
 	<update id="clientUpdate"
 		parameterType="co.sam.shoeshi.client.service.ClientVO">

@@ -8,14 +8,57 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-.size45{
-  width: 46%;
-  margin: 0 5px;
- }
+.size45 {
+	width: 49%;
+	height:100%;
+	margin: 0 auto;
+	
+}
 
-.sizef{
-  width: 100%;
-  height: 45px;
+.size50 {
+	width: 49%;
+	height:100%;
+	margin: 0 auto;
+	
+}
+
+.sizef {
+	width: 100%;
+	height: 45px;
+}
+
+ul.tabs {
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+	background: #ededed;
+	box-sizing: border-box;
+	font-weight: bold;
+}
+
+ul.tabs li {
+	background: #ededed;
+	color: #aaa;
+	display: inline-block;
+	padding: 10px 0px;
+	cursor: pointer;
+	text-align: center;
+	
+}
+
+ul.tabs li.current {
+	background: #fff;
+	color: #222;
+	border: solid 1px #000;
+}
+
+.tab-content {
+	display: none;
+	padding: 15px;
+}
+
+.tab-content.current {
+	display: inherit;
 }
 </style>
 </head>
@@ -82,8 +125,7 @@
 						<!--  -->
 						<div class="p-t-33">
 							<div class="flex-w p-b-15">
-								<div class="size-216 flex-l-m respon6">사이즈</div>
-								<div class="size-217 respon6-next">
+								<div class="sizef respon6-next">
 									<div class="rs1-select2 bor8 bg0">
 										<select class="js-select2" name="time">
 											<option>모든 사이즈</option>
@@ -101,16 +143,67 @@
 								<div class="size45">
 
 									<button
-										class="flex-c-m stext-101 cl0 sizef bg1 bor1 hov-btn1 p-lr-15 trans-04">
+										class="flex-c-m stext-101 cl0 sizef bg1 bor999 hov-btn1 p-lr-15 trans-04">
 
 										<span>1,200,000원</span><span>구매</span>
 									</button>
 								</div>
 								<div class="size45">
-									<button
-										class="flex-c-m stext-101 cl0 bg10000 sizef bor1 hov-btn1 p-lr-15 trans-04">
+								<form action="bidform.do" method="post">
+								<input name="productId" hidden="" value="${p.productId}"/>
+									<button type="submit"
+										class="flex-c-m stext-101 cl0 bg10000 sizef bor999 hov-btn1 p-lr-15 trans-04">
 										<span>1,300,000원</span><span>판매</span>
 									</button>
+									</form>
+								</div>
+							</div>
+							<div class="flex-w p-b-15">
+								<div class="table-wrap sizef ">
+
+									<ul class="tabs sizef bor999" >
+										<li class="tab-link current size50 bor999" data-tab="tab-1">구매
+											입찰</li>
+										<li class="tab-link size50 bor999" data-tab="tab-2">판매 입찰</li>
+
+									</ul>
+
+									<div id="tab-1" class="tab-content current">
+										<table class="table">
+											<thead class="thead-dark">
+												<tr>
+													<th>수량</th>
+													<th>사이즈</th>
+													<th>구매 입찰가</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr class="alert" role="alert">
+													<td>1</td>
+													<td>260</td>
+													<td>100000</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+									<div id="tab-2" class="tab-content">
+										<table class="table">
+											<thead class="thead-dark">
+												<tr>
+													<th>수량</th>
+													<th>사이즈</th>
+													<th>판매 입찰가</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr class="alert" role="alert">
+													<td>1</td>
+													<td>260</td>
+													<td>100000</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -143,7 +236,7 @@
 			</div>
 		</div>
 
-		</div>
+
 
 		<div class="bor10 m-t-50 p-t-43 p-b-40">
 			<!-- Tab01 -->
@@ -297,5 +390,22 @@
 				class="stext-107 cl6 p-lr-25"> Categories: Jacket, Men </span>
 		</div>
 	</section>
+	<script type="text/javascript"
+		src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+
+			$('ul.tabs li').click(function() {
+				var tab_id = $(this).attr('data-tab');
+
+				$('ul.tabs li').removeClass('current');
+				$('.tab-content').removeClass('current');
+
+				$(this).addClass('current');
+				$("#" + tab_id).addClass('current');
+			})
+
+		})
+	</script>
 </body>
 </html>
