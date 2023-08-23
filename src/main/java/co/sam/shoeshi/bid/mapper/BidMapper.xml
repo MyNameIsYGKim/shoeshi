@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="co.sam.shoeshi.bid.mapper.BidMapper">
-	<select id="bidSelectList" resultType="co.sam.shoeshi.bid.service.BidVO">
+	<select id="bidSelectList"
+		resultType="co.sam.shoeshi.bid.service.BidVO">
 		SELECT * FROM BID
 		<if test='key == "bidNo"'>WHERE BID_NO LIKE '%'||#{val}||'%'</if>
 		<if test='key == "productId"'>WHERE PRODUCT_ID LIKE '%'||#{val}||'%'</if>
@@ -9,8 +10,9 @@
 		<if test='key == "clientId"'>WHERE CLIENT_ID LIKE '%'||#{val}||'%'</if>
 		ORDER BY BID_NO
 	</select>
-	
-	<select id="bidSelect" resultType="co.sam.shoeshi.bid.service.BidVO">
+
+	<select id="bidSelect"
+		resultType="co.sam.shoeshi.bid.service.BidVO">
 		SELECT * FROM BID WHERE BID_NO = #{bidNo}
 		<if test="clientId != null">
 			AND CLIENT_ID = #{clientId}
@@ -49,9 +51,35 @@
 		</selectKey>
 		INSERT INTO BID(BID_NO, PRODUCT_ID, BID_PRICE, BID_TYPE, CLIENT_ID, PRODUCT_SIZE)
 		VALUES(#{bidNo}, #{productId}, #{bidPrice}, #{bidType}, #{clientId}, #{productSize})
-	</insert>
+
+	<select id="searchSellPrice"
+		resultType="co.sam.shoeshi.common.CamelHashMap">
+		SELECT MAX(BID_PRICE) AS SELL_PRICE FROM BID
+		WHERE PRODUCT_ID = #{pid}
+		AND BID_TYPE='BUY'
+		<if test='size != 0'>AND PRODUCT_SIZE = #{size}</if>
+		
+	</select>
 	
-	<update id="bidUpdate" parameterType="co.sam.shoeshi.bid.service.BidVO">
+	<select id="searchBuyPrice"
+		resultType="co.sam.shoeshi.common.CamelHashMap">
+		SELECT MIN(BID_PRICE) AS BUY_PRICE FROM BID
+		WHERE PRODUCT_ID = #{pid}
+		AND BID_TYPE='SELL'
+		<if test='size != 0'>AND PRODUCT_SIZE = #{size}</if>
+		
+	</select>
+
+	<insert id="bidInsert"
+		parameterType="co.sam.shoeshi.bid.service.BidVO">
+		INSERT INTO BID(BID_NO, PRODUCT_ID, BID_PRICE, BID_TYPE,
+		CLIENT_ID, PRODUCT_SIZE)
+		VALUES(#{bidNo}, #{productId}, #{bidPrice},
+		#{bidType}, #{clientId}, #{productSize})
+	</insert>
+
+	<update id="bidUpdate"
+		parameterType="co.sam.shoeshi.bid.service.BidVO">
 		UPDATE BID
 		<set>
 			<!-- 한개만 있어도 무조건 콤마, 마지막거 제외 -->
@@ -64,11 +92,10 @@
 		</set>
 		WHERE BID_NO = #{bidNo}
 	</update>
-	
-	<delete id="bidDelete" parameterType="co.sam.shoeshi.bid.service.BidVO">
+
+	<delete id="bidDelete"
+		parameterType="co.sam.shoeshi.bid.service.BidVO">
 		DELETE FROM BID WHERE BID_NO = #{bidNo}
 	</delete>
 
 </mapper>
-
-

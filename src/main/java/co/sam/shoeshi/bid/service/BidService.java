@@ -8,6 +8,8 @@ import co.sam.shoeshi.deal.service.DealVO;
 public interface BidService {
 	List<HashMap<String, Object>>bidSearchList(int productId,String type);
 	List<HashMap<String, Object>>bidSearchList(int productId,int size,String type);
+	HashMap<String, Object>searchSellPrice(int productId,int size);
+	HashMap<String, Object>searchBuyPrice(int productId,int size);
 	List<BidVO> bidSelectList();
 	List<BidVO> bidSelectList(String key, String val);
 	

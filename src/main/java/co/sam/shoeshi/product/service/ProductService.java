@@ -17,4 +17,5 @@ public interface ProductService {
 	int productUpdate(ProductVO vo);
 	int productDelete(ProductVO vo);
 	List<ProductVO> productSelectList(String key, String val);
+	List<ProductVO> productSearchList(String key, String val);
 }

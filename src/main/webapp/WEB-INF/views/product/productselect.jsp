@@ -227,6 +227,63 @@ ul.tabs li.current {
 									</div>
 								</div>
 							</div>
+							<div class="flex-w p-b-15">
+								<div class="table-wrap sizef ">
+
+									<ul class="tabs sizef bor999">
+										<li class="tab-link current size50 bor999" data-tab="tab-1">구매
+											입찰</li>
+										<li class="tab-link size50 bor999" data-tab="tab-2">판매 입찰</li>
+
+									</ul>
+
+									<div id="tab-1" class="tab-content current">
+										<table class="table" id="BUYTb">
+											<thead class="thead-dark">
+												<tr>
+													<th>수량</th>
+													<th>사이즈</th>
+													<th>구매 입찰가</th>
+												</tr>
+											</thead>
+											<tbody id="BUYTbody">
+
+												<c:forEach items="${bidList}" var="l">
+													<tr class="alert" role="alert">
+														<td></td>
+														<td></td>
+														<td></td>
+													</tr>
+												</c:forEach>
+
+											</tbody>
+
+										</table>
+									</div>
+									<div id="tab-2" class="tab-content">
+										<table class="table" id="SELLTb">
+											<thead class="thead-dark">
+												<tr>
+													<th>수량</th>
+													<th>사이즈</th>
+													<th>판매 입찰가</th>
+												</tr>
+											</thead>
+											<tbody id="SELLTbody">
+
+												<c:forEach items="${bidList}" var="l">
+													<tr class="alert" role="alert">
+														<td></td>
+														<td></td>
+														<td></td>
+													</tr>
+												</c:forEach>
+
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 
@@ -331,7 +388,7 @@ ul.tabs li.current {
 									<!-- Review -->
 									<div class="flex-w flex-t p-b-68">
 										<div class="wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6">
-											<img src="images/avatar-01.jpg" alt="AVATAR">
+											<img src="coza/images/avatar-01.jpg" alt="AVATAR">
 										</div>
 
 										<div class="size-207">
@@ -478,9 +535,27 @@ ul.tabs li.current {
 		// table tbody 추가
 		
 		document.getElementById(t+'Tb').appendChild(tbody);
+		document.getElementById('BUYPrice').innerHTML = datas.map(data => htmlViewB(data));
+		document.getElementById('SELLPrice').innerHTML = datas.map(data => htmlViewS(data));
 	}
 	
+/* function htmlConvertB(datas) {
+			
+		document.getElementById('BUYPrice').innerHTML = datas.map(data => htmlViewB(data));
+				
+	}
+function htmlConvertS(datas) {
+	
+	
+	
+	document.getElementById('SELLPrice').innerHTML = datas.map(data => htmlViewS(data));
+	// table tbody 추가
+			
+} */
+	
 	function htmlView(data) {
+		console.log(data)
+		if(data.hasOwnProperty('bCount')){
 		return `
 		<tr class="alert" role="alert">
 			<td>\${data.bCount}</td>
@@ -488,6 +563,32 @@ ul.tabs li.current {
 			<td>\${data.bidPrice}</td>
 		</tr>
 		`
+		}else{
+			return `
+			<tr class="alert" role="alert">
+				<td cols="3">입찰 내역이 없습니다.</td>
+				
+			</tr>
+			`
+		}
+		
+	}
+	
+	function htmlViewS(data) {
+		
+		return 
+		
+		${data.sellPrice}
+		
+		
+	}
+	
+	function htmlViewB(data) {
+		return 
+		
+		${data.buyPrice}
+		
+		
 		
 	}
 	</script>

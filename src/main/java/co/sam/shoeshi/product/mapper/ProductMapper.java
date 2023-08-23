@@ -3,8 +3,6 @@ package co.sam.shoeshi.product.mapper;
 import java.util.HashMap;
 import java.util.List;
 
-import org.apache.ibatis.annotations.Param;
-
 import co.sam.shoeshi.product.service.ProductVO;
 
 public interface ProductMapper {
@@ -19,4 +17,5 @@ public interface ProductMapper {
 	int productUpdate(ProductVO vo);
 	int productDelete(ProductVO vo);
 	List<ProductVO> productSelectList(String key, String val);
+	List<ProductVO> productSearchList(String key, String val);
 }
