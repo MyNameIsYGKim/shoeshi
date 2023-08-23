@@ -49,7 +49,7 @@
 					</div><br>
 					<div>
 						<input type="submit" value="수정">&nbsp;&nbsp;&nbsp;
-						<input type="reset" onclick="lcoation.href='adminproductedit.do'" value="취소">
+						<input type="reset" onclick="lcoation.href='adminproductmanage.do'" value="취소">
 					</div>
 					<input type="hidden" id="productId" name="productId" value="${n.productId }">
 				</div>

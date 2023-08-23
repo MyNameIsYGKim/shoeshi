@@ -1,6 +1,7 @@
 package co.sam.shoeshi.admin.product.web;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,10 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.oreilly.servlet.MultipartRequest;
-import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
-
-import co.sam.shoeshi.common.ViewResolve;
 import co.sam.shoeshi.product.service.ProductService;
 import co.sam.shoeshi.product.service.ProductVO;
 import co.sam.shoeshi.product.serviceImpl.ProductServiceImpl;
@@ -28,23 +25,25 @@ public class AdminProductEdit extends HttpServlet {
 		ProductService dao = new ProductServiceImpl();
 		ProductVO vo = new ProductVO();
 		
-		String saveDir = getServletContext().getRealPath("attech/product/");
-		int sizeLimit = 1024 * 1024;
-		
-		MultipartRequest multi = new MultipartRequest(request, saveDir, sizeLimit, "utf-8", new DefaultFileRenamePolicy());
-		
-		vo.setProductId(Integer.valueOf(multi.getParameter("productId")));
-		vo.setProductMaker(multi.getParameter("productMaker"));
-		vo.setProductName(multi.getParameter("productName"));
-		vo.setProductPrice(Integer.valueOf(multi.getParameter("productPrice")));
-		
-		String viewName = "admin/product/adminproductselect";
+		vo.setProductId(Integer.valueOf(request.getParameter("productId")));
+		vo.setProductMaker(request.getParameter("productMaker"));
+		vo.setProductName(request.getParameter("productName"));
+		vo.setProductPrice(Integer.valueOf(request.getParameter("productPrice")));
 		
 		int n = dao.productUpdate(vo);
-		
-		vo = dao.productSelect(vo);
-		request.setAttribute("n", vo);
-		ViewResolve.forward(request, response, viewName);
+		if (n == 0) {
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter writer = response.getWriter();
+			writer.println(
+					"<script>alert('수정 실패.'); location.href='http://localhost/example/adminproductmanage.do'</script>");
+			writer.close();
+		} else {
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter writer = response.getWriter();
+			writer.println(
+					"<script>alert('수정 완료.'); location.href='http://localhost/example/adminproductmanage.do'</script>");
+			writer.close();
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

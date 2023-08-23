@@ -20,7 +20,7 @@ public class AdminProductModify extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String viewName = "admin/home/adminproductmodify";
+		String viewName = "admin/deal/admintrans";
 		ViewResolve.forward(request, response, viewName);
 	}
 
