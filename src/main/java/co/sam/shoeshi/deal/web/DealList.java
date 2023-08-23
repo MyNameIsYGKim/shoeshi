@@ -17,10 +17,10 @@ import co.sam.shoeshi.deal.service.DealVO;
 import co.sam.shoeshi.deal.serviceImpl.DealServiceImpl;
 
 @WebServlet("/deallist.do")
-public class DealController extends HttpServlet {
+public class DealList extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public DealController() {
+    public DealList() {
         super();
     }
 
@@ -31,8 +31,8 @@ public class DealController extends HttpServlet {
 		DealService dao = new DealServiceImpl();
 		List<DealVO> vos = new ArrayList<DealVO>();
 		List<DealVO> vob = new ArrayList<DealVO>();
-		vo.setDealSeller((String)session.getAttribute("id"));
-		vo.setDealBuyer((String)session.getAttribute("id"));
+		vo.setDealSeller((String)session.getAttribute("clientId"));
+		vo.setDealBuyer((String)session.getAttribute("clientId"));
 		vos = dao.dealSelectS(vo);
 		vob = dao.dealSelectB(vo);
 		request.setAttribute("deallists", vos);

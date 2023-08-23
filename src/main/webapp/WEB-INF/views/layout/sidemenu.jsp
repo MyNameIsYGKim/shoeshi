@@ -67,6 +67,7 @@
 			<li><a href="clienteditform.do">회원정보 수정</a></li>
 			<li><a href="paymenteditform.do">거래정보 수정</a></li>
 			<li><a href="deallist.do">거래내역</a></li>
+			<li><a href="bidlist.do">입찰내역</a></li>
 			<li><a href="#">Cart</a></li>
 
 			<!-- Add more menu items as needed -->

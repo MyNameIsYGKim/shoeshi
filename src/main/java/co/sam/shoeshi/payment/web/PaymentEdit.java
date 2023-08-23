@@ -30,7 +30,7 @@ public class PaymentEdit extends HttpServlet {
 		PaymentService dao = new PaymentServiceImpl();
 		HttpSession session = request.getSession();
 		request.setCharacterEncoding("UTF-8");
-	vo.setClientId((String) session.getAttribute("id"));
+	vo.setClientId((String) session.getAttribute("clientId"));
 	vo.setBankAccount(Long.parseLong(request.getParameter("bankAccount")));
 	vo.setBankName(request.getParameter("bankName"));
 	vo.setCardCo(request.getParameter("cardCo"));

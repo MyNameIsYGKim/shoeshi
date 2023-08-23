@@ -32,11 +32,11 @@ public class BidForm extends HttpServlet {
 		ProductVO vo = new ProductVO();
 		vo.setProductId(Integer.valueOf(request.getParameter("productId")));
 		product = dao.productJoinSelect(vo);
+		request.setAttribute("bidType", request.getParameter("bidType"));
+		request.setAttribute("bidType2", request.getParameter("bidType2"));
 		request.setAttribute("p", product);
-		
 		String viewName="bid/bidform";
 		ViewResolve.forward(request, response, viewName);
-		
 				
 	}
 

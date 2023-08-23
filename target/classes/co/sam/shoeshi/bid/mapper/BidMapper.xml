@@ -11,8 +11,37 @@
 			AND CLIENT_ID = #{clientId}
 		</if>
 	</select>
+		<select id="bidSelectB" resultType="co.sam.shoeshi.bid.service.BidVO">
+		SELECT * FROM BID WHERE CLIENT_ID = #{clientId} AND BID_TYPE = 'BUY'
+	</select>
+	<select id="bidSelectS" resultType="co.sam.shoeshi.bid.service.BidVO">
+		SELECT * FROM BID WHERE CLIENT_ID = #{clientId}  AND BID_TYPE = 'SELL'
+	</select>
+	
+		<select id="bidSearchList"
+		resultType="co.sam.shoeshi.common.CamelHashMap">
+		
+		SELECT * FROM
+		(SELECT COUNT(*)as B_COUNT, PRODUCT_SIZE , BID_PRICE
+		FROM BID
+		WHERE PRODUCT_ID = #{pid}
+		AND BID_TYPE = #{type}
+		<if test='size != 0'>AND PRODUCT_SIZE = #{size}</if>
+		GROUP BY PRODUCT_SIZE,BID_PRICE
+		<if test='type == "BUY"'>ORDER BY BID_PRICE DESC</if>
+		<if test='type == "SELL"'>ORDER BY BID_PRICE ASC</if>
+		)
+ 		<![CDATA[ WHERE ROWNUM < 6 ]]>
+
+	</select>
 	
 	<insert id="bidInsert" parameterType="co.sam.shoeshi.bid.service.BidVO">
+			<selectKey resultType="int" keyProperty="bidNo"
+			order="BEFORE">
+			SELECT CASE WHEN MAX(BID_NO) IS NULL THEN 1
+			ELSE
+			MAX(BID_NO) + 1 END AS BID_NO FROM BID
+		</selectKey>
 		INSERT INTO BID(BID_NO, PRODUCT_ID, BID_PRICE, BID_TYPE, CLIENT_ID, PRODUCT_SIZE)
 		VALUES(#{bidNo}, #{productId}, #{bidPrice}, #{bidType}, #{clientId}, #{productSize})
 	</insert>
