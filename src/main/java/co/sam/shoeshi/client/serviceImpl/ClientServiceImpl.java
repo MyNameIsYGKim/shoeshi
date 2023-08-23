@@ -45,7 +45,7 @@ public class ClientServiceImpl implements ClientService {
 	}
 
 	@Override
-	public List<ClientVO> clientSelectList(String key, String val2) {
-		return map.clientSelectList(key, val2);
+	public List<ClientVO> clientSelectList(String key, String clientSearchVal) {
+		return map.clientSelectList(key, clientSearchVal);
 	}
 }

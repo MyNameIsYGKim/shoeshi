@@ -8,7 +8,7 @@ import co.sam.shoeshi.client.service.ClientVO;
 
 public interface ClientMapper {
 	List<ClientVO> clientSelectList();
-	List<ClientVO> clientSelectList(@Param("key") String key, @Param("val2") String val2);
+	List<ClientVO> clientSelectList(@Param("key") String key, @Param("clientSearchVal") String clientSearchVal);
 	ClientVO clientIdFind(ClientVO vo);
 	ClientVO clientSelect(ClientVO vo);
 	int clientInsert(ClientVO vo);

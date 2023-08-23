@@ -29,9 +29,9 @@ public class AjaxClientSearch extends HttpServlet {
 		List<ClientVO> clients = new ArrayList<>();
 		
 		String key = request.getParameter("key");
-		String val2 = request.getParameter("val2");
+		String clientSearchVal = request.getParameter("clientSearchVal");
 		
-		clients = dao.clientSelectList(key, val2);
+		clients = dao.clientSelectList(key, clientSearchVal);
 		
 		ObjectMapper ObjectMapper = new ObjectMapper();
 		

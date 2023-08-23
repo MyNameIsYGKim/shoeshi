@@ -38,7 +38,7 @@
 	margin-bottom: 10px;
 }
 
-#val2 {
+#clientSearchVal {
 	border: 1px solid gray;
 	border-radius: 3px;
 	display: inline;
@@ -76,7 +76,7 @@
 										<option value="name">Name</option>
 										<option value="address">Address</option>
 									</select>
-										<input type="text" id="val2" name="val2" size="30">
+										<input type="text" id="clientSearchVal" name="clientSearchVal" size="30">
 										<input type="button" onclick="searchList()" value="검색"
 											class="searchbtn" onmouseover="this.style.background='gray'"
 											onmouseout="this.style.background='#FAFAFA'">
@@ -150,8 +150,8 @@
 	
 	function searchList(){
 		let key = document.getElementById("key").value;
-		let val2 = document.getElementById("val2").value;
-		let payload = "key="+key+"&val2="+val2;
+		let clientSearchVal = document.getElementById("clientSearchVal").value;
+		let payload = "key="+key+"&clientSearchVal="+clientSearchVal;
 		let url = "ajaxclientsearch.do";
 		
 		fetch(url, {
@@ -162,9 +162,6 @@
 			body: payload
 		})	.then(response => response.json())
 			.then(json => htmlConvert(json));
-		
-		console.log("key: "+key+", val2: "+val2); //====================================================
-		console.log(payload);
 	}
 	
 	function htmlConvert(datas){
