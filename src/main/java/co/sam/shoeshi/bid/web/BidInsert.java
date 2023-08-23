@@ -1,17 +1,23 @@
 package co.sam.shoeshi.bid.web;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.HashMap;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import co.sam.shoeshi.bid.service.BidService;
 import co.sam.shoeshi.bid.service.BidVO;
 import co.sam.shoeshi.bid.serviceImpl.BidServiceImpl;
 import co.sam.shoeshi.common.ViewResolve;
+import co.sam.shoeshi.product.service.ProductService;
+import co.sam.shoeshi.product.service.ProductVO;
+import co.sam.shoeshi.product.serviceImpl.ProductServiceImpl;
 
 @WebServlet("/bidinsert.do")
 public class BidInsert extends HttpServlet {
@@ -22,16 +28,29 @@ public class BidInsert extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		BidVO vo = new BidVO();
+		BidVO vo2 = new BidVO();
+		HttpSession session = request.getSession();
+		BidService dao2 = new BidServiceImpl();
+		response.setContentType("text/html; charset=UTF-8");
+		vo2.setProductId(Integer.parseInt(request.getParameter("productId")));
+		vo2.setBidPrice(Integer.parseInt(request.getParameter("bidPrice")));
+		vo2.setBidType(request.getParameter("bidType"));
+		vo2.setClientId((String)session.getAttribute("clientId"));
+		vo2.setProductSize(Integer.parseInt(request.getParameter("productSize")));
+		int n = dao2.bidInsert(vo2);
+		if(n==0) {
+		request.setAttribute("alertBid","입찰등록 실패");
+		}else {
+		request.setAttribute("alertBid", request.getParameter("bidType2")+"입찰 등록");
+		}
+		ProductService dao = new ProductServiceImpl();
+		HashMap<String, Object> product = new HashMap<String, Object>();
+		ProductVO vo = new ProductVO();
+		vo.setProductId(vo2.getProductId());
+		product = dao.productJoinSelect(vo);
+		request.setAttribute("p", product);
 		
-		vo.setBidNo(Integer.valueOf(request.getParameter("bidNo")));
-		vo.setProductId(Integer.valueOf(request.getParameter("productId")));
-		vo.setBidPrice(Integer.valueOf(request.getParameter("bidPrice")));
-		vo.setBidType(request.getParameter("bidType"));
-		vo.setClientId(request.getParameter("clientId"));
-		vo.setProductSize(Integer.valueOf(request.getParameter("productSize")));
-		
-		String viewName = "bid/bidlist";
+		String viewName = "product/productselect";
 		ViewResolve.forward(request, response, viewName);
 	}
 

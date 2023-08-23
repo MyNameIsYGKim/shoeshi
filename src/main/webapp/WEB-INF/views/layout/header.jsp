@@ -85,19 +85,19 @@
 
 
 
-					<c:if test="${author eq 'ADMIN'}">
+					<c:if test="${clientAuthor eq 'ADMIN'}">
 						<li><a class="nav-link px-2 fontw" href="#">관리자페이지</a></li>
 					</c:if>
-					<c:if test="${empty id}">
+					<c:if test="${empty clientId}">
 						<li class="nav-item"><a href="loginform.do"
 							class="nav-link px-2 fontw">로그인</a></li>
 					</c:if>
-					<c:if test="${not empty id }">
+					<c:if test="${not empty clientId }">
 						<li class="nav-item"><a href="mypage.do"
 							class="nav-link px-2 fontw">마이페이지</a></li>
 						<li class="nav-item"><a href="logout.do"
 							class="nav-link px-2 fontw">로그아웃</a></li>
-						<li class="nav-link px-2 fontw">${name }님</li>
+						<li class="nav-link px-2 fontw">${clientName }님</li>
 					</c:if>
 				</ul>
 			</div>
