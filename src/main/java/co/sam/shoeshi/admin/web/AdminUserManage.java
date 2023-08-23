@@ -21,7 +21,7 @@ public class AdminUserManage extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String viewName = "admin/adminusermanage";
+		String viewName = "admin/home/adminusermanage";
 		ViewResolve.forward(request, response, viewName);
 	}
 

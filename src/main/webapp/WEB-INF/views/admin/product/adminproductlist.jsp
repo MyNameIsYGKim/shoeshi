@@ -20,7 +20,7 @@
 					<option value="name">Name</option>
 				</select>
 				<input type="text" id="val" name="val" autofocus>
-				<input type="button" value="검색" onclick="searchList()">&nbsp;
+				<input type="button" onclick="searchList()" value="검색">&nbsp;
 			</form>
 				<input type="button" onclick="location.href='adminproductform.do'" value="등록">&nbsp;
 			<div>
@@ -70,6 +70,7 @@
 		}
 		
 		function searchList(){
+			// console.log("searchList() 작동됨.시작");
 			// ajax를 이용해서 검색결과를 가져오고 화면을 재구성한다.
 			let key = document.getElementById("key").value;
 			let val = document.getElementById("val").value;
@@ -87,6 +88,7 @@
 		}
 		
 		function htmlConvert(datas){
+			// console.log("htmlConvert ~");
 			document.querySelector('tbody').remove();
 			const tbody = document.createElement('tbody');
 			

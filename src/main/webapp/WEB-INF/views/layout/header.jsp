@@ -85,8 +85,8 @@
 
 
 
-					<c:if test="${clientAuthor eq 'ADMIN'}">
-						<li><a class="nav-link px-2 fontw" href="#">관리자페이지</a></li>
+					<c:if test="${author eq 'ADMIN'}">
+						<li><a class="nav-link px-2 fontw" href="adminhomepage.do">관리자페이지</a></li>
 					</c:if>
 					<c:if test="${empty clientId}">
 						<li class="nav-item"><a href="loginform.do"
