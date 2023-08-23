@@ -22,7 +22,7 @@ public class AdminTrans extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String viewName = "admin/admintrans";
+		String viewName = "admin/deal/admintrans";
 		ViewResolve.forward(request, response, viewName);
 		
 	}

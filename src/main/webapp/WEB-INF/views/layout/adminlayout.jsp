@@ -57,10 +57,7 @@
 	<tiles:insertAttribute name="header" />
 
 	<!-- Product -->
-	
-	
 	<tiles:insertAttribute name="sidebar" />
-	
 	
 	<tiles:insertAttribute name="body" ignore="true" />
 	

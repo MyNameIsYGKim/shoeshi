@@ -43,4 +43,9 @@ public class ClientServiceImpl implements ClientService {
 	public int clientDelete(ClientVO vo) {
 		return map.clientDelete(vo);
 	}
+
+	@Override
+	public List<ClientVO> clientSelectList(String key, String val2) {
+		return map.clientSelectList(key, val2);
+	}
 }

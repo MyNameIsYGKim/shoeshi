@@ -1,9 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
-<meta charset="UTF-8">
 <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport"
@@ -38,11 +37,12 @@
 	margin-bottom: 10px;
 }
 </style>
+
 </head>
 <body>
 	<div id="layoutSidenav">
 		<div class="container bodymargin">
-			<h1 class="adminproducttitle">물품 관리</h1>
+			<h1 class="admintitle">거래 목록</h1>
 			<!-- partial -->
 			<div>
 				<div>
@@ -51,17 +51,23 @@
 							<div class="col-12 grid-margin">
 								<div class="card">
 									<div class="card-body">
-										<h4 style="font-weight: bold; text-align: center;">임시</h4>
+										<h4 style="font-weight: bold; text-align: center;">거래 전체
+											목록</h4>
 										<div>
 											<table class="table tableset">
 												<thead>
 													<tr>
-														<th>번호</th>
-														<th>메이커</th>
+														<th>상품</th>
 														<th>상품명</th>
-														<th>가격</th>
+														<th>거래금액</th>
+														<th>판매자</th>
+														<th>구매자</th>
+														<th>거래날짜</th>
+														<th>검수결과</th>
+														<th>비고</th>
 													</tr>
 												</thead>
+												<!-- 더미 데이터 -->
 												<tbody>
 													<tr>
 														<td>imege</td>
@@ -180,14 +186,3 @@
 	</div>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-

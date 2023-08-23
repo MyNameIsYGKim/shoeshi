@@ -134,7 +134,7 @@ divstyle2 {
 
 <body>
 
-		<div class="container bodymargin">
+<div class="container bodymargin">
 	<h1 class="admintitle">관리자 페이지</h1>
 
 	<!-- partial -->
@@ -166,7 +166,7 @@ divstyle2 {
 					<div class="buttontest">
 						<div>
 							<div class="button3"
-								OnClick="location.href ='adminusermanage.do'"
+								OnClick="location.href ='adminclientlist.do'"
 								style="cursor: pointer;">
 								<h4 class="textstyle">
 									회원목록 <i class="mdi mdi-diamond mdi-24px float-right"></i>
