@@ -7,6 +7,8 @@
 <link href="css/styles.css" rel="stylesheet" />
 <title>Admin</title>
 <style>
+
+
 .buttonall {
 	display: inline-flex;
 	width: 100%;
@@ -131,6 +133,8 @@ divstyle2 {
 
 
 <body>
+
+		<div class="container bodymargin">
 	<h1 class="admintitle">관리자 페이지</h1>
 
 	<!-- partial -->
@@ -313,5 +317,7 @@ divstyle2 {
 			</div>
 		</div>
 	</div>
+	</div>
+
 </body>
 </html>

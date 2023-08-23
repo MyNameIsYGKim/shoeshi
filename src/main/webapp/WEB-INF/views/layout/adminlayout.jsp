@@ -57,10 +57,14 @@
 	<tiles:insertAttribute name="header" />
 
 	<!-- Product -->
-<div>
+	
+	
 	<tiles:insertAttribute name="sidebar" />
+	
+	
 	<tiles:insertAttribute name="body" ignore="true" />
-</div>
+	
+
 
 	<!-- Footer -->
 	<tiles:insertAttribute name="footer" />

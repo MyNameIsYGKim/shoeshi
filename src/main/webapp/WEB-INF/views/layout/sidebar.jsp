@@ -47,7 +47,7 @@
 				<div class="sb-sidenav-menu">
 					<div class="nav">
 						<div class="sb-sidenav-menu-heading">Core</div>
-						<a class="nav-link" href="adminhome.do">
+						<a class="nav-link" href="adminhomepage.do">
 							<div>Admin</div>
 						</a>
 						<div class="sb-sidenav-menu-heading">물품관리</div>
