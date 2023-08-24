@@ -23,27 +23,32 @@
 }
 
 .buttonstyle {
-	background-color: #ccc;
+	background-color: #666666;
 	border: 1px solid;
-	width: 90px;
-	height: 30px;
+	width: 100px;
+	height: 40px;
 	float: right;
-	margin: 10px;
+	margin: ;
+	border-radius: 5px;
+	font-weight: bold;
+	color: white;
+	
 }
 
 .custom-button {
-	background-color: #dc3545;
+	background-color: #ff6b6b;
 	color: white;
 	border: none;
 	padding: 5px 10px;
 	cursor: pointer;
+	border-radius: 5px;
 }
 </style>
 
 </head>
 <body>
 	<div class="container bodymargin">
-		<h1 class="admintitle">물품조회</h1>
+		<h1 class="admintitle">제품조회</h1>
 		<!-- partial -->
 		<div>
 			<div>

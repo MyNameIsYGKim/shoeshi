@@ -114,12 +114,89 @@ style>.textstyle {
 	color: #fff;
 	border: 1px solid #42454c;
 }
+
+.buttonall {
+	display: flex;
+	justify-content: center;
+}
+
+.buttontest {
+	width: 250px;
+	display: inline;
+}
+
+.button1 {
+	height: 50px;
+	border-bottom: 4px solid black;
+	margin: 5px;
+	text-align: center;
+}
+
+.button2 {
+	height: 50px;
+	border-bottom: 4px solid black;
+	margin: 5px;
+	text-align: center;
+}
+
+.button3 {
+	height: 50px;
+	border-bottom: 4px solid black; margin : 3px;
+	text-align: center;
+	margin: 5px
+}
+
+.textstyle {
+	margin-top: 10px;
+	color: black;
+	font-weight: bold;
+}
 </style>
 
 </head>
 <body>
 	<div class="container bodymargin">
 		<h1 class="admintitle">거래 상태 변경(검수)</h1>
+
+
+		<div class="buttonall">
+			<div class="buttontest">
+				<div>
+					<div class="button1"
+						OnClick="location.href ='adminproductmanage.do'"
+						style="cursor: pointer;">
+						<h4 class="textstyle">
+							대기 <i class="mdi mdi-chart-line mdi-24px float-right"></i>
+						</h4>
+					</div>
+				</div>
+			</div>
+			<div class="buttontest">
+				<div>
+					<div class="button2" OnClick="location.href ='admintranschange.do'"
+						style="cursor: pointer;">
+						<h4 class="textstyle">
+							합격 <i class="mdi mdi-bookmark-outline mdi-24px float-right"></i>
+						</h4>
+					</div>
+				</div>
+			</div>
+			<div class="buttontest">
+				<div>
+					<div class="button3" OnClick="location.href ='adminusermanage.do'"
+						style="cursor: pointer;">
+						<h4 class="textstyle">
+							불합격 <i class="mdi mdi-diamond mdi-24px float-right"></i>
+						</h4>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+
+
 		<div class="row" style="margin-top: 5px; margin-bottom: 5px;">
 			<div class="col-12 grid-margin">
 				<div class="card">
@@ -150,10 +227,10 @@ style>.textstyle {
 										<td>
 											<form>
 												<select name="검수" id="lang">
-													<option value="준비중">준비중</option>
-													<option value="합격">합격</option>
-													<option value="보류">보류</option>
-													<option value="불합격">불합격</option>
+													<option>상태</option>
+													<option value="완료">합격</option>
+													<option value="취소">불합격</option>
+													<!-- 													<option value="보류">보류</option> -->
 												</select>
 											</form>
 										</td>
