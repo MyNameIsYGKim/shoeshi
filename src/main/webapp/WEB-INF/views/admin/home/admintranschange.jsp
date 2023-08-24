@@ -156,7 +156,7 @@ style>.textstyle {
 </head>
 <body>
 	<div class="container bodymargin">
-		<h1 class="admintitle">거래 상태 변경(검수)</h1>
+		<h1 class="admintitle">거래목록</h1>
 
 
 		<div class="buttonall">
