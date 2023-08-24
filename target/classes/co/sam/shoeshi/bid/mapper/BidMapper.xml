@@ -1,18 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="co.sam.shoeshi.bid.mapper.BidMapper">
-	<select id="bidSelectList"
-		resultType="co.sam.shoeshi.bid.service.BidVO">
+	<select id="bidSelectList" resultType="co.sam.shoeshi.bid.service.BidVO">
 		SELECT * FROM BID
-		<if test='key == "bidNo"'>WHERE BID_NO LIKE '%'||#{val}||'%'</if>
+				<if test='key == "bidNo"'>WHERE BID_NO LIKE '%'||#{val}||'%'</if>
 		<if test='key == "productId"'>WHERE PRODUCT_ID LIKE '%'||#{val}||'%'</if>
 		<if test='key == "bidType"'>WHERE BID_TYPE LIKE '%'||#{val}||'%'</if>
 		<if test='key == "clientId"'>WHERE CLIENT_ID LIKE '%'||#{val}||'%'</if>
 		ORDER BY BID_NO
 	</select>
-
-	<select id="bidSelect"
-		resultType="co.sam.shoeshi.bid.service.BidVO">
+	
+	<select id="bidSelect" resultType="co.sam.shoeshi.bid.service.BidVO">
 		SELECT * FROM BID WHERE BID_NO = #{bidNo}
 		<if test="clientId != null">
 			AND CLIENT_ID = #{clientId}
@@ -53,13 +51,7 @@
 		INSERT INTO BID(BID_NO, PRODUCT_ID, BID_PRICE, BID_TYPE, CLIENT_ID, PRODUCT_SIZE)
 		VALUES(#{bidNo}, #{productId}, #{bidPrice}, #{bidType}, #{clientId}, #{productSize})
 	</insert>
-	<!-- <insert id="bidInsert"
-		parameterType="co.sam.shoeshi.bid.service.BidVO">
-		INSERT INTO BID(BID_NO, PRODUCT_ID, BID_PRICE, BID_TYPE,
-		CLIENT_ID, PRODUCT_SIZE)
-		VALUES(#{bidNo}, #{productId}, #{bidPrice},
-		#{bidType}, #{clientId}, #{productSize})
-	</insert> -->
+	
 	<select id="searchSellPrice"
 		resultType="co.sam.shoeshi.common.CamelHashMap">
 		SELECT TO_CHAR(MAX(BID_PRICE),'999,999,999,999') AS SELL_PRICE FROM BID
@@ -91,16 +83,17 @@
 		</set>
 		WHERE BID_NO = #{bidNo}
 	</update>
-
-	<delete id="bidDelete"
-		parameterType="co.sam.shoeshi.bid.service.BidVO">
+	
+	<delete id="bidDelete" parameterType="co.sam.shoeshi.bid.service.BidVO">
 		DELETE FROM BID WHERE BID_NO = #{bidNo}
 	</delete>
 	
 	<select id="bidSelectSell" resultType="co.sam.shoeshi.bid.service.BidVO">
-		SELECT BID_NO FROM BID WHERE BID_TYPE = #{bidType} AND PRODUCT_ID = #{productId} AND PRODUCT_SIZE = #{productSize}
+		SELECT MIN(BID_NO) as BID_NO, MAX(BID_PRICE) as BID_PRICE FROM BID WHERE BID_TYPE = #{bidType} AND PRODUCT_ID = #{productId} AND PRODUCT_SIZE = #{productSize} AND CLIENT_ID != #{clientId}
 	</select>
 	<select id="bidSelectBuy" resultType="co.sam.shoeshi.bid.service.BidVO">
-		SELECT BID_NO FROM BID WHERE BID_TYPE = #{bidType} AND PRODUCT_ID = #{productId} AND PRODUCT_SIZE = #{productSize}
+		SELECT MIN(BID_NO) as BID_NO, MIN(BID_PRICE) as BID_PRICE FROM BID WHERE BID_TYPE = #{bidType} AND PRODUCT_ID = #{productId} AND PRODUCT_SIZE = #{productSize} AND CLIENT_ID != #{clientId}
 	</select>
 </mapper>
+
+
