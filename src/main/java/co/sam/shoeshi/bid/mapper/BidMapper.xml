@@ -52,7 +52,14 @@
 		</selectKey>
 		INSERT INTO BID(BID_NO, PRODUCT_ID, BID_PRICE, BID_TYPE, CLIENT_ID, PRODUCT_SIZE)
 		VALUES(#{bidNo}, #{productId}, #{bidPrice}, #{bidType}, #{clientId}, #{productSize})
-
+	</insert>
+	<!-- <insert id="bidInsert"
+		parameterType="co.sam.shoeshi.bid.service.BidVO">
+		INSERT INTO BID(BID_NO, PRODUCT_ID, BID_PRICE, BID_TYPE,
+		CLIENT_ID, PRODUCT_SIZE)
+		VALUES(#{bidNo}, #{productId}, #{bidPrice},
+		#{bidType}, #{clientId}, #{productSize})
+	</insert> -->
 	<select id="searchSellPrice"
 		resultType="co.sam.shoeshi.common.CamelHashMap">
 		SELECT TO_CHAR(MAX(BID_PRICE),'999,999,999,999') AS SELL_PRICE FROM BID
@@ -71,13 +78,6 @@
 		
 	</select>
 
-	<insert id="bidInsert"
-		parameterType="co.sam.shoeshi.bid.service.BidVO">
-		INSERT INTO BID(BID_NO, PRODUCT_ID, BID_PRICE, BID_TYPE,
-		CLIENT_ID, PRODUCT_SIZE)
-		VALUES(#{bidNo}, #{productId}, #{bidPrice},
-		#{bidType}, #{clientId}, #{productSize})
-	</insert>
 
 	<update id="bidUpdate"
 		parameterType="co.sam.shoeshi.bid.service.BidVO">

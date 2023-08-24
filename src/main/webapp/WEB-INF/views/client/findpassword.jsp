@@ -22,7 +22,7 @@
 body {
 	font-family: 'Noto Sans KR', sans-serif;
 	font-size: 14px;
-	background-color: #f5f6f7;
+	background-color: #fff;
 	line-height: 1.5em;
 	color: #222;
 	margin: 0;
@@ -31,6 +31,19 @@ body {
 a {
 	text-decoration: none;
 	color: #222;
+}
+
+.ipradi{
+border-radius: 7px;
+}
+.telradi{
+border-top-left-radius: 7px;
+border-bottom-left-radius: 7px;
+}
+
+.btnradi{
+border-top-right-radius: 7px;
+border-bottom-right-radius: 7px;
 }
 
 /*member sign in*/
@@ -126,27 +139,27 @@ a {
 	<div class="member">
 		<!-- 2. 필드 -->
 		<div id="field">
-			<b>아이디</b> <input type="text">
+			<b>아이디</b> <input type="text" placeholder="아이디 입력" class="ipradi">
 		</div>
 
 		<div class="field">
-			<b>이름</b> <input type="text">
+			<b>이름</b> <input type="text" placeholder="이름 입력" class="ipradi">
 		</div>
 
 		<div class="field tel-number">
-			<b>휴대전화</b> <select>
+			<b>휴대전화</b> <!-- <select>
 				<option value="">대한민국 +82</option>
-			</select>
+			</select> -->
 			<div>
-				<input type="tel" placeholder="전화번호 입력"> <input
-					type="button" value="인증번호 받기">
+				<input type="tel" placeholder="전화번호 입력" class="telradi"> <input
+					type="button" value="인증번호 받기" class="btnradi">
 			</div>
-			<input type="number" placeholder="인증번호를 입력하세요">
+			<input type="number" placeholder="인증번호를 입력하세요" class="ipradi">
 		</div>
 
 
 		<!-- 6. 찾기 버튼 -->
-		<input type="submit" value="비밀번호 찾기">
+		<input type="submit" value="비밀번호 찾기" class="ipradi">
 	</div>
 
 </body>

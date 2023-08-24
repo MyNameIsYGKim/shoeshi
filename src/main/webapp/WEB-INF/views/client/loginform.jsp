@@ -1,137 +1,143 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>아이디 찾기</title>
+<link rel="icon" href="./images/images2/favicon.png">
+<link rel="stylesheet" href="./quiz07.css">
 <style type="text/css">
+@import
+	url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700&display=swap')
+	;
+
+* {
+	box-sizing: border-box; /*전체에 박스사이징*/
+	outline: none; /*focus 했을때 테두리 나오게 */
+}
+
+.mg100000 {
+	margin: 70px 0;
+}
+
+.ipradi {
+	border-radius: 7px;
+}
+
+.telradi {
+	border-top-left-radius: 7px;
+	border-bottom-left-radius: 7px;
+}
+
+.btnradi {
+	border-top-right-radius: 7px;
+	border-bottom-right-radius: 7px;
+}
+
 body {
-	background-color: #f5f6f7;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: 14px;
+	background-color: #fff;
+	line-height: 1.5em;
+	color: #222;
+	margin: 0;
 }
 
 a {
-	color: black;
 	text-decoration: none;
+	color: #222;
 }
 
-.main {
+/*member sign in*/
+.member {
+	width: 400px;
+	/* border: 1px solid #000; */
+	margin: auto; /*중앙 정렬*/
+	padding: 0 20px;
+	margin-bottom: 20px;
+}
+
+.member .field {
+	margin: 5px 0; /*상하로 좀 띄워주기*/
+}
+
+.member b {
+	/* border: 1px solid #000; */
+	display: block; /*수직 정렬하기 */
+	margin-bottom: 5px;
+}
+
+/*input 중 radio 는 width 가 100%면 안되니까 */
+.member input:not(input[type=radio]), .member select {
+	border: 1px solid #dadada;
+	padding: 10px;
+	width: 100%;
+	margin-bottom: 5px;
+}
+
+.member input[type=button], .member input[type=submit] {
+	background-color: #000000;
+	color: #fff
+}
+
+.member input:focus, .member select:focus {
+	border: 1px solid #2db400;
+	border-radius: 7px;
+}
+
+.field.birth div { /*field 이면서 birth*/
+	display: flex;
+	gap: 10px; /*간격 벌려줄때 공식처럼 사용핟나 */
+}
+
+/* .field.birth div > * {  gap 사용한거랑 같은 효과를 줌 
+    flex:1;
+} */
+.field.tel-number div {
+	display: flex;
+}
+
+.field.tel-number div input:nth-child(1) {
+	flex: 2;
+}
+
+.field.tel-number div input:nth-child(2) {
+	flex: 1;
+}
+
+.placehold-text {
+	display: block; /*span 으로 감싸서 크기영역을 블록요소로 만들어ㅜ저야한다*/
+	position: relative;
+	/* border: 1px solid #000; */
+}
+
+.placehold-text:before {
+	position: absolute; /*before은 inline 요소이기 때문에 span으로 감싸줌 */
+	right: 20px;
+	top: 13px;
+	pointer-events: none; /*자체가 가지고 있는 pointer event 를 없애준다 */
+}
+
+@media ( max-width :768px) {
+	.member {
+		width: 100%;
+	}
+}
+
+.info #info__id {
+	position: relative;
+}
+
+.searchpw-title {
 	text-align: center;
-	margin-top: 100px;
+	font-weight: bold;
 }
 
-/*언어설정*/
-.select-lang {
-	text-align: right;
-	padding-right: 10px;
-}
-/*네이버 로고설정*/
-.image {
-	height: 120px;
-	padding: 10px;
-	margin-bottom: 10px;
-}
-/*input 아이디박스*/
-.login-id-wrap {
-	margin: 0px 10px 20px 10px;
-	padding: 10px;
-	border: solid 1px #dadada;
-	background: #fff;
-}
-/*input 아이디 form*/
-.input-id {
-	border: none;
-	outline: none;
-	width: 100%;
-}
-/*input 패스워드박스*/
-.login-pw-wrap {
-	margin: 0px 10px 20px 10px;
-	padding: 10px;
-	border: solid 1px #dadada;
-	background: #fff;
-}
-/*input 패스워드 form*/
-.input-pw {
-	border: none;
-	outline: none;
-	width: 100%;
-}
-/*로그인버튼박스*/
-.login-btn-wrap {
-	height: 52px;
-	line-height: 55px;
-	margin: 0px 10px 30px 10px;
-	border: solid 1px rgba(0, 0, 0, .1);
-	background-color: #000;
-	color: #fff;
-	cursor: pointer;
-}
-/*로그인버튼*/
-.login-btn {
-	width: 100px;
-	height: 100%;
-	background-color: #000;
-	border: none;
-	color: #fff;
-	font-size: 1em;
-	outline: none;
-	cursor: pointer;
-}
-/*로그인 아래 박스*/
-.under-login {
-	height: 50px;
-	border-bottom: 1px solid gainsboro;
-	margin: 0px 10px 35px 10px;
-}
-/*로그인상태유지*/
-.stay-check {
-	margin-left: 7px;
-	float: left;
-}
-/*IP보안 표시X*/
-.ip-check {
-	display: none;
-}
-/*간편한 로그인 구역*/
-.easy-login-wrap {
-	height: 90px;
-	margin: 0px 10px 35px 10px;
-}
-/*간편한 로그인 텍스트*/
-.easy-login {
-	font-size: 20px;
-}
-/*QR & 일회용 로그인 박스 구역*/
-.easy-login-box {
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-}
-/*QR코드 로그인*/
-.qr-login {
-	float: left;
-	border: 1px solid #03c75a;
-	background-color: #fff;
-	margin: 0px 4px 0px 0px;
-	line-height: 55px;
-}
-/*일회용 번호 로그인*/
-.onetime-login {
-	float: right;
-	border: 1px solid #03c75a;
-	background-color: #fff;
-	margin: 0px 0px 0px 4px;
-	line-height: 55px;
-}
-/*찾기 및 회원가입*/
 .find-signup-wrap {
-	height: 100px;
-	grid-template-columns: 1fr 1fr 1fr;
-}
-/*찾기 및 회원가입 글자 희미하게 바꾸기*/
-.find-signup-wrap a {
-	color: rgb(150, 150, 150);
+	text-align: center;
 }
 /*아이디 찾기*/
 .find-id {
@@ -150,58 +156,24 @@ a {
 	margin: 3px;
 	font-size: 14px;
 }
-/*저작권 표시X*/
-/* footer {
-	display: none;
-} */
 
-/*가로 800px 이상일때*/
-@media ( min-width : 800px) {
-	.main {
-		width: 460px;
-		margin: 70px auto;
-	}
-
-	/*언어설정*/
-	.select-lang {
-		margin-top: 20px;
-		width: 550px;
-		padding-right: 10px;
-	}
-	/*네이버 로고설정*/
-	.image {
+.top-marg {
+	margin-top: 20px;
+}
+.image {
 		margin-top: 40px;
 		height: 100px;
 		padding: 0px 10px 0px;
 		margin-bottom: 30px;
 	}
-
-	/*IP보안 표시*/
-	.ip-check {
-		margin-right: 7px;
-		float: right;
-		display: block;
+	.par111{
+	text-align: center;
 	}
-
-	/*저작권 표시*/
-	/* footer {
-		display: block;
-	}  */
-	.par111 {
-		
-	}
-	/*.chi111 {
-		position: absolute;
-		top: 50%;
-		left: 50%;
-	} */
-}
 </style>
+
 </head>
 <body>
-	<div class="main">
-
-		<!--웹페이지 상단-->
+	<div class="mg100000">
 		<header>
 			<!--language select-->
 
@@ -212,27 +184,27 @@ a {
 					class="image par111"></a>
 			</div>
 		</header>
-
-		<!--로그인 부분-->
 		<form action="login.do" method="post">
 			<section class="login-wrap">
+				<div class="member">
+					<!-- 2. 필드 -->
+					<div class="field">
+						<b>아이디</b> <input type="text" class="ipradi" placeholder="아이디 입력"
+							id="clientId" name="clientId">
+					</div>
 
-				<div class="login-id-wrap">
-					<input placeholder="아이디" id="clientId" name="clientId" type="text" class="input-id" autofocus="autofocus"></input>
+					<div class="field tel-number">
+						<b>비밀번호</b> <input type="password" placeholder="비밀번호 입력"
+							id="clientPassword" name="clientPassword" class="ipradi">
+					</div>
+
+
+					<!-- 6. 찾기 버튼 -->
+					<div class="field ">
+						<input type="submit" value="로그인" class="ipradi top-marg">
+					</div>
 				</div>
-				<div class="login-pw-wrap">
-					<input placeholder="비밀번호" id="clientPassword" name="clientPassword" type="password" class="input-pw"></input>
-				</div>
-				<div class="login-btn-wrap">
-					<button class="login-btn" type="submit">로그인</button>
-				</div>
-
-
-
 			</section>
-
-
-			<!--class,PW 찾기 및 회원가입 부분-->
 			<section class="find-signup-wrap">
 
 				<span class="find-id"> <a href="findid.do">아이디 찾기</a>
@@ -242,8 +214,6 @@ a {
 
 			</section>
 		</form>
-
-
 	</div>
 </body>
 </html>

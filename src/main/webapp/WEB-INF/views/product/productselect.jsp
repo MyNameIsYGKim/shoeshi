@@ -180,63 +180,7 @@ ul.tabs li.current {
 
 
 
-							<div class="flex-w p-b-15">
-								<div class="table-wrap sizef ">
-
-									<ul class="tabs sizef bor999">
-										<li class="tab-link current size50 bor999" data-tab="tab-1">구매
-											입찰</li>
-										<li class="tab-link size50 bor999" data-tab="tab-2">판매 입찰</li>
-
-									</ul>
-
-									<div id="tab-1" class="tab-content current">
-										<table class="table" id="BUYTb">
-											<thead class="thead-dark">
-												<tr>
-													<th>수량</th>
-													<th>사이즈</th>
-													<th>구매 입찰가</th>
-												</tr>
-											</thead>
-											<tbody id="BUYTbody">
-
-												<c:forEach items="${bidList}" var="l">
-													<tr class="alert" role="alert">
-														<td></td>
-														<td></td>
-														<td></td>
-													</tr>
-												</c:forEach>
-
-											</tbody>
-
-										</table>
-									</div>
-									<div id="tab-2" class="tab-content">
-										<table class="table" id="SELLTb">
-											<thead class="thead-dark">
-												<tr>
-													<th>수량</th>
-													<th>사이즈</th>
-													<th>판매 입찰가</th>
-												</tr>
-											</thead>
-											<tbody id="SELLTbody">
-
-												<c:forEach items="${bidList}" var="l">
-													<tr class="alert" role="alert">
-														<td></td>
-														<td></td>
-														<td></td>
-													</tr>
-												</c:forEach>
-
-											</tbody>
-										</table>
-									</div>
-								</div>
-							</div>
+						
 							<div class="flex-w p-b-15">
 								<div class="table-wrap sizef ">
 
@@ -554,9 +498,7 @@ ul.tabs li.current {
 		}else{
 			document.getElementById('SELLPrice').innerHTML = '- 원';	
 		}
-		
-		console.log(datas.l);
-		
+						
 		// tbody에 data 추가
 		if(datas.l.length!=0){
 			document.getElementById(t+'Tbody').remove();
