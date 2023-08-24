@@ -24,11 +24,8 @@
 }
 
 body {
-	font-family: 'Noto Sans KR', sans-serif;
-	font-size: 14px;
-	background-color: #f5f6f7;
-	line-height: 1.5em;
-	color: #222;
+	background-color: #fff;
+	
 	margin: 0;
 }
 
@@ -44,6 +41,10 @@ a {
 	margin: auto; /*중앙 정렬*/
 	padding: 10px 20px 0 20px;
 	margin-bottom: 100px;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: 14px;
+	line-height: 1.5em;
+	color: #222;
 }
 
 .member .field {
@@ -62,6 +63,7 @@ a {
 	padding: 10px;
 	width: 100%;
 	margin-bottom: 5px;
+	border-radius: 7px;
 }
 
 .member input[type=button], .member input[type=submit], .member button[type=button]
