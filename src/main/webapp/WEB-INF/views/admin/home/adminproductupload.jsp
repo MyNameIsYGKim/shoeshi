@@ -45,9 +45,13 @@ form input[type="text"], form input[type="number"], form input[type="file"]
 	width: 700px;
 	margin: 0 auto;
 }
+
 .row2 {
 	margin-top: 20px;
 	margin-bottom: 20px;
+}
+.button-container {
+	border-radius: 5px;
 }
 </style>
 </head>
@@ -56,15 +60,11 @@ form input[type="text"], form input[type="number"], form input[type="file"]
 		<div class="row2">
 			<div class="row1">
 				<form method="post" class="formst">
-					<h1 style="text-align: center; font-weight: bold; margin-top: 20px;">제품 등록</h1>
+					<h1
+						style="text-align: center; font-weight: bold; margin-top: 20px;">제품
+						등록</h1>
 					<table>
 						<tbody>
-							<tr>
-								<td><label>제품 코드</label>
-									<div>
-										<input type="text" class="form-control" placeholder="제품 코드"></input>
-									</div></td>
-							</tr>
 							<tr>
 								<td><label>제조사</label><input type="text"
 									class="form-control" placeholder="제조사"></input></td>
@@ -83,7 +83,12 @@ form input[type="text"], form input[type="number"], form input[type="file"]
 							</tr>
 						</tbody>
 					</table>
-					<input type="submit" class="btn btn-primary pull-right" value="글쓰기">
+					<div>
+						<div class="button-container">
+							<button type="submit" class="btn btn-primary pull-right">제품
+								등록</button>
+						</div>
+					</div>
 				</form>
 			</div>
 		</div>
