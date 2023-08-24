@@ -2,7 +2,16 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="co.sam.shoeshi.deal.mapper.DealMapper">
 	<select id="dealSelectList" resultType="co.sam.shoeshi.deal.service.DealVO">
-		SELECT * FROM DEAL
+		SELECT * FROM DEAL WHERE DEAL_STATE = '도착'
+		<if test='key == "adminDealDate"'>AND DEAL_DATE LIKE '%'||#{AdminDealSearchValue}||'%'</if>
+		<if test='key == "adminDealProductId"'>AND PRODUCT_ID LIKE '%'||#{AdminDealSearchValue}||'%'</if>
+		<if test='key == "adminDealBuyer"'>AND DEAL_BUYER LIKE UPPER('%'||#{AdminDealSearchValue}||'%')
+			OR DEAL_BUYER LIKE LOWER('%'||#{AdminDealSearchValue}||'%')</if>
+		<if test='key == "adminDealSeller"'>AND DEAL_SELLER LIKE UPPER('%'||#{AdminDealSearchValue}||'%')
+			OR DEAL_SELLER LIKE LOWER('%'||#{AdminDealSearchValue}||'%')</if>
+		<if test='key == "adminDealState"'>AND DEAL_STATE LIKE '%'||#{AdminDealSearchValue}||'%'</if>
+		
+		ORDER BY DEAL_NO
 	</select>
 	
 	<select id="dealSelect" resultType="co.sam.shoeshi.deal.service.DealVO">
@@ -16,8 +25,8 @@
 	</select>
 	
 	<insert id="dealInsert" parameterType="co.sam.shoeshi.deal.service.DealVO">
-		INSERT INTO DEAL(DEAL_NO, DEAL_DATE, DEAL_STATE, DEAL_PRICE, DEAL_BUYER, DEAL_SELLER, PRODUCT_ID, PRODUCT_SIZE)
-		VALUES(#{dealNo}, #{dealDate}, #{dealState}, #{dealPrice}, #{dealBuyer}, #{dealSeller}, #{porductId}, #{productSize})
+		INSERT INTO DEAL(DEAL_NO, DEAL_DATE, DEAL_STATE, DEAL_PRICE, DEAL_BUYER, DEAL_SELLER, PRODUCT_ID, PRODUCT_SIZE, DEAL_COMENT)
+		VALUES(#{dealNo}, #{dealDate}, #{dealState}, #{dealPrice}, #{dealBuyer}, #{dealSeller}, #{porductId}, #{productSize}, ${dealComent})
 	</insert>
 	
 	<update id="dealUpdate" parameterType="co.sam.shoeshi.deal.service.DealVO">
@@ -31,6 +40,7 @@
 			<if test="dealSeller != null">DEAL_SELLER = #{dealSeller},</if>
 			<if test="productId != null">PRODUCT_ID = #{productId},</if>
 			<if test="productSize != null">PRODUCT_SIZE = #{productSize}</if>
+			<if test="dealComent != null">DEAL_COMENT = #{dealComent}</if>
 		</set>
 		WHERE DEAL_NO = #{dealNo}
 	</update>

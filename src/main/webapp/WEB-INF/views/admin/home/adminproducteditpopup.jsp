@@ -57,11 +57,12 @@
 	text-align: center;
 }
   .custom-button2 {
-    background-color: #0d6efd;
+    background-color: #717fe0;
     color: white;
     border: none;
     padding: 5px 10px;
     cursor: pointer;
+    border-radius: 5px;
   }
 
 </style>

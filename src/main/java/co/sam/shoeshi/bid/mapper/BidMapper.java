@@ -16,9 +16,11 @@ public interface BidMapper {
 	List<BidVO> bidSelectList(@Param("key") String key, @Param("val") String val);
 	List<BidVO> bidSelectB(BidVO vo);
 	List<BidVO> bidSelectS(BidVO vo);
-	
+
 	BidVO bidSelect(BidVO vo);
 	int bidInsert(BidVO vo);
 	int bidUpdate(BidVO vo);
 	int bidDelete(BidVO vo);
+	BidVO bidSelectSell(BidVO vo);
+	BidVO bidSelectBuy(BidVO vo);
 }

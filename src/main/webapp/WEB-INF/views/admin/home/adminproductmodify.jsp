@@ -62,7 +62,7 @@ form input[type="text"], form input[type="number"], form input[type="file"]
 				<tr>
 					<td><label>제품 코드</label>
 						<div>
-							<input type="text" class="form-control" placeholder="제품 코드"></input>
+							<input type="text" class="form-control" placeholder="제품 코드" readonly="readonly"></input>
 						</div></td>
 				</tr>
 				<tr>

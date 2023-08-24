@@ -69,6 +69,7 @@
 		
 	</select>
 	
+	
 	<select id="searchBuyPrice"
 		resultType="co.sam.shoeshi.common.CamelHashMap">
 		SELECT TO_CHAR(MIN(BID_PRICE),'999,999,999,999') AS BUY_PRICE FROM BID
@@ -79,8 +80,10 @@
 	</select>
 
 
+
 	<update id="bidUpdate"
 		parameterType="co.sam.shoeshi.bid.service.BidVO">
+
 		UPDATE BID
 		<set>
 			<!-- 한개만 있어도 무조건 콤마, 마지막거 제외 -->
@@ -98,5 +101,13 @@
 		parameterType="co.sam.shoeshi.bid.service.BidVO">
 		DELETE FROM BID WHERE BID_NO = #{bidNo}
 	</delete>
-
+	
+	<select id="bidSelectSell" resultType="co.sam.shoeshi.bid.service.BidVO">
+		SELECT BID_NO FROM BID WHERE BID_TYPE = #{bidType} AND PRODUCT_ID = #{productId} AND PRODUCT_SIZE = #{productSize}
+	</select>
+	<select id="bidSelectBuy" resultType="co.sam.shoeshi.bid.service.BidVO">
+		SELECT BID_NO FROM BID WHERE BID_TYPE = #{bidType} AND PRODUCT_ID = #{productId} AND PRODUCT_SIZE = #{productSize}
+	</select>
 </mapper>
+
+

@@ -5,7 +5,9 @@ import java.util.List;
 
 public interface ProductService {
 	List<ProductVO>	productSelectList();
-		
+
+	List<ProductVO>	productSelectList(String key, String AdminProductSearchValue);
+	
 	List<HashMap<String, Object>>productJoinSelectList();
 	List<HashMap<String, Object>>productJoinSearchList(String val);
 	List<HashMap<String, Object>>newProductList();
@@ -14,6 +16,5 @@ public interface ProductService {
 	int productInsert(ProductVO vo);
 	int productUpdate(ProductVO vo);
 	int productDelete(ProductVO vo);
-	List<ProductVO> productSelectList(String key, String val);
 	List<ProductVO> productSearchList(String key, String val);
 }
