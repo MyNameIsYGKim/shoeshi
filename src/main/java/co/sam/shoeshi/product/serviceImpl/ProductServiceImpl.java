@@ -60,4 +60,12 @@ public class ProductServiceImpl implements ProductService {
 	public List<ProductVO> productSelectList(String key, String val) {
 		return map.productSelectList(key, val);
 	}
+	@Override
+	public List<HashMap<String, Object>> newProductList() {
+		return map.newProductList();
+	}
+	@Override
+	public List<ProductVO> productSearchList(String key, String val) {
+		return map.productSearchList(key, val);
+	}
 }

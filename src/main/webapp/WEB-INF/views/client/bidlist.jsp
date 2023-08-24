@@ -27,8 +27,8 @@
 <tbody>
 <c:forEach items="${bidlists }" var="s"><!-- 멤버즈의 한 행을 엠으로 읽겠다 -->
 <tr>
-<td>${s.productId }</td>
-<td align="center">${s.bidPrice }</td>
+<td align="center">${s.productId }</td>
+<td>${s.bidPrice }</td>
 <td>${s.productSize }</td>
 </tr>
 <td colspan="6">
@@ -60,8 +60,8 @@
 <tbody>
 <c:forEach items="${bidlistb }" var="b"><!-- 멤버즈의 한 행을 엠으로 읽겠다 -->
 <tr>
-<td>${b.productId }</td>
-<td align="center">${b.bidPrice }</td>
+<td align="center">${b.productId }</td>
+<td>${b.bidPrice }</td>
 <td>${b.productSize }</td>
 </tr>
 <td colspan="3">

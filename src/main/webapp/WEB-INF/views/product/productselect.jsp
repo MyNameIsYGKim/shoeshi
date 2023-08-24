@@ -156,7 +156,7 @@ ul.tabs li.current {
 										<button id="BUYBtn"
 											class="flex-c-m stext-101 cl0 sizef bg1 bor999 hov-btn1 p-lr-15 trans-04"
 											onclick="typeB()">
-											<span id="BUYPrice"></span>&nbsp<span class="leftgo">구매</span>
+											<span id="BUYPrice"></span>&nbsp;<span class="leftgo"></span><span>구매</span>
 										</button>
 									</div>
 
@@ -164,7 +164,7 @@ ul.tabs li.current {
 										<button id="SELLBtn"
 											class="flex-c-m stext-101 cl0 bg10000 sizef bor999 hov-btn1 p-lr-15 trans-04"
 											onclick="typeS()">
-											<span id="SELLPrice"></span>&nbsp<span class="leftgo">판매</span>
+											<span id="SELLPrice"></span>&nbsp;<span class="leftgo">판매</span>
 										</button>
 
 									</div>
@@ -175,6 +175,7 @@ ul.tabs li.current {
 									<input type="hidden" id="bidType2" name="bidType2" value="" />
 									<!-- ///////////////제품번호 가져가기//////////////////// -->
 									<input name="productId" type="hidden" value="${p.productId}" />
+
 								</div>
 							</form>
 
@@ -203,9 +204,8 @@ ul.tabs li.current {
 
 												<c:forEach items="${bidList}" var="l">
 													<tr class="alert" role="alert">
-														<td></td>
-														<td></td>
-														<td></td>
+														<td class="tdc" colspan="4"></td>
+
 													</tr>
 												</c:forEach>
 
@@ -226,9 +226,8 @@ ul.tabs li.current {
 
 												<c:forEach items="${bidList}" var="l">
 													<tr class="alert" role="alert">
-														<td></td>
-														<td></td>
-														<td></td>
+														<td class="tdc" colspan="4"></td>
+
 													</tr>
 												</c:forEach>
 
@@ -554,9 +553,7 @@ ul.tabs li.current {
 		}else{
 			document.getElementById('SELLPrice').innerHTML = '- 원';	
 		}
-		
-		console.log(datas.l);
-		
+						
 		// tbody에 data 추가
 		if(datas.l.length!=0){
 			document.getElementById(t+'Tbody').remove();
@@ -595,7 +592,6 @@ function htmlViewNull(data,t) {
 		`
 	}
 	
-
 	</script>
 </body>
 </html>
