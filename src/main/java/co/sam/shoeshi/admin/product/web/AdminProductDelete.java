@@ -26,7 +26,7 @@ public class AdminProductDelete extends HttpServlet {
 		
 		vo.setProductId(Integer.valueOf(request.getParameter("productId")));
 		
-		String viewName = "admin/product/adminproductmessage";
+		String viewName = "home/message";
 		
 		int n = dao.productDelete(vo);
 		if(n==1) {

@@ -8,9 +8,16 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
+<<<<<<< HEAD
 .tdc {
 	text-align: center;
 }
+=======
+.tdc{
+text-align: center;
+}
+
+>>>>>>> branch 'master' of https://github.com/MyNameIsYGKim/shoeshi.git
 
 .leftgo {
 	position: relative;
@@ -155,7 +162,11 @@ ul.tabs li.current {
 										<button id="BUYBtn"
 											class="flex-c-m stext-101 cl0 sizef bg1 bor999 hov-btn1 p-lr-15 trans-04"
 											onclick="typeB()">
+<<<<<<< HEAD
 											<span id="BUYPrice"></span>&nbsp;<span class="leftgo"></span><span>구매</span>
+=======
+											<span id="BUYPrice"></span>&nbsp<span class="leftgo">구매</span>
+>>>>>>> branch 'master' of https://github.com/MyNameIsYGKim/shoeshi.git
 										</button>
 									</div>
 
@@ -163,7 +174,11 @@ ul.tabs li.current {
 										<button id="SELLBtn"
 											class="flex-c-m stext-101 cl0 bg10000 sizef bor999 hov-btn1 p-lr-15 trans-04"
 											onclick="typeS()">
+<<<<<<< HEAD
 											<span id="SELLPrice"></span>&nbsp;<span class="leftgo">판매</span>
+=======
+											<span id="SELLPrice"></span>&nbsp<span class="leftgo">판매</span>
+>>>>>>> branch 'master' of https://github.com/MyNameIsYGKim/shoeshi.git
 										</button>
 
 									</div>
@@ -180,6 +195,7 @@ ul.tabs li.current {
 
 
 
+						
 							<div class="flex-w p-b-15">
 								<div class="table-wrap sizef ">
 
@@ -204,7 +220,11 @@ ul.tabs li.current {
 												<c:forEach items="${bidList}" var="l">
 													<tr class="alert" role="alert">
 														<td class="tdc" colspan="4"></td>
+<<<<<<< HEAD
 
+=======
+														
+>>>>>>> branch 'master' of https://github.com/MyNameIsYGKim/shoeshi.git
 													</tr>
 												</c:forEach>
 
@@ -226,7 +246,11 @@ ul.tabs li.current {
 												<c:forEach items="${bidList}" var="l">
 													<tr class="alert" role="alert">
 														<td class="tdc" colspan="4"></td>
+<<<<<<< HEAD
 
+=======
+														
+>>>>>>> branch 'master' of https://github.com/MyNameIsYGKim/shoeshi.git
 													</tr>
 												</c:forEach>
 
@@ -339,7 +363,7 @@ ul.tabs li.current {
 									<!-- Review -->
 									<div class="flex-w flex-t p-b-68">
 										<div class="wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6">
-											<img src="images/avatar-01.jpg" alt="AVATAR">
+											<img src="coza/images/avatar-01.jpg" alt="AVATAR">
 										</div>
 
 										<div class="size-207">
@@ -536,6 +560,10 @@ function htmlViewNull(data,t) {
 		`
 	}
 	
+<<<<<<< HEAD
+=======
+
+>>>>>>> branch 'master' of https://github.com/MyNameIsYGKim/shoeshi.git
 	</script>
 </body>
 </html>

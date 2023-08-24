@@ -13,28 +13,28 @@ import co.sam.shoeshi.common.DataSource;
 public class BidServiceImpl implements BidService {
 	private SqlSession sqlSession = DataSource.getInstance().openSession(true);
 	private BidMapper map = sqlSession.getMapper(BidMapper.class);
-	
+
 	@Override
-	public
-	List<HashMap<String, Object>>bidSearchList(int productId,String type){
-		return map.bidSearchList(productId,type);
+	public List<HashMap<String, Object>> bidSearchList(int productId, String type) {
+		return map.bidSearchList(productId, type);
 	}
+
 	@Override
-	public
-	List<HashMap<String, Object>>bidSearchList(int productId, int size,String type){
+	public List<HashMap<String, Object>> bidSearchList(int productId, int size, String type) {
 		return map.bidSearchList(productId, size, type);
 	}
+
 	@Override
-	public
-	HashMap<String, Object>searchSellPrice(int productId,int size){
-		return map.searchSellPrice(productId,size);
+	public HashMap<String, Object> searchSellPrice(int productId, int size) {
+		return map.searchSellPrice(productId, size);
 	}
+
 	@Override
-	public
-	HashMap<String, Object>searchBuyPrice(int productId,int size){
-		return map.searchBuyPrice(productId,size);
+	public HashMap<String, Object> searchBuyPrice(int productId, int size) {
+		return map.searchBuyPrice(productId, size);
 	}
-	@Override
+
+
 	public List<BidVO> bidSelectList() {
 		return map.bidSelectList();
 	}
@@ -58,7 +58,7 @@ public class BidServiceImpl implements BidService {
 	public int bidDelete(BidVO vo) {
 		return map.bidDelete(vo);
 	}
-	
+
 	@Override
 	public List<BidVO> bidSelectB(BidVO vo) {
 		return map.bidSelectB(vo);
@@ -68,7 +68,6 @@ public class BidServiceImpl implements BidService {
 	public List<BidVO> bidSelectS(BidVO vo) {
 		return map.bidSelectS(vo);
 	}
-	
 	@Override
 	public List<BidVO> bidSelectList(String key, String val) {
 		return map.bidSelectList(key, val);

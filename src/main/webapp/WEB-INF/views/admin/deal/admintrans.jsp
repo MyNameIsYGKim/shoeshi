@@ -41,7 +41,6 @@
 </head>
 <body>
 	<div id="layoutSidenav">
-		<jsp:include page="../layout/sidebar.jsp" />
 		<div class="container bodymargin">
 			<h1 class="admintitle">거래 목록</h1>
 			<!-- partial -->
@@ -173,7 +172,6 @@
 												</tbody>
 												<!-- 더미 데이터 끝 -->
 											</table>
-											<jsp:include page="../layout/sidebar.jsp" />
 										</div>
 									</div>
 								</div>

@@ -26,7 +26,7 @@
 body {
 	font-family: 'Noto Sans KR', sans-serif;
 	font-size: 14px;
-	background-color: #f5f6f7;
+	background-color: #fff;
 	line-height: 1.5em;
 	color: #222;
 	margin: 0;
@@ -44,6 +44,7 @@ a {
 	margin: auto; /*중앙 정렬*/
 	padding: 10px 20px 0 20px;
 	margin-bottom: 100px;
+	
 }
 
 .member .field {
@@ -58,6 +59,7 @@ a {
 
 /*input 중 radio 는 width 가 100%면 안되니까 */
 .member input:not(input[type=radio]), .member select {
+border-radius: 7px;
 	border: 1px solid #dadada;
 	padding: 10px;
 	width: 100%;

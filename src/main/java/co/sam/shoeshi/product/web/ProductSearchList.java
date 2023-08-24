@@ -33,7 +33,7 @@ public class ProductSearchList extends HttpServlet {
 		products = dao.productJoinSearchList(val);
 		request.setAttribute("products", products);
 
-		String viewName = "product/productlist";
+		String viewName = "product/productsearchlist";
 		ViewResolve.forward(request, response, viewName);
 	}
 

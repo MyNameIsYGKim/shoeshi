@@ -1,4 +1,4 @@
-package co.sam.shoeshi.user.web;
+package co.sam.shoeshi.client.web;
 
 import java.io.IOException;
 

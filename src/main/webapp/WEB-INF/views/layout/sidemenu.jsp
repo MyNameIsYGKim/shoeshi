@@ -18,6 +18,7 @@
 	background-color: rgba(255, 255, 255, 0);
 	color: black;
 	position: fixed;
+	
 	top: 0;
 	left: 0;
 	height: 100%;
@@ -63,7 +64,7 @@
 <body>
 	<div>
 		<ul>
-			<li><a href="mypage.do"><h3>마이페이지</h3></a></li>
+			<li><a href="mypage.do"><h4>마이페이지</h4></a></li>
 			<li><a href="clienteditform.do">회원정보 수정</a></li>
 			<li><a href="paymenteditform.do">거래정보 수정</a></li>
 			<li><a href="deallist.do">거래내역</a></li>

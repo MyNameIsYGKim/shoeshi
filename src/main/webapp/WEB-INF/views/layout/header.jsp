@@ -30,6 +30,13 @@
 <link href="dist/css/bootstrap.min.css" rel="stylesheet">
 
 <style>
+header{
+font-family: 'Noto Sans KR', sans-serif;
+	font-size: 14px;
+	background-color: #fff;
+	line-height: 1.5em;
+}
+
 .bd-placeholder-img {
 	font-size: 1.125rem;
 	text-anchor: middle;
@@ -72,7 +79,7 @@
 
 
 	<div id="hd">
-		<h1 class="visually-hidden">Headers examples</h1>
+		
 		<!-- 요기 -->
 		<nav class="pyyy123">
 			<div class="container d-flex flex-wrap ">
@@ -86,7 +93,7 @@
 
 
 					<c:if test="${clientAuthor eq 'ADMIN'}">
-						<li><a class="nav-link px-2 fontw" href="#">관리자페이지</a></li>
+						<li><a class="nav-link px-2 fontw" href="adminhomepage.do">관리자페이지</a></li>
 					</c:if>
 					<c:if test="${empty clientId}">
 						<li class="nav-item"><a href="loginform.do"

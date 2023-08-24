@@ -22,7 +22,7 @@ public class AdminProductUpload extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String viewName = "admin/adminproductupload";
+		String viewName = "admin/home/adminproductupload";
 		ViewResolve.forward(request, response, viewName);
 	}
 
