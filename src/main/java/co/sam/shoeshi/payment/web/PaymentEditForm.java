@@ -26,7 +26,7 @@ public class PaymentEditForm extends HttpServlet {
 		HttpSession session = request.getSession();
 		PaymentVO vo = new PaymentVO();
 		PaymentService dao = new PaymentServiceImpl();
-		vo.setClientId((String)session.getAttribute("id"));
+		vo.setClientId((String)session.getAttribute("clientId"));
 		vo = dao.paymentSelect(vo);
 		request.setAttribute("pay", vo);
 		String viewName = "client/paymenteditform";

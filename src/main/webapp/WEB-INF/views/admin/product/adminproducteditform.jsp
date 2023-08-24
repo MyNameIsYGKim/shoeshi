@@ -9,7 +9,7 @@
 <body>
 	<div align="center">
 		<div>
-			<h1>제품 수정</h1>
+			<h1>물품 수정</h1>
 		</div>
 		<div>
 			<form id="frm" action="adminproductedit.do" method="post"
@@ -29,7 +29,7 @@
 								<tr>
 									<td align="center">
 										<input type="text" id="productId" name="productId"
-											value="${n.productId }">
+											value="${n.productId }" readonly="readonly">
 									</td>
 									<td>
 										<input type="text" id="productMaker" name="productMaker"
@@ -49,7 +49,7 @@
 					</div><br>
 					<div>
 						<input type="submit" value="수정">&nbsp;&nbsp;&nbsp;
-						<input type="reset" onclick="lcoation.href='adminproductedit.do'" value="취소">
+						<input type="reset" onclick="lcoation.href='adminproductmanage.do'" value="취소">
 					</div>
 					<input type="hidden" id="productId" name="productId" value="${n.productId }">
 				</div>

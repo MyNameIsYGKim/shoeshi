@@ -30,7 +30,7 @@ public class AdminClientList extends HttpServlet {
 		clients = dao.clientSelectList();
 		request.setAttribute("clients", clients);
 		
-		String viewName = "admin/client/adminclientlist";
+		String viewName = "admin/client/adminusermanage";
 		ViewResolve.forward(request, response, viewName);
 	}
 

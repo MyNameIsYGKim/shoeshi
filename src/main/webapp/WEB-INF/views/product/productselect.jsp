@@ -8,14 +8,64 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-.size45{
-  width: 46%;
-  margin: 0 5px;
- }
+.tdc{
+text-align: center;
+}
 
-.sizef{
-  width: 100%;
-  height: 45px;
+
+.leftgo {
+	position: relative;
+	right: 0;
+}
+
+.size45 {
+	width: 49%;
+	height: 100%;
+	margin: 0 auto;
+}
+
+.size50 {
+	width: 49%;
+	height: 100%;
+	margin: 0 auto;
+}
+
+.sizef {
+	width: 100%;
+	height: 45px;
+}
+
+ul.tabs {
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+	background: #ededed;
+	box-sizing: border-box;
+	font-weight: bold;
+}
+
+ul.tabs li {
+	background: #ededed;
+	color: #aaa;
+	display: inline-block;
+	padding: 10px 0px;
+	cursor: pointer;
+	text-align: center;
+}
+
+ul.tabs li.current {
+	background: #fff;
+	color: #222;
+	border: solid 1px #000;
+}
+
+.tab-content {
+	display: none;
+	padding: 15px;
+}
+
+.tab-content.current {
+	display: inherit;
 }
 </style>
 </head>
@@ -82,43 +132,169 @@
 						<!--  -->
 						<div class="p-t-33">
 							<div class="flex-w p-b-15">
-								<div class="size-216 flex-l-m respon6">사이즈</div>
-								<div class="size-217 respon6-next">
+								<div class="sizef respon6-next">
 									<div class="rs1-select2 bor8 bg0">
-										<select class="js-select2" name="time">
-											<option>모든 사이즈</option>
-											<option>260</option>
-											<option>270</option>
-											<option>280</option>
-											<option>290</option>
+										<select class="js-select2" name="size" id="size"
+											onchange="searchList('BUY')">
+											<option value="0">모든 사이즈</option>
+											<option value="260">260</option>
+											<option value="270">270</option>
+											<option value="280">280</option>
+											<option value="290">290</option>
 										</select>
 										<div class="dropDownSelect2"></div>
 									</div>
 								</div>
 							</div>
 
-							<div class="flex-w p-b-15">
-								<div class="size45">
 
-									<button
-										class="flex-c-m stext-101 cl0 sizef bg1 bor1 hov-btn1 p-lr-15 trans-04">
 
-										<span>1,200,000원</span><span>구매</span>
-									</button>
+
+							<form action="bidform.do" method="post">
+								<div class="flex-w p-b-15">
+									<div class="size45">
+										<button id="BUYBtn"
+											class="flex-c-m stext-101 cl0 sizef bg1 bor999 hov-btn1 p-lr-15 trans-04"
+											onclick="typeB()">
+											<span id="BUYPrice"></span>&nbsp;<span class="leftgo"></span><span>구매</span>
+										</button>
+									</div>
+
+									<div class="size45">
+										<button id="SELLBtn"
+											class="flex-c-m stext-101 cl0 bg10000 sizef bor999 hov-btn1 p-lr-15 trans-04"
+											onclick="typeS()">
+											<span id="SELLPrice"></span>&nbsp;<span class="leftgo">판매</span>
+										</button>
+
+									</div>
+
+									<!-- ///////////////입찰타입 설정하고 가져가기///////////////// -->
+									<input type="hidden" id="bidType" name="bidType" value="" />
+									<!-- ///////////////입찰타입 가져가서 페이지설정///////////////// -->
+									<input type="hidden" id="bidType2" name="bidType2" value="" />
+									<!-- ///////////////제품번호 가져가기//////////////////// -->
+									<input name="productId" type="hidden" value="${p.productId}" />
+
 								</div>
-								<div class="size45">
-									<button
-										class="flex-c-m stext-101 cl0 bg10000 sizef bor1 hov-btn1 p-lr-15 trans-04">
-										<span>1,300,000원</span><span>판매</span>
-									</button>
+							</form>
+
+
+
+							<div class="flex-w p-b-15">
+								<div class="table-wrap sizef ">
+
+									<ul class="tabs sizef bor999">
+										<li class="tab-link current size50 bor999" data-tab="tab-1">구매
+											입찰</li>
+										<li class="tab-link size50 bor999" data-tab="tab-2">판매 입찰</li>
+
+									</ul>
+
+									<div id="tab-1" class="tab-content current">
+										<table class="table" id="BUYTb">
+											<thead class="thead-dark">
+												<tr>
+													<th>수량</th>
+													<th>사이즈</th>
+													<th>구매 입찰가</th>
+												</tr>
+											</thead>
+											<tbody id="BUYTbody">
+
+												<c:forEach items="${bidList}" var="l">
+													<tr class="alert" role="alert">
+														<td class="tdc" colspan="4"></td>
+
+													</tr>
+												</c:forEach>
+
+											</tbody>
+
+										</table>
+									</div>
+									<div id="tab-2" class="tab-content">
+										<table class="table" id="SELLTb">
+											<thead class="thead-dark">
+												<tr>
+													<th>수량</th>
+													<th>사이즈</th>
+													<th>판매 입찰가</th>
+												</tr>
+											</thead>
+											<tbody id="SELLTbody">
+
+												<c:forEach items="${bidList}" var="l">
+													<tr class="alert" role="alert">
+														<td class="tdc" colspan="4"></td>
+
+													</tr>
+												</c:forEach>
+
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+							<div class="flex-w p-b-15">
+								<div class="table-wrap sizef ">
+
+									<ul class="tabs sizef bor999">
+										<li class="tab-link current size50 bor999" data-tab="tab-1">구매
+											입찰</li>
+										<li class="tab-link size50 bor999" data-tab="tab-2">판매 입찰</li>
+
+									</ul>
+
+									<div id="tab-1" class="tab-content current">
+										<table class="table" id="BUYTb">
+											<thead class="thead-dark">
+												<tr>
+													<th>수량</th>
+													<th>사이즈</th>
+													<th>구매 입찰가</th>
+												</tr>
+											</thead>
+											<tbody id="BUYTbody">
+
+												<c:forEach items="${bidList}" var="l">
+													<tr class="alert" role="alert">
+														<td class="tdc" colspan="4"></td>
+														
+													</tr>
+												</c:forEach>
+
+											</tbody>
+
+										</table>
+									</div>
+									<div id="tab-2" class="tab-content">
+										<table class="table" id="SELLTb">
+											<thead class="thead-dark">
+												<tr>
+													<th>수량</th>
+													<th>사이즈</th>
+													<th>판매 입찰가</th>
+												</tr>
+											</thead>
+											<tbody id="SELLTbody">
+
+												<c:forEach items="${bidList}" var="l">
+													<tr class="alert" role="alert">
+														<td class="tdc" colspan="4"></td>
+														
+													</tr>
+												</c:forEach>
+
+											</tbody>
+										</table>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 
 				</div>
-
-				<div></div>
 
 				<!--  -->
 				<div class="flex-w flex-m p-l-100 p-t-40 respon7">
@@ -143,7 +319,7 @@
 			</div>
 		</div>
 
-		</div>
+
 
 		<div class="bor10 m-t-50 p-t-43 p-b-40">
 			<!-- Tab01 -->
@@ -219,7 +395,7 @@
 									<!-- Review -->
 									<div class="flex-w flex-t p-b-68">
 										<div class="wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6">
-											<img src="images/avatar-01.jpg" alt="AVATAR">
+											<img src="coza/images/avatar-01.jpg" alt="AVATAR">
 										</div>
 
 										<div class="size-207">
@@ -297,5 +473,125 @@
 				class="stext-107 cl6 p-lr-25"> Categories: Jacket, Men </span>
 		</div>
 	</section>
+	<script type="text/javascript"
+		src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript">
+	
+	$(document).ready(function() {
+		let alertBid = "${alertBid}";
+		if(alertBid != ""){		
+		alert(alertBid);
+		alertBid = "";
+		}
+});
+
+		function typeS() {
+			document.getElementById("bidType").value = 'SELL';
+			document.getElementById("bidType2").value = '판매';
+		}
+
+		function typeB() {
+			document.getElementById("bidType").value = 'BUY';
+			document.getElementById("bidType2").value = '구매';
+		}
+
+		$(document).ready(function() {
+			searchList('BUY');
+			$('ul.tabs li').click(function() {
+			 var tab_id = $(this).attr('data-tab');
+
+				$('ul.tabs li').removeClass('current');
+				$('.tab-content').removeClass('current');
+
+				$(this).addClass('current');
+				$("#" + tab_id).addClass('current');
+			if(tab_id == 'tab-1'){
+				searchList('BUY');
+			}else{
+				searchList('SELL');
+			}
+			})
+				
+		})
+		
+		/*/////////////////////////에이작//////////////////////  */
+			function searchList(t) {
+		// ajax를 이용해서 검색결과를 화면에 출력
+		let pid = ${p.productId};
+		let size = document.getElementById("size").value;
+		let type = t;
+		let payload = "pid=" + pid + "&size=" + size + "&type=" + type;
+		
+		let url = "ajaxbidsearchlist.do";
+		
+		fetch(url, {
+			method:"POST",
+			headers:{"content-Type": "application/x-www-form-urlencoded",},
+			body: payload
+		}).then(response => response.json())
+		  .then(json => htmlConvert(json,t));
+	}
+	
+	function htmlConvert(datas,t) {
+		let type;
+		if(t=='SELL'){
+			type ='판매';
+		}else{
+			type ='구매';
+		}
+		
+		if(datas.b !=null){
+			var b = datas.b.buyPrice;
+			document.getElementById('BUYPrice').innerHTML = b+'원';			
+		}else{
+			document.getElementById('BUYPrice').innerHTML = '- 원';
+		}
+		
+		if(datas.s !=null){
+			var s = datas.s.sellPrice;
+			document.getElementById('SELLPrice').innerHTML = s+'원';			
+		}else{
+			document.getElementById('SELLPrice').innerHTML = '- 원';	
+		}
+						
+		// tbody에 data 추가
+		if(datas.l.length!=0){
+			document.getElementById(t+'Tbody').remove();
+			const tbody = document.createElement('tbody');
+			tbody.id = t+'Tbody';
+			tbody.innerHTML = datas.l.map(data => htmlView(data)).join('');
+			document.getElementById(t+'Tb').appendChild(tbody);
+		}else{
+			document.getElementById(t+'Tbody').innerHTML = type+ ' 입찰내역이 없습니다.';
+		}
+		
+		// table tbody 추가
+		
+		
+	}
+	
+	
+	function htmlView(data) {
+		
+		return `
+		<tr class="alert" role="alert">
+			<td>\${data.bCount}</td>
+			<td>\${data.productSize}</td>
+			<td>\${data.bidPrice}원</td>
+		</tr>
+		`
+	}
+	
+function htmlViewNull(data,t) {
+		
+		return `
+		<tr class="alert" role="alert">
+			<td cols="3">입찰 내역이 없습니다.</td>
+			
+		</tr>
+		`
+	}
+	
+	</script>
 </body>
 </html>

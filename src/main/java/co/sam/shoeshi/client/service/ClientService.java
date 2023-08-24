@@ -4,6 +4,7 @@ import java.util.List;
 
 public interface ClientService {
 List<ClientVO> clientSelectList();
+List<ClientVO> clientSelectList(String key, String clientSearchVal);
 ClientVO clientIdFind(ClientVO vo);
 ClientVO clientSelect(ClientVO vo);
 int clientInsert(ClientVO vo);

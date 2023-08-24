@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="co.sam.shoeshi.product.mapper.ProductMapper">
-	<select id="productSelectList" resultType="co.sam.shoeshi.product.service.ProductVO">
+	<select id="productSelectList"
+		resultType="co.sam.shoeshi.product.service.ProductVO">
 		SELECT * FROM PRODUCT
 		<if test='key == "id"'>WHERE PRODUCT_ID LIKE '%'||#{val}||'%'</if>
-		<if test='key == "maker"'>WHERE PRODUCT_MAKER LIKE '%'||#{val}||'%'</if>
+		<if test='key == "maker"'>WHERE PRODUCT_MAKER LIKE LOWER('%'||#{val}||'%')
+			OR PRODUCT_MAKER LIKE UPPER('%'||#{val}||'%')</if>
 		<if test='key == "name"'>WHERE PRODUCT_NAME LIKE '%'||#{val}||'%'</if>
 		ORDER BY PRODUCT_ID
 	</select>
@@ -42,6 +44,18 @@
 		I.PRODUCTIMG_NAME2, I.PRODUCTIMG_NAME3
 		FROM PRODUCTIMG I RIGHT OUTER JOIN PRODUCT P
 		ON P.PRODUCT_ID = I.PRODUCT_ID
+
+	</select>
+	
+	<select id="newProductList"
+		resultType="co.sam.shoeshi.common.CamelHashMap">
+		SELECT * FROM
+        (SELECT P.*, I.PRODUCTIMG_PATH, I.PRODUCTIMG_NAME1,
+		I.PRODUCTIMG_NAME2, I.PRODUCTIMG_NAME3
+		FROM PRODUCTIMG I RIGHT OUTER JOIN PRODUCT P
+		ON P.PRODUCT_ID = I.PRODUCT_ID
+		ORDER BY P.PRODUCT_ID DESC)
+        <![CDATA[ WHERE ROWNUM < 9 ]]>
 
 	</select>
 

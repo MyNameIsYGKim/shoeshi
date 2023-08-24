@@ -122,25 +122,99 @@ divstyle2 {
 								</div>
 							</div>
 						</div>
-						<div class="buttontest">
-							<div>
-								<div class="button2"
-									OnClick="location.href ='admintranschange.do'"
-									style="cursor: pointer;">
-									<h4 class="textstyle">
-										거래 목록 <i class="mdi mdi-bookmark-outline mdi-24px float-right"></i>
-									</h4>
-								</div>
+
+					</div>
+					<div class="buttontest">
+						<div>
+							<div class="button2" OnClick="location.href ='admindealmanage.do'"
+								style="cursor: pointer;">
+								<h4 class="textstyle">
+									거래 목록 <i class="mdi mdi-bookmark-outline mdi-24px float-right"></i>
+								</h4>
+
 							</div>
 						</div>
-						<div class="buttontest">
-							<div>
-								<div class="button3"
-									OnClick="location.href ='adminusermanage.do'"
-									style="cursor: pointer;">
-									<h4 class="textstyle">
-										회원목록 <i class="mdi mdi-diamond mdi-24px float-right"></i>
-									</h4>
+					</div>
+					<div class="buttontest">
+						<div>
+							<div class="button3"
+								OnClick="location.href ='adminclientlist.do'"
+								style="cursor: pointer;">
+								<h4 class="textstyle">
+									회원목록 <i class="mdi mdi-diamond mdi-24px float-right"></i>
+								</h4>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row" style="margin-top: 5px; margin-bottom: 5px;">
+					<div class="col-12 grid-margin">
+						<div class="card">
+							<div class="card-body">
+								<h4 style="font-weight: bold; text-align: center;">물품 검수</h4>
+								<div>
+									<table class="table tableset">
+										<thead>
+											<tr>
+												<th>상품</th>
+												<th>상품명</th>
+												<th>판매자</th>
+												<th>구매자</th>
+												<th>날짜</th>
+												<th>검수</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>imege</td>
+												<td>product</td>
+												<td>판매자</td>
+												<td>구매자</td>
+												<td>날짜</td>
+												<td>
+													<button class="buttonhap">합격</button>
+													<button class="buttonbull">불합격</button>
+													<button class="buttonboru">보류</button>
+												</td>
+											</tr>
+											<tr>
+												<td>imege</td>
+												<td>product</td>
+												<td>판매자</td>
+												<td>구매자</td>
+												<td>날짜</td>
+												<td>
+													<button class="buttonhap">합격</button>
+													<button class="buttonbull">불합격</button>
+													<button class="buttonboru">보류</button>
+												</td>
+											</tr>
+											<tr>
+												<td>imege</td>
+												<td>product</td>
+												<td>판매자</td>
+												<td>구매자</td>
+												<td>날짜</td>
+												<td>
+													<button class="buttonhap">합격</button>
+													<button class="buttonbull">불합격</button>
+													<button class="buttonboru">보류</button>
+												</td>
+											</tr>
+											<tr>
+												<td>imege</td>
+												<td>product</td>
+												<td>판매자</td>
+												<td>구매자</td>
+												<td>날짜</td>
+												<td>
+													<button class="buttonhap">합격</button>
+													<button class="buttonbull">불합격</button>
+													<button class="buttonboru">보류</button>
+												</td>
+											</tr>
+										</tbody>
+									</table>
 								</div>
 							</div>
 						</div>

@@ -3,7 +3,7 @@
 <mapper namespace="co.sam.shoeshi.bid.mapper.BidMapper">
 	<select id="bidSelectList" resultType="co.sam.shoeshi.bid.service.BidVO">
 		SELECT * FROM BID
-		<if test='key == "bidNo"'>WHERE BID_NO LIKE '%'||#{val}||'%'</if>
+				<if test='key == "bidNo"'>WHERE BID_NO LIKE '%'||#{val}||'%'</if>
 		<if test='key == "productId"'>WHERE PRODUCT_ID LIKE '%'||#{val}||'%'</if>
 		<if test='key == "bidType"'>WHERE BID_TYPE LIKE '%'||#{val}||'%'</if>
 		<if test='key == "clientId"'>WHERE CLIENT_ID LIKE '%'||#{val}||'%'</if>
@@ -16,11 +16,59 @@
 			AND CLIENT_ID = #{clientId}
 		</if>
 	</select>
+		<select id="bidSelectB" resultType="co.sam.shoeshi.bid.service.BidVO">
+		SELECT * FROM BID WHERE CLIENT_ID = #{clientId} AND BID_TYPE = 'BUY'
+	</select>
+	<select id="bidSelectS" resultType="co.sam.shoeshi.bid.service.BidVO">
+		SELECT * FROM BID WHERE CLIENT_ID = #{clientId}  AND BID_TYPE = 'SELL'
+	</select>
+	
+		<select id="bidSearchList"
+		resultType="co.sam.shoeshi.common.CamelHashMap">
+		
+		SELECT * FROM
+		(SELECT COUNT(*)as B_COUNT, PRODUCT_SIZE , TO_CHAR (BID_PRICE,'999,999,999,999') as BID_PRICE
+		FROM
+		BID
+		WHERE PRODUCT_ID = #{pid}
+		AND BID_TYPE = #{type}
+		<if test='size != 0'>AND PRODUCT_SIZE = #{size}</if>
+		GROUP BY PRODUCT_SIZE,BID_PRICE
+		<if test='type == "BUY"'>ORDER BY BID_PRICE DESC</if>
+		<if test='type == "SELL"'>ORDER BY BID_PRICE ASC</if>
+		)
+ 		<![CDATA[ WHERE ROWNUM < 6 ]]>
+
+	</select>
 	
 	<insert id="bidInsert" parameterType="co.sam.shoeshi.bid.service.BidVO">
+			<selectKey resultType="int" keyProperty="bidNo"
+			order="BEFORE">
+			SELECT CASE WHEN MAX(BID_NO) IS NULL THEN 1
+			ELSE
+			MAX(BID_NO) + 1 END AS BID_NO FROM BID
+		</selectKey>
 		INSERT INTO BID(BID_NO, PRODUCT_ID, BID_PRICE, BID_TYPE, CLIENT_ID, PRODUCT_SIZE)
 		VALUES(#{bidNo}, #{productId}, #{bidPrice}, #{bidType}, #{clientId}, #{productSize})
 	</insert>
+	
+	<select id="searchSellPrice"
+		resultType="co.sam.shoeshi.common.CamelHashMap">
+		SELECT TO_CHAR(MAX(BID_PRICE),'999,999,999,999') AS SELL_PRICE FROM BID
+		WHERE PRODUCT_ID = #{pid}
+		AND BID_TYPE='BUY'
+		<if test='size != 0'>AND PRODUCT_SIZE = #{size}</if>
+		
+	</select>
+	
+	<select id="searchBuyPrice"
+		resultType="co.sam.shoeshi.common.CamelHashMap">
+		SELECT TO_CHAR(MIN(BID_PRICE),'999,999,999,999') AS BUY_PRICE FROM BID
+		WHERE PRODUCT_ID = #{pid}
+		AND BID_TYPE='SELL'
+		<if test='size != 0'>AND PRODUCT_SIZE = #{size}</if>
+		
+	</select>
 	
 	<update id="bidUpdate" parameterType="co.sam.shoeshi.bid.service.BidVO">
 		UPDATE BID
@@ -39,7 +87,13 @@
 	<delete id="bidDelete" parameterType="co.sam.shoeshi.bid.service.BidVO">
 		DELETE FROM BID WHERE BID_NO = #{bidNo}
 	</delete>
-
+	
+	<select id="bidSelectSell" resultType="co.sam.shoeshi.bid.service.BidVO">
+		SELECT BID_NO FROM BID WHERE BID_TYPE = #{bidType} AND PRODUCT_ID = #{productId} AND PRODUCT_SIZE = #{productSize}
+	</select>
+	<select id="bidSelectBuy" resultType="co.sam.shoeshi.bid.service.BidVO">
+		SELECT BID_NO FROM BID WHERE BID_TYPE = #{bidType} AND PRODUCT_ID = #{productId} AND PRODUCT_SIZE = #{productSize}
+	</select>
 </mapper>
 
 

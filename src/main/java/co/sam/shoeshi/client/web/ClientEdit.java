@@ -28,10 +28,13 @@ public class ClientEdit extends HttpServlet {
 		HttpSession session = request.getSession();
 		request.setCharacterEncoding("UTF-8");
 		
-		vo.setClientId((String) session.getAttribute("id"));
+		vo.setClientId((String) session.getAttribute("clientId"));
 		vo.setClientPassword(request.getParameter("clientPassword"));
 		vo.setClientAddress(request.getParameter("clientAddress"));
 		vo.setClientTel(request.getParameter("clientTel"));
+		session.setAttribute("clientPassword", vo.getClientPassword());
+		session.setAttribute("clientAddress", vo.getClientAddress());
+		session.setAttribute("clientTel", vo.getClientTel());
 
 		int n = dao.clientUpdate(vo);
 		if (n == 0) {

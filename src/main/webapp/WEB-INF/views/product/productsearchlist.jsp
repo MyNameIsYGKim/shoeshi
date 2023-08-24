@@ -8,11 +8,16 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+<style type="text/css">
+a {
+	text-decoration: none;
+}
+</style>
 <body>
 	<section class="bg0 p-t-23 p-b-140">
 		<div class="container">
 			<div class="p-b-10">
-				<h3 class="ltext-103 cl5">Product Overview</h3>
+				<h3 class="ltext-103 cl5">검색 결과</h3>
 			</div>
 
 			<div class="row isotope-grid">
@@ -29,8 +34,8 @@
 
 							<div class="block2-txt flex-w flex-t p-t-14">
 								<div class="block2-txt-child1 flex-col-l ">
-									<a href="#"
-										class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6"> <!-- 제조사 -->${p.productMaker}
+									<a href="#" onclick="searchMakerList(${p.productMaker})"
+										class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">${p.productMaker}
 									</a> <a
 										class="move stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6"
 										href ="#" onclick="selectProduct(${p.productId})"> ${p.productName}</a>
@@ -59,7 +64,7 @@
 			<!-- Load more -->
 
 			<div class="flex-c-m flex-w w-full p-t-45">
-				<a href="#"
+				<a href="productlist.do"
 					class="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04">
 					더보기 </a>
 			</div>
@@ -68,12 +73,21 @@
 			<form id="frm" action="productselect.do" method="get">
 				<input type="hidden" id="productId" name="productId">
 			</form>
+			<form id="makerform" action="productsearchlist.do" method="get">
+				<input type="hidden" id="maker" name="maker">
+			</form>
 		</div>
 	</section>
 	<script type="text/javascript">
 		function selectProduct(p) {
 			document.getElementById("productId").value = p;
 			document.getElementById("frm").submit();
+		}
+		function searchMakerList(m) {
+			document.getElementById("maker").value = m;
+			document.getElementById("makerform").submit();
+			var input = document.getElementById("maker");
+			input = null;
 		}
 	</script>
 </body>
