@@ -38,7 +38,7 @@
 	margin-bottom: 10px;
 }
 
-#val {
+#AdminProductSearchValue {
 	border: 1px solid gray;
 	border-radius: 3px;
 	display: inline;
@@ -72,11 +72,11 @@
 							<div class="formbox" align="center">
 								<form id="frm" method="post" enctype="multipart/form-data">
 									<select id="key" name="key">
-										<option value="id">ID</option>
-										<option value="maker">Maker</option>
-										<option value="name">Name</option>
+										<option value="adminProductId">ID</option>
+										<option value="adminProductMaker">Maker</option>
+										<option value="adminProductName">Name</option>
 									</select>
-									<input type="text" id="val" name="val" size="30">
+									<input type="text" id="AdminProductSearchValue" name="AdminProductSearchValue" size="30">
 									<input type="button" onclick="searchList()" value="검색"
 										class="searchbtn" onmouseover="this.style.background='gray'"
 										onmouseout="this.style.background='#FAFAFA'">
@@ -106,8 +106,8 @@
 													<td>${n.productName }</td>
 													<td>${n.productPrice }</td>
 													<td>
-														<button type="button" class="producteditbtn"
-															onclick="productUpdate('E')"
+														<button type="button" id="producteditbtn" class="producteditbtn"
+															onclick="selectProduct(${n.productId})"
 															onmouseover="this.style.background='gray'"
 															onmouseout="this.style.background='#FAFAFA'">
 															수정</button>
@@ -129,10 +129,10 @@
 									<!-- 더미 데이터 끝 -->
 								</table>
 							</div>
+							<br>
 							<div>
-								<form id="productfrm" method="post">
-									<input type="hidden" id="productId" name="productId"
-										value="${n.productId }">
+								<form id="productfrm" action="adminproducteditform.do" method="post">
+									<input type="hidden" id="productId" name="productId">
 								</form>
 							</div>
 						</div>
@@ -144,13 +144,60 @@
 		</div>
 	</div>
 	<script type="text/javascript">
-		function productUpdate(str){
-			if(str =='E'){
-				document.getElementById("productfrm").action = "adminproducteditform.do";
-			}else if(str=='D'){
-				document.getElementById("productfrm").action = "adminproductdelete.do";
-			}document.getElementById("frm").submit();
-		}
+	
+	function selectProduct(n) {
+		document.getElementById("productId").value = n;
+		document.getElementById("productfrm").submit();
+	}
+	
+	function searchList(){
+		let key = document.getElementById("key").value;
+		let AdminProductSearchValue = document.getElementById("AdminProductSearchValue").value;
+		let payload = "key="+key+"&AdminProductSearchValue="+AdminProductSearchValue;
+		let url = "adminajaxproductsearch.do";
+		
+		fetch(url, {
+			method: "POST",
+			headers:{
+				"Content-Type": "application/x-www-form-urlencoded",
+			},
+			body: payload
+		})	.then(response => response.json())
+			.then(json => htmlConvert(json));
+	}
+	
+	function htmlConvert(datas){
+		document.querySelector('tbody').remove();
+		const tbody = document.createElement('tbody');
+		// tbody에 data추가
+		tbody.innerHTML = datas.map(data => htmlView(data)).join('');
+		// table에 tbody추가
+		document.querySelector('table').appendChild(tbody);
+	}
+	
+	function htmlView(data){
+		return `
+				<tr onclick="selectProduct(\${data.productId })">
+		
+					<td>\${data.productId }</td>
+					<td>\${data.productMaker }</td>
+					<td>\${data.productName }</td>
+					<td>\${data.productPrice }</td>
+					<td>
+					<button type="button" class="producteditbtn"
+						onclick="productUpdate('E')"
+						onmouseover="this.style.background='gray'"
+						onmouseout="this.style.background='#FAFAFA'">
+						수정</button>
+					<button type="button" class="productdeletebtn"
+						onclick="productUpdate('D')"
+						onmouseover="this.style.background='gray'"
+						onmouseout="this.style.background='#FAFAFA'">
+						삭제</button>
+					</td>
+				</tr>
+		`
+	}
 	</script>
 </body>
 </html>

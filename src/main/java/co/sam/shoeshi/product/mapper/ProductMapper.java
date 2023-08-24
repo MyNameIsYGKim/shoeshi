@@ -9,7 +9,7 @@ import co.sam.shoeshi.product.service.ProductVO;
 
 public interface ProductMapper {
 	List<ProductVO>	productSelectList();
-	List<ProductVO>	productSelectList(@Param("key") String key, @Param("val") String val);
+	List<ProductVO>	productSelectList(@Param("key") String key, @Param("AdminProductSearchValue") String AdminProductSearchValue);
 	
 	List<HashMap<String, Object>>productJoinSelectList();
 	List<HashMap<String, Object>>productJoinSearchList(String val);

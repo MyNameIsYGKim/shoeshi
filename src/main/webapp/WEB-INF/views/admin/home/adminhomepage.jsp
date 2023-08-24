@@ -155,7 +155,7 @@ divstyle2 {
 					</div>
 					<div class="buttontest">
 						<div>
-							<div class="button2" OnClick="location.href ='admintrans.do'"
+							<div class="button2" OnClick="location.href ='admindealmanage.do'"
 								style="cursor: pointer;">
 								<h4 class="textstyle">
 									거래 목록 <i class="mdi mdi-bookmark-outline mdi-24px float-right"></i>
