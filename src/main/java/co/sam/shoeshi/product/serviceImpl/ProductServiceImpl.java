@@ -57,8 +57,8 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public List<ProductVO> productSelectList(String key, String val) {
-		return map.productSelectList(key, val);
+	public List<ProductVO> productSelectList(String key, String AdminProductSearchValue) {
+		return map.productSelectList(key, AdminProductSearchValue);
 	}
 	@Override
 	public List<HashMap<String, Object>> newProductList() {

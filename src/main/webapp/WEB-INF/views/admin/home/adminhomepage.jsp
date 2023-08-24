@@ -151,14 +151,14 @@ divstyle2 {
 								</div>
 							</div>
 						</div>
-						<div class="buttontest">
-							<div>
-								<div class="button2" OnClick="location.href ='admintranschange.do'"
-									style="cursor: pointer;">
-									<h4 class="textstyle">
-										거래 목록 <i class="mdi mdi-bookmark-outline mdi-24px float-right"></i>
-									</h4>
-								</div>
+					</div>
+					<div class="buttontest">
+						<div>
+							<div class="button2" OnClick="location.href ='admindealmanage.do'"
+								style="cursor: pointer;">
+								<h4 class="textstyle">
+									거래 목록 <i class="mdi mdi-bookmark-outline mdi-24px float-right"></i>
+								</h4>
 							</div>
 						</div>
 					</div>

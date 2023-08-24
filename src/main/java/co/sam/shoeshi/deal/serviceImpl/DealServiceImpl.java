@@ -48,4 +48,9 @@ public class DealServiceImpl implements DealService {
 		return map.dealSelectS(vo);
 	}
 
+	@Override
+	public List<DealVO> dealSelectList(String key, String AdminDealSearchValue) {
+		return map.dealSelectList(key, AdminDealSearchValue);
+	}
+
 }
