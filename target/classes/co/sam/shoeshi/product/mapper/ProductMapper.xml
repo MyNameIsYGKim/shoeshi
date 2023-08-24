@@ -45,6 +45,18 @@
 		ON P.PRODUCT_ID = I.PRODUCT_ID
 
 	</select>
+	
+	<select id="newProductList"
+		resultType="co.sam.shoeshi.common.CamelHashMap">
+		SELECT * FROM
+        (SELECT P.*, I.PRODUCTIMG_PATH, I.PRODUCTIMG_NAME1,
+		I.PRODUCTIMG_NAME2, I.PRODUCTIMG_NAME3
+		FROM PRODUCTIMG I RIGHT OUTER JOIN PRODUCT P
+		ON P.PRODUCT_ID = I.PRODUCT_ID
+		ORDER BY P.PRODUCT_ID DESC)
+        <![CDATA[ WHERE ROWNUM < 9 ]]>
+
+	</select>
 
 	<select id="productJoinSearchList"
 		resultType="co.sam.shoeshi.common.CamelHashMap">

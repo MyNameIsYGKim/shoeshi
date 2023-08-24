@@ -7,12 +7,17 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+a {
+	text-decoration: none;
+}
+</style>
 </head>
 <body>
 	<section class="bg0 p-t-23 p-b-140">
 		<div class="container">
 			<div class="p-b-10">
-				<h3 class="ltext-103 cl5">Product Overview</h3>
+				<h3 class="ltext-103 cl5">전체 보기</h3>
 			</div>
 
 			<div class="row isotope-grid">
@@ -58,15 +63,18 @@
 
 			<!-- Load more -->
 
-			<div class="flex-c-m flex-w w-full p-t-45">
+			<!-- <div class="flex-c-m flex-w w-full p-t-45">
 				<a href="productlist.do"
 					class="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04">
 					더보기 </a>
-			</div>
+			</div> -->
 		</div>
 		<div>
 			<form id="frm" action="productselect.do" method="get">
 				<input type="hidden" id="productId" name="productId">
+			</form>
+			<form id="makerform" action="productsearchlist.do" method="get">
+				<input type="hidden" id="maker" name="maker">
 			</form>
 		</div>
 	</section>
@@ -74,6 +82,12 @@
 		function selectProduct(p) {
 			document.getElementById("productId").value = p;
 			document.getElementById("frm").submit();
+		}
+		function searchMakerList(m) {
+			document.getElementById("maker").value = m;
+			document.getElementById("makerform").submit();
+			var input = document.getElementById("maker");
+			input = null;
 		}
 	</script>
 </body>

@@ -31,6 +31,7 @@ public class AjaxBidSearchList extends HttpServlet {
 		List<HashMap<String, Object>> bidList = new ArrayList<>();
 		HashMap<String, Object> sPrice = new HashMap<String, Object>();
 		HashMap<String, Object> bPrice = new HashMap<String, Object>();
+		HashMap<String, Object> bidData = new HashMap<String, Object>();
 		int pid = Integer.valueOf(request.getParameter("pid"));
 		int size = Integer.valueOf(request.getParameter("size"));
 		String type = request.getParameter("type");
@@ -39,16 +40,21 @@ public class AjaxBidSearchList extends HttpServlet {
 		
 		bPrice = dao.searchBuyPrice(pid, size);
 		sPrice = dao.searchSellPrice(pid, size);
+		
 		if(bPrice!=null) {
-			bidList.add(bPrice);
+			bidData.put("b",bPrice);
 		}
 		if(sPrice!=null) {
-			bidList.add(sPrice);
+			bidData.put("s",sPrice);
 		}
+		if(bidList!=null) {
+			bidData.put("l",bidList);
+		}
+		
 				
 		ObjectMapper ObjectMapper = new ObjectMapper();
 				
-		String data = ObjectMapper.writeValueAsString(bidList);
+		String data = ObjectMapper.writeValueAsString(bidData);
 		
 		
 		System.out.println(data);

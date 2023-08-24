@@ -28,6 +28,10 @@ public class ProductServiceImpl implements ProductService {
 	}
 	
 	@Override
+	public List<HashMap<String, Object>>newProductList(){
+		return map.newProductList();
+	}
+	@Override
 	public HashMap<String, Object>productJoinSelect(ProductVO vo){
 	return map.productJoinSelect(vo);
 	}
