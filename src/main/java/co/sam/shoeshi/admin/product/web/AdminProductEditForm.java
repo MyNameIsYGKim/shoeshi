@@ -27,7 +27,7 @@ public class AdminProductEditForm extends HttpServlet {
 		vo.setProductId(Integer.valueOf(request.getParameter("productId")));
 		vo = dao.productSelect(vo);
 		request.setAttribute("n", vo);
-		String viewName = "admin/product/adminproducteditform";
+		String viewName = "admin/product/adminproductmodify";
 		ViewResolve.forward(request, response, viewName);
 	}
 

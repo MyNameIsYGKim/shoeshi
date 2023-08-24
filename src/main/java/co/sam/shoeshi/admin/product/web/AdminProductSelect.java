@@ -29,7 +29,7 @@ public class AdminProductSelect extends HttpServlet {
 		vo = dao.productSelect(vo);
 		
 		request.setAttribute("n", vo);
-		String viewName = "admin/product/adminproductselect";
+		String viewName = "admin/product/adminproductmodify";
 		
 		ViewResolve.forward(request, response, viewName);
 	}

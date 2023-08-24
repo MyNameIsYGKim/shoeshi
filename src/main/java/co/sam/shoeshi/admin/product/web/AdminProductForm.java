@@ -18,7 +18,7 @@ public class AdminProductForm extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String viewName = "admin/product/adminproductinsert";
+		String viewName = "admin/product/adminproductupload";
 		ViewResolve.forward(request, response, viewName);
 	}
 

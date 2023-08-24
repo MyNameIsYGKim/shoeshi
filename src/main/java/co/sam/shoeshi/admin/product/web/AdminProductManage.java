@@ -1,4 +1,4 @@
-package co.sam.shoeshi.admin.web;
+package co.sam.shoeshi.admin.product.web;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -30,7 +30,7 @@ public class AdminProductManage extends HttpServlet {
 		products = dao.productSelectList();
 		request.setAttribute("products", products);
 		
-		String viewName = "admin/product/adminproductmanage2";
+		String viewName = "admin/product/adminproductmanage";
 		ViewResolve.forward(request, response, viewName);
 	}
 

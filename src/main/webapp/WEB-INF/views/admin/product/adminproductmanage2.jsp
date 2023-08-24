@@ -110,12 +110,7 @@
 															onclick="selectProduct(${n.productId})"
 															onmouseover="this.style.background='gray'"
 															onmouseout="this.style.background='#FAFAFA'">
-															수정</button>
-														<button type="button" class="productdeletebtn"
-															onclick="productUpdate('D')"
-															onmouseover="this.style.background='gray'"
-															onmouseout="this.style.background='#FAFAFA'">
-															삭제</button>
+															관리</button>
 													</td>
 												</tr>
 											</c:forEach>
