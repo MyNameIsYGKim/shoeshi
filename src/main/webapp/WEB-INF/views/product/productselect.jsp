@@ -8,6 +8,16 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
+.tdc{
+text-align: center;
+}
+
+
+.leftgo {
+	position: relative;
+	right: 0;
+}
+
 .size45 {
 	width: 49%;
 	height: 100%;
@@ -143,18 +153,18 @@ ul.tabs li.current {
 							<form action="bidform.do" method="post">
 								<div class="flex-w p-b-15">
 									<div class="size45">
-										<button
+										<button id="BUYBtn"
 											class="flex-c-m stext-101 cl0 sizef bg1 bor999 hov-btn1 p-lr-15 trans-04"
 											onclick="typeB()">
-											<span>1,200,000원</span><span>구매</span>
+											<span id="BUYPrice"></span>&nbsp<span class="leftgo">구매</span>
 										</button>
 									</div>
 
 									<div class="size45">
-										<button
+										<button id="SELLBtn"
 											class="flex-c-m stext-101 cl0 bg10000 sizef bor999 hov-btn1 p-lr-15 trans-04"
 											onclick="typeS()">
-											<span>1,300,000원</span><span>판매</span>
+											<span id="SELLPrice"></span>&nbsp<span class="leftgo">판매</span>
 										</button>
 
 									</div>
@@ -250,9 +260,8 @@ ul.tabs li.current {
 
 												<c:forEach items="${bidList}" var="l">
 													<tr class="alert" role="alert">
-														<td></td>
-														<td></td>
-														<td></td>
+														<td class="tdc" colspan="4"></td>
+														
 													</tr>
 												</c:forEach>
 
@@ -273,9 +282,8 @@ ul.tabs li.current {
 
 												<c:forEach items="${bidList}" var="l">
 													<tr class="alert" role="alert">
-														<td></td>
-														<td></td>
-														<td></td>
+														<td class="tdc" colspan="4"></td>
+														
 													</tr>
 												</c:forEach>
 
@@ -526,71 +534,68 @@ ul.tabs li.current {
 	}
 	
 	function htmlConvert(datas,t) {
-		document.getElementById(t+'Tbody').remove();
-		const tbody = document.createElement('tbody');
-		tbody.id = t+'Tbody';
+		let type;
+		if(t=='SELL'){
+			type ='판매';
+		}else{
+			type ='구매';
+		}
+		
+		if(datas.b !=null){
+			var b = datas.b.buyPrice;
+			document.getElementById('BUYPrice').innerHTML = b+'원';			
+		}else{
+			document.getElementById('BUYPrice').innerHTML = '- 원';
+		}
+		
+		if(datas.s !=null){
+			var s = datas.s.sellPrice;
+			document.getElementById('SELLPrice').innerHTML = s+'원';			
+		}else{
+			document.getElementById('SELLPrice').innerHTML = '- 원';	
+		}
+		
+		console.log(datas.l);
+		
 		// tbody에 data 추가
-		tbody.innerHTML = datas.map(data => htmlView(data)).join('');
+		if(datas.l.length!=0){
+			document.getElementById(t+'Tbody').remove();
+			const tbody = document.createElement('tbody');
+			tbody.id = t+'Tbody';
+			tbody.innerHTML = datas.l.map(data => htmlView(data)).join('');
+			document.getElementById(t+'Tb').appendChild(tbody);
+		}else{
+			document.getElementById(t+'Tbody').innerHTML = type+ ' 입찰내역이 없습니다.';
+		}
 		
 		// table tbody 추가
 		
-		document.getElementById(t+'Tb').appendChild(tbody);
-		document.getElementById('BUYPrice').innerHTML = datas.map(data => htmlViewB(data));
-		document.getElementById('SELLPrice').innerHTML = datas.map(data => htmlViewS(data));
+		
 	}
 	
-/* function htmlConvertB(datas) {
-			
-		document.getElementById('BUYPrice').innerHTML = datas.map(data => htmlViewB(data));
-				
-	}
-function htmlConvertS(datas) {
-	
-	
-	
-	document.getElementById('SELLPrice').innerHTML = datas.map(data => htmlViewS(data));
-	// table tbody 추가
-			
-} */
 	
 	function htmlView(data) {
-		console.log(data)
-		if(data.hasOwnProperty('bCount')){
+		
 		return `
 		<tr class="alert" role="alert">
 			<td>\${data.bCount}</td>
 			<td>\${data.productSize}</td>
-			<td>\${data.bidPrice}</td>
+			<td>\${data.bidPrice}원</td>
 		</tr>
 		`
-		}else{
-			return `
-			<tr class="alert" role="alert">
-				<td cols="3">입찰 내역이 없습니다.</td>
-				
-			</tr>
-			`
-		}
-		
 	}
 	
-	function htmlViewS(data) {
+function htmlViewNull(data,t) {
 		
-		return 
-		
-		${data.sellPrice}
-		
-		
+		return `
+		<tr class="alert" role="alert">
+			<td cols="3">입찰 내역이 없습니다.</td>
+			
+		</tr>
+		`
 	}
 	
-	function htmlViewB(data) {
-		return 
-		
-		${data.buyPrice}
-		
-		
-		
-	}
+
 	</script>
 </body>
 </html>

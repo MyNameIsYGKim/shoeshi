@@ -29,8 +29,9 @@
 		resultType="co.sam.shoeshi.common.CamelHashMap">
 		
 		SELECT * FROM
-		(SELECT COUNT(*)as B_COUNT, PRODUCT_SIZE , BID_PRICE
-		FROM BID
+		(SELECT COUNT(*)as B_COUNT, PRODUCT_SIZE , TO_CHAR (BID_PRICE,'999,999,999,999') as BID_PRICE
+		FROM
+		BID
 		WHERE PRODUCT_ID = #{pid}
 		AND BID_TYPE = #{type}
 		<if test='size != 0'>AND PRODUCT_SIZE = #{size}</if>
@@ -54,7 +55,7 @@
 
 	<select id="searchSellPrice"
 		resultType="co.sam.shoeshi.common.CamelHashMap">
-		SELECT MAX(BID_PRICE) AS SELL_PRICE FROM BID
+		SELECT TO_CHAR(MAX(BID_PRICE),'999,999,999,999') AS SELL_PRICE FROM BID
 		WHERE PRODUCT_ID = #{pid}
 		AND BID_TYPE='BUY'
 		<if test='size != 0'>AND PRODUCT_SIZE = #{size}</if>
@@ -63,7 +64,7 @@
 	
 	<select id="searchBuyPrice"
 		resultType="co.sam.shoeshi.common.CamelHashMap">
-		SELECT MIN(BID_PRICE) AS BUY_PRICE FROM BID
+		SELECT TO_CHAR(MIN(BID_PRICE),'999,999,999,999') AS BUY_PRICE FROM BID
 		WHERE PRODUCT_ID = #{pid}
 		AND BID_TYPE='SELL'
 		<if test='size != 0'>AND PRODUCT_SIZE = #{size}</if>
