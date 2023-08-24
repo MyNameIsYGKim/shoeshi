@@ -25,6 +25,16 @@ public class BidServiceImpl implements BidService {
 		return map.bidSearchList(productId, size, type);
 	}
 	@Override
+	public
+	HashMap<String, Object>searchSellPrice(int productId,int size){
+		return map.searchSellPrice(productId,size);
+	}
+	@Override
+	public
+	HashMap<String, Object>searchBuyPrice(int productId,int size){
+		return map.searchBuyPrice(productId,size);
+	}
+	@Override
 	public List<BidVO> bidSelectList() {
 		return map.bidSelectList();
 	}
@@ -58,4 +68,19 @@ public class BidServiceImpl implements BidService {
 	public List<BidVO> bidSelectS(BidVO vo) {
 		return map.bidSelectS(vo);
 	}
+	
+	@Override
+	public List<BidVO> bidSelectList(String key, String val) {
+		return map.bidSelectList(key, val);
+	}
+	@Override
+	public BidVO bidSelectSell(BidVO vo) {
+		return map.bidSelectSell(vo);
+	}
+	@Override
+	public BidVO bidSelectBuy(BidVO vo) {
+		return map.bidSelectBuy(vo);
+	}
+
+
 }

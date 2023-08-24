@@ -29,18 +29,36 @@ public class AjaxBidSearchList extends HttpServlet {
 
 		BidService dao = new BidServiceImpl();
 		List<HashMap<String, Object>> bidList = new ArrayList<>();
+		HashMap<String, Object> sPrice = new HashMap<String, Object>();
+		HashMap<String, Object> bPrice = new HashMap<String, Object>();
+		HashMap<String, Object> bidData = new HashMap<String, Object>();
 		int pid = Integer.valueOf(request.getParameter("pid"));
 		int size = Integer.valueOf(request.getParameter("size"));
 		String type = request.getParameter("type");
-				
-		System.out.println("pid ="+pid+"size ="+ size+ "type ="+type);
-		
+
 		bidList = dao.bidSearchList(pid, size, type);
-
+		
+		bPrice = dao.searchBuyPrice(pid, size);
+		sPrice = dao.searchSellPrice(pid, size);
+		
+		if(bPrice!=null) {
+			bidData.put("b",bPrice);
+		}
+		if(sPrice!=null) {
+			bidData.put("s",sPrice);
+		}
+		if(bidList!=null) {
+			bidData.put("l",bidList);
+		}
+		
+				
 		ObjectMapper ObjectMapper = new ObjectMapper();
-
-		String data = ObjectMapper.writeValueAsString(bidList);
-
+				
+		String data = ObjectMapper.writeValueAsString(bidData);
+		
+		
+		System.out.println(data);
+		
 		response.getWriter().append(data);
 		return;
 	}
