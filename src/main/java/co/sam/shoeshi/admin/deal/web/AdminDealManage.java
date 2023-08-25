@@ -16,10 +16,12 @@ import co.sam.shoeshi.deal.service.DealVO;
 import co.sam.shoeshi.deal.serviceImpl.DealServiceImpl;
 
 
+
 @WebServlet("/admindealmanage.do")
 public class AdminDealManage extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
+
 
 
     public AdminDealManage() {

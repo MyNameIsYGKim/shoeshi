@@ -8,13 +8,18 @@
 
 
 
+<style type="text/css">
+.minh {
+	min-height: 60vh;
+}
+</style>
 </head>
 <body>
-	<section class="sec-product-detail bg0 p-t-65 p-b-60">
-		<div class="container">
-				
-		</div>
-	</section>
+
+	<div class="minh">
+		<h1>마이페이지</h1>
+	</div>
+
 </body>
 
 </html>
