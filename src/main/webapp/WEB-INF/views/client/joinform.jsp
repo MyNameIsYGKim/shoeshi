@@ -19,16 +19,27 @@
 	outline: none; /*focus 했을때 테두리 나오게 */
 }
 
+.ipradi {
+	border-radius: 7px;
+}
+
+.idradi {
+	border-top-left-radius: 7px;
+	border-bottom-left-radius: 7px;
+}
+
+.btnradi {
+	border-top-right-radius: 7px;
+	border-bottom-right-radius: 7px;
+}
+
 .div-padding {
 	padding: 20px, 0px;
 }
 
 body {
-	font-family: 'Noto Sans KR', sans-serif;
-	font-size: 14px;
-	background-color: #f5f6f7;
-	line-height: 1.5em;
-	color: #222;
+	background-color: #fff;
+	f
 	margin: 0;
 }
 
@@ -58,6 +69,10 @@ a {
 	margin: auto; /*중앙 정렬*/
 	padding: 10px 20px 0 20px;
 	margin-bottom: 100px;
+	ont-family: 'Noto Sans KR', sans-serif;
+	font-size: 14px;
+	line-height: 1.5em;
+	color: #222;s
 }
 
 .member .field {
@@ -195,7 +210,7 @@ a {
 				<b>아이디</b>
 				<div>
 					<input type="text" placeholder="아이디 입력" id="clientId"
-						name="clientId" required="required" class="telradi">
+						class="idradi" name="clientId" required="required">
 					<button type="button" id="btn" value="No" onclick="idCheck()"
 						class="btnradi">중복확인</button>
 
@@ -206,12 +221,12 @@ a {
 
 			<div class="field">
 				<b>비밀번호</b> <input placeholder="비밀번호 입력" class="userpw ipradi"
-					type="password" id="clientPassword" name="clientPassword"
-					>
+					type="password" id="clientPassword" name="clientPassword">
 			</div>
 			<div class="field">
-				<b>비밀번호 재확인</b> <input class="userpw-confirm ipradi" placeholder="비밀번호 확인"
-					type="password" id="passwordCheck" required="required">
+				<b>비밀번호 재확인</b> <input class="userpw-confirm ipradi"
+					placeholder="비밀번호 확인" type="password" id="passwordCheck"
+					required="required">
 			</div>
 			<div class="field">
 				<b>이름</b> <input type="text" id="clientName" name="clientName"
@@ -219,30 +234,22 @@ a {
 
 			</div>
 
-			<!-- 5. 이메일_전화번호 -->
-			<!-- <div class="field">
-				<b>본인 확인 이메일<small>(선택)</small></b> <input type="email"
-					placeholder="선택입력">
-			</div> -->
+
 
 			<div class="field">
-				<!-- <div class="field tel-number"> -->
-				<b>휴대전화</b>
-				<!-- <select>
-					<option value="">대한민국 +82</option>
-				</select> -->
+
+				<b>전화번호</b>
+
 				<div>
 					<input type="tel" placeholder="전화번호 입력" id="clientTel"
 						name="clientTel" class="ipradi">
-					<!-- <input type="button" value="인증번호 받기"> -->
 				</div>
-				<!-- <input type="number" placeholder="인증번호를 입력하세요"> -->
+				
 			</div>
 			<div class="field">
-				<b>주소</b> <input type="text" placeholder="주소 입력" id="clientAddress" class="ipradi"
-					name="clientAddress">
-				<!-- <input
-					type="text" placeholder="상세 주소"> -->
+				<b>주소</b> <input type="text" placeholder="주소 입력" id="clientAddress"
+					name="clientAddress" class="ipradi">
+				
 			</div>
 
 			<!-- 6. 가입하기 버튼 -->

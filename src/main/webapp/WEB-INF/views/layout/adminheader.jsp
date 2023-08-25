@@ -111,12 +111,12 @@
 					class="fs-4"><img class="rdg-image" alt="logo"
 						src="logo/logowhite1.svg"></span>
 				</a>
-				<form id="searchform" class="col-12 col-lg-auto mb-3 mb-lg-0"
+				<!-- <form id="searchform" class="col-12 col-lg-auto mb-3 mb-lg-0"
 					action="productsearchlist.do">
 					<input type="text" class="form-control"
 						onKeypress="if(event.keyCode==13) {searchList()}"
 						placeholder="검색어를 입력해주세요." aria-label="Search" id="val" name="val">
-				</form>
+				</form> -->
 
 			</div>
 		</header>
@@ -125,14 +125,14 @@
 	</div>
 
 
-	<script type="text/javascript">
+	<!-- <script type="text/javascript">
 		function searchList() {
 			document.getElementById("val").value = p;
 			document.getElementById("searchform").submit();
 			var input = document.getElementById("val");
 			input = null;
 		}
-	</script>
+	</script> -->
 	<script src="dist/js/bootstrap.bundle.min.js">
 		
 	</script>

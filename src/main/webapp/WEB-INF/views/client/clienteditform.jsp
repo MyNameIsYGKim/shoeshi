@@ -24,17 +24,8 @@
 }
 
 body {
-	font-family: 'Noto Sans KR', sans-serif;
-	font-size: 14px;
 	background-color: #fff;
-	line-height: 1.5em;
-	color: #222;
 	margin: 0;
-}
-
-a {
-	text-decoration: none;
-	color: #222;
 }
 
 /*member sign in*/
@@ -44,7 +35,11 @@ a {
 	margin: auto; /*중앙 정렬*/
 	padding: 10px 20px 0 20px;
 	margin-bottom: 100px;
-	
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: 14px;
+	background-color: #fff;
+	line-height: 1.5em;
+	color: #222;
 }
 
 .member .field {
@@ -64,6 +59,7 @@ border-radius: 7px;
 	padding: 10px;
 	width: 100%;
 	margin-bottom: 5px;
+	border-radius: 7px;
 }
 
 .member input[type=button], .member input[type=submit], .member button[type=button]

@@ -81,6 +81,11 @@ public class BidServiceImpl implements BidService {
 	public BidVO bidSelectBuy(BidVO vo) {
 		return map.bidSelectBuy(vo);
 	}
+	@Override
+	public List<BidVO> bidSelectS(BidVO vo) {
+		
+		return map.bidSelectS(vo);
+	}
 
 
 

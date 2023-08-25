@@ -49,6 +49,15 @@
 <link rel="stylesheet" type="text/css" href="coza/css/util.css">
 <link rel="stylesheet" type="text/css" href="coza/css/main.css">
 <!--===============================================================================================-->
+<style type="text/css">
+@import
+	url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700&display=swap')
+	;
+
+body {
+	font-family: 'Noto Sans KR', sans-serif;
+}
+</style>
 </head>
 
 <body class="animsition">
@@ -57,7 +66,9 @@
 	<tiles:insertAttribute name="header" />
 
 	<!-- Product -->
-	<div class="container"><tiles:insertAttribute name="body" ignore="true"/></div>
+	<div class="container">
+		<tiles:insertAttribute name="body" ignore="true" />
+	</div>
 
 	<!-- Footer -->
 	<tiles:insertAttribute name="footer" />

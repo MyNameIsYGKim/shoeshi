@@ -19,29 +19,8 @@
 	outline: none; /*focus 했을때 테두리 나오게 */
 }
 
-.mg100000 {
-	margin: 70px 0;
-}
-
-.ipradi {
-	border-radius: 7px;
-}
-
-.telradi {
-	border-top-left-radius: 7px;
-	border-bottom-left-radius: 7px;
-}
-
-.btnradi {
-	border-top-right-radius: 7px;
-	border-bottom-right-radius: 7px;
-}
-
 body {
-	font-family: 'Noto Sans KR', sans-serif;
-	font-size: 14px;
 	background-color: #fff;
-	line-height: 1.5em;
 	color: #222;
 	margin: 0;
 }
@@ -58,6 +37,10 @@ a {
 	margin: auto; /*중앙 정렬*/
 	padding: 0 20px;
 	margin-bottom: 20px;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: 14px;
+	line-height: 1.5em;
+	min-height: 50vh;
 }
 
 .member .field {
@@ -76,6 +59,7 @@ a {
 	padding: 10px;
 	width: 100%;
 	margin-bottom: 5px;
+	border-radius: 7px;
 }
 
 .member input[type=button], .member input[type=submit] {
@@ -85,7 +69,6 @@ a {
 
 .member input:focus, .member select:focus {
 	border: 1px solid #2db400;
-	border-radius: 7px;
 }
 
 .field.birth div { /*field 이면서 birth*/
@@ -136,6 +119,7 @@ a {
 	font-weight: bold;
 }
 
+/*찾기 및 회원가입*/
 .find-signup-wrap {
 	text-align: center;
 }
@@ -157,63 +141,67 @@ a {
 	font-size: 14px;
 }
 
-.top-marg {
-	margin-top: 20px;
-}
 .image {
-		margin-top: 40px;
-		height: 100px;
-		padding: 0px 10px 0px;
-		margin-bottom: 30px;
-	}
-	.par111{
+	height: 80px;
+	padding: 0px;
+}
+
+.par111 {
 	text-align: center;
-	}
+	margin: 70px 0 30px;
+}
+
+.ctgogo {
+	text-align: center;
+	margin: 30px 0;
+}
+
+.topma {
+	margin-top: 20px;
+	border-radius: 7px;
+}
 </style>
 
 </head>
 <body>
-	<div class="mg100000">
-		<header>
-			<!--language select-->
 
-
-			<!--NAVER LOGO-->
-			<div class="par111">
-				<a href="home.do" title=""><img src="logo/logo.svg"
-					class="image par111"></a>
-			</div>
-		</header>
+	<div class="member">
+		<div class="par111">
+			<a href="home.do" title=""><img src="logo/logo.svg" class="image"></a>
+		</div>
 		<form action="login.do" method="post">
 			<section class="login-wrap">
-				<div class="member">
-					<!-- 2. 필드 -->
-					<div class="field">
-						<b>아이디</b> <input type="text" class="ipradi" placeholder="아이디 입력"
-							id="clientId" name="clientId">
-					</div>
+				<!-- 2. 필드 -->
+				<div class="field">
+					<b>아이디</b> <input placeholder="아이디" id="clientId" name="clientId"
+						type="text" class="input-id" autofocus="autofocus"></input>
+				</div>
 
-					<div class="field tel-number">
-						<b>비밀번호</b> <input type="password" placeholder="비밀번호 입력"
-							id="clientPassword" name="clientPassword" class="ipradi">
-					</div>
+				<div class="field">
+					<b>비밀번호</b> <input placeholder="비밀번호" id="clientPassword"
+						name="clientPassword" type="password" class="input-pw"></input>
+				</div>
 
 
-					<!-- 6. 찾기 버튼 -->
-					<div class="field ">
-						<input type="submit" value="로그인" class="ipradi top-marg">
-					</div>
+				<!-- 6. 찾기 버튼 -->
+				<div class="topma">
+					<input type="submit" value="로그인">
 				</div>
 			</section>
-			<section class="find-signup-wrap">
 
-				<span class="find-id"> <a href="findid.do">아이디 찾기</a>
-				</span> <span class="find-pw"> <a href="findpassword.do">비밀번호 찾기</a>
-				</span> <span class="sign-up"> <a href="joinform.do">회원가입</a>
-				</span>
 
-			</section>
+			<!--class,PW 찾기 및 회원가입 부분-->
+			<div class="find-signup-wrap">
+				<div class="ctgogo">
+					<span class="find-id"> <a href="findid.do">아이디 찾기</a>
+					</span> <span class="find-pw"> <a href="findpassword.do">비밀번호
+							찾기</a>
+					</span> <span class="sign-up"> <a href="joinform.do">회원가입</a>
+					</span>
+				</div>
+			</div>
 		</form>
 	</div>
+
 </body>
 </html>

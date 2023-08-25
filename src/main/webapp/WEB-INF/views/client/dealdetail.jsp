@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -190,8 +192,7 @@
                 
                 <article class="message">
                     <h2>
-                        고객님의 주문이 정상적으로 완료되었습니다.
-                        <i class="far fa-smile" aria-hidden="true"></i>
+                       
                     </h2>
                     
                 </article>
@@ -200,29 +201,31 @@
                     <h1>상품정보</h1>
                     <table border="0">
                         <tr>
-                            <th>상품명</th>
-                            <th>상품금액</th>
-                            <th>할인금액</th>
-                            <th>수량</th>
-                            <th>주문금액</th>
-                        </tr>
+							<th>거래 체결일</th>
+							<th>상품정보</th>
+							<th>사이즈</th>
+							<th>거래 체결 금액</th>
+							<th>상태</th>
+						</tr>
                         <tr>
-                            <td>
-                                <article>
-                                    <img src="https://via.placeholder.com/80X80" alt="">
-                                    <div>
-                                        <h2>
-                                            <a href="#">상품명</a>
-                                        </h2>
-                                        <p>상품설명</p>
-                                    </div>
-                                </article>
-                            </td>
-                            <td>17,000원</td>
-                            <td>1,000원</td>
-                            <td>1</td>
-                            <td>16,000원</td>
-                        </tr>
+								<td>${b.dealDate}</td>
+								<td><article style="cursor: pointer;"
+										onclick="selectProduct(${d.dealNo})">
+										<a href="#"> <img
+											src="${d.productimgPath}${d.productimgName1}" alt="1">
+										</a>
+										<div>
+											<p>
+												<a href="#">${d.productMaker}</a>
+											</p>
+											<p>${d.productName}</p>
+										</div>
+									</article></td>
+								<td align="center">${d.productSize }</td>
+								<td><fmt:formatNumber value="${d.dealPrice}"
+										pattern="#,###" />원</td>
+								<td align="center">${d.dealState}</td>
+							</tr>
                         
                         
                     </table>
