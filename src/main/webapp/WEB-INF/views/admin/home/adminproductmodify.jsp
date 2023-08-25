@@ -42,15 +42,14 @@ form input[type="text"], form input[type="number"], form input[type="file"]
 	margin-top: 20px;
 	margin-bottom: 20px;
 }
-  .button-container {
-    text-align: center;
-  }
 
-  .button-container .btn {
-    margin-right: 10px;
-  }
-  
+.button-container {
+	text-align: center;
+}
 
+.button-container .btn {
+	margin-right: 10px;
+}
 </style>
 </head>
 <body>
@@ -62,7 +61,8 @@ form input[type="text"], form input[type="number"], form input[type="file"]
 				<tr>
 					<td><label>제품 코드</label>
 						<div>
-							<input type="text" class="form-control" placeholder="제품 코드" readonly="readonly"></input>
+							<input type="text" class="form-control" placeholder="제품 코드"
+								readonly="readonly"></input>
 						</div></td>
 				</tr>
 				<tr>
@@ -85,6 +85,7 @@ form input[type="text"], form input[type="number"], form input[type="file"]
 		</table>
 		<div class="button-container">
 			<button type="submit" class="btn btn-primary pull-right" id="close">취소</button>
+			<button type="submit" class="btn btn-primary2 pull-right">삭제</button>
 			<button type="submit" class="btn btn-primary pull-right">수정</button>
 		</div>
 	</form>

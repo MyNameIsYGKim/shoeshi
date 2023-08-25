@@ -8,14 +8,14 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-.size45{
-  width: 46%;
-  margin: 0 5px;
- }
+.size45 {
+	width: 46%;
+	margin: 0 5px;
+}
 
-.sizef{
-  width: 100%;
-  height: 45px;
+.sizef {
+	width: 100%;
+	height: 45px;
 }
 </style>
 </head>
@@ -113,6 +113,15 @@
 									</button>
 								</div>
 							</div>
+
+							<input>장바구니</input> <a href="#"
+								class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
+								<img class="icon-heart1 dis-block trans-04"
+								src="coza/images/icons/icon-heart-01.png" alt="ICON"> <img
+								class="icon-heart2 dis-block trans-04 ab-t-l"
+								src="coza/images/icons/icon-heart-02.png" alt="ICON">
+							</a>
+
 						</div>
 					</div>
 

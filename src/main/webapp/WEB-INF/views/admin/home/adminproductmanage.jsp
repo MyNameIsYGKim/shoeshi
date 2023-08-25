@@ -28,11 +28,10 @@
 	width: 100px;
 	height: 40px;
 	float: right;
-	margin: ;
+	margin:;
 	border-radius: 5px;
 	font-weight: bold;
 	color: white;
-	
 }
 
 .custom-button {
@@ -79,7 +78,6 @@
 													<td class="button-container">
 														<div>
 															<jsp:include page="adminproducteditpopup.jsp" />
-															<button class="custom-button">삭제</button>
 														</div>
 													</td>
 												</tr>
@@ -91,7 +89,6 @@
 													<td class="button-container">
 														<div>
 															<jsp:include page="adminproducteditpopup.jsp" />
-															<button class="custom-button">삭제</button>
 														</div>
 													</td>
 												</tr>
@@ -103,7 +100,6 @@
 													<td class="button-container">
 														<div>
 															<jsp:include page="adminproducteditpopup.jsp" />
-															<button class="custom-button">삭제</button>
 														</div>
 													</td>
 												</tr>
@@ -115,7 +111,6 @@
 													<td class="button-container">
 														<div>
 															<jsp:include page="adminproducteditpopup.jsp" />
-															<button class="custom-button">삭제</button>
 														</div>
 													</td>
 												</tr>
@@ -127,7 +122,6 @@
 													<td class="button-container">
 														<div>
 															<jsp:include page="adminproducteditpopup.jsp" />
-															<button class="custom-button">삭제</button>
 														</div>
 													</td>
 												</tr>
@@ -139,7 +133,6 @@
 													<td class="button-container">
 														<div>
 															<jsp:include page="adminproducteditpopup.jsp" />
-															<button class="custom-button">삭제</button>
 														</div>
 													</td>
 												</tr>
@@ -151,7 +144,6 @@
 													<td class="button-container">
 														<div>
 															<jsp:include page="adminproducteditpopup.jsp" />
-															<button class="custom-button">삭제</button>
 														</div>
 													</td>
 												</tr>
@@ -163,7 +155,6 @@
 													<td class="button-container">
 														<div>
 															<jsp:include page="adminproducteditpopup.jsp" />
-															<button class="custom-button">삭제</button>
 														</div>
 													</td>
 												</tr>
@@ -175,7 +166,6 @@
 													<td class="button-container">
 														<div>
 															<jsp:include page="adminproducteditpopup.jsp" />
-															<button class="custom-button">삭제</button>
 														</div>
 													</td>
 												</tr>
@@ -187,7 +177,6 @@
 													<td class="button-container">
 														<div>
 															<jsp:include page="adminproducteditpopup.jsp" />
-															<button class="custom-button">삭제</button>
 														</div>
 													</td>
 												</tr>

@@ -7,12 +7,10 @@
 <link href="css/styles.css" rel="stylesheet" />
 <title>Admin</title>
 <style>
-
 .buttonall {
 	display: flex;
 	justify-content: center;
 }
-
 
 .buttontest {
 	width: 33.33%;
@@ -104,7 +102,6 @@ divstyle2 {
 <body>
 	<div class="container bodymargin">
 		<h1 class="admintitle">관리자 페이지</h1>
-
 		<!-- partial -->
 		<div>
 			<div>
@@ -116,8 +113,7 @@ divstyle2 {
 									OnClick="location.href ='adminproductmanage.do'"
 									style="cursor: pointer;">
 									<h4 class="textstyle">
-										물품조회 <i
-											class="mdi mdi-chart-line mdi-24px float-right"></i>
+										물품조회 <i class="mdi mdi-chart-line mdi-24px float-right"></i>
 									</h4>
 								</div>
 							</div>

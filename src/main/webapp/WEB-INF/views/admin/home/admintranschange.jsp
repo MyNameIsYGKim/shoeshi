@@ -141,7 +141,8 @@ style>.textstyle {
 
 .button3 {
 	height: 50px;
-	border-bottom: 4px solid black; margin : 3px;
+	border-bottom: 4px solid black;
+	margin: 3px;
 	text-align: center;
 	margin: 5px
 }
@@ -162,9 +163,7 @@ style>.textstyle {
 		<div class="buttonall">
 			<div class="buttontest">
 				<div>
-					<div class="button1"
-						OnClick="location.href ='adminproductmanage.do'"
-						style="cursor: pointer;">
+					<div class="button1" OnClick="'" style="cursor: pointer;">
 						<h4 class="textstyle">
 							대기 <i class="mdi mdi-chart-line mdi-24px float-right"></i>
 						</h4>
@@ -173,8 +172,7 @@ style>.textstyle {
 			</div>
 			<div class="buttontest">
 				<div>
-					<div class="button2" OnClick="location.href ='admintranschange.do'"
-						style="cursor: pointer;">
+					<div class="button2" OnClick="'" style="cursor: pointer;">
 						<h4 class="textstyle">
 							합격 <i class="mdi mdi-bookmark-outline mdi-24px float-right"></i>
 						</h4>
@@ -183,8 +181,7 @@ style>.textstyle {
 			</div>
 			<div class="buttontest">
 				<div>
-					<div class="button3" OnClick="location.href ='adminusermanage.do'"
-						style="cursor: pointer;">
+					<div class="button3" OnClick="'" style="cursor: pointer;">
 						<h4 class="textstyle">
 							불합격 <i class="mdi mdi-diamond mdi-24px float-right"></i>
 						</h4>

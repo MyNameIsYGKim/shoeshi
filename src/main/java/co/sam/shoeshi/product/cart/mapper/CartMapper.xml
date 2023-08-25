@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.sam.shoeshi.product.cart.mapper.CartMapper">
+
+	<select id="cartList" resultType="co.sam.shoeshi.common.CamelHashMap">
+		SELECT P.*, I.PRODUCTIMG_PATH, I.PRODUCTIMG_NAME1,
+		I.PRODUCTIMG_NAME2, I.PRODUCTIMG_NAME3
+		FROM CART C RIGHT OUTER JOIN PRODUCT P ON C.PRODUCT_ID = P.PRODUCT_ID
+        RIGHT OUTER JOIN PRODUCTIMG I ON C.PRODUCT_ID = I.PRODUCT_ID
+		WHERE CLIENT_ID = #{clientId}
+	</select>
+	
+	<select id="cartSelect" resultType="co.sam.shoeshi.product.cart.service.CartVO">
+	 	SELECT * FROM CART WHERE PRODUCT_ID = #{productId}
+	</select>
+	
+	<insert id="cartInsert" parameterType="co.sam.shoeshi.product.cart.service.CartVO">
+		INSERT INTO CART VALUES(#{productId}})
+	</insert>
+	
+	<delete id="cartDelete" parameterType="co.sam.shoeshi.product.cart.service.CartVO">
+		DELETE FROM CART WHERE PRODUCT_ID = #{productId}
+	</delete>
+	
+	<delete id="cartPayDelete" parameterType="co.sam.shoeshi.product.cart.service.CartVO">
+		DELETE FROM CART WHERE CART_PERSONAL = #{cartPersonal}
+	</delete>
+	
+	<update id="cartUpdate" parameterType="co.sam.shoeshi.product.cart.service.CartVO">
+	
+	</update>
+</mapper>

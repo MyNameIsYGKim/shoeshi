@@ -56,19 +56,19 @@
 .button-container {
 	text-align: center;
 }
-  .custom-button2 {
-    background-color: #717fe0;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-    border-radius: 5px;
-  }
 
+.custom-button2 {
+	background-color: #717fe0;
+	color: white;
+	border: none;
+	padding: 5px 10px;
+	cursor: pointer;
+	border-radius: 5px;
+}
 </style>
 </head>
 <body>
-	<button id="show" class="custom-button2">수정</button>
+	<button id="show" class="custom-button2">제품관리</button>
 
 	<div class="background">
 		<div class="window">

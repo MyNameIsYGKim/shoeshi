@@ -50,6 +50,7 @@ form input[type="text"], form input[type="number"], form input[type="file"]
 	margin-top: 20px;
 	margin-bottom: 20px;
 }
+
 .button-container {
 	border-radius: 5px;
 }

@@ -1,7 +1,9 @@
-package co.sam.shoeshi.product.web;
+package co.sam.shoeshi.product.cart.web;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,35 +12,33 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import co.sam.shoeshi.common.ViewResolve;
-import co.sam.shoeshi.product.service.ProductService;
-import co.sam.shoeshi.product.service.ProductVO;
-import co.sam.shoeshi.product.serviceImpl.ProductServiceImpl;
+import co.sam.shoeshi.product.cart.service.CartService;
+import co.sam.shoeshi.product.cart.serviceImpl.CartServiceImpl;
 
-@WebServlet("/productselect.do")
-public class ProductSelect extends HttpServlet {
+@WebServlet("/cart.do")
+public class CartController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public ProductSelect() {
+	public CartController() {
 		super();
 
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		ProductService dao = new ProductServiceImpl();
-		HashMap<String, Object> product = new HashMap<String, Object>();
-		ProductVO vo = new ProductVO();
-		vo.setProductId(Integer.valueOf(request.getParameter("productId")));
-		product = dao.productJoinSelect(vo);
-		request.setAttribute("p", product);
+		CartService dao = new CartServiceImpl();
+		List<HashMap<String, Object>> carts = new ArrayList<HashMap<String, Object>>();
 
-		String viewName = "product/productselect";
+//		carts = dao.cartList();
+		request.setAttribute("carts", carts);
+
+		String viewName = "admin/product/cartcontroller";
 		ViewResolve.forward(request, response, viewName);
+
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
 		doGet(request, response);
 	}
 
