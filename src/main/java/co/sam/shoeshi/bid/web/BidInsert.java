@@ -13,6 +13,9 @@ import javax.servlet.http.HttpSession;
 import co.sam.shoeshi.bid.service.BidService;
 import co.sam.shoeshi.bid.service.BidVO;
 import co.sam.shoeshi.bid.serviceImpl.BidServiceImpl;
+import co.sam.shoeshi.client.service.ClientService;
+import co.sam.shoeshi.client.service.ClientVO;
+import co.sam.shoeshi.client.serviceImpl.ClientServiceImpl;
 import co.sam.shoeshi.common.ViewResolve;
 import co.sam.shoeshi.product.service.ProductService;
 import co.sam.shoeshi.product.service.ProductVO;
@@ -28,13 +31,28 @@ public class BidInsert extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		BidVO vo2 = new BidVO();
 		HttpSession session = request.getSession();
+
+		String viewName = "product/productselect";
+		String viewName2 = "payment/paymentform";
+		String clientId = (String)session.getAttribute("clientId");
+
+		ProductService dao = new ProductServiceImpl();
+		HashMap<String, Object> product = new HashMap<String, Object>();
+		ProductVO vo = new ProductVO();
+		vo.setProductId(Integer.parseInt(request.getParameter("productId")));
+		product = dao.productJoinSelect(vo);
+		request.setAttribute("p", product);
+		
+		BidVO vo2 = new BidVO();
 		BidService dao2 = new BidServiceImpl();
 		response.setContentType("text/html; charset=UTF-8");
 		vo2.setProductId(Integer.parseInt(request.getParameter("productId")));
-		vo2.setClientId((String) session.getAttribute("clientId"));
+		vo2.setClientId(clientId);
 		vo2.setProductSize(Integer.parseInt(request.getParameter("productSize")));
+
+		ClientVO vo3 = new ClientVO();
+		ClientService dao3 = new ClientServiceImpl();
 
 		if (request.getParameter("buttonType").equals("bid")) {
 			vo2.setBidPrice(Integer.parseInt(request.getParameter("bidPrice")));
@@ -43,39 +61,39 @@ public class BidInsert extends HttpServlet {
 			int n = dao2.bidInsert(vo2);
 			if (n == 0) {
 				request.setAttribute("alertBid", "입찰등록 실패");
+				ViewResolve.forward(request, response, viewName);
 			} else {
 				request.setAttribute("alertBid", request.getParameter("bidType2") + "입찰 등록");
+				ViewResolve.forward(request, response, viewName);
 			}
 		} else if (request.getParameter("buttonType").equals("deal")) {
+
 			try {
+
 				if (request.getParameter("bidType").equals("BUY")) {
 					vo2.setBidType("SELL");
 					vo2 = dao2.bidSelectBuy(vo2);
-					vo2.setBidNo(vo2.getBidNo());
+					
 				} else if (request.getParameter("bidType").equals("SELL")) {
 					vo2.setBidType("BUY");
 					vo2 = dao2.bidSelectSell(vo2);
-					vo2.setBidNo(vo2.getBidNo());
 				}
-				int n = dao2.bidDelete(vo2);
-				if (n == 0) {
-					request.setAttribute("alertBid", request.getParameter("bidType2") + " 실패");
-				} else {
-					request.setAttribute("alertBid", request.getParameter("bidType2") + " 완료");
-				}
+				vo2 = dao2.bidSelect(vo2);
+				request.setAttribute("b", vo2);
+				
+				vo3.setClientId(clientId);
+				vo3 = dao3.clientSelect(vo3);
+				request.setAttribute("c", vo3);
+				
+
+				ViewResolve.forward(request, response, viewName2);
 			} catch (Exception e) {
-				request.setAttribute("alertBid", "남은 입찰정보가 본인이 등록한 입찰이거나, "+ request.getParameter("bidType2") +"할 입찰정보가 없습니다.");
+				request.setAttribute("alertBid",
+						"남은 입찰정보가 본인이 등록한 입찰이거나, " + request.getParameter("bidType2") + "할 입찰정보가 없습니다.");
+				ViewResolve.forward(request, response, viewName);
 			}
 		}
-		ProductService dao = new ProductServiceImpl();
-		HashMap<String, Object> product = new HashMap<String, Object>();
-		ProductVO vo = new ProductVO();
-		vo.setProductId(Integer.valueOf(request.getParameter("productId")));
-		product = dao.productJoinSelect(vo);
-		request.setAttribute("p", product);
 
-		String viewName = "product/productselect";
-		ViewResolve.forward(request, response, viewName);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

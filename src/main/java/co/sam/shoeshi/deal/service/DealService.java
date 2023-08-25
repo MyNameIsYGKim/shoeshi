@@ -10,4 +10,5 @@ public interface DealService {
 	int dealInsert(DealVO vo);
 	int dealUpdate(DealVO vo);
 	int dealDelete(DealVO vo);
+	DealVO dealSelectMaxNo();
 }
