@@ -15,7 +15,7 @@
 	</select>
 	
 	<insert id="cartInsert" parameterType="co.sam.shoeshi.product.cart.service.CartVO">
-		INSERT INTO CART VALUES(#{productId}})
+		INSERT INTO CART VALUES(#{productId})
 	</insert>
 	
 	<delete id="cartDelete" parameterType="co.sam.shoeshi.product.cart.service.CartVO">

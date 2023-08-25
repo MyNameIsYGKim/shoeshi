@@ -114,13 +114,15 @@
 								</div>
 							</div>
 
-							<input>장바구니</input> <a href="#"
-								class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-								<img class="icon-heart1 dis-block trans-04"
-								src="coza/images/icons/icon-heart-01.png" alt="ICON"> <img
-								class="icon-heart2 dis-block trans-04 ab-t-l"
-								src="coza/images/icons/icon-heart-02.png" alt="ICON">
-							</a>
+							<form action="cartadd.do" method="post">
+								<!-- 기타 필요한 입력 필드들... -->
+								<input type="hidden" name="productId" value="${p.productId}" />
+								<input type="hidden" name="id" value="사용자 아이디" />
+								<!-- 사용자 아이디도 전송 -->
+								<button
+									class="flex-c-m stext-101 cl0 bg10000 sizef bor1 hov-btn1 p-lr-15 trans-04"
+									type="submit">장바구니</button>
+							</form>
 
 						</div>
 					</div>
