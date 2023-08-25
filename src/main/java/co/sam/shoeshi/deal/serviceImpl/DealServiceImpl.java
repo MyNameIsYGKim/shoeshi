@@ -47,5 +47,10 @@ public class DealServiceImpl implements DealService {
 	public List<DealVO> dealSelectS(DealVO vo) {
 		return map.dealSelectS(vo);
 	}
+	
+	@Override
+	public DealVO dealSelectMaxNo() {
+		return map.dealSelectMaxNo();
+	}
 
 }

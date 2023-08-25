@@ -195,7 +195,6 @@ ul.tabs li.current {
 			}else if ($('#priceDiv').css("display") == "none" && price == "" && document.getElementById("buttonType").value == "deal"){
 				return true;
 				}
-			alert(document.getElementById("buttonType").value);
 			return true;
 		}
 		
