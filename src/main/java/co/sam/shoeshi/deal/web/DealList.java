@@ -37,7 +37,7 @@ public class DealList extends HttpServlet {
 		vob = dao.dealSelectB(vo);
 		request.setAttribute("deallists", vos);
 		request.setAttribute("deallistb", vob);
-		String viewName = "client/deallist";
+		String viewName = "my/client/deallist";
 		ViewResolve.forward(request, response, viewName);
 	}
 

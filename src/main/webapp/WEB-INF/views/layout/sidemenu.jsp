@@ -6,7 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link href="css/styles.css" rel="stylesheet" />
 <style>
+
 /* Sidebar styles */
 .fontb {
 	color: black;
@@ -68,7 +70,7 @@
 			<li><a href="paymenteditform.do">거래정보 수정</a></li>
 			<li><a href="deallist.do">거래내역</a></li>
 			<li><a href="bidlist.do">입찰내역</a></li>
-			<li><a href="#">Cart</a></li>
+			<li><a href="paymentform.do">Cart</a></li>
 
 			<!-- Add more menu items as needed -->
 		</ul>

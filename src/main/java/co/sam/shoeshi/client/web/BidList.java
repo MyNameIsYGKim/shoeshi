@@ -35,7 +35,7 @@ public class BidList extends HttpServlet {
 		vob = dao.bidSelectB(vo);
 		request.setAttribute("bidlists", vos);
 		request.setAttribute("bidlistb", vob);
-		String viewName = "client/bidlist";
+		String viewName = "my/client/bidlist";
 		ViewResolve.forward(request, response, viewName);
 	}
 

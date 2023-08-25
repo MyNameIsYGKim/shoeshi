@@ -24,12 +24,12 @@
 }
 
 body {
-	font-family: 'Noto Sans KR', sans-serif;
+	/* font-family: 'Noto Sans KR', sans-serif;
 	font-size: 14px;
 	background-color: #f5f6f7;
 	line-height: 1.5em;
 	color: #222;
-	margin: 0;
+	margin: 0; */
 }
 
 a {
@@ -44,6 +44,11 @@ a {
 	margin: auto; /*중앙 정렬*/
 	padding: 10px 20px 0 20px;
 	margin-bottom: 100px;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: 14px;
+	background-color: #fff;
+	line-height: 1.5em;
+		
 }
 
 .member .field {

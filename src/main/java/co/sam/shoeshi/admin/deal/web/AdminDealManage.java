@@ -15,21 +15,15 @@ import co.sam.shoeshi.deal.service.DealService;
 import co.sam.shoeshi.deal.service.DealVO;
 import co.sam.shoeshi.deal.serviceImpl.DealServiceImpl;
 
-<<<<<<<< HEAD:src/main/java/co/sam/shoeshi/admin/web/AdminProductModify.java
-@WebServlet("/adminproductmodify.do")
-public class AdminProductModify extends HttpServlet {
-========
 
 @WebServlet("/admindealmanage.do")
 public class AdminDealManage extends HttpServlet {
->>>>>>>> 김연규:src/main/java/co/sam/shoeshi/admin/deal/web/AdminDealManage.java
+
 	private static final long serialVersionUID = 1L;
 
-<<<<<<<< HEAD:src/main/java/co/sam/shoeshi/admin/web/AdminProductModify.java
-    public AdminProductModify() {
-========
+
     public AdminDealManage() {
->>>>>>>> 김연규:src/main/java/co/sam/shoeshi/admin/deal/web/AdminDealManage.java
+
         super();
        
     }
