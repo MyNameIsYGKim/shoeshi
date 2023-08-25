@@ -28,10 +28,6 @@ body {
 	
 }
 
-a {
-	text-decoration: none;
-	color: #222;
-}
 
 /*member sign in*/
 .payment {

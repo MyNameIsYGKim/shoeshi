@@ -24,23 +24,8 @@
 }
 
 body {
-<<<<<<< HEAD
-	/* font-family: 'Noto Sans KR', sans-serif;
-	font-size: 14px;
-	background-color: #f5f6f7;
-	line-height: 1.5em;
-	color: #222;
-	margin: 0; */
-=======
 	background-color: #fff;
-	
 	margin: 0;
->>>>>>> branch 'san' of https://github.com/MyNameIsYGKim/shoeshi.git
-}
-
-a {
-	text-decoration: none;
-	color: #222;
 }
 
 /*member sign in*/
@@ -55,7 +40,6 @@ a {
 	background-color: #fff;
 	line-height: 1.5em;
 	color: #222;
-
 }
 
 .member .field {

@@ -30,6 +30,16 @@
 <link href="dist/css/bootstrap.min.css" rel="stylesheet">
 
 <style>
+@import
+	url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700&display=swap')
+	;
+
+
+.fontstyle {
+	color: #fff;
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
 .bd-placeholder-img {
 	font-size: 1.125rem;
 	text-anchor: middle;
@@ -94,10 +104,10 @@
 					</c:if>
 					<c:if test="${not empty clientId }">
 						<li class="nav-item"><a href="mypage.do"
-							class="nav-link px-2 fontw">마이페이지</a></li>
+							class="nav-link px-2 fontw fontstyle">마이페이지</a></li>
 						<li class="nav-item"><a href="logout.do"
-							class="nav-link px-2 fontw">로그아웃</a></li>
-						<li class="nav-link px-2 fontw">${clientName }님</li>
+							class="nav-link px-2 fontw fontstyle">로그아웃</a></li>
+						<li class="nav-link px-2 fontw fontstyle">${clientName }님</li>
 					</c:if>
 				</ul>
 			</div>
@@ -113,7 +123,7 @@
 				</a>
 				<form id="searchform" class="col-12 col-lg-auto mb-3 mb-lg-0"
 					action="productsearchlist.do">
-					<input type="text" class="form-control"
+					<input type="text" class="form-control fontstyle"
 						onKeypress="if(event.keyCode==13) {searchList()}"
 						placeholder="검색어를 입력해주세요." aria-label="Search" id="val" name="val">
 				</form>
