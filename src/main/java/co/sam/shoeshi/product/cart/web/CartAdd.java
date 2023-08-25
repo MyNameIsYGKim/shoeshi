@@ -30,7 +30,7 @@ public class CartAdd extends HttpServlet {
 		CartVO vo = new CartVO();
 		
 		vo.setProductId(Integer.valueOf(request.getParameter("productId")));
-		vo.setClientId(request.getParameter("clientId"));
+		vo.setClientId(request.getParameter("id"));
 	
 		int num = dao.cartInsert(vo);
 		

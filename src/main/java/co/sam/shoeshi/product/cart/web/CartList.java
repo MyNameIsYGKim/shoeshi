@@ -37,9 +37,9 @@ public class CartList extends HttpServlet {
 		ObjectMapper objectMapper = new ObjectMapper();
 		
 		CartVO vo = new CartVO();
-		System.out.println((String)session.getAttribute("clientId"));
+		System.out.println((String)session.getAttribute("id"));
 		
-		vo.setClientId((String)session.getAttribute("clientId"));
+		vo.setClientId((String)session.getAttribute("id"));
 		
 		carts = dao.cartList(vo);
 		
