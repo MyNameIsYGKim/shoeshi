@@ -54,16 +54,6 @@
 	display: inline;
 }
 
-#dealeditfrm {
-	display: inline;
-}
-
-#cancelReasonBox {
-	border: 1px solid gray;
-	border-radius: 3px;
-	margin: 0px;
-}
-
 </style>
 
 </head>
@@ -104,10 +94,9 @@
 														<th>제품사이즈</th>
 														<th>구매자</th>
 														<th>판매자</th>
+														<th>거래가격</th>
 														<th>거래상태</th>
-														<th>검수상태</th>
-														<th>취소사유</th>
-														<th>비고</th>
+														<th>관리</th>
 													</tr>
 												</thead>
 												<!-- 더미 데이터 -->
@@ -121,30 +110,14 @@
 																<td align="center">${n.productSize }</td>
 																<td>${n.dealBuyer }</td>
 																<td>${n.dealSeller }</td>
+																<td>${n.dealPrice }</td>
 																<td align="center">${n.dealState }</td>
 																<td>
-																	<form id="dealeditfrm" method="post">
-																		<select id="key" name="key">
-																			<option>상태</option>
-																			<option value="완료">합격</option>
-																			<option value="취소">불합격</option>
-																		</select>
-																	</form>
-																</td>
-																<td>
-																	<input type="text" id="cancelReasonBox" name="cancelReasonBox" size="30">
-																</td>
-																<td>
 																	<button type="button" class="dealeditbtn"
-																		onclick="dealUpdate('E')"
+																		onclick="selectDeal(${n.dealNo})"
 																		onmouseover="this.style.background='gray'"
 																		onmouseout="this.style.background='#FAFAFA'">
-																		수정</button>
-																	<button type="button" class="dealdeletebtn"
-																		onclick="dealUpdate('D')"
-																		onmouseover="this.style.background='gray'"
-																		onmouseout="this.style.background='#FAFAFA'">
-																		삭제</button>
+																		관리</button>
 																</td>
 															</tr>
 														</c:forEach>
@@ -178,6 +151,7 @@
 	
 	function selectDeal(n) {
 		document.getElementById("dealNo").value = n;
+		document.getElementById("dealfrm").action = "admindealselect.do";
 		document.getElementById("dealfrm").submit();
 	}
 	
@@ -195,8 +169,6 @@
 			body: payload
 		})	.then(response => response.json())
 			.then(json => htmlConvert(json));
-		
-		console.log(payload);
 	}
 	
 	function htmlConvert(datas){
@@ -212,27 +184,25 @@
 	
 	function htmlView(data){
 		return `
-				<tr onclick="selectDeal(\${data.dealNo })">
-		
-					<td>${data.dealNo }</td>
-					<td>${data.dealDate }</td>
-					<td>${data.productId }</td>
-					<td>${data.productSize }</td>
-					<td>${data.dealBuyer }</td>
-					<td>${data.dealSeller }</td>
-					<td>${data.dealState }</td>
+				<tr>
+					<td align="center">\${data.dealNo }</td>
+					<td align="center">\${data.dealDate }</td>
+					<td align="center">\${data.productId }</td>
+					<td align="center">\${data.productSize }</td>
+					<td>\${data.dealBuyer }</td>
+					<td>\${data.dealSeller }</td>
+					<td>\${data.dealPrice }</td>
+					<td align="center">\${data.dealState }</td>
+					<td>
+					<button type="button" class="dealeditbtn"
+						onclick="selectDeal(${n.dealNo})"
+						onmouseover="this.style.background='gray'"
+						onmouseout="this.style.background='#FAFAFA'">
+						관리</button>
+					</td>
 				</tr>
 		`
 	}
-	
-	function dealUpdate(str){
-		if(str =='E'){
-			document.getElementById("dealfrm").action = "admindealeditform.do";
-		}else if(str=='D'){
-			document.getElementById("dealfrm").action = "admindealdelete.do";
-		}document.getElementById("adminDealForm").submit();
-	}
-	
 	</script>
 </body>
 </html>

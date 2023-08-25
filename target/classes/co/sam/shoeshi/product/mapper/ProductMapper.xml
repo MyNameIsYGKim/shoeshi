@@ -21,7 +21,7 @@
 	
 	<insert id="productInsert" parameterType="co.sam.shoeshi.product.service.ProductVO">
 		INSERT INTO PRODUCT(PRODUCT_ID, PRODUCT_MAKER, PRODUCT_NAME, PRODUCT_PRICE)
-		VALUES(#{productId}, #{productMaker}, #{productName}, #{productPrice})
+		VALUES((SELECT NVL(MAX(PRODUCT_ID), 0) + 1 FROM PRODUCT), #{productMaker}, #{productName}, #{productPrice})
 	</insert>
 	
 	<update id="productUpdate" parameterType="co.sam.shoeshi.product.service.ProductVO">

@@ -26,7 +26,7 @@ public class AdminDealDelete extends HttpServlet {
 		
 		vo.setDealNo(Integer.valueOf(request.getParameter("dealNo")));
 		
-		String viewName = "home/message";
+		String viewName = "admin/product/adminproductmessage";
 		
 		int n = dao.dealDelete(vo);
 		if(n==1) {

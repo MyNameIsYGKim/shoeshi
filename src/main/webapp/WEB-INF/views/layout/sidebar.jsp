@@ -70,7 +70,7 @@
 
 						<div class="sb-sidenav-menu-heading" style="width: 185px;">회원관리</div>
 						<nav class="sb-sidenav-menu-nested nav">
-							<a class="nav-link" href="adminusermanage.do">회원목록</a>
+							<a class="nav-link" href="adminclientmanage.do">회원목록</a>
 						</nav>
 					</div>
 				</div>

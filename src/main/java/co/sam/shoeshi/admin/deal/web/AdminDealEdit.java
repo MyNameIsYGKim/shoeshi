@@ -26,10 +26,28 @@ public class AdminDealEdit extends HttpServlet {
 		DealService dao = new DealServiceImpl();
 		DealVO vo = new DealVO();
 		
-		vo.setDealState(request.getParameter("dealState"));
-		vo.setDealComent(request.getParameter("dealComent"));
+		vo.setDealNo(Integer.valueOf(request.getParameter("dealNo")));
+		vo.setDealDate(LocalDate.parse(request.getParameter("dealDate")));
+		vo.setProductId(Integer.valueOf(request.getParameter("productId")));
+		vo.setProductSize(Integer.valueOf(request.getParameter("productSize")));
+		vo.setDealBuyer(request.getParameter("dealBuyer"));
+		vo.setDealSeller(request.getParameter("dealSeller"));
+		vo.setDealPrice(Integer.valueOf(request.getParameter("dealPrice")));
 		
-		String viewName = "admin/deal/admindealmanage";
+		String stateValue = "";
+		if(request.getParameter("key").equals("dealEditPass")) {
+			stateValue = "완료";
+			vo.setDealComent("");
+		}else if(request.getParameter("key").equals("dealEditCancel")) {
+			stateValue = "실패";
+			vo.setDealComent(request.getParameter("dealComent"));
+		}else {
+			vo.setDealComent("");
+		}
+		vo.setDealState(stateValue);
+		
+		
+		String viewName = "admin/deal/admindealselect";
 		
 		int n = dao.dealUpdate(vo);
 		

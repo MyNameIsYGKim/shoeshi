@@ -113,7 +113,7 @@ divstyle2 {
 									OnClick="location.href ='adminproductmanage.do'"
 									style="cursor: pointer;">
 									<h4 class="textstyle">
-										물품조회 <i class="mdi mdi-chart-line mdi-24px float-right"></i>
+										제품조회 <i class="mdi mdi-chart-line mdi-24px float-right"></i>
 									</h4>
 								</div>
 							</div>
@@ -121,10 +121,10 @@ divstyle2 {
 						<div class="buttontest">
 							<div>
 								<div class="button2"
-									OnClick="location.href ='admintranschange.do'"
+									OnClick="location.href ='admindealmanage.do'"
 									style="cursor: pointer;">
 									<h4 class="textstyle">
-										거래 목록 <i class="mdi mdi-bookmark-outline mdi-24px float-right"></i>
+										거래목록 <i class="mdi mdi-bookmark-outline mdi-24px float-right"></i>
 									</h4>
 								</div>
 							</div>
@@ -132,7 +132,7 @@ divstyle2 {
 						<div class="buttontest">
 							<div>
 								<div class="button3"
-									OnClick="location.href ='adminusermanage.do'"
+									OnClick="location.href ='adminclientmanage.do'"
 									style="cursor: pointer;">
 									<h4 class="textstyle">
 										회원목록 <i class="mdi mdi-diamond mdi-24px float-right"></i>

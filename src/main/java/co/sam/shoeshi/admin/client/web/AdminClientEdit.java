@@ -30,7 +30,16 @@ public class AdminClientEdit extends HttpServlet {
 		vo.setClientName(request.getParameter("clientName"));
 		vo.setClientAddress(request.getParameter("clientAddress"));
 		vo.setClientTel(request.getParameter("clientTel"));
-		vo.setClientAuthor(request.getParameter("clientAuthor"));
+		
+		String authorValue = "";
+		if(request.getParameter("key").equals("authorUser")) {
+			authorValue = "USER";
+		}else if(request.getParameter("key").equals("authorAdmin")) {
+			authorValue = "ADMIN";
+		}else {
+			authorValue = "USER";
+		}
+		vo.setClientAuthor(authorValue);
 		
 		String viewName = "admin/client/adminclientselect";
 		

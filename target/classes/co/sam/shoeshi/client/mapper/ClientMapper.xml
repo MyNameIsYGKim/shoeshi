@@ -4,11 +4,11 @@
 	<select id="clientSelectList"
 		resultType="co.sam.shoeshi.client.service.ClientVO">
 		SELECT * FROM CLIENT
-		<if test='key == "id"'>WHERE CLIENT_ID LIKE UPPER('%'||#{clientSearchVal}||'%')
+		<if test='key == "adminClientId"'>WHERE CLIENT_ID LIKE UPPER('%'||#{clientSearchVal}||'%')
 			OR CLIENT_ID LIKE LOWER('%'||#{clientSearchVal}||'%')</if>
-		<if test='key == "name"'>WHERE CLIENT_NAME LIKE UPPER('%'||#{clientSearchVal}||'%')
+		<if test='key == "adminClientName"'>WHERE CLIENT_NAME LIKE UPPER('%'||#{clientSearchVal}||'%')
 			OR CLIENT_NAME LIKE LOWER('%'||#{clientSearchVal}||'%')</if>
-		<if test='key == "address"'>WHERE CLIENT_ADDRESS LIKE '%'||#{clientSearchVal}||'%'</if>
+		<if test='key == "adminClientAddress"'>WHERE CLIENT_ADDRESS LIKE '%'||#{clientSearchVal}||'%'</if>
 	</select>
 	<select id="clientIdFind"
 		resultType="co.sam.shoeshi.client.service.ClientVO">
@@ -29,9 +29,12 @@
 		parameterType="co.sam.shoeshi.client.service.ClientVO">
 		UPDATE CLIENT
 		<set>
+			<if test="clientId != null">CLIENT_ID = #{clientId},</if>
 			<if test="clientPassword != null">CLIENT_PASSWORD = #{clientPassword},</if>
+			<if test="clientName != null">CLIENT_NAME = #{clientName},</if>
 			<if test="clientAddress !=null">CLIENT_ADDRESS = #{clientAddress},</if>
-			<if test="clientTel !=null">CLIENT_TEL = #{clientTel}</if>
+			<if test="clientTel !=null">CLIENT_TEL = #{clientTel},</if>
+			<if test="clientAuthor != null">CLIENT_AUTHOR = #{clientAuthor},</if>
 		</set>
 		WHERE CLIENT_ID = #{clientId}
 	</update>

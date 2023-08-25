@@ -9,9 +9,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+
 import co.sam.shoeshi.product.service.ProductService;
 import co.sam.shoeshi.product.service.ProductVO;
 import co.sam.shoeshi.product.serviceImpl.ProductServiceImpl;
+import co.sam.shoeshi.productimg.service.ProductimgService;
+import co.sam.shoeshi.productimg.service.ProductimgVO;
+import co.sam.shoeshi.productimg.serviceImpl.ProductimgServiceImpl;
 
 @WebServlet("/adminproductedit.do")
 public class AdminProductEdit extends HttpServlet {
@@ -22,15 +28,16 @@ public class AdminProductEdit extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ProductService dao = new ProductServiceImpl();
-		ProductVO vo = new ProductVO();
+		ProductService pdao = new ProductServiceImpl();
+		ProductVO pvo = new ProductVO();
 		
-		vo.setProductId(Integer.valueOf(request.getParameter("productId")));
-		vo.setProductMaker(request.getParameter("productMaker"));
-		vo.setProductName(request.getParameter("productName"));
-		vo.setProductPrice(Integer.valueOf(request.getParameter("productPrice")));
+		pvo.setProductMaker(request.getParameter("productMaker"));
+		pvo.setProductName(request.getParameter("productName"));
+		pvo.setProductPrice(Integer.valueOf(request.getParameter("productPrice")));
 		
-		int n = dao.productUpdate(vo);
+		
+		int n = pdao.productUpdate(pvo);
+		
 		if (n == 0) {
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter writer = response.getWriter();

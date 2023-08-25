@@ -39,7 +39,7 @@
 			<if test="dealBuyer != null">DEAL_BUYER = #{dealBuyer},</if>
 			<if test="dealSeller != null">DEAL_SELLER = #{dealSeller},</if>
 			<if test="productId != null">PRODUCT_ID = #{productId},</if>
-			<if test="productSize != null">PRODUCT_SIZE = #{productSize}</if>
+			<if test="productSize != null">PRODUCT_SIZE = #{productSize},</if>
 			<if test="dealComent != null">DEAL_COMENT = #{dealComent}</if>
 		</set>
 		WHERE DEAL_NO = #{dealNo}

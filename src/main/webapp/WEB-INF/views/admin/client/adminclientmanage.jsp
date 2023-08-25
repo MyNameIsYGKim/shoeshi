@@ -70,17 +70,17 @@
 					<div class="card">
 						<div class="card-body">
 							<div class="formbox" align="center">
-								<form id="frm" method="post">
+								<form id="adminClientForm" method="post">
 									<select id="key" name="key">
-										<option value="id">ID</option>
-										<option value="name">Name</option>
-										<option value="address">Address</option>
+										<option value="adminClientId">ID</option>
+										<option value="adminClientName">Name</option>
+										<option value="adminClientAddress">Address</option>
 									</select>
 										<input type="text" id="clientSearchVal" name="clientSearchVal" size="30">
 										<input type="button" onclick="searchList()" value="검색"
 											class="searchbtn" onmouseover="this.style.background='gray'"
 											onmouseout="this.style.background='#FAFAFA'">
-										<input type="button" onclick="location.href='adminproductform.do'"
+										<input type="button" onclick="location.href='adminclientform.do'"
 											value="등록" class="insertbtn"
 											onmouseover="this.style.background='gray'"
 											onmouseout="this.style.background='#FAFAFA'">
@@ -108,16 +108,11 @@
 													<td>${n.clientTel }</td>
 													<td>${n.clientAuthor }</td>
 													<td>
-														<button type="button" class="clienteditbtn"
-															onclick="clientUpdate('E')"
+														<button type="button" id="clienteditbtn" class="clienteditbtn"
+															onclick="selectClient('${n.clientId}')"
 															onmouseover="this.style.background='gray'"
 															onmouseout="this.style.background='#FAFAFA'">
-															수정</button>
-														<button type="button" class="clientdeletebtn"
-															onclick="clientUpdate('D')"
-															onmouseover="this.style.background='gray'"
-															onmouseout="this.style.background='#FAFAFA'">
-															삭제</button>
+															관리</button>
 													</td>
 												</tr>
 											</c:forEach>
@@ -131,6 +126,7 @@
 									<!-- 더미 데이터 끝 -->
 								</table>
 							</div>
+							<br>
 							<div>
 								<form id="clientfrm" method="post">
 									<input type="hidden" id="clientId" name="clientId">
@@ -143,15 +139,17 @@
 		</div>
 	</div>
 	<script type="text/javascript">
+	
 	function selectClient(n) {
 		document.getElementById("clientId").value = n;
+		document.getElementById("clientfrm").action = "adminclientselect.do";
 		document.getElementById("clientfrm").submit();
 	}
 	
 	function searchList(){
 		let key = document.getElementById("key").value;
-		let clientSearchVal = document.getElementById("clientSearchVal").value;
-		let payload = "key="+key+"&clientSearchVal="+clientSearchVal;
+		let AdminDealSearchValue = document.getElementById("AdminClientSearchValue").value;
+		let payload = "key="+key+"&AdminClientSearchValue="+AdminClientSearchValue;
 		let url = "ajaxclientsearch.do";
 		
 		fetch(url, {
@@ -177,23 +175,21 @@
 	
 	function htmlView(data){
 		return `
-				<tr onclick="selectClient(\${data.clientId })">
-		
+				<tr>
 					<td>\${data.clientId }</td>
 					<td>\${data.clientName }</td>
 					<td>\${data.clientAddress }</td>
 					<td>\${data.clientTel }</td>
 					<td>\${data.clientAuthor }</td>
+					<td>
+					<button type="button" class="clienteditbtn"
+						onclick="selectClient(${n.clientId})"
+						onmouseover="this.style.background='gray'"
+						onmouseout="this.style.background='#FAFAFA'">
+						관리</button>
+				</td>
 				</tr>
 		`
-	}
-	
-	function clientUpdate(str){
-		if(str =='E'){
-			document.getElementById("clientfrm").action = "adminclienteditform.do";
-		}else if(str=='D'){
-			document.getElementById("clientfrm").action = "adminclientdelete.do";
-		}document.getElementById("frm").submit();
 	}
 	</script>
 </body>

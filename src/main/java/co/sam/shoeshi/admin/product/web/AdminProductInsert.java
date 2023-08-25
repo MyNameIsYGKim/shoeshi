@@ -57,7 +57,7 @@ public class AdminProductInsert extends HttpServlet {
 			pivo.setProductimgPath(saveDir + fileName3);
 		}
 		
-		pvo.setProductMaker(multi.getParameter("productInsertMake"));
+		pvo.setProductMaker(multi.getParameter("productInsertMaker"));
 		pvo.setProductName(multi.getParameter("productInsertName"));
 		pvo.setProductPrice(Integer.valueOf(multi.getParameter("productInsertPrice")));
 		

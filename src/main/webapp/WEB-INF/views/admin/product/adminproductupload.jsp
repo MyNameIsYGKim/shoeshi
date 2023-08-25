@@ -86,11 +86,11 @@ form input[type="text"], form input[type="number"], form input[type="file"]
 							</tr>
 							<tr>
 								<td><label>제품 사진</label>
-									<input type="file"  id="productInsertfile1" name="productInsertfile1"
+									<input type="file" id="productInsertfile1" name="productInsertfile1"
 									class="form-control"></input>
-									<input type="file"  id="productInsertfile2" name="productInsertfile2"
+									<input type="file" id="productInsertfile2" name="productInsertfile2"
 									class="form-control"></input>
-									<input type="file"  id="productInsertfile3" name="productInsertfile3"
+									<input type="file" id="productInsertfile3" name="productInsertfile3"
 									class="form-control"></input>
 								</td>
 							</tr>

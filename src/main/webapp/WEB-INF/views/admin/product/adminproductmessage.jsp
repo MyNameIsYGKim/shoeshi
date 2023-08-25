@@ -7,8 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div align="center">
-		<h1>${message}</h1>
+	<div align="center" style="height:700px">
+		<h1 style="font-size:500%">${message}</h1>
 	</div>
 </body>
 </html>
