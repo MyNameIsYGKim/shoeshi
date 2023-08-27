@@ -48,4 +48,10 @@ public class ClientServiceImpl implements ClientService {
 	public List<ClientVO> clientSelectList(String key, String clientSearchVal) {
 		return map.clientSelectList(key, clientSearchVal);
 	}
+
+	@Override
+	public String clientPasswordCheck(ClientVO vo) {
+		
+		return map.clientPasswordCheck(vo);
+	}
 }

@@ -47,7 +47,7 @@ public class ClientEdit extends HttpServlet {
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter writer = response.getWriter();
 			writer.println(
-					"<script>alert('정보가 수정되었습니다.'); location.href='http://localhost/example/clienteditform.do'</script>");
+					"<script>alert('정보가 수정되었습니다.'); location.href='http://localhost/example/mypage.do'</script>");
 			writer.close();
 		}
 	}

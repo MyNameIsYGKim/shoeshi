@@ -203,7 +203,7 @@ ul.tabs li.current {
 
 												<c:forEach items="${bidList}" var="l">
 													<tr class="alert" role="alert">
-														<td class="tdc" colspan="4"></td>
+														<td id="BUYempty" class="tdc" colspan="3"></td>
 
 													</tr>
 												</c:forEach>
@@ -224,8 +224,8 @@ ul.tabs li.current {
 											<tbody id="SELLTbody">
 
 												<c:forEach items="${bidList}" var="l">
-													<tr class="alert" role="alert">
-														<td class="tdc" colspan="4"></td>
+													<tr align="center" class="alert" role="alert">
+														<td id="SELLempty" class="tdc" colspan="3"></td>
 
 													</tr>
 												</c:forEach>
@@ -262,7 +262,7 @@ ul.tabs li.current {
 				</a>
 			</div>
 		</div>
-		
+
 
 
 
@@ -354,7 +354,7 @@ ul.tabs li.current {
 		alert(alertBid);
 		alertBid = "";
 		}
-});
+		});
 
 		function typeS() {
 			document.getElementById("bidType").value = 'SELL';
@@ -386,22 +386,22 @@ ul.tabs li.current {
 		})
 		
 		/*/////////////////////////에이작//////////////////////  */
-			function searchList(t) {
-		// ajax를 이용해서 검색결과를 화면에 출력
-		let pid = ${p.productId};
-		let size = document.getElementById("size").value;
-		let type = t;
-		let payload = "pid=" + pid + "&size=" + size + "&type=" + type;
-		
-		let url = "ajaxbidsearchlist.do";
-		
-		fetch(url, {
-			method:"POST",
-			headers:{"content-Type": "application/x-www-form-urlencoded",},
-			body: payload
-		}).then(response => response.json())
-		  .then(json => htmlConvert(json,t));
-	}
+		function searchList(t) {
+			// ajax를 이용해서 검색결과를 화면에 출력
+			let pid = ${p.productId};
+			let size = document.getElementById("size").value;
+			let type = t;
+			let payload = "pid=" + pid + "&size=" + size + "&type=" + type;
+			
+			let url = "ajaxbidsearchlist.do";
+			
+			fetch(url, {
+				method:"POST",
+				headers:{"content-Type": "application/x-www-form-urlencoded",},
+				body: payload
+			}).then(response => response.json())
+			  .then(json => htmlConvert(json,t));
+		}
 	
 	function htmlConvert(datas,t) {
 		let type;
@@ -433,7 +433,15 @@ ul.tabs li.current {
 			tbody.innerHTML = datas.l.map(data => htmlView(data)).join('');
 			document.getElementById(t+'Tb').appendChild(tbody);
 		}else{
+			/* document.getElementById(t+'Tbody').remove();
+			const tbody = document.createElement('tbody');
+			tbody.id = t+'Tbody'; */
+			
 			document.getElementById(t+'Tbody').innerHTML = type+ ' 입찰내역이 없습니다.';
+			
+			
+			
+			
 		}
 		
 		// table tbody 추가
@@ -453,11 +461,11 @@ ul.tabs li.current {
 		`
 	}
 	
-function htmlViewNull(data,t) {
+function htmlViewNull() {
 		
 		return `
 		<tr class="alert" role="alert">
-			<td cols="3">입찰 내역이 없습니다.</td>
+			<td colspan="3">입찰 내역이 없습니다.</td>
 			
 		</tr>
 		`
