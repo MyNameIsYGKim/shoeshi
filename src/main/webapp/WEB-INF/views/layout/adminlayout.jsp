@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -62,8 +63,11 @@
 	<tiles:insertAttribute name="sidebar" />
 	</div>
 	
-	
+	<div style="min-height: 700px">
+	<c:if test="${author eq 'ADMIN'}">
 	<tiles:insertAttribute name="body" ignore="true" />
+	</c:if>
+	</div>
 
 
 	<!-- Footer -->

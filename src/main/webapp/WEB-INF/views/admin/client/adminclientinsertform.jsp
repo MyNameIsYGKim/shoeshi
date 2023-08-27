@@ -4,7 +4,7 @@
 <html lang="ko">
 <head>
 <meta charset="utf-8" />
-<title>adminproductmodify</title>
+<title>adminclientinsertform</title>
 <link href="css/styles.css" rel="stylesheet" />
 <style>
 .container1 {
@@ -78,49 +78,60 @@ form input[type="text"], form input[type="number"], form input[type="file"]
 	<div class="row1">
 	<div class="formst">
 		<h1 style="text-align: center; font-weight: bold; margin-top: 20px;">
-		회원 관리</h1>
+		회원 등록</h1>
 		<div>
-		
+			<form id="clienteditform" action="adminclientinsert.do" method="post">
 		<div>
 		<table>
 			<tbody>
 				<tr>
 					<td><label>ID</label>
 						<div>
-							<input type="text" class="form-control" placeholder="${n.clientId}"
-								id="clientId" name="clientId" value="${n.clientId }" readonly="readonly">
+							<input type="text" id="clientInsertId" name="clientInsertId"
+								class="form-control" placeholder="아이디 입력" required="required">
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td><label>PASSWORD</label>
+						<div>
+							<input type="text" id="clientInsertPassword" name="clientInsertPassword"
+								class="form-control" placeholder="비밀번호 입력" required="required">
 						</div>
 					</td>
 				</tr>
 				<tr>
 					<td><label>이름</label>
 						<div>
-							<input type="text" class="form-control" placeholder="${n.clientName}"
-								id="clientName" name="clientName" value="${n.clientName }" readonly="readonly">
+							<input type="text" id="clientInsertName" name="clientInsertName"
+								class="form-control" placeholder="이름 입력" required="required">
 						</div>
 					</td>
 				</tr>
 				<tr>
 					<td><label>주소</label>
 						<div>
-							<input type="text" class="form-control" placeholder="${n.clientAddress}"
-								id="clientAddress" name="clientAddress" value="${n.clientAddress }" readonly="readonly">
+							<input type="text" id="clientInsertAddress" name="clientInsertAddress"
+								class="form-control" placeholder="주소 입력">
 						</div>
 					</td>
 				</tr>
 				<tr>
 					<td><label>전화번호</label>
 						<div>
-							<input type="text" class="form-control" placeholder="${n.clientTel}"
-								id="clientTel" name="clientTel" value="${n.clientTel }" readonly="readonly">
+							<input type="text" id="clientInsertTel" name="clientInsertTel"
+								class="form-control" placeholder="전화번호 입력" required="required">
 						</div>
 					</td>
 				</tr>
 				<tr>
 					<td><label>권한</label>
 						<div>
-							<input type="text" class="form-control" placeholder="${n.clientAuthor}"
-								id="clientAuthor" name="clientAuthor" value="${n.clientAuthor }" readonly="readonly">
+							<select id="key" name="key">
+								<option>권한</option>
+								<option value="adminInsertUser">USER</option>
+								<option value="adminInsertAdmin">ADMIN</option>
+							</select>
 						</div>
 					</td>
 				</tr>
@@ -129,32 +140,14 @@ form input[type="text"], form input[type="number"], form input[type="file"]
 		</div>
 		<br>
 		<div class="button-container">
-			<button type="button" onclick="clientUpdate('E')" class="btn btn-primary 1">수정</button>
-			<button type="button" onclick="clientUpdate('D')" class="btn btn-primary 2">삭제</button>
-			<button type="button" onclick="lcoation.href=adminclientmanage.do"
-				class="btn btn-primary 3">취소</button>
+			<button type="submit" class="btn btn-primary">
+				등록</button>
 		</div>
-		<div>
-			<form id="clientEditHiddenForm" method="post">
-				<input type="hidden" id="clientId" name="clientId"
-					value="${n.clientId }">
-			</form>
-		</div>
-		</div>
+		</form>
 		</div>
 	</div>
 	</div>
 	</div>
-	<script type="text/javascript">
-		
-	function clientUpdate(str){
-		if(str =='E'){
-			document.getElementById("clientEditHiddenForm").action = "adminclienteditform.do";
-		}else if(str=='D'){
-			document.getElementById("clientEditHiddenForm").action = "adminclientdelete.do";
-		}document.getElementById("clientEditHiddenForm").submit();
-	}
-	
-	</script>
+	</div>
 </body>
 </html>

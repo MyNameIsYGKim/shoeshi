@@ -52,7 +52,7 @@
 						</a>
 						<div class="sb-sidenav-menu-heading">제품관리</div>
 						<nav class="sb-sidenav-menu-nested nav">
-							<a class="nav-link" href="adminproductmanage.do">제품조회</a>
+							<a class="nav-link" href="adminproductmanage.do">제품목록</a>
 						</nav>
 
 						<div class="collapse" id="collapseLayouts"

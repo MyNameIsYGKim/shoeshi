@@ -1,6 +1,7 @@
 package co.sam.shoeshi.admin.deal.web;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.time.LocalDate;
 
 import javax.servlet.ServletException;
@@ -23,6 +24,8 @@ public class AdminDealEdit extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		try {
+		
 		DealService dao = new DealServiceImpl();
 		DealVO vo = new DealVO();
 		
@@ -54,6 +57,13 @@ public class AdminDealEdit extends HttpServlet {
 		vo = dao.dealSelect(vo);
 		request.setAttribute("n", vo);
 		ViewResolve.forward(request, response, viewName);
+		
+		}catch(Exception e) {
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter writer = response.getWriter();
+			writer.println("<script>alert('잘못된 요청'); location.href='http://localhost/example/admindealmanage.do'</script>");
+			writer.close();	
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

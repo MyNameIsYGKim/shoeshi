@@ -26,8 +26,8 @@
 .admintitle {
 	font-weight: bold;
 	text-align: center;
-	margin-top: 20px;
-	margin-bottom: 40px;
+	margin-top: 30px;
+	margin-bottom: 30px;
 }
 
 .tableset {
@@ -63,7 +63,7 @@
 <body>
 	<div id="layoutSidenav">
 		<div class="container bodymargin">
-			<h1 class="adminproducttitle" align="center">제품 관리</h1>
+			<h1 class="admintitle">제품 관리</h1>
 			<!-- partial -->
 			<div class="row" style="margin-top: 5px; margin-bottom: 5px;">
 				<div class="col-12 grid-margin">
@@ -80,7 +80,7 @@
 									<input type="button" onclick="searchList()" value="검색"
 										class="searchbtn" onmouseover="this.style.background='gray'"
 										onmouseout="this.style.background='#FAFAFA'">
-									<input type="button" onclick="location.href='adminproductform.do'"
+									<input type="button" onclick="location.href='adminproductinsertform.do'"
 										value="등록" class="insertbtn"
 										onmouseover="this.style.background='gray'"
 										onmouseout="this.style.background='#FAFAFA'">
@@ -99,7 +99,7 @@
 									</thead>
 									<tbody>
 										<c:if test="${not empty products }">
-											<c:forEach items="${products }" var="n">
+											<c:forEach items="${products }" var="n" begin="0" end="14">
 												<tr>
 													<td align="center">${n.productId }</td>
 													<td>${n.productMaker }</td>
@@ -114,6 +114,9 @@
 													</td>
 												</tr>
 											</c:forEach>
+											<tr>
+												<td colspan="5" align="center">· · ·</td>
+											</tr>
 										</c:if>
 										<c:if test="${empty products }">
 											<tr>
@@ -124,7 +127,6 @@
 									<!-- 더미 데이터 끝 -->
 								</table>
 							</div>
-							<br>
 							<div>
 								<form id="productfrm" method="post">
 									<input type="hidden" id="productId" name="productId">
@@ -142,7 +144,7 @@
 	
 	function selectProduct(n) {
 		document.getElementById("productId").value = n;
-		document.getElementById("productfrm").action = "adminproducteditform.do";
+		document.getElementById("productfrm").action = "adminproductselect.do";
 		document.getElementById("productfrm").submit();
 	}
 	

@@ -25,6 +25,13 @@
 		CLIENT_NAME, CLIENT_ADDRESS, CLIENT_TEL)
 		VALUES(#{clientId},#{clientPassword},#{clientName},#{clientAddress},#{clientTel})
 	</insert>
+	<insert id="adminClientInsert"
+		parameterType="co.sam.shoeshi.client.service.ClientVO">
+		INSERT INTO CLIENT(CLIENT_ID, CLIENT_PASSWORD,
+		CLIENT_NAME, CLIENT_ADDRESS, CLIENT_TEL, CLIENT_AUTHOR)
+		VALUES(#{clientId},#{clientPassword},#{clientName},
+		#{clientAddress},#{clientTel},${clientAuthor})
+	</insert>
 	<update id="clientUpdate"
 		parameterType="co.sam.shoeshi.client.service.ClientVO">
 		UPDATE CLIENT

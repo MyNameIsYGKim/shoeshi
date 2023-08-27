@@ -13,4 +13,9 @@ public interface DealService {
 	int dealInsert(DealVO vo);
 	int dealUpdate(DealVO vo);
 	int dealDelete(DealVO vo);
+	List<DealVO> dealStateList1();
+	List<DealVO> dealStateList2();
+	List<DealVO> dealStateList3();
+	List<DealVO> dealSelectList2();
+	List<DealVO> dealSelectList3();
 }

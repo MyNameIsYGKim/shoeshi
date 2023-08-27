@@ -26,17 +26,12 @@ public class AdminProductEditForm extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ProductService pdao = new ProductServiceImpl();
-		ProductimgService pidao = new ProductimgServiceImpl();
 		ProductVO pvo = new ProductVO();
-		ProductimgVO pivo = new ProductimgVO();
 		
 		pvo.setProductId(Integer.valueOf(request.getParameter("productId")));
-		pivo.setProductId(Integer.valueOf(request.getParameter("productId")));
 		pvo = pdao.productSelect(pvo);
-		pivo = pidao.productimgSelect(pivo);
 		request.setAttribute("n", pvo);
-		request.setAttribute("m", pivo);
-		String viewName = "admin/product/adminproductmodify";
+		String viewName = "admin/product/adminproducteditform";
 		ViewResolve.forward(request, response, viewName);
 	}
 

@@ -60,7 +60,7 @@ form input[type="text"], form input[type="number"], form input[type="file"]
 	<div class="container1">
 		<div class="row2">
 			<div class="row1">
-				<form class="formst" id="productInsertForm" action="adminproductupload.do" onsubmit="return formCheck()"
+				<form class="formst" id="productInsertForm" action="adminproductinsert.do" onsubmit="return formCheck()"
 					method="post" enctype="multipart/form-data">
 					<h1 style="text-align: center; font-weight: bold; margin-top: 20px;">
 						제품등록</h1>
@@ -99,7 +99,7 @@ form input[type="text"], form input[type="number"], form input[type="file"]
 					<div>
 						<div class="button-container">
 							<button type="submit" class="btn btn-primary pull-right">
-							등록</button>
+								등록</button>
 						</div>
 					</div>
 				</form>

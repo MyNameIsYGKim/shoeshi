@@ -8,6 +8,7 @@ List<ClientVO> clientSelectList(String key, String clientSearchVal);
 ClientVO clientIdFind(ClientVO vo);
 ClientVO clientSelect(ClientVO vo);
 int clientInsert(ClientVO vo);
+int adminClientInsert(ClientVO vo);
 int clientUpdate(ClientVO vo);
 int clientDelete(ClientVO vo);
 }

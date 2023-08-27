@@ -9,16 +9,16 @@ import javax.servlet.http.HttpServletResponse;
 
 import co.sam.shoeshi.common.ViewResolve;
 
-@WebServlet("/adminclientform.do")
-public class AdminClientForm extends HttpServlet {
+@WebServlet("/adminclientinsertform.do")
+public class AdminClientInsertForm extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public AdminClientForm() {
+    public AdminClientInsertForm() {
         super();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String viewName = "admin/client/adminclientinsert";
+		String viewName = "admin/client/adminclientinsertform";
 		ViewResolve.forward(request, response, viewName);
 	}
 

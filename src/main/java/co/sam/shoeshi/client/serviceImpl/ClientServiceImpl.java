@@ -48,4 +48,9 @@ public class ClientServiceImpl implements ClientService {
 	public List<ClientVO> clientSelectList(String key, String clientSearchVal) {
 		return map.clientSelectList(key, clientSearchVal);
 	}
+
+	@Override
+	public int adminClientInsert(ClientVO vo) {
+		return map.adminClientInsert(vo);
+	}
 }

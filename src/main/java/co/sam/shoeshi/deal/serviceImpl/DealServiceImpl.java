@@ -53,4 +53,29 @@ public class DealServiceImpl implements DealService {
 		return map.dealSelectList(key, AdminDealSearchValue);
 	}
 
+	@Override
+	public List<DealVO> dealStateList1() {
+		return map.dealStateList1();
+	}
+
+	@Override
+	public List<DealVO> dealStateList2() {
+		return map.dealStateList2();
+	}
+
+	@Override
+	public List<DealVO> dealStateList3() {
+		return map.dealStateList3();
+	}
+
+	@Override
+	public List<DealVO> dealSelectList2() {
+		return map.dealSelectList2();
+	}
+
+	@Override
+	public List<DealVO> dealSelectList3() {
+		return map.dealSelectList3();
+	}
+
 }

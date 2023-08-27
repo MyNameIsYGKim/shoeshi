@@ -9,15 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.oreilly.servlet.MultipartRequest;
-import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
-
+import co.sam.shoeshi.common.ViewResolve;
 import co.sam.shoeshi.product.service.ProductService;
 import co.sam.shoeshi.product.service.ProductVO;
 import co.sam.shoeshi.product.serviceImpl.ProductServiceImpl;
-import co.sam.shoeshi.productimg.service.ProductimgService;
-import co.sam.shoeshi.productimg.service.ProductimgVO;
-import co.sam.shoeshi.productimg.serviceImpl.ProductimgServiceImpl;
 
 @WebServlet("/adminproductedit.do")
 public class AdminProductEdit extends HttpServlet {
@@ -28,27 +23,28 @@ public class AdminProductEdit extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ProductService pdao = new ProductServiceImpl();
-		ProductVO pvo = new ProductVO();
+		try {
 		
-		pvo.setProductMaker(request.getParameter("productMaker"));
-		pvo.setProductName(request.getParameter("productName"));
-		pvo.setProductPrice(Integer.valueOf(request.getParameter("productPrice")));
+		ProductService dao = new ProductServiceImpl();
+		ProductVO vo = new ProductVO();
 		
+		vo.setProductId(Integer.valueOf(request.getParameter("productEditId")));
+		vo.setProductMaker(request.getParameter("productEditMaker"));
+		vo.setProductName(request.getParameter("productEditName"));
+		vo.setProductPrice(Integer.valueOf(request.getParameter("productEditPrice")));
 		
-		int n = pdao.productUpdate(pvo);
+		String viewName = "admin/product/adminproductselect";
 		
-		if (n == 0) {
+		int n = dao.productUpdate(vo);
+		
+		vo = dao.productSelect(vo);
+		request.setAttribute("n", vo);
+		ViewResolve.forward(request, response, viewName);
+		
+		}catch(Exception e) {
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter writer = response.getWriter();
-			writer.println(
-					"<script>alert('수정 실패.'); location.href='http://localhost/example/adminproductmanage.do'</script>");
-			writer.close();
-		} else {
-			response.setContentType("text/html; charset=UTF-8");
-			PrintWriter writer = response.getWriter();
-			writer.println(
-					"<script>alert('수정 완료.'); location.href='http://localhost/example/adminproductmanage.do'</script>");
+			writer.println("<script>alert('잘못된 요청'); location.href='http://localhost/example/adminproductmanage.do'</script>");
 			writer.close();
 		}
 	}

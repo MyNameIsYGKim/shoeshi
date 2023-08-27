@@ -10,8 +10,39 @@
 		<if test='key == "adminDealSeller"'>AND DEAL_SELLER LIKE UPPER('%'||#{AdminDealSearchValue}||'%')
 			OR DEAL_SELLER LIKE LOWER('%'||#{AdminDealSearchValue}||'%')</if>
 		<if test='key == "adminDealState"'>AND DEAL_STATE LIKE '%'||#{AdminDealSearchValue}||'%'</if>
-		
 		ORDER BY DEAL_NO
+	</select>
+	<select id="dealSelectList2" resultType="co.sam.shoeshi.deal.service.DealVO">
+		SELECT * FROM DEAL WHERE DEAL_STATE = '완료'
+		<if test='key == "adminDealDate"'>AND DEAL_DATE LIKE '%'||#{AdminDealSearchValue}||'%'</if>
+		<if test='key == "adminDealProductId"'>AND PRODUCT_ID LIKE '%'||#{AdminDealSearchValue}||'%'</if>
+		<if test='key == "adminDealBuyer"'>AND DEAL_BUYER LIKE UPPER('%'||#{AdminDealSearchValue}||'%')
+			OR DEAL_BUYER LIKE LOWER('%'||#{AdminDealSearchValue}||'%')</if>
+		<if test='key == "adminDealSeller"'>AND DEAL_SELLER LIKE UPPER('%'||#{AdminDealSearchValue}||'%')
+			OR DEAL_SELLER LIKE LOWER('%'||#{AdminDealSearchValue}||'%')</if>
+		<if test='key == "adminDealState"'>AND DEAL_STATE LIKE '%'||#{AdminDealSearchValue}||'%'</if>
+		ORDER BY DEAL_NO
+	</select>
+	<select id="dealSelectList3" resultType="co.sam.shoeshi.deal.service.DealVO">
+		SELECT * FROM DEAL WHERE DEAL_STATE = '실패'
+		<if test='key == "adminDealDate"'>AND DEAL_DATE LIKE '%'||#{AdminDealSearchValue}||'%'</if>
+		<if test='key == "adminDealProductId"'>AND PRODUCT_ID LIKE '%'||#{AdminDealSearchValue}||'%'</if>
+		<if test='key == "adminDealBuyer"'>AND DEAL_BUYER LIKE UPPER('%'||#{AdminDealSearchValue}||'%')
+			OR DEAL_BUYER LIKE LOWER('%'||#{AdminDealSearchValue}||'%')</if>
+		<if test='key == "adminDealSeller"'>AND DEAL_SELLER LIKE UPPER('%'||#{AdminDealSearchValue}||'%')
+			OR DEAL_SELLER LIKE LOWER('%'||#{AdminDealSearchValue}||'%')</if>
+		<if test='key == "adminDealState"'>AND DEAL_STATE LIKE '%'||#{AdminDealSearchValue}||'%'</if>
+		ORDER BY DEAL_NO
+	</select>
+	
+	<select id="dealStateList1" resultType="co.sam.shoeshi.deal.service.DealVO">
+		SELECT * FROM DEAL WHERE DEAL_STATE='도착'
+	</select>
+	<select id="dealStateList2" resultType="co.sam.shoeshi.deal.service.DealVO">
+		SELECT * FROM DEAL WHERE DEAL_STATE='완료'
+	</select>
+	<select id="dealStateList3" resultType="co.sam.shoeshi.deal.service.DealVO">
+		SELECT * FROM DEAL WHERE DEAL_STATE='실패'
 	</select>
 	
 	<select id="dealSelect" resultType="co.sam.shoeshi.deal.service.DealVO">

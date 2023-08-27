@@ -4,7 +4,7 @@
 <html lang="ko">
 <head>
 <meta charset="utf-8" />
-<title>adminproductmodify</title>
+<title>adminclienteditform</title>
 <link href="css/styles.css" rel="stylesheet" />
 <style>
 .container1 {
@@ -44,6 +44,14 @@ form input[type="text"], form input[type="number"], form input[type="file"]
 	box-sizing: border-box;
 }
 
+.btn-primary {
+	width: 54.5px;
+	max-width: 300px; /* 최대 너비 설정 (필요한 경우 조정) */
+	height: 35px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
 .row1 {
 	border: 1px solid #ccc;
 	width: 700px;
@@ -65,9 +73,12 @@ form input[type="text"], form input[type="number"], form input[type="file"]
 </style>
 </head>
 <body>
-	<div align="center">
+	<div class="container1">
+	<div class="row2">
+	<div class="row1">
+	<div class="formst">
 		<h1 style="text-align: center; font-weight: bold; margin-top: 20px;">
-		유저 수정</h1>
+		회원 수정</h1>
 		<div>
 			<form id="clienteditform" action="adminclientedit.do" method="post">
 		<div>
@@ -127,12 +138,16 @@ form input[type="text"], form input[type="number"], form input[type="file"]
 		</div>
 		<br>
 		<div class="button-container">
-			<button type="submit">수정</button>
-			<button type="button" onclick="lcoation.href=adminclientmanage.do">취소</button>
+			<button type="submit" class="btn btn-primary 1">수정</button>
+			<button type="button" onclick="lcoation.href=adminclientmanage.do"
+				class="btn btn-primary 2">취소</button>
 		</div>
 			<input type="hidden" id="clientId" name="clientId" value="${n.clientId }">
 		</form>
 		</div>
+	</div>
+	</div>
+	</div>
 	</div>
 </body>
 </html>

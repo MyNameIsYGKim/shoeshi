@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -47,8 +48,8 @@
 .admintitle {
 	font-weight: bold;
 	text-align: center;
-	margin-top: 20px;
-	margin-bottom: 40px;
+	margin-top: 30px;
+	margin-bottom: 30px;
 }
 
 .tableset {
@@ -145,111 +146,44 @@ divstyle2 {
 						<div class="col-12 grid-margin">
 							<div class="card">
 								<div class="card-body">
-									<h4 style="font-weight: bold; text-align: center;">제품 검수</h4>
+									<h4 style="font-weight: bold; text-align: center;">거래 목록</h4>
 									<div>
 										<table class="table tableset">
 											<thead>
 												<tr>
+													<th>거래번호</th>
+													<th>거래날짜</th>
 													<th>제품번호</th>
-													<th>제품명</th>
-													<th>거래금액</th>
-													<th>판매자</th>
+													<th>제품사이즈</th>
 													<th>구매자</th>
-													<th>날짜</th>
-													<th>검수</th>
+													<th>판매자</th>
+													<th>거래가격</th>
+													<th>거래상태</th>
 												</tr>
 											</thead>
 											<tbody>
-												<tr>
-													<td>111</td>
-													<td>product</td>
-													<td>100,000원</td>
-													<td>판매자</td>
-													<td>구매자</td>
-													<td>날짜</td>
-													<td>
-														<form>
-															<select name="검수" id="lang">
-																<option value="준비중">준비중</option>
-																<option value="합격">합격</option>
-																<option value="보류">보류</option>
-																<option value="불합격">불합격</option>
-															</select>
-														</form>
-													</td>
-												</tr>
-												<tr>
-													<td>222</td>
-													<td>product</td>
-													<td>100,000원</td>
-													<td>판매자</td>
-													<td>구매자</td>
-													<td>날짜</td>
-													<td>
-														<form>
-															<select name="검수" id="lang">
-																<option value="준비중">준비중</option>
-																<option value="합격">합격</option>
-																<option value="보류">보류</option>
-																<option value="불합격">불합격</option>
-															</select>
-														</form>
-													</td>
-												</tr>
-												<tr>
-													<td>333</td>
-													<td>product</td>
-													<td>100,000원</td>
-													<td>판매자</td>
-													<td>구매자</td>
-													<td>날짜</td>
-													<td>
-														<form>
-															<select name="검수" id="lang">
-																<option value="준비중">준비중</option>
-																<option value="합격">합격</option>
-																<option value="보류">보류</option>
-																<option value="불합격">불합격</option>
-															</select>
-														</form>
-													</td>
-												</tr>
-												<tr>
-													<td>444</td>
-													<td>product</td>
-													<td>100,000원</td>
-													<td>판매자</td>
-													<td>구매자</td>
-													<td>날짜</td>
-													<td>
-														<form>
-															<select name="검수" id="lang">
-																<option value="준비중">준비중</option>
-																<option value="합격">합격</option>
-																<option value="보류">보류</option>
-																<option value="불합격">불합격</option>
-															</select>
-														</form>
-													</td>
-												</tr>
-												<tr>
-													<td>555</td>
-													<td>product</td>
-													<td>100,000원</td>
-													<td>판매자</td>
-													<td>구매자</td>
-													<td>날짜</td>
-													<td>
-														<form>
-															<select name="검수" id="lang">
-																<option value="준비중">준비중</option>
-																<option value="합격">합격</option>
-																<option value="보류">보류</option>
-																<option value="불합격">불합격</option>
-															</select>
-														</form>
-													</td>
-												</tr>
+												<c:if test="${not empty deals }">
+													<c:forEach items="${deals }" var="n" begin="0" end="4">
+														<tr>
+															<td align="center">${n.dealNo }</td>
+															<td align="center">${n.dealDate }</td>
+															<td align="center">${n.productId }</td>
+															<td align="center">${n.productSize }</td>
+															<td>${n.dealBuyer }</td>
+															<td>${n.dealSeller }</td>
+															<td>${n.dealPrice }</td>
+															<td align="center">${n.dealState }</td>
+														</tr>
+													</c:forEach>
+													<tr>
+														<td colspan="8" align="center">· · ·</td>
+													</tr>
+												</c:if>
+												<c:if test="${empty deals }">
+													<tr>
+														<td colspan="8" align="center">Empty.</td>
+													</tr>
+												</c:if>
 											</tbody>
 										</table>
 									</div>
@@ -261,62 +195,38 @@ divstyle2 {
 						<div class=>
 							<div class="card">
 								<div class="card-body">
-									<h4 style="font-weight: bold; text-align: center;">최근 가입
-										회원</h4>
+									<h4 style="font-weight: bold; text-align: center;">회원 목록</h4>
 									<div class="table-responsive">
 										<table class="table">
 											<thead>
 												<tr>
 													<th>#</th>
-													<th style="width: 150px;">이름</th>
-													<th>ID</th>
-													<th style="width: 150px;">가입일자</th>
-													<th>비고</th>
+													<th>아이디</th>
+													<th>이름</th>
+													<th>주소</th>
+													<th>전화번호</th>
 												</tr>
 											</thead>
 											<tbody>
-												<tr>
-													<td>1</td>
-													<td>홍길동</td>
-													<td>ID</td>
-													<td>yyyy-MM-dd</td>
-													<td>비고</td>
-												</tr>
-												<tr>
-													<td>2</td>
-													<td>홍길동</td>
-													<td>ID</td>
-													<td>yyyy-MM-dd</td>
-													<td>비고</td>
-												</tr>
-												<tr>
-													<td>3</td>
-													<td>홍길동</td>
-													<td>ID</td>
-													<td>yyyy-MM-dd</td>
-													<td>비고</td>
-												</tr>
-												<tr>
-													<td>4</td>
-													<td>홍길동</td>
-													<td>ID</td>
-													<td>yyyy-MM-dd</td>
-													<td>비고</td>
-												</tr>
-												<tr>
-													<td>5</td>
-													<td>홍길동</td>
-													<td>ID</td>
-													<td>yyyy-MM-dd</td>
-													<td>비고</td>
-												</tr>
-												<tr>
-													<td>6</td>
-													<td>홍길동</td>
-													<td>ID</td>
-													<td>yyyy-MM-dd</td>
-													<td>비고</td>
-												</tr>
+												<c:if test="${not empty clients }">
+													<c:forEach items="${clients }" var="n"  begin="1" end="5">
+														<tr>
+															<td>"n"</td>
+															<td>${n.clientId }</td>
+															<td>${n.clientName }</td>
+															<td>${n.clientAddress }</td>
+															<td>${n.clientTel }</td>
+														</tr>
+													</c:forEach>
+													<tr>
+														<td colspan="5" align="center">· · ·</td>
+													</tr>
+												</c:if>
+												<c:if test="${empty clients }">
+													<tr>
+														<td colspan="5" align="center">Empty.</td>
+													</tr>
+												</c:if>
 											</tbody>
 										</table>
 									</div>
