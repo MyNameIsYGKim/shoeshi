@@ -4,7 +4,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>케이마켓::대한민국 1등 온라인 쇼핑몰</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script src="https://kit.fontawesome.com/20962f3e4b.js" crossorigin="anonymous"></script>
@@ -189,7 +188,7 @@
             <section class="complete">
                 
                 <article class="message">
-                    <h2>
+                    <h2 id="sellTitle">
                         고객님의 주문이 정상적으로 완료되었습니다.
                         <i class="far fa-smile" aria-hidden="true"></i>
                     </h2>
@@ -209,19 +208,20 @@
                         <tr>
                             <td>
                                 <article>
-                                    <img src="https://via.placeholder.com/80X80" alt="">
+                                    <img src="${p.productimgPath}${p.productimgName2}"
+										alt="IMG-PRODUCT">
                                     <div>
                                         <h2>
-                                            <a href="#">상품명</a>
+                                            <a href="productselect.do?productId=${p.productId }">${p.productName }</a>
                                         </h2>
-                                        <p>상품설명</p>
+                                        <p>${p.productMaker}</p>
                                     </div>
                                 </article>
                             </td>
-                            <td>17,000원</td>
-                            <td>1,000원</td>
+                            <td>${dealPrice }원</td>
+                            <td>0원</td>
                             <td>1</td>
-                            <td>16,000원</td>
+                            <td>${dealPrice }원</td>
                         </tr>
                         
                         
@@ -233,19 +233,19 @@
                     <table border="0">
                         <tr>
                             <td>주문번호</td>
-                            <td>2008101324568</td>
+                            <td>${dealNo }</td>
                             <td rowspan="3">총 결제금액</td>
                             <td rowspan="3">
-                                <span>35,000</span>원
+                                <span>${dealPrice }</span>원
                             </td>
                         </tr>
                         <tr>
                             <td>결제방법</td>
-                            <td>신용카드</td>
+                            <td>${payment }</td>
                         </tr>
                         <tr>
                             <td>주문자/연락처</td>
-                            <td>홍길동/010-1234-1234</td>
+                            <td>${clientName }/${clientTel }</td>
                         </tr>
                     </table>
                 </article>
@@ -255,20 +255,20 @@
                     <table border="0">
                         <tr>
                             <td>수취인</td>
-                            <td>홍길동</td>
+                            <td>${clientName }</td>
                             <td>주문자 정보</td>
                         </tr>
                         <tr>
                             <td>연락처</td>
-                            <td>010-1234-1234</td>
+                            <td>${clientTel }</td>
                             <td rowspan="2">
-                                홍길동
-                                <br> 010-1234-1234
+                                ${clientName }
+                                <br> ${clientTel }
                             </td>
                         </tr>
                         <tr>
                             <td>배송지 주소</td>
-                            <td>부산광역시 강남구 대연동 123 10층</td>
+                            <td>${clientAddress}</td>
                         </tr>
                     </table>
                 </article>
@@ -278,4 +278,9 @@
        
     </div>
 </body>
+<script type="text/javascript">
+$(function(){
+		alert("${payment}")
+})
+</script>
 </html>

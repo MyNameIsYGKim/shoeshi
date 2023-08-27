@@ -19,6 +19,5 @@ public interface ProductMapper {
 	int productInsert(ProductVO vo);
 	int productUpdate(ProductVO vo);
 	int productDelete(ProductVO vo);
-
 	List<ProductVO> productSearchList(String key, String val);
 }

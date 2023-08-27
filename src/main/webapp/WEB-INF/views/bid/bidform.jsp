@@ -153,10 +153,11 @@ ul.tabs li.current {
 										<input name="productId" hidden="" value="${p.productId}" /> <input
 											name="bidType2" hidden="" value="${bidType2 }" /> <input
 											name="bidType" hidden="" value="${bidType }" />
-										<input name="buttonType" hidden="" value="bid" />
+										<input name="buttonType" id="buttonType" hidden="" value="bid" />
 										<!--  -->
-										<button type="submit" onclick="hideInputPrice()"
-											class="flex-c-m stext-101 cl0 bg10000 sizef bor999 hov-btn1 p-lr-15 trans-04">
+										<button 
+											class="flex-c-m stext-101 cl0 bg10000 sizef bor999 hov-btn1 p-lr-15 trans-04"
+											onclick="hideInputPrice()" type="submit">
 											<span>즉시 ${bidType2 }</span>
 										</button>
 
@@ -191,7 +192,9 @@ ul.tabs li.current {
 				return false;
 			}else if ($('#priceDiv').css("display") != "none" && price == "") {
 				return false;
-			}
+			}else if ($('#priceDiv').css("display") == "none" && price == "" && document.getElementById("buttonType").value == "deal"){
+				return true;
+				}
 			return true;
 		}
 		
@@ -212,9 +215,14 @@ ul.tabs li.current {
 				document.getElementById("bidPrice").focus();
 			}
 		}
+		
 		function hideInputPrice(){
-			if ($('#priceDiv').css("display") != "none") {
+			if($('#priceDiv').css("display") != "none"){
 				$('#priceDiv').hide();
+			}
+			if(document.getElementById("productSize").value==0) {
+				alert("사이즈를 선택하시오.");
+			}else{
 				document.getElementById("buttonType").value = "deal";
 			}
 		}
