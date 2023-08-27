@@ -25,18 +25,9 @@
 }
 
 body {
-	font-family: 'Noto Sans KR', sans-serif;
-	font-size: 14px;
-	background-color: #f5f6f7;
-	line-height: 1.5em;
-	color: #222;
-	margin: 0;
+	
 }
 
-a {
-	text-decoration: none;
-	color: #222;
-}
 
 /*member sign in*/
 .payment {
@@ -45,6 +36,12 @@ a {
 	margin: auto; /*중앙 정렬*/
 	padding: 10px 20px 0 20px;
 	margin-bottom: 100px;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: 14px;
+	background-color: #fff;
+	line-height: 1.5em;
+	color: #222;
+	
 }
 
 .payment .field {
@@ -63,12 +60,14 @@ a {
 	padding: 10px;
 	width: 100%;
 	margin-bottom: 5px;
+	border-radius: 7px;
 }
 
 .payment input[type=button], .payment input[type=submit], .payment button[type=button]
 	{
 	background-color: #000000;
 	color: #fff
+	
 }
 
 .payment input:focus, .payment select:focus {

@@ -18,7 +18,6 @@ public interface BidService {
 	List<BidVO> bidSelectList(String key, String val);
 
 	List<BidVO> bidSelectB(BidVO vo);
-
 	List<BidVO> bidSelectS(BidVO vo);
 
 	BidVO bidSelect(BidVO vo);

@@ -29,7 +29,7 @@ public class PaymentEditForm extends HttpServlet {
 		vo.setClientId((String)session.getAttribute("clientId"));
 		vo = dao.paymentSelect(vo);
 		request.setAttribute("pay", vo);
-		String viewName = "client/paymenteditform";
+		String viewName = "my/client/paymenteditform";
 		ViewResolve.forward(request, response, viewName);
 		
 	}

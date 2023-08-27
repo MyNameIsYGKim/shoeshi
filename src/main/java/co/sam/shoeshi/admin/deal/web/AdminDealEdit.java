@@ -27,8 +27,9 @@ public class AdminDealEdit extends HttpServlet {
 		DealVO vo = new DealVO();
 		
 		vo.setDealState(request.getParameter("dealState"));
+		vo.setDealComent(request.getParameter("dealComent"));
 		
-		String viewName = "admin/deal/admindealselectlist";
+		String viewName = "admin/deal/admindealmanage";
 		
 		int n = dao.dealUpdate(vo);
 		

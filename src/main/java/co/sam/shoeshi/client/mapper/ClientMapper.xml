@@ -4,8 +4,10 @@
 	<select id="clientSelectList"
 		resultType="co.sam.shoeshi.client.service.ClientVO">
 		SELECT * FROM CLIENT
-		<if test='key == "id"'>WHERE CLIENT_ID LIKE '%'||#{clientSearchVal}||'%'</if>
-		<if test='key == "name"'>WHERE CLIENT_NAME LIKE '%'||#{clientSearchVal}||'%'</if>
+		<if test='key == "id"'>WHERE CLIENT_ID LIKE UPPER('%'||#{clientSearchVal}||'%')
+			OR CLIENT_ID LIKE LOWER('%'||#{clientSearchVal}||'%')</if>
+		<if test='key == "name"'>WHERE CLIENT_NAME LIKE UPPER('%'||#{clientSearchVal}||'%')
+			OR CLIENT_NAME LIKE LOWER('%'||#{clientSearchVal}||'%')</if>
 		<if test='key == "address"'>WHERE CLIENT_ADDRESS LIKE '%'||#{clientSearchVal}||'%'</if>
 	</select>
 	<select id="clientIdFind"

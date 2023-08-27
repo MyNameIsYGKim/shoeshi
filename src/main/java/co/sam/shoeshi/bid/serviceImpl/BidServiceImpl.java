@@ -35,6 +35,7 @@ public class BidServiceImpl implements BidService {
 	}
 
 
+	@Override
 	public List<BidVO> bidSelectList() {
 		return map.bidSelectList();
 	}
@@ -72,6 +73,7 @@ public class BidServiceImpl implements BidService {
 	public List<BidVO> bidSelectList(String key, String val) {
 		return map.bidSelectList(key, val);
 	}
+
 	@Override
 	public BidVO bidSelectSell(BidVO vo) {
 		return map.bidSelectSell(vo);

@@ -56,9 +56,6 @@ public class AjaxBidSearchList extends HttpServlet {
 				
 		String data = ObjectMapper.writeValueAsString(bidData);
 		
-		
-		System.out.println(data);
-		
 		response.getWriter().append(data);
 		return;
 	}

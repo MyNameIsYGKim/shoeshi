@@ -8,6 +8,12 @@
 		<if test='key == "maker"'>WHERE PRODUCT_MAKER LIKE LOWER('%'||#{val}||'%')
 			OR PRODUCT_MAKER LIKE UPPER('%'||#{val}||'%')</if>
 		<if test='key == "name"'>WHERE PRODUCT_NAME LIKE '%'||#{val}||'%'</if>
+		
+		<if test='key == "adminProductId"'>WHERE PRODUCT_ID LIKE '%'||#{AdminProductSearchValue}||'%'</if>
+		<if test='key == "adminProductMaker"'>WHERE PRODUCT_MAKER LIKE UPPER('%'||#{AdminProductSearchValue}||'%')
+			OR PRODUCT_MAKER LIKE LOWER('%'||#{AdminProductSearchValue}||'%')</if>
+		<if test='key == "adminProductName"'>WHERE PRODUCT_NAME LIKE UPPER('%'||#{AdminProductSearchValue}||'%')
+			OR PRODUCT_NAME LIKE LOWER('%'||#{AdminProductSearchValue}||'%')</if>
 		ORDER BY PRODUCT_ID
 	</select>
 	
@@ -85,5 +91,6 @@
 		I.PRODUCT_ID = #{productId}
 
 	</select>
+
 
 </mapper>

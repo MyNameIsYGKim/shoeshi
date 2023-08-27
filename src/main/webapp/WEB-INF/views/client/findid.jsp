@@ -29,17 +29,15 @@ border-top-left-radius: 7px;
 border-bottom-left-radius: 7px;
 }
 
-.btnradi{
-border-top-right-radius: 7px;
-border-bottom-right-radius: 7px;
+h3{
+margin-top: 50px;
 }
+
 body {
-	font-family: 'Noto Sans KR', sans-serif;
-	font-size: 14px;
 	background-color: #fff;
-	line-height: 1.5em;
-	color: #222;
+
 	margin: 0;
+	
 }
 
 a {
@@ -49,11 +47,16 @@ a {
 
 /*member sign in*/
 .member {
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: 14px;
+	line-height: 1.5em;
+	color: #222;
 	width: 400px;
 	/* border: 1px solid #000; */
 	margin: auto; /*중앙 정렬*/
 	padding: 0 20px;
 	margin-bottom: 20px;
+	min-height: 50vh;
 }
 
 .member .field {
@@ -132,6 +135,19 @@ a {
 	text-align: center;
 	font-weight: bold;
 }
+.ipradi {
+	border-radius: 7px;
+}
+
+.idradi {
+	border-top-left-radius: 7px;
+	border-bottom-left-radius: 7px;
+}
+
+.btnradi {
+	border-top-right-radius: 7px;
+	border-bottom-right-radius: 7px;
+}
 </style>
 
 </head>
@@ -141,15 +157,13 @@ a {
 	<div class="member">
 		<!-- 2. 필드 -->
 		<div class="field">
-			<b>이름</b> <input type="text" class="ipradi" placeholder="이름 입력">
+			<b>이름</b> <input type="text" class="ipradi">
 		</div>
 
 		<div class="field tel-number">
-			<b>휴대전화</b> <!-- <select>
-				<option value="">대한민국 +82</option>
-			</select> -->
+			<b>휴대전화</b> 
 			<div>
-				<input type="tel" placeholder="전화번호 입력" class="telradi"> <input
+				<input type="tel" placeholder="전화번호 입력" class="idradi"> <input
 					type="button" value="인증번호 받기" class="btnradi">
 			</div>
 			<input type="number" placeholder="인증번호를 입력하세요" class="ipradi">
@@ -158,7 +172,6 @@ a {
 
 		<!-- 6. 찾기 버튼 -->
 		<input type="submit" value="아이디 찾기" class="ipradi">
-	</div>
 	</div>
 </body>
 </html>

@@ -6,27 +6,40 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link href="css/styles.css" rel="stylesheet" />
 <style>
-/* Sidebar styles */
+
 .fontb {
-	color: black;
+	color: #000;
 }
 
 .sidebar123 {
+	text-decoration: none;
 	text-align: left;
 	width: 150px;
 	background-color: rgba(255, 255, 255, 0);
-	color: black;
-	position: fixed;
-	
-	top: 0;
-	left: 0;
-	height: 100%;
-	overflow-x: hidden;
+	margin-top: 50px;
 	z-index: 0;
-	padding-top: 100px;
-	margin-left: 123px;
 	border: none;
+	font-weight: bold;
+}
+
+.menufont {
+	color: #ccc;
+	
+} 
+
+.menutitle {
+	color: #000;
+}
+
+.sidebar123 h3 {
+	font-weight: bold;
+}
+
+.sidebar123 h5 {
+	margin-top: 30px;
+	font-weight: bold;
 }
 
 .sidebar123 ul {
@@ -39,44 +52,38 @@
 }
 
 .sidebar123 a {
-	color: black;
 	text-decoration: none;
-	display: block;
-	padding: 10px;
+	padding: 0;
 }
+
 
 /* .sidebar a:hover {
 	background-color: #555;
 } */
 
 /* Main content styles */
-.main-content {
-	margin-left: 300px; /* Adjust this value to match the sidebar width */
-	margin-right: 123px;
-	margin-top: 50px; /* Adjust as needed */
-	margin-bottom: 50px; /* Adjust as needed */
-	padding: 20px;
-	margin-top: 50px;
-}
 </style>
 </head>
 
 <body>
-	<div>
+	<div class="sidebar123">
 		<ul>
-			<li><a href="mypage.do"><h4>마이페이지</h4></a></li>
-			<li><a href="clienteditform.do">회원정보 수정</a></li>
-			<li><a href="paymenteditform.do">거래정보 수정</a></li>
-			<li><a href="deallist.do">거래내역</a></li>
-			<li><a href="bidlist.do">입찰내역</a></li>
-			<li><a href="#">Cart</a></li>
+			<li><a href="mypage.do" class="menutitle"><h3>마이페이지</h3></a></li>
+			<li><h5 class="menutitle">내 정보</h5></li>
+			<li><a href="clienteditform.do" class="menufont">회원정보 수정</a></li>
+			<li><a href="paymenteditform.do" class="menufont">결제정보 수정</a></li>
+			<li><h5 class="menutitle">나의 쇼핑</h5></li>
+			<li><a href="deallist.do" class="menufont">거래내역</a></li>
+			<li><a href="bidlist.do" class="menufont">입찰내역</a></li>
+			<li><a href="paymentform.do" class="menufont">Cart</a></li>
+
 
 			<!-- Add more menu items as needed -->
 		</ul>
 	</div>
 
 
-
+	
 </body>
 
 </html>

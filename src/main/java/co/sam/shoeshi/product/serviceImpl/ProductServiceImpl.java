@@ -20,11 +20,6 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public List<HashMap<String, Object>> productJoinSelectList() {
-		return map.productJoinSelectList();
-	}
-
-	@Override
 	public List<HashMap<String, Object>> productJoinSearchList(String val) {
 		return map.productJoinSearchList(val);
 	}
@@ -60,13 +55,13 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public List<ProductVO> productSelectList(String key, String val) {
-		return map.productSelectList(key, val);
+	public List<ProductVO> productSelectList(String key, String AdminProductSearchValue) {
+		return map.productSelectList(key, AdminProductSearchValue);
 	}
-
+	
 	@Override
 	public List<ProductVO> productSearchList(String key, String val) {
 		return map.productSearchList(key, val);
-
 	}
+	
 }

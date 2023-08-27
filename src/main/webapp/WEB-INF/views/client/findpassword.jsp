@@ -20,11 +20,7 @@
 }
 
 body {
-	font-family: 'Noto Sans KR', sans-serif;
-	font-size: 14px;
 	background-color: #fff;
-	line-height: 1.5em;
-	color: #222;
 	margin: 0;
 }
 
@@ -53,6 +49,10 @@ border-bottom-right-radius: 7px;
 	margin: auto; /*중앙 정렬*/
 	padding: 10px 20px 0;
 	margin-bottom: 100px;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: 14px;
+	line-height: 1.5em;
+	color: #222;
 }
 
 .member .field {
@@ -118,7 +118,7 @@ border-bottom-right-radius: 7px;
 @media ( max-width :768px) {
 	.member {
 		width: 100%;
-		padding:0 20px 0 20px;
+		padding: 0 20px 0 20px;
 	}
 }
 
@@ -129,7 +129,20 @@ border-bottom-right-radius: 7px;
 .searchpw-title {
 	text-align: center;
 	font-weight: bold;
-	padding-top:100px;
+	padding-top: 100px;
+}
+.ipradi {
+	border-radius: 7px;
+}
+
+.idradi {
+	border-top-left-radius: 7px;
+	border-bottom-left-radius: 7px;
+}
+
+.btnradi {
+	border-top-right-radius: 7px;
+	border-bottom-right-radius: 7px;
 }
 </style>
 
@@ -143,15 +156,13 @@ border-bottom-right-radius: 7px;
 		</div>
 
 		<div class="field">
-			<b>이름</b> <input type="text" placeholder="이름 입력" class="ipradi">
+			<b>이름</b> <input type="text" class="ipradi" placeholder="이름 입력">
 		</div>
 
-		<div class="field tel-number">
-			<b>휴대전화</b> <!-- <select>
-				<option value="">대한민국 +82</option>
-			</select> -->
+		<div class="field tel-number" >
+			<b>휴대전화</b>
 			<div>
-				<input type="tel" placeholder="전화번호 입력" class="telradi"> <input
+				<input type="tel" placeholder="전화번호 입력" class="idradi"> <input
 					type="button" value="인증번호 받기" class="btnradi">
 			</div>
 			<input type="number" placeholder="인증번호를 입력하세요" class="ipradi">

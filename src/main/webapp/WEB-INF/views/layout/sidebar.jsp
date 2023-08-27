@@ -10,9 +10,9 @@
 <meta name="description" content="" />
 <meta name="author" content="" />
 <title>사이드바</title>
-<link
+<!-- <link
 	href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css"
-	rel="stylesheet" />
+	rel="stylesheet" /> -->
 
 <link href="css/styles.css" rel="stylesheet" />
 <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
@@ -45,33 +45,39 @@
 		<div>
 			<nav class="sb-sidenav accordion sb-sidenav-dark">
 				<div class="sb-sidenav-menu">
-					<div class="nav">
+					<div class="nav" style="margin-left: 20px;">
 						<div class="sb-sidenav-menu-heading">Core</div>
 						<a class="nav-link" href="adminhomepage.do">
 							<div>Admin</div>
 						</a>
-						<div class="sb-sidenav-menu-heading">물품관리</div>
+						<div class="sb-sidenav-menu-heading">제품관리</div>
 						<nav class="sb-sidenav-menu-nested nav">
-							<a class="nav-link" href="adminproductmanage.do">물품조회(수정, 삭제)</a>
+							<a class="nav-link" href="adminproductmanage.do">제품조회</a>
 						</nav>
 
 						<div class="collapse" id="collapseLayouts"
 							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 						</div>
 
-
-
-
-						<div class="sb-sidenav-menu-heading">거래관리</div>
+						<div class="sb-sidenav-menu-heading">검수관리</div>
 						<nav class="sb-sidenav-menu-nested nav">
-							<a class="nav-link" href="admintranschange.do">거래 목록(검수)</a>
+
+							<a class="nav-link" href="admindealmanage.do">거래목록</a>
+						</nav>
+
+						<div class="collapse" id="collapseLayouts"
+							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+						</div>
+						<nav class="sb-sidenav-menu-nested nav">
+							<a class="nav-link" href="admindealmanage.do">거래상태 변경</a>
+
 						</nav>
 
 						<div class="collapse" id="collapseLayouts"
 							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 						</div>
 
-						<div class="sb-sidenav-menu-heading">회원관리</div>
+						<div class="sb-sidenav-menu-heading" style="width: 185px;">회원관리</div>
 						<nav class="sb-sidenav-menu-nested nav">
 							<a class="nav-link" href="adminclientlist.do">회원목록</a>
 						</nav>
