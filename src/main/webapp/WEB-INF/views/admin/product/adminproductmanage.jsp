@@ -26,8 +26,8 @@
 .admintitle {
 	font-weight: bold;
 	text-align: center;
-	margin-top: 20px;
-	margin-bottom: 40px;
+	margin-top: 30px;
+	margin-bottom: 30px;
 }
 
 .tableset {
@@ -63,27 +63,26 @@
 <body>
 	<div id="layoutSidenav">
 		<div class="container bodymargin">
-			<h1 class="adminproducttitle" align="center">물품 관리</h1>
+			<h1 class="admintitle">제품 관리</h1>
 			<!-- partial -->
 			<div class="row" style="margin-top: 5px; margin-bottom: 5px;">
 				<div class="col-12 grid-margin">
 					<div class="card">
 						<div class="card-body">
 							<div class="formbox" align="center">
-								<form id="frm" method="post" enctype="multipart/form-data">
+								<form id="frm" method="post" enctype="multipart/form-data"
+									style="padding-right: 7.5px;">
 									<select id="key" name="key">
 										<option value="adminProductId">ID</option>
 										<option value="adminProductMaker">Maker</option>
 										<option value="adminProductName">Name</option>
 									</select>
-									<input type="text" id="AdminProductSearchValue" name="AdminProductSearchValue" size="30">
+									<input type="text" id="AdminProductSearchValue" name="AdminProductSearchValue" 
+										size="30" style="padding: 5px;">
 									<input type="button" onclick="searchList()" value="검색"
-										class="searchbtn" onmouseover="this.style.background='gray'"
-										onmouseout="this.style.background='#FAFAFA'">
-									<input type="button" onclick="location.href='adminproductform.do'"
-										value="등록" class="insertbtn"
-										onmouseover="this.style.background='gray'"
-										onmouseout="this.style.background='#FAFAFA'">
+										class="btn btn-primary">
+									<input type="button" onclick="location.href='adminproductinsertform.do'"
+										value="등록" class="btn btn-primary pull-right">
 								</form>
 							</div>
 							<div>
@@ -99,26 +98,23 @@
 									</thead>
 									<tbody>
 										<c:if test="${not empty products }">
-											<c:forEach items="${products }" var="n">
-												<tr>
+											<c:forEach items="${products }" var="n" begin="0" end="14">
+												<tr style="line-height: 35px;">
 													<td align="center">${n.productId }</td>
 													<td>${n.productMaker }</td>
 													<td>${n.productName }</td>
 													<td>${n.productPrice }</td>
 													<td>
-														<button type="button" id="producteditbtn" class="producteditbtn"
-															onclick="selectProduct(${n.productId})"
-															onmouseover="this.style.background='gray'"
-															onmouseout="this.style.background='#FAFAFA'">
-															수정</button>
-														<button type="button" class="productdeletebtn"
-															onclick="productUpdate('D')"
-															onmouseover="this.style.background='gray'"
-															onmouseout="this.style.background='#FAFAFA'">
-															삭제</button>
+														<button type="button" id="producteditbtn"
+															class="btn btn-primary pull-right"
+															onclick="selectProduct(${n.productId})">
+															관리</button>
 													</td>
 												</tr>
 											</c:forEach>
+											<tr>
+												<td colspan="5" align="center">· · ·</td>
+											</tr>
 										</c:if>
 										<c:if test="${empty products }">
 											<tr>
@@ -129,9 +125,8 @@
 									<!-- 더미 데이터 끝 -->
 								</table>
 							</div>
-							<br>
 							<div>
-								<form id="productfrm" action="adminproducteditform.do" method="post">
+								<form id="productfrm" method="post">
 									<input type="hidden" id="productId" name="productId">
 								</form>
 							</div>
@@ -147,6 +142,7 @@
 	
 	function selectProduct(n) {
 		document.getElementById("productId").value = n;
+		document.getElementById("productfrm").action = "adminproductselect.do";
 		document.getElementById("productfrm").submit();
 	}
 	
@@ -177,23 +173,16 @@
 	
 	function htmlView(data){
 		return `
-				<tr onclick="selectProduct(\${data.productId })">
-		
+				<tr style="line-height: 35px;">
 					<td>\${data.productId }</td>
 					<td>\${data.productMaker }</td>
 					<td>\${data.productName }</td>
 					<td>\${data.productPrice }</td>
 					<td>
-					<button type="button" class="producteditbtn"
-						onclick="productUpdate('E')"
-						onmouseover="this.style.background='gray'"
-						onmouseout="this.style.background='#FAFAFA'">
-						수정</button>
-					<button type="button" class="productdeletebtn"
-						onclick="productUpdate('D')"
-						onmouseover="this.style.background='gray'"
-						onmouseout="this.style.background='#FAFAFA'">
-						삭제</button>
+					<button type="button" id="producteditbtn" 
+						class="btn btn-primary pull-right"
+						onclick="selectProduct(${n.productId})">
+						관리</button>
 					</td>
 				</tr>
 		`

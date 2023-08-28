@@ -1,60 +1,138 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+<meta charset="utf-8" />
+<title>adminproductmodify</title>
+<link href="css/styles.css" rel="stylesheet" />
+<style>
+.container1 {
+	margin: 0 auto;
+}
+
+.formst {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	margin: 0 auto;
+	width: 500px;
+}
+
+/* 입력 요소 스타일 추가 */
+form input[type="text"], form input[type="number"], form input[type="file"]
+	{
+	width: 100%;
+	max-width: 300px; /* 최대 너비 설정 (필요한 경우 조정) */
+	height: 35px;
+	margin-bottom: 10px;
+	padding: 5px;
+	box-sizing: border-box;
+}
+
+.btn-primary {
+	width: 54.5px;
+	max-width: 300px; /* 최대 너비 설정 (필요한 경우 조정) */
+	height: 35px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.row1 {
+	border: 1px solid #ccc;
+	width: 700px;
+	margin: 0 auto;
+}
+
+.row2 {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.button-container {
+	text-align: center;
+}
+
+.button-container .btn {
+	margin-right: 10px;
+}
+</style>
 </head>
 <body>
-	<div align="center">
+	<div class="container1">
+		<div class="row2">
+			<div class="row1">
+			<div class="formst">
+		<h1 style="text-align: center; font-weight: bold; margin-top: 20px;">
+		제품 수정</h1>
 		<div>
-			<h1>물품 수정</h1>
+			<form id="producteditform" action="adminproductedit.do" method="post">
+		<div>
+		<table>
+			<tbody>
+				<tr>
+					<td><label>제품 코드</label>
+						<div>
+							<input type="text" class="form-control" placeholder="${n.productId}"
+								id="productEditId" name="productEditId" value="${n.productId }" readonly="readonly">
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td><label>제조사</label>
+						<div>
+							<input type="text" class="form-control" placeholder="${n.productMaker}"
+								id="productEditMaker" name="productEditMaker" value="${n.productMaker }">
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td><label>제품명</label>
+						<div>
+							<input type="text" class="form-control" placeholder="${n.productName}"
+								id="productEditName" name="productEditName" value="${n.productName}">
+						</div>
+					</td>
+						
+				</tr>
+				<tr>
+					<td><label>출시가</label>
+						<div>
+							<input type="number" class="form-control" placeholder="${n.productPrice}"
+								id="productEditPrice" name="productEditPrice" value="${n.productPrice}">
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td><label>제품 사진</label>
+						<div>
+							<input type="text" class="form-control" placeholder="${m.productimgName1}"
+								id="productimgName1" name="productimgName1" value="수정 불가" readonly="readonly">
+						</div>
+						<div>
+							<input type="text" class="form-control" placeholder="${m.productimgName2}"
+								id="productimgName2" name="productimgName2" value="수정 불가" readonly="readonly">
+						</div>
+						<div>
+							<input type="text" class="form-control" placeholder="${m.productimgName3}"
+								id="productimgName3" name="productimgName3" value="수정 불가" readonly="readonly">
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
 		</div>
-		<div>
-			<form id="frm" action="adminproductedit.do" method="post"
-				enctype="multipart/form-data">
-				<div align="center">
-					<div>
-						<table border="1">
-							<thead>
-								<tr align="center">
-									<th width="50">번호</th>
-									<th width="150">메이커</th>
-									<th width="300">제품명</th>
-									<th width="150">출시가격</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td align="center">
-										<input type="text" id="productId" name="productId"
-											value="${n.productId }" readonly="readonly">
-									</td>
-									<td>
-										<input type="text" id="productMaker" name="productMaker"
-											value="${n.productMaker }">
-									</td>
-									<td>
-										<input type="text" id="productName" name="productName"
-											value="${n.productName }">
-									</td>
-									<td>
-										<input type="text" id="productPrice" name="productPrice"
-											value="${n.productPrice }">
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div><br>
-					<div>
-						<input type="submit" value="수정">&nbsp;&nbsp;&nbsp;
-						<input type="reset" onclick="lcoation.href='adminproductmanage.do'" value="취소">
-					</div>
-					<input type="hidden" id="productId" name="productId" value="${n.productId }">
-				</div>
+		<div class="button-container">
+			<button type="submit" class="btn btn-primary 1">수정</button>
+			<button type="button" onclick="lcoation.href=adminproductmanage.do" class="btn btn-primary 2">취소</button>
+		</div>
+			<input type="hidden" id="productId" name="productId" value="${n.productId }">
 			</form>
 		</div>
+</div>
+	</div>
 	</div>
 </body>
 </html>

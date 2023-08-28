@@ -50,6 +50,7 @@ form input[type="text"], form input[type="number"], form input[type="file"]
 	margin-top: 20px;
 	margin-bottom: 20px;
 }
+
 .button-container {
 	border-radius: 5px;
 }
@@ -59,33 +60,45 @@ form input[type="text"], form input[type="number"], form input[type="file"]
 	<div class="container1">
 		<div class="row2">
 			<div class="row1">
-				<form method="post" class="formst">
-					<h1
-						style="text-align: center; font-weight: bold; margin-top: 20px;">제품
-						등록</h1>
+				<form class="formst" id="productInsertForm" action="adminproductinsert.do" onsubmit="return formCheck()"
+					method="post" enctype="multipart/form-data">
+					<h1 style="text-align: center; font-weight: bold; margin-top: 20px;">
+						제품등록</h1>
 					<table>
 						<tbody>
 							<tr>
-								<td><label>제조사</label><input type="text"
-									class="form-control" placeholder="제조사"></input></td>
+								<td><label>제조사</label>
+									<input type="text" id="productInsertMaker" name="productInsertMaker"
+									class="form-control" placeholder="제조사" required="required"></input>
+								</td>
 							</tr>
 							<tr>
-								<td><label>제품명</label><input type="text"
-									class="form-control" placeholder="제품명"></input></td>
+								<td><label>제품명</label>
+									<input type="text" id="productInsertName" name="productInsertName"
+									class="form-control" placeholder="제품명" required="required"></input>
+								</td>
 							</tr>
 							<tr>
-								<td><label>출시가</label><input type="number"
-									class="form-control" placeholder="출시가"></input></td>
+								<td><label>출시가</label>
+									<input type="number" id="productInsertPrice" name="productInsertPrice"
+									class="form-control" placeholder="출시가" required="required"></input>
+								</td>
 							</tr>
 							<tr>
-								<td><label>제품 사진</label><input type="file"
-									class="form-control"></input></td>
+								<td><label>제품 사진</label>
+									<input type="file" id="productInsertfile1" name="productInsertfile1"
+									class="form-control"></input>
+									<input type="file" id="productInsertfile2" name="productInsertfile2"
+									class="form-control"></input>
+									<input type="file" id="productInsertfile3" name="productInsertfile3"
+									class="form-control"></input>
+								</td>
 							</tr>
 						</tbody>
 					</table>
 					<div>
 						<div class="button-container">
-							<button type="submit" class="btn btn-primary pull-right">제품
+							<button type="submit" class="btn btn-primary pull-right">
 								등록</button>
 						</div>
 					</div>

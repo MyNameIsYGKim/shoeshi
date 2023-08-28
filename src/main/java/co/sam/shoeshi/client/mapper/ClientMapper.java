@@ -15,4 +15,5 @@ public interface ClientMapper {
 	int clientInsert(ClientVO vo);
 	int clientUpdate(ClientVO vo);
 	int clientDelete(ClientVO vo);
+	int adminClientInsert(ClientVO vo);
 }

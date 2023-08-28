@@ -27,7 +27,7 @@ public class AdminProductimgEditForm extends HttpServlet {
 		
 		vo.setProductId(Integer.valueOf(request.getParameter("productId")));
 		vo = dao.productimgSelect(vo);
-		request.setAttribute("n", vo);
+		request.setAttribute("m", vo);
 		String viewName = "admin/productimg/adminproductimgeditform";
 		ViewResolve.forward(request, response, viewName);
 	}

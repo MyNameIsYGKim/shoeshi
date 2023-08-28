@@ -64,7 +64,7 @@
 	margin-bottom: 10px;
 }
 
-#AdminDealSearchValue {
+#AdminDealSearchValue3 {
 	border: 1px solid gray;
 	border-radius: 3px;
 	display: inline;
@@ -132,14 +132,14 @@
 									<div class="card-body">
 										<div class="formbox" align="center">
 											<form id="adminDealForm" method="post" enctype="multipart/form-data">
-												<select id="key" name="key">
+												<select id="key3" name="key3">
 													<option value="adminDealDate">날짜</option>
 													<option value="adminDealProductId">제품번호</option>
 													<option value="adminDealBuyer">구매자</option>
 													<option value="adminDealSeller">판매자</option>
 													<option value="adminDealState">검수결과</option>
 												</select>
-												<input type="text" id="AdminDealSearchValue" name="AdminDealSearchValue" 
+												<input type="text" id="AdminDealSearchValue3" name="AdminDealSearchValue3" 
 													size="30" style="padding: 5px;">
 												<input type="button" onclick="searchList()" value="검색"
 													class="btn btn-primary">
@@ -162,8 +162,8 @@
 												</thead>
 												<!-- 더미 데이터 -->
 												<tbody>
-													<c:if test="${not empty deals1 }">
-														<c:forEach items="${deals1 }" var="n" begin="0" end="14">
+													<c:if test="${not empty deals3 }">
+														<c:forEach items="${deals3 }" var="n" begin="0" end="14">
 															<tr style="line-height: 35px;">
 																<td align="center">${n.dealNo }</td>
 																<td align="center">${n.dealDate }</td>
@@ -184,7 +184,7 @@
 															<td colspan="9" align="center">· · ·</td>
 														</tr>
 													</c:if>
-													<c:if test="${empty deals1 }">
+													<c:if test="${empty deals3 }">
 														<tr>
 															<td colspan="9" align="center">Empty.</td>
 														</tr>
@@ -218,10 +218,10 @@
 	}
 	
 	function searchList(){
-		let key = document.getElementById("key").value;
-		let AdminDealSearchValue = document.getElementById("AdminDealSearchValue").value;
-		let payload = "key="+key+"&AdminDealSearchValue="+AdminDealSearchValue;
-		let url = "adminajaxdealsearch.do";
+		let key = document.getElementById("key3").value;
+		let AdminDealSearchValue3 = document.getElementById("AdminDealSearchValue3").value;
+		let payload = "key3="+key3+"&AdminDealSearchValue3="+AdminDealSearchValue3;
+		let url = "adminajaxdealsearch3.do";
 		
 		fetch(url, {
 			method: "POST",
@@ -247,19 +247,19 @@
 	function htmlView(data){
 		return `
 				<tr style="line-height: 35px;">
-					<td align="center">\${data.dealNo }</td>
-					<td align="center">\${data.dealDate }</td>
-					<td align="center">\${data.productId }</td>
-					<td align="center">\${data.productSize }</td>
-					<td>\${data.dealBuyer }</td>
-					<td>\${data.dealSeller }</td>
-					<td>\${data.dealPrice }</td>
-					<td align="center">\${data.dealState }</td>
-					<td>
+				<td align="center">\${data.dealNo }</td>
+				<td align="center">\${data.dealDate }</td>
+				<td align="center">\${data.productId }</td>
+				<td align="center">\${data.productSize }</td>
+				<td>\${data.dealBuyer }</td>
+				<td>\${data.dealSeller }</td>
+				<td>\${data.dealPrice }</td>
+				<td align="center">\${data.dealState }</td>
+				<td>
 					<button type="button" class="btn btn-primary pull-right"
 						onclick="selectDeal(${n.dealNo})">
 						관리</button>
-					</td>
+				</td>
 				</tr>
 		`
 	}

@@ -51,7 +51,12 @@ public class ClientServiceImpl implements ClientService {
 
 	@Override
 	public String clientPasswordCheck(ClientVO vo) {
-		
+
 		return map.clientPasswordCheck(vo);
+	}
+
+	@Override
+	public int adminClientInsert(ClientVO vo) {
+		return map.adminClientInsert(vo);
 	}
 }

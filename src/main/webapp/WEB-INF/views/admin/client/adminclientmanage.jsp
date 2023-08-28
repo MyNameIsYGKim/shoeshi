@@ -26,8 +26,8 @@
 .admintitle {
 	font-weight: bold;
 	text-align: center;
-	margin-top: 20px;
-	margin-bottom: 40px;
+	margin-top: 30px;
+	margin-bottom: 30px;
 }
 
 .tableset {
@@ -64,26 +64,25 @@
 <body>
 	<div id="layoutSidenav">
 		<div class="container bodymargin">
-			<h1 class="adminclienttitle" align="center">유저 관리</h1>
+			<h1 class="admintitle" align="center">회원 관리</h1>
 			<div class="row" style="margin-top: 5px; margin-bottom: 5px;">
 				<div class="col-12 grid-margin">
 					<div class="card">
 						<div class="card-body">
 							<div class="formbox" align="center">
-								<form id="frm" method="post">
+								<form id="adminClientForm" method="post" enctype="multipart/form-data"
+									style="padding-right: 7.5px;">
 									<select id="key" name="key">
-										<option value="id">ID</option>
-										<option value="name">Name</option>
-										<option value="address">Address</option>
+										<option value="adminClientId">ID</option>
+										<option value="adminClientName">Name</option>
+										<option value="adminClientAddress">Address</option>
 									</select>
-										<input type="text" id="clientSearchVal" name="clientSearchVal" size="30">
+										<input type="text" id="clientSearchVal" name="clientSearchVal" 
+											size="30" style="padding: 5px;">
 										<input type="button" onclick="searchList()" value="검색"
-											class="searchbtn" onmouseover="this.style.background='gray'"
-											onmouseout="this.style.background='#FAFAFA'">
-										<input type="button" onclick="location.href='adminproductform.do'"
-											value="등록" class="insertbtn"
-											onmouseover="this.style.background='gray'"
-											onmouseout="this.style.background='#FAFAFA'">
+											class="btn btn-primary">
+										<input type="button" onclick="location.href='adminclientinsertform.do'"
+											value="등록" class="btn btn-primary pull-right">
 								</form>
 							</div>
 							<div>
@@ -100,27 +99,24 @@
 									</thead>
 									<tbody>
 										<c:if test="${not empty clients }">
-											<c:forEach items="${clients }" var="n">
-												<tr>
+											<c:forEach items="${clients }" var="n" begin="0" end="14">
+												<tr style="line-height: 35px;">
 													<td>${n.clientId }</td>
 													<td>${n.clientName }</td>
 													<td>${n.clientAddress }</td>
 													<td>${n.clientTel }</td>
 													<td>${n.clientAuthor }</td>
 													<td>
-														<button type="button" class="clienteditbtn"
-															onclick="clientUpdate('E')"
-															onmouseover="this.style.background='gray'"
-															onmouseout="this.style.background='#FAFAFA'">
-															수정</button>
-														<button type="button" class="clientdeletebtn"
-															onclick="clientUpdate('D')"
-															onmouseover="this.style.background='gray'"
-															onmouseout="this.style.background='#FAFAFA'">
-															삭제</button>
+														<button type="button" id="clienteditbtn" 
+															class="btn btn-primary pull-right"
+															onclick="selectClient('${n.clientId}')">
+															관리</button>
 													</td>
 												</tr>
 											</c:forEach>
+											<tr>
+												<td colspan="6" align="center">· · ·</td>
+											</tr>
 										</c:if>
 										<c:if test="${empty clients }">
 											<tr>
@@ -143,8 +139,10 @@
 		</div>
 	</div>
 	<script type="text/javascript">
+	
 	function selectClient(n) {
 		document.getElementById("clientId").value = n;
+		document.getElementById("clientfrm").action = "adminclientselect.do";
 		document.getElementById("clientfrm").submit();
 	}
 	
@@ -177,23 +175,20 @@
 	
 	function htmlView(data){
 		return `
-				<tr onclick="selectClient(\${data.clientId })">
-		
+				<tr style="line-height: 35px;">
 					<td>\${data.clientId }</td>
 					<td>\${data.clientName }</td>
 					<td>\${data.clientAddress }</td>
 					<td>\${data.clientTel }</td>
 					<td>\${data.clientAuthor }</td>
+					<td>
+					<button type="button" id="clienteditbtn"
+						class="btn btn-primary pull-right"
+						onclick="selectClient('${n.clientId}')">
+						관리</button>
+					</td>
 				</tr>
 		`
-	}
-	
-	function clientUpdate(str){
-		if(str =='E'){
-			document.getElementById("clientfrm").action = "adminclienteditform.do";
-		}else if(str=='D'){
-			document.getElementById("clientfrm").action = "adminclientdelete.do";
-		}document.getElementById("frm").submit();
 	}
 	</script>
 </body>

@@ -7,6 +7,43 @@
 <title><tiles:getAsString name="title" /></title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<style type="text/css">
+body, html {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+.container {
+	display: flex;
+	height: 100%;
+}
+
+.sidebar1 {
+	flex: 1; /* Sidebar takes up 1/3 of the container */
+	background-color: #f2f2f2;
+	/* Other sidebar styles go here */
+}
+
+.content {
+	flex: 2; /* Content takes up 2/3 of the container */
+	/* Other content styles go here */
+}
+
+.body-wrapper {
+	min-height: 100%;
+	position: relative;
+}
+
+.body-content {
+	margin-top: 100px;
+	padding-bottom: 502px; /* footer의 높이 */
+}
+
+.sidemenu {
+	margin: 0 auto;
+}
+</style>
 <!--===============================================================================================-->
 <link rel="icon" type="image/png" href="coza/images/icons/favicon.png" />
 <!--===============================================================================================-->
@@ -57,14 +94,16 @@
 	<tiles:insertAttribute name="header" />
 
 	<!-- Product -->
-	
-	<div style="float: left;" >
-	<tiles:insertAttribute name="sidebar" />
-	</div>
-	
-	<tiles:insertAttribute name="body" ignore="true" />
-
-
+	<main>
+		<div class="container">
+			<aside class="sidemenu">
+				<tiles:insertAttribute name="sidebar" />
+			</aside>
+			<section class="content">
+				<tiles:insertAttribute name="body" ignore="true" />
+			</section>
+		</div>
+	</main>
 	<!-- Footer -->
 	<tiles:insertAttribute name="footer" />
 

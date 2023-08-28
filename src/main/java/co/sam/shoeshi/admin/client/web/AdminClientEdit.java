@@ -1,6 +1,7 @@
 package co.sam.shoeshi.admin.client.web;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,6 +23,8 @@ public class AdminClientEdit extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		try {
+		
 		ClientService dao = new ClientServiceImpl();
 		ClientVO vo = new ClientVO();
 		
@@ -30,7 +33,16 @@ public class AdminClientEdit extends HttpServlet {
 		vo.setClientName(request.getParameter("clientName"));
 		vo.setClientAddress(request.getParameter("clientAddress"));
 		vo.setClientTel(request.getParameter("clientTel"));
-		vo.setClientAuthor(request.getParameter("clientAuthor"));
+		
+		String authorValue = "";
+		if(request.getParameter("key").equals("authorUser")) {
+			authorValue = "USER";
+		}else if(request.getParameter("key").equals("authorAdmin")) {
+			authorValue = "ADMIN";
+		}else {
+			authorValue = "USER";
+		}
+		vo.setClientAuthor(authorValue);
 		
 		String viewName = "admin/client/adminclientselect";
 		
@@ -39,6 +51,13 @@ public class AdminClientEdit extends HttpServlet {
 		vo = dao.clientSelect(vo);
 		request.setAttribute("n", vo);
 		ViewResolve.forward(request, response, viewName);
+		
+		}catch(Exception e) {
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter writer = response.getWriter();
+			writer.println("<script>alert('잘못된 요청'); location.href='http://localhost/example/adminclientmanage.do'</script>");
+			writer.close();
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
