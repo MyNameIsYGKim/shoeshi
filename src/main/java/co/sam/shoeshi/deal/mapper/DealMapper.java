@@ -1,5 +1,6 @@
 package co.sam.shoeshi.deal.mapper;
 
+import java.util.HashMap;
 import java.util.List;
 
 import co.sam.shoeshi.deal.service.DealVO;
@@ -13,4 +14,7 @@ public interface DealMapper {
 	int dealUpdate(DealVO vo);
 	int dealDelete(DealVO vo);
 	DealVO dealSelectMaxNo();
+	List<DealVO> dealSelectList(String key, String AdminDealSearchValue);
+	List<HashMap<String, Object>> dealJoinSelectB(DealVO vo);
+	List<HashMap<String, Object>> dealJoinSelectS(DealVO vo);
 }
