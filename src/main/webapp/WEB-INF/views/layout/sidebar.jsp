@@ -52,7 +52,7 @@
 						</a>
 						<div class="sb-sidenav-menu-heading">제품관리</div>
 						<nav class="sb-sidenav-menu-nested nav">
-							<a class="nav-link" href="adminproductmanage.do">제품조회</a>
+							<a class="nav-link" href="adminproductmanage.do">제품목록</a>
 						</nav>
 
 						<div class="collapse" id="collapseLayouts"
@@ -68,18 +68,9 @@
 						<div class="collapse" id="collapseLayouts"
 							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 						</div>
-						<nav class="sb-sidenav-menu-nested nav">
-							<a class="nav-link" href="admindealmanage.do">거래상태 변경</a>
-
-						</nav>
-
-						<div class="collapse" id="collapseLayouts"
-							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-						</div>
-
 						<div class="sb-sidenav-menu-heading" style="width: 185px;">회원관리</div>
 						<nav class="sb-sidenav-menu-nested nav">
-							<a class="nav-link" href="adminclientlist.do">회원목록</a>
+							<a class="nav-link" href="adminclientmanage.do">회원목록</a>
 						</nav>
 					</div>
 				</div>

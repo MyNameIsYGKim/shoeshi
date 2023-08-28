@@ -1,6 +1,7 @@
 package co.sam.shoeshi.admin.deal.web;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.time.LocalDate;
 
 import javax.servlet.ServletException;
@@ -23,19 +24,46 @@ public class AdminDealEdit extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		try {
+		
 		DealService dao = new DealServiceImpl();
 		DealVO vo = new DealVO();
 		
-		vo.setDealState(request.getParameter("dealState"));
-		vo.setDealComent(request.getParameter("dealComent"));
+		vo.setDealNo(Integer.valueOf(request.getParameter("dealNo")));
+		vo.setDealDate(LocalDate.parse(request.getParameter("dealDate")));
+		vo.setProductId(Integer.valueOf(request.getParameter("productId")));
+		vo.setProductSize(Integer.valueOf(request.getParameter("productSize")));
+		vo.setDealBuyer(request.getParameter("dealBuyer"));
+		vo.setDealSeller(request.getParameter("dealSeller"));
+		vo.setDealPrice(Integer.valueOf(request.getParameter("dealPrice")));
 		
-		String viewName = "admin/deal/admindealmanage";
+		String stateValue = "";
+		if(request.getParameter("key").equals("dealEditPass")) {
+			stateValue = "완료";
+			vo.setDealComent("");
+		}else if(request.getParameter("key").equals("dealEditCancel")) {
+			stateValue = "취소";
+			vo.setDealComent(request.getParameter("dealComent"));
+		}else {
+			vo.setDealComent("");
+		}
+		vo.setDealState(stateValue);
+		
+		
+		String viewName = "admin/deal/admindealselect";
 		
 		int n = dao.dealUpdate(vo);
 		
 		vo = dao.dealSelect(vo);
 		request.setAttribute("n", vo);
 		ViewResolve.forward(request, response, viewName);
+		
+		}catch(Exception e) {
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter writer = response.getWriter();
+			writer.println("<script>alert('잘못된 요청'); location.href='http://localhost/example/admindealmanage.do'</script>");
+			writer.close();	
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

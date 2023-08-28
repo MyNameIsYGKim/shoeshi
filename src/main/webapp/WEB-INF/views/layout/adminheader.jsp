@@ -93,8 +93,6 @@
 							class="nav-link px-2 fontw">로그인</a></li>
 					</c:if>
 					<c:if test="${not empty id }">
-						<li class="nav-item"><a href="mypage.do"
-							class="nav-link px-2 fontw">마이페이지</a></li>
 						<li class="nav-item"><a href="logout.do"
 							class="nav-link px-2 fontw">로그아웃</a></li>
 						<li class="nav-link px-2 fontw">${name }님</li>

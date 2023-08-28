@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import co.sam.shoeshi.common.ViewResolve;
 import co.sam.shoeshi.product.service.ProductService;
 import co.sam.shoeshi.product.service.ProductVO;
 import co.sam.shoeshi.product.serviceImpl.ProductServiceImpl;
@@ -22,26 +23,28 @@ public class AdminProductEdit extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		try {
+		
 		ProductService dao = new ProductServiceImpl();
 		ProductVO vo = new ProductVO();
 		
-		vo.setProductId(Integer.valueOf(request.getParameter("productId")));
-		vo.setProductMaker(request.getParameter("productMaker"));
-		vo.setProductName(request.getParameter("productName"));
-		vo.setProductPrice(Integer.valueOf(request.getParameter("productPrice")));
+		vo.setProductId(Integer.valueOf(request.getParameter("productEditId")));
+		vo.setProductMaker(request.getParameter("productEditMaker"));
+		vo.setProductName(request.getParameter("productEditName"));
+		vo.setProductPrice(Integer.valueOf(request.getParameter("productEditPrice")));
+		
+		String viewName = "admin/product/adminproductselect";
 		
 		int n = dao.productUpdate(vo);
-		if (n == 0) {
+		
+		vo = dao.productSelect(vo);
+		request.setAttribute("n", vo);
+		ViewResolve.forward(request, response, viewName);
+		
+		}catch(Exception e) {
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter writer = response.getWriter();
-			writer.println(
-					"<script>alert('수정 실패.'); location.href='http://localhost/example/adminproductmanage.do'</script>");
-			writer.close();
-		} else {
-			response.setContentType("text/html; charset=UTF-8");
-			PrintWriter writer = response.getWriter();
-			writer.println(
-					"<script>alert('수정 완료.'); location.href='http://localhost/example/adminproductmanage.do'</script>");
+			writer.println("<script>alert('잘못된 요청'); location.href='http://localhost/example/adminproductmanage.do'</script>");
 			writer.close();
 		}
 	}
