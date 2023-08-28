@@ -286,7 +286,7 @@ h1 {
                             <th>상품금액</th>
                             <th>할인금액</th>
                             <th>수량</th>
-                            <th>주문금액</th>
+                            <th id="selltobuy">주문금액</th>
                         </tr>
                         <tr>
                             <td>
@@ -373,7 +373,8 @@ $(function(){
 			$('#sendInfo').text("발송정보");
 			$('#who').text("발송인");
 			$('#whoInfo').text("판매자 정보");
-			$('#clientAddress').text("발송지 주소");
+			$('#selltobuy').text("판매자 정보");
+			$('#clientAddress').text("판매금액");
 		}
 })
 </script>
