@@ -36,7 +36,7 @@ a {
 #product>.complete>.message>h2 {
 	font-size: 32px;
 	font-weight: bold;
-	text-align: left;
+	text-align: center;
 	color: #000;
 	padding: 0px;
 }
@@ -256,7 +256,7 @@ h1 {
 	height: 100vh;
 }
 .signup-title {
-	text-align: left;
+	text-align: center;
 	font-weight: bold;
 
 }
@@ -272,9 +272,12 @@ h1 {
 			<section class="complete">
 
 				<article class="message">
-					<h3 class="signup-title">구매 입찰 중</h3>
-
-				</article>
+                    <h2 id="sellTitle">
+                        고객님의 주문이 정상적으로 완료되었습니다.
+                        <i class="far fa-smile" aria-hidden="true"></i>
+                    </h2>
+                    
+                </article>
 				<!-- 상품정보 -->
 				<article class="info">
 					<h1></h1>
@@ -283,23 +286,25 @@ h1 {
 						<tr>
 							<th>상품정보</th>
 							<th>사이즈</th>
-							<th>구매 희망가</th>
+							<th>금액</th>
 						</tr>
 						<tr>
 							<td><article style="cursor: pointer;"
 									onclick="selectProduct(${b.productId})">
-									<a href="#"> <img
-										src="${b.productimgPath}${b.productimgName1}" alt="1">
+									<a href="#"> <%-- <img src="${b.productimgPath}${b.productimgName1}" alt="1"> --%>
+									<img src="attech/product/1-1.png" alt="1">
+										
 									</a>
 									<div>
 										<p>
-											<a href="#">${b.productMaker}</a>
+											<a href="#">${b.productMaker}1</a>
+											
 										</p>
-										<p>${b.productName}</p>
+										<p>${b.productName}1</p>
 									</div>
 								</article></td>
-							<td align="center">${b.productSize }</td>
-							<td><fmt:formatNumber value="${b.bidPrice}" pattern="#,###" />원</td>
+							<td align="center">${b.productSize}1</td>
+							<td><fmt:formatNumber value="${dealPrice }" pattern="#,###" />1원</td>
 						</tr>
 
 
@@ -331,10 +336,10 @@ h1 {
 					<h1>배송정보</h1>
 					<table border="0">
 						<tr>
-							<td>수취인</td>
+							<td id="who">수취인</td>
 							<td></td>
 							<td></td>
-							<td>${b.clientName}</td>
+							<td id="whoInfo">${b.clientName}</td>
 						</tr>
 						<tr>
 							<td>연락처</td>
