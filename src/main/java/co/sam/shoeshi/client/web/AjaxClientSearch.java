@@ -30,11 +30,9 @@ public class AjaxClientSearch extends HttpServlet {
 		
 		String key = request.getParameter("key");
 		String clientSearchVal = request.getParameter("clientSearchVal");
-		
 		clients = dao.clientSelectList(key, clientSearchVal);
 		
 		ObjectMapper ObjectMapper = new ObjectMapper();
-		
 		String data = ObjectMapper.writeValueAsString(clients);
 		
 		response.setContentType("text/html; charset=UTF-8");

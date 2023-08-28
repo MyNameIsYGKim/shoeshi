@@ -36,7 +36,7 @@ public class AdminProductimgEdit extends HttpServlet {
 		int n = dao.productimgUpdate(vo);
 		
 		vo = dao.productimgSelect(vo);
-		request.setAttribute("n", vo);
+		request.setAttribute("m", vo);
 		ViewResolve.forward(request, response, viewName);
 	}
 

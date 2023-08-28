@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -52,18 +53,28 @@
 </head>
 
 <body class="animsition">
-
+	
 	<!-- Header -->
 	<tiles:insertAttribute name="header" />
 
 	<!-- Product -->
+	<c:if test='${author eq "ADMIN" }'>
 	
 	<div style="float: left;" >
 	<tiles:insertAttribute name="sidebar" />
 	</div>
 	
+	<div style="min-height: 700px">
 	<tiles:insertAttribute name="body" ignore="true" />
-
+	</div>
+		
+	</c:if>
+	<c:if test='${author != "ADMIN" }'>
+		<!-- <script type="text/javascript">
+			alert('<c:out value="접근불가"/>');
+			</script> -->
+		<img src="img/denied.png">
+	</c:if>
 
 	<!-- Footer -->
 	<tiles:insertAttribute name="footer" />
@@ -74,7 +85,7 @@
 			class="zmdi zmdi-chevron-up"></i>
 		</span>
 	</div>
-
+	
 	<!--===============================================================================================-->
 	<script src="coza/vendor/jquery/jquery-3.2.1.min.js"></script>
 	<!--===============================================================================================-->

@@ -19,4 +19,11 @@ public interface DealService {
 	int dealUpdate(DealVO vo);
 	int dealDelete(DealVO vo);
 	DealVO dealSelectMaxNo();
+	List<DealVO> dealStateList1();
+	List<DealVO> dealStateList2();
+	List<DealVO> dealStateList3();
+	List<DealVO> dealSelectList2();
+	List<DealVO> dealSelectList3();
+	List<DealVO> dealSelectList2(String key2, String AdminDealSearchValue);
+	List<DealVO> dealSelectList3(String key3, String AdminDealSearchValue);
 }

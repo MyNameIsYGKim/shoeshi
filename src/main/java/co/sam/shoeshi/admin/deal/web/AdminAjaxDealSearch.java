@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 import co.sam.shoeshi.deal.service.DealService;
 import co.sam.shoeshi.deal.service.DealVO;
@@ -33,7 +35,8 @@ public class AdminAjaxDealSearch extends HttpServlet {
 		deals = dao.dealSelectList(key, AdminDealSearchValue);
 		
 		ObjectMapper ObjectMapper = new ObjectMapper();
-		
+		ObjectMapper.registerModule(new JavaTimeModule());//localdate처리
+		ObjectMapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);//localdate처리
 		String data = ObjectMapper.writeValueAsString(deals);
 		
 		response.setContentType("text/html; charset=UTF-8");

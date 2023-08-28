@@ -1,6 +1,7 @@
 package co.sam.shoeshi.admin.client.web;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 import co.sam.shoeshi.client.service.ClientService;
 import co.sam.shoeshi.client.service.ClientVO;
 import co.sam.shoeshi.client.serviceImpl.ClientServiceImpl;
-import co.sam.shoeshi.common.ViewResolve;
 
 @WebServlet("/adminclientdelete.do")
 public class AdminClientDelete extends HttpServlet {
@@ -27,18 +27,18 @@ public class AdminClientDelete extends HttpServlet {
 		
 		vo.setClientId(request.getParameter("clientId"));
 		
-		String viewName = "home/message";
-		
 		int n = dao.clientDelete(vo);
-		if(n==1) {
-			request.setAttribute("message", "삭제 완료!");
+		if(n == 1) {
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter writer = response.getWriter();
+			writer.println("<script>alert('삭제 완료!'); location.href='http://localhost/example/adminclientmanage.do'</script>");
+			writer.close();
 		}else {
-			request.setAttribute("message", "삭제 실패!");
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter writer = response.getWriter();
+			writer.println("<script>alert('삭제 실패!'); location.href='http://localhost/example/adminclientmanage.do'</script>");
+			writer.close();
 		}
-		
-		vo = dao.clientSelect(vo);
-		
-		ViewResolve.forward(request, response, viewName);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
