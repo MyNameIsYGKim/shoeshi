@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public interface BidService {
+
 	List<HashMap<String, Object>>bidSearchList(int productId,String type);
 	List<HashMap<String, Object>>bidSearchList(int productId,int size,String type);
 	List<HashMap<String, Object>>bidJoinSelectList(BidVO vo);

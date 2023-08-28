@@ -252,7 +252,7 @@ h1 {
 
 #wrapper {
 	margin-top: 20px;
-	height: 100vh;
+	height: 100%;
 }
 .signup-title {
 	text-align: left;
