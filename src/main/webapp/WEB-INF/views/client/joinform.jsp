@@ -49,10 +49,24 @@ a {
 }
 
 /*member sign in*/
+.ipradi {
+	border-radius: 7px;
+}
+
+.telradi {
+	border-top-left-radius: 7px;
+	border-bottom-left-radius: 7px;
+}
+
+.btnradi {
+	border-top-right-radius: 7px;
+	border-bottom-right-radius: 7px;
+}
+
 .member {
 	width: 400px;
 	/* border: 1px solid #000; */
-	margin: auto; /*중앙 정렬*/
+	margin: 50px auto 100px; /*중앙 정렬*/
 	padding: 10px 20px 0 20px;
 	margin-bottom: 100px;
 	ont-family: 'Noto Sans KR', sans-serif;
@@ -162,10 +176,11 @@ a {
 }
 
 .signup-title {
-	padding-top: 100px;
-	text-align: center;
+	
+	text-align: left;
 	font-weight: bold;
-	text-align: center;
+	margin-bottom: 50px
+	
 }
 
 .field.id div {
@@ -185,8 +200,8 @@ a {
 <body>
 
 
-	<h3 class="signup-title">회원가입</h3>
 	<div class="member">
+	<h3 class="signup-title">회원가입</h3>
 		<!-- 2. 필드 -->
 
 		<form id="frm" action="join.do" onsubmit="return formCheck()"

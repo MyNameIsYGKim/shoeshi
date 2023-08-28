@@ -25,8 +25,14 @@
 <link rel="stylesheet" href="./css/product.css">
 
 <style type="text/css">
+.nodata {
+	color: #000;
+	font-size: 20px;
+	height: 300px;
+}
+
 h1 {
-	margin-top: 50px;
+	margin: 50px 0 30px;
 }
 
 a {
@@ -76,7 +82,7 @@ a {
 
 table {
 	width: 100%;
-	border-top: 2px solid #000;
+	
 	border-collapse: collapse;
 	border-spacing: 0;
 }
@@ -102,7 +108,7 @@ table td {
 	text-align: center;
 }
 
-table td:last-child {
+table td:nth-child(5) {
 	color: #ff006c;
 	font-weight: bold;
 }
@@ -139,6 +145,51 @@ table td>article>div>p {
 	color: #777;
 	margin-top: 4px;
 }
+.signup-title {
+	text-align: left;
+	font-weight: bold;
+	margin-bottom: 50px;
+}
+.numred {
+	color: #ff6b6b;
+	font-weight: bold;
+}
+
+.menublack {
+	color: black;
+	font-weight: bold;
+}
+
+.menulight {
+	color: #777;
+}
+
+.numberbold {
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.row-sm4 {
+	font-size: 14px;
+}
+.tabblack {
+	height: 68px;
+	margin: 0 auto;
+	border-bottom: 2px solid #000;
+}
+
+.dealtab {
+	height: 68px;
+	border-bottom: 2px solid #d3d3d3;
+	margin: 0 auto;
+}
+
+.wide100000 {
+	width: 100%;
+	display: flex;
+	align-items: center;
+}
+
 </style>
 </head>
 <body>
@@ -149,8 +200,30 @@ table td>article>div>p {
 
 		<div align="center">
 			<div>
-				<h1>판매내역</h1>
+				<h3 class="signup-title">판매내역</h3>
 			</div>
+			<div class="row wide100000">
+					<div class="dealtab col-md-4" onclick="selectBidType('SELL')" style="cursor: pointer;">
+						<div class="col">
+							<div class="row-sm8 numberbold ">${count.bidCount}</div>
+							<div class="menulight row-sm4">판매입찰</div>
+						</div>
+					</div>
+					<div class="col-md-4 tabblack" onclick="location.href='sdeallist.do'"
+						style="cursor: pointer;">
+						<div class="col">
+							<div class="row-sm8 numberbold numred">${count.dealCount}</div>
+							<div class="row-sm4 menublack">진행중</div>
+						</div>
+					</div>
+					<div class="col-md-4 dealtab" onclick="buybidlist.do"
+						style="cursor: pointer;">
+						<div class="col">
+							<div class="row-sm8 numberbold">${count.finishCount}</div>
+							<div class="row-sm4 menulight">완료</div>
+						</div>
+					</div>
+				</div>
 			<div>
 				<table border="0">
 					<thead>
@@ -163,91 +236,46 @@ table td>article>div>p {
 						</tr>
 					</thead>
 					<tbody>
-						<tr class="empty">
-							<td colspan="7">장바구니에 상품이 없습니다.</td>
-						</tr>
-						<c:forEach items="${deallists }" var="s">
-							<!-- 멤버즈의 한 행을 엠으로 읽겠다 -->
-							<tr class="active-row" style="cursor: pointer;"
-										onclick="dealDetail(${s.dealNo},'판매')">
-								<td>${s.dealDate }</td>
-								<td><article >
-										<a href="#"> <img
-											src="${s.productimgPath}${s.productimgName1}" alt="1">
-										</a>
-										<div>
-											<p>
-												<a href="#">${s.productMaker}</a>
-											</p>
-											<p>${s.productName}</p>
-										</div>
-									</article></td>
-								<td align="center">${s.productSize}</td>
-								<td><fmt:formatNumber value="${s.dealPrice }"
-										pattern="#,###" />원</td>
-								<td align="center">${s.dealState }</td>
+						<c:if test="${empty deallists}">
+							<tr class="nodata">
+								<td colspan="7">판매내역이 없습니다.</td>
 							</tr>
+						</c:if>
+						<c:if test="${not empty deallists}">
+							<c:forEach items="${deallists }" var="s">
+								<!-- 멤버즈의 한 행을 엠으로 읽겠다 -->
+								<tr class="active-row" style="cursor: pointer;"
+									onclick="dealDetail(${s.dealNo},'판매')">
+									<td>${s.dealDate }</td>
+									<td><article>
+											<a href="#"> <img
+												src="${s.productimgPath}${s.productimgName1}" alt="1">
+											</a>
+											<div>
+												<p>
+													<a href="#">${s.productMaker}</a>
+												</p>
+												<p>${s.productName}</p>
+											</div>
+										</article></td>
+									<td align="center">${s.productSize}</td>
+									<td><fmt:formatNumber value="${s.dealPrice }"
+											pattern="#,###" />원</td>
+									<td align="center">${s.dealState }</td>
+								</tr>
 
-						</c:forEach>
-
+							</c:forEach>
+						</c:if>
 					</tbody>
 				</table>
 			</div>
 		</div>
-		<div align="center">
-			<div>
-				<h1>구매내역</h1>
-			</div>
-			<div>
-				<table border="0">
-					<thead>
-						<tr>
-							<th>거래 체결일</th>
-							<th>상품정보</th>
-							<th>사이즈</th>
-							<th>거래 체결 금액</th>
-							<th>상태</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr class="empty">
-							<td colspan="7">장바구니에 상품이 없습니다.</td>
-						</tr>
-						<c:forEach items="${deallistb}" var="b">
-							<!-- 멤버즈의 한 행을 엠으로 읽겠다 -->
-							<tr>
-								<td>${b.dealDate}</td>
-								<td><article style="cursor: pointer;"
-										onclick="dealDetail(${b.dealNo},'구매')">
-										<a href="#"> <img
-											src="${b.productimgPath}${b.productimgName1}" alt="1">
-										</a>
-										<div>
-											<p>
-												<a href="#">${b.productMaker}</a>
-											</p>
-											<p>${b.productName}</p>
-										</div>
-									</article></td>
-								<td align="center">${b.productSize }</td>
-								<td><fmt:formatNumber value="${b.dealPrice}"
-										pattern="#,###" />원</td>
-								<td align="center">${b.dealState}</td>
-							</tr>
 
-						</c:forEach>
-
-					</tbody>
-				</table>
-			</div>
-		</div>
-	</div>
-	<div>
-		<form id="dealdetailform" action="dealdetail.do" method="get">
-			<input type="hidden" id="dealNo" name="dealNo">
-			<input type="hidden" id="dealType" name="dealType">
+		<form id="dealdetailform" action="sdealdetail.do" method="get">
+			<input type="hidden" id="dealNo" name="dealNo"> <input
+				type="hidden" id="dealType" name="dealType">
 		</form>
-		
+
 	</div>
 	<script type="text/javascript">
 	function dealDetail(dealNo,dealType) {

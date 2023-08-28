@@ -8,7 +8,6 @@
 <title>Insert title here</title>
 <link href="css/styles.css" rel="stylesheet" />
 <style>
-
 .fontb {
 	color: #000;
 }
@@ -21,13 +20,11 @@
 	margin-top: 50px;
 	z-index: 0;
 	border: none;
-	font-weight: bold;
 }
 
 .menufont {
-	color: #ccc;
-	
-} 
+	color: #aaa;
+}
 
 .menutitle {
 	color: #000;
@@ -56,7 +53,6 @@
 	padding: 0;
 }
 
-
 /* .sidebar a:hover {
 	background-color: #555;
 } */
@@ -70,20 +66,40 @@
 		<ul>
 			<li><a href="mypage.do" class="menutitle"><h3>마이페이지</h3></a></li>
 			<li><h5 class="menutitle">내 정보</h5></li>
-			<li><a href="clienteditform.do" class="menufont">회원정보 수정</a></li>
-			<li><a href="paymenteditform.do" class="menufont">결제정보 수정</a></li>
-			<li><h5 class="menutitle">나의 쇼핑</h5></li>
-			<li><a href="deallist.do" class="menufont">거래내역</a></li>
-			<li><a href="bidlist.do" class="menufont">입찰내역</a></li>
+			<li><a href="#" onclick="selectEditType('client')"
+				class="menufont">회원정보 수정</a></li>
+			<li><a href="#" onclick="selectEditType('payment')"
+				class="menufont">결제정보 수정</a></li>
+			<li><h5 class="menutitle">쇼핑 정보</h5></li>
+			<li><a href="#" onclick="selectBidType('SELL')" class="menufont">판매내역</a></li>
+			<li><a href="#" onclick="selectBidType('BUY')" class="menufont">구매내역</a></li>
 			<li><a href="paymentform.do" class="menufont">Cart</a></li>
 
 
 			<!-- Add more menu items as needed -->
 		</ul>
 	</div>
+	<div>
+		<form id="clientEditForm" method="post" action="passwordcheckform.do">
+			<input type="hidden" id="editType" name="editType">
+		</form>
+		<form id="bidTypeForm" method="post" action="bidlist.do">
+			<input type="hidden" id="bidType" name="bidType">
+		</form>
+	</div>
+	<script type="text/javascript">
+		function selectEditType(str) {
 
+			document.getElementById("editType").value = str;
+			document.getElementById("clientEditForm").submit();
+		}
+		function selectBidType(str) {
 
-	
+			document.getElementById("bidType").value = str;
+			document.getElementById("bidTypeForm").submit();
+		}
+	</script>
+
 </body>
 
 </html>

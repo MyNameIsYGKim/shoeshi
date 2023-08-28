@@ -15,9 +15,7 @@ import co.sam.shoeshi.client.service.ClientVO;
 import co.sam.shoeshi.client.serviceImpl.ClientServiceImpl;
 import co.sam.shoeshi.common.ViewResolve;
 
-/**
- * Servlet implementation class Login
- */
+
 @WebServlet("/login.do")
 public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -41,7 +39,7 @@ public class Login extends HttpServlet {
 		if (vo != null) {
 			if (vo.getClientPassword().equals(pwd)) {
 				session.setAttribute("clientId", vo.getClientId());
-				session.setAttribute("clientPassword", vo.getClientPassword());
+//				session.setAttribute("clientPassword", vo.getClientPassword());
 				session.setAttribute("clientName", vo.getClientName());
 				session.setAttribute("clientAddress", vo.getClientAddress());
 				session.setAttribute("clientTel", vo.getClientTel());

@@ -32,9 +32,8 @@ body {
 .member {
 	width: 400px;
 	/* border: 1px solid #000; */
-	margin: auto; /*중앙 정렬*/
-	padding: 10px 20px 0 20px;
-	margin-bottom: 100px;
+	margin: 50px auto 100px; /*중앙 정렬*/
+	padding: 0px 20px;
 	font-family: 'Noto Sans KR', sans-serif;
 	font-size: 14px;
 	background-color: #fff;
@@ -54,6 +53,7 @@ body {
 
 /*input 중 radio 는 width 가 100%면 안되니까 */
 .member input:not(input[type=radio]), .member select {
+border-radius: 7px;
 	border: 1px solid #dadada;
 	padding: 10px;
 	width: 100%;
@@ -144,10 +144,11 @@ body {
 }
 
 .signup-title {
-	padding-top: 100px;
-	text-align: center;
+	
+	text-align: left;
 	font-weight: bold;
-	text-align: center;
+	margin-bottom: 50px
+	
 }
 
 .field.id div {
@@ -167,27 +168,36 @@ body {
 <body>
 
 
-	<h3 class="signup-title">회원정보 수정</h3>
 	<div class="member">
+	<h3 class="signup-title">회원정보 수정</h3>
 		<!-- 2. 필드 -->
 
-		<form action="clientedit.do" method="post" id="frm"
+		<form action="clientedit.do" method="post" id="clientEditForm"
 			onsubmit="return formCheck()">
+
 			<div class="field">
-				<b>성명</b> <input style="background: silver;" class="useranme"
+				<b>아이디</b> <input style="background: #ddd;" class="useranme"
+					type="text" id="clientId" name="clientId" readonly="readonly"
+					value="${n.clientId}">
+			</div>
+
+			<div class="field">
+				<b>성명</b> <input style="background: #ddd;" class="useranme"
 					type="text" id="clientName" name="clientName" readonly="readonly"
 					value="${n.clientName }">
 			</div>
 
 			<div class="field">
-				<b>비밀번호</b> <input placeholder="비밀번호 입력" class="userpw"
+				<b>신규 비밀번호</b> <input placeholder="신규 비밀번호 입력" class="userpw"
 					type="password" id="clientPassword" name="clientPassword"
-					value="${n.clientPassword }" required="required">
+					>
 			</div>
+
+			
 			<div class="field">
-				<b>비밀번호 확인</b> <input class="userpw-confirm" placeholder="비밀번호 확인"
-					type="password" id="passwordCheck" name="passwordCheck"
-					required="required">
+				<b>신규 비밀번호 확인</b> <input class="userpw-confirm"
+					placeholder="신규 비밀번호 확인" type="password" id="passwordCheck"
+					name="passwordCheck">
 			</div>
 
 
@@ -208,14 +218,20 @@ body {
 				<input type="submit" value="수정">
 			</div>
 		</form>
+		
 	</div>
 
+	
+
 	<script type="text/javascript">
+		
+	
 		function formCheck() {
 			let address = document.getElementById("clientAddress").value;
 			let password = document.getElementById("clientPassword").value;
 			let passcheck = document.getElementById("passwordCheck").value;
 			let tel = document.getElementById("clientTel").value;
+			
 			if (password != passcheck) {
 				alert("패스워드가 일치하지 않습니다.");
 				document.getElementById("clientPassword").value = "";
@@ -224,7 +240,7 @@ body {
 				return false;
 			}
 			if (tel.length < 11 || isNaN(tel) == true) {
-				alert("잘못된 번호 입니다.");
+				alert("잘못된 전화번호 입니다.");
 
 				document.getElementById("clientTel").value = "";
 				document.getElementById("clientTel").focus();
@@ -243,7 +259,10 @@ body {
 				document.getElementById("clientAddress").value = "";
 				document.getElementById("clientAddress").focus();
 				return false;
+				
+				
 			}
+			
 			return true;
 
 		}

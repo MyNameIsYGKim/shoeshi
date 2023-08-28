@@ -139,13 +139,13 @@ a {
 }
 
 #product>.complete>.info>table tr>th:nth-child(1) {
-	width: auto;
+	width: 160px;
 	text-align: left;
 	padding-left: 10px;
 }
 
 #product>.complete>.info>table tr>td:nth-child(1) {
-	width: auto;
+	width: 160px;
 	text-align: left;
 	padding-left: 10px;
 }
@@ -252,7 +252,7 @@ h1 {
 
 #wrapper {
 	margin-top: 20px;
-	height: 100vh;
+	height: 100%;
 }
 .signup-title {
 	text-align: left;
@@ -269,86 +269,139 @@ h1 {
 			<section class="complete">
 
 				<article class="message">
-					<h3 class="signup-title">구매 입찰 중</h3>
+					<h3 class="signup-title">판매 상세</h3>
 
 				</article>
 				<!-- 상품정보 -->
 				<article class="info">
-					<h1></h1>
+					<h1>주문번호 ${d.dealNo}</h1>
 
 					<table border="0">
 						<tr>
+							<th>거래 체결일</th>
 							<th>상품정보</th>
 							<th>사이즈</th>
-							<th>구매 희망가</th>
+							<!-- <th>거래 체결 금액</th> -->
+							<th>상태</th>
 						</tr>
 						<tr>
+							<td>${d.dealDate}</td>
 							<td><article style="cursor: pointer;"
-									onclick="selectProduct(${b.productId})">
+									onclick="selectProduct(${d.productId})">
 									<a href="#"> <img
-										src="${b.productimgPath}${b.productimgName1}" alt="1">
+										src="${d.productimgPath}${d.productimgName1}" alt="1">
 									</a>
 									<div>
 										<p>
-											<a href="#">${b.productMaker}</a>
+											<a href="#">${d.productMaker}</a>
 										</p>
-										<p>${b.productName}</p>
+										<p>${d.productName}</p>
 									</div>
 								</article></td>
-							<td align="center">${b.productSize }</td>
-							<td><fmt:formatNumber value="${b.bidPrice}" pattern="#,###" />원</td>
+							<td align="center">${d.productSize }</td>
+							<%-- <td><fmt:formatNumber value="${d.dealPrice}" pattern="#,###" />원</td> --%>
+							<td align="center">${d.dealState}</td>
 						</tr>
 
 
 					</table>
 				</article>
 				<!-- 결제정보 -->
-				
-
-				<!--결제정보 -->
 				<article class="order">
-					<h1>결제방법</h1>
+					<h1>결제정보</h1>
+					<table border="0">
+						<tr>
+							<td>상품가격</td>
+							<td></td>
+							<td colspan="2"><fmt:formatNumber value="${d.dealPrice}"
+									pattern="#,###" />원</td>
+						</tr>
+						<tr>
+							<td>판매 수수료</td>
+							<td></td>
+							<td colspan="2"><fmt:formatNumber value="0" pattern="#,###" />원</td>
+						</tr>
+						<tr>
+							<td><span>정산 금액</span></td>
+							<td></td>
+							<td colspan="2"><span><fmt:formatNumber
+										value="${d.dealPrice}" pattern="#,###" />원</span></td>
+						</tr>
+					</table>
+				</article>
+				<!-- 계좌정보 -->
+				<article class="order">
+					<h1>계좌정보</h1>
+					<table border="0">
+						<tr>
+							<td>은행</td>
+							<td></td>
+							<td></td>
+							<td>${d.bankName}</td>
+						</tr>
+						<tr>
+							<td>예금주</td>
+							<td></td>
+							<td></td>
+							<td>${d.clientName}</td>
+						</tr>
+						<tr>
+							<td>계좌번호</td>
+							<td></td>
+							<td></td>
+							<td>${d.bankAccount}</td>
+						</tr>
+					</table>
+				</article>
+				<!--패널티 결제정보 -->
+				<article class="order">
+					<h1>패널티 결제정보</h1>
 					<table border="0">
 						<tr>
 							<td>결제수단</td>
 							<td></td>
 							<td></td>
-							<td>${b.cardCo}</td>
+							<td>${d.cardCo}</td>
 						</tr>
 						<tr>
 							<td></td>
 							<td></td>
-							<td colspan="2">${b.cardNum}</td>
+							<td colspan="2">${d.cardNum}</td>
 						</tr>
-
+						<tr>
+							<td><span>결제금액</span></td>
+							<td></td>
+							<td></td>
+							<td><span><fmt:formatNumber value="0" pattern="#,###" />원</span></td>
+						</tr>
 					</table>
 				</article>
-				<!-- 배송정보 -->
+				<!-- 반송정보 -->
 				<article class="delivery">
-					<h1>배송정보</h1>
+					<h1>반송정보</h1>
 					<table border="0">
 						<tr>
 							<td>수취인</td>
 							<td></td>
 							<td></td>
-							<td>${b.clientName}</td>
+							<td>${d.clientName}</td>
 						</tr>
 						<tr>
 							<td>연락처</td>
 							<td></td>
-							<td colspan="2"><fmt:formatNumber value="${b.clientTel }"
+							<td colspan="2"><fmt:formatNumber value="${d.clientTel }"
 									pattern="00000000000" /></td>
 
 						</tr>
 						<tr>
-							<td>배송지 주소</td>
-							<td colspan="3">${b.clientAddress }</td>
+							<td>반송지 주소</td>
+							<td colspan="3">${d.clientAddress }</td>
 						</tr>
 					</table>
 				</article>
 
 				<div class="flex-c-m flex-w w-full p-t-45">
-					<a href="buybidlist.do"
+					<a href="sdeallist.do"
 						class="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04">
 						목록보기 </a>
 				</div>
@@ -371,9 +424,4 @@ h1 {
 		
 	</script>
 </body>
-<script type="text/javascript">
-$(function(){
-		alert("${payment}")
-})
-</script>
 </html>

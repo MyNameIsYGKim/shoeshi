@@ -17,11 +17,11 @@ import co.sam.shoeshi.deal.service.DealService;
 import co.sam.shoeshi.deal.service.DealVO;
 import co.sam.shoeshi.deal.serviceImpl.DealServiceImpl;
 
-@WebServlet("/dealdetail.do")
-public class DealDetail extends HttpServlet {
+@WebServlet("/sdealdetail.do")
+public class SDealDetail extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public DealDetail() {
+	public SDealDetail() {
 		super();
 
 	}
@@ -33,28 +33,26 @@ public class DealDetail extends HttpServlet {
 		DealVO vo = new DealVO();
 		HashMap<String, Object> dealDetail = new HashMap<>();
 		
-		System.out.println(request.getParameter("dealType")+request.getParameter("dealNo"));
+		System.out.println(request.getParameter("dealType")+request.getParameter("dealNo")+session.getAttribute("clientId"));
 		vo.setDealNo(Integer.valueOf(request.getParameter("dealNo")));
+		ObjectMapper ob = new ObjectMapper();
+		System.out.println(("판매".equals(request.getParameter("dealType"))));
 		
-		ObjectMapper objectMapper = new ObjectMapper();
-		String data;
 		if ("판매".equals(request.getParameter("dealType"))) {
 			vo.setDealSeller((String) session.getAttribute("clientId"));
-			dealDetail = dao.dealJoinDetailS(vo);
-			data = objectMapper.writeValueAsString(dealDetail);
-			System.out.println(data);
-		}else {
+						
+		}else if("구매".equals(request.getParameter("dealType"))) {
 			vo.setDealBuyer((String) session.getAttribute("clientId"));
-			dealDetail = dao.dealJoinDetailB(vo);
-			 data = objectMapper.writeValueAsString(dealDetail);
-			System.out.println(data);
+			
 		}
-
+		String chk= ob.writeValueAsString(vo);
+		System.out.println(chk);
+		dealDetail = dao.dealJoinDetailB(vo);
 		
-		data = objectMapper.writeValueAsString(dealDetail);
-		System.out.println(data);
-		
-		String viewName = "my/client/dealdetail";
+		chk= ob.writeValueAsString(dealDetail);
+		System.out.println(chk);
+				
+		String viewName = "my/client/sdealdetail";
 		
 		request.setAttribute("d", dealDetail);
 		ViewResolve.forward(request, response, viewName);
