@@ -17,4 +17,8 @@ public interface DealMapper {
 	List<DealVO> dealSelectList(String key, String AdminDealSearchValue);
 	List<HashMap<String, Object>> dealJoinSelectB(DealVO vo);
 	List<HashMap<String, Object>> dealJoinSelectS(DealVO vo);
+	HashMap<String,Object> dealJoinDetailS(DealVO vo);
+	HashMap<String,Object> dealJoinDetailB(DealVO vo);
+	
+	
 }
