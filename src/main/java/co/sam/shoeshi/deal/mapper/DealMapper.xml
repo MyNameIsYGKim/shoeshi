@@ -1,20 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="co.sam.shoeshi.deal.mapper.DealMapper">
-	<select id="dealSelectList" resultType="co.sam.shoeshi.deal.service.DealVO">
+	<select id="dealSelectList"
+		resultType="co.sam.shoeshi.deal.service.DealVO">
 		SELECT * FROM DEAL WHERE DEAL_STATE = '도착'
 		<if test='key == "adminDealDate"'>AND DEAL_DATE LIKE '%'||#{AdminDealSearchValue}||'%'</if>
 		<if test='key == "adminDealProductId"'>AND PRODUCT_ID LIKE '%'||#{AdminDealSearchValue}||'%'</if>
-		<if test='key == "adminDealBuyer"'>AND DEAL_BUYER LIKE UPPER('%'||#{AdminDealSearchValue}||'%')
-			OR DEAL_BUYER LIKE LOWER('%'||#{AdminDealSearchValue}||'%')</if>
-		<if test='key == "adminDealSeller"'>AND DEAL_SELLER LIKE UPPER('%'||#{AdminDealSearchValue}||'%')
-			OR DEAL_SELLER LIKE LOWER('%'||#{AdminDealSearchValue}||'%')</if>
+		<if test='key == "adminDealBuyer"'>AND DEAL_BUYER LIKE
+			UPPER('%'||#{AdminDealSearchValue}||'%')
+			OR DEAL_BUYER LIKE
+			LOWER('%'||#{AdminDealSearchValue}||'%')</if>
+		<if test='key == "adminDealSeller"'>AND DEAL_SELLER LIKE
+			UPPER('%'||#{AdminDealSearchValue}||'%')
+			OR DEAL_SELLER LIKE
+			LOWER('%'||#{AdminDealSearchValue}||'%')</if>
 		<if test='key == "adminDealState"'>AND DEAL_STATE LIKE '%'||#{AdminDealSearchValue}||'%'</if>
-		
+
 		ORDER BY DEAL_NO
 	</select>
-	
-	<select id="dealSelect" resultType="co.sam.shoeshi.deal.service.DealVO">
+
+	<select id="dealSelect"
+		resultType="co.sam.shoeshi.deal.service.DealVO">
 		SELECT * FROM DEAL WHERE DEAL_NO = #{dealNo}
 	</select>
 	
@@ -25,45 +31,70 @@
 	<select id="dealSelectB" resultType="co.sam.shoeshi.deal.service.DealVO">
 		SELECT * FROM DEAL WHERE DEAL_BUYER = #{dealBuyer}
 	</select>
-	<select id="dealSelectS" resultType="co.sam.shoeshi.deal.service.DealVO">
+	<select id="dealSelectS"
+		resultType="co.sam.shoeshi.deal.service.DealVO">
 		SELECT * FROM DEAL WHERE DEAL_SELLER = #{dealSeller}
 	</select>
-	
-	<select id="dealJoinSelectS" resultType="co.sam.shoeshi.common.CamelHashMap">
-		SELECT TO_CHAR(D.DEAL_DATE, 'YYYY-MM-DD') AS DEAL_DATE ,D.DEAL_NO,D.DEAL_STATE,D.DEAL_PRICE,D.DEAL_BUYER,D.DEAL_SELLER,D.PRODUCT_ID,D.PRODUCT_SIZE ,P.PRODUCT_NAME, P.PRODUCT_MAKER, I.PRODUCTIMG_PATH, I.PRODUCTIMG_NAME1, I.PRODUCTIMG_NAME2, I.PRODUCTIMG_NAME3
-		FROM PRODUCTIMG I RIGHT OUTER JOIN PRODUCT P ON P.PRODUCT_ID = I.PRODUCT_ID
-                                    RIGHT OUTER JOIN DEAL D ON D.PRODUCT_ID = P.PRODUCT_ID
-        WHERE D.DEAL_SELLER= #{dealSeller}
-        ORDER BY D.DEAL_DATE DESC
+
+	<select id="dealJoinSelectS"
+		resultType="co.sam.shoeshi.common.CamelHashMap">
+		SELECT TO_CHAR(D.DEAL_DATE, 'YYYY-MM-DD') AS DEAL_DATE
+		,D.DEAL_NO,D.DEAL_STATE,D.DEAL_PRICE,D.DEAL_BUYER,D.DEAL_SELLER,D.PRODUCT_ID,D.PRODUCT_SIZE
+		,P.PRODUCT_NAME, P.PRODUCT_MAKER, I.PRODUCTIMG_PATH,
+		I.PRODUCTIMG_NAME1, I.PRODUCTIMG_NAME2, I.PRODUCTIMG_NAME3
+		FROM
+		PRODUCTIMG I RIGHT OUTER JOIN PRODUCT P ON P.PRODUCT_ID = I.PRODUCT_ID
+		RIGHT OUTER JOIN DEAL D ON D.PRODUCT_ID = P.PRODUCT_ID
+		WHERE D.DEAL_SELLER= #{dealSeller}
+		ORDER BY D.DEAL_DATE DESC
 	</select>
-	
-	<select id="dealJoinSelectB" resultType="co.sam.shoeshi.common.CamelHashMap">
-		SELECT TO_CHAR(D.DEAL_DATE, 'YYYY-MM-DD') AS DEAL_DATE ,D.DEAL_NO,D.DEAL_STATE,D.DEAL_PRICE,D.DEAL_BUYER,D.DEAL_SELLER,D.PRODUCT_ID,D.PRODUCT_SIZE ,P.PRODUCT_NAME, P.PRODUCT_MAKER, I.PRODUCTIMG_PATH, I.PRODUCTIMG_NAME1, I.PRODUCTIMG_NAME2, I.PRODUCTIMG_NAME3
-		FROM PRODUCTIMG I RIGHT OUTER JOIN PRODUCT P ON P.PRODUCT_ID = I.PRODUCT_ID
-                                    RIGHT OUTER JOIN deal D on D.product_id = P.PRODUCT_ID
-        WHERE DEAL_BUYER= #{dealBuyer}
-        ORDER BY D.DEAL_DATE DESC
+
+	<select id="dealJoinSelectB"
+		resultType="co.sam.shoeshi.common.CamelHashMap">
+		SELECT TO_CHAR(D.DEAL_DATE, 'YYYY-MM-DD') AS DEAL_DATE
+		,D.DEAL_NO,D.DEAL_STATE,D.DEAL_PRICE,D.DEAL_BUYER,D.DEAL_SELLER,D.PRODUCT_ID,D.PRODUCT_SIZE
+		,P.PRODUCT_NAME, P.PRODUCT_MAKER, I.PRODUCTIMG_PATH,
+		I.PRODUCTIMG_NAME1, I.PRODUCTIMG_NAME2, I.PRODUCTIMG_NAME3
+		FROM
+		PRODUCTIMG I RIGHT OUTER JOIN PRODUCT P ON P.PRODUCT_ID = I.PRODUCT_ID
+		RIGHT OUTER JOIN deal D on D.product_id = P.PRODUCT_ID
+		WHERE DEAL_BUYER= #{dealBuyer}
+		ORDER BY D.DEAL_DATE DESC
 	</select>
-	
-	<select id="dealJoinDetailS" resultType="co.sam.shoeshi.common.CamelHashMap">
-		SELECT TO_CHAR(D.DEAL_DATE, 'YYYY-MM-DD') AS DEAL_DATE ,D.DEAL_NO,D.DEAL_STATE,D.DEAL_PRICE,D.DEAL_BUYER,D.DEAL_SELLER,
-        D.PRODUCT_ID,D.PRODUCT_SIZE ,P.PRODUCT_NAME, P.PRODUCT_MAKER, I.PRODUCTIMG_PATH, I.PRODUCTIMG_NAME1,C.CLIENT_NAME,C.CLIENT_ADDRESS,C.CLIENT_TEL,M.BANK_ACCOUNT ,M.BANK_NAME, M.CARD_NUM,M.CARD_CO
-		FROM PRODUCTIMG I RIGHT OUTER JOIN PRODUCT P ON P.PRODUCT_ID = I.PRODUCT_ID
-                                    RIGHT OUTER JOIN DEAL D ON D.PRODUCT_ID = P.PRODUCT_ID
-                                    RIGHT OUTER JOIN CLIENT C ON D.DEAL_SELLER = C.CLIENT_ID
-                                    RIGHT OUTER JOIN PAYMENT M ON M.CLIENT_ID = C.CLIENT_ID
-                                    
-        WHERE D.DEAL_SELLER= #{dealSeller} AND DEAL_NO= #{dealNo}
+
+	<select id="dealJoinDetailS"
+		resultType="co.sam.shoeshi.common.CamelHashMap">
+		SELECT TO_CHAR(D.DEAL_DATE, 'YYYY-MM-DD') AS DEAL_DATE
+		,D.DEAL_NO,D.DEAL_STATE,D.DEAL_PRICE,D.DEAL_BUYER,D.DEAL_SELLER,
+		D.PRODUCT_ID,D.PRODUCT_SIZE ,P.PRODUCT_NAME, P.PRODUCT_MAKER,
+		I.PRODUCTIMG_PATH,
+		I.PRODUCTIMG_NAME1,C.CLIENT_NAME,C.CLIENT_ADDRESS,C.CLIENT_TEL,M.BANK_ACCOUNT
+		,M.BANK_NAME, M.CARD_NUM,M.CARD_CO
+		FROM PRODUCTIMG I RIGHT OUTER JOIN
+		PRODUCT P ON P.PRODUCT_ID = I.PRODUCT_ID
+		RIGHT OUTER JOIN DEAL D ON D.PRODUCT_ID = P.PRODUCT_ID
+		RIGHT OUTER JOIN CLIENT C ON D.DEAL_SELLER = C.CLIENT_ID
+		RIGHT OUTER JOIN PAYMENT M ON M.CLIENT_ID = C.CLIENT_ID
+
+		WHERE D.DEAL_SELLER= #{dealSeller} AND DEAL_NO= #{dealNo}
 	</select>
-	<select id="dealJoinDetailB" resultType="co.sam.shoeshi.common.CamelHashMap">
-		SELECT TO_CHAR(D.DEAL_DATE, 'YYYY-MM-DD') AS DEAL_DATE ,D.DEAL_NO,D.DEAL_STATE,D.DEAL_PRICE,D.DEAL_BUYER,D.DEAL_SELLER,
-        D.PRODUCT_ID,D.PRODUCT_SIZE ,P.PRODUCT_NAME, P.PRODUCT_MAKER, I.PRODUCTIMG_PATH, I.PRODUCTIMG_NAME1,C.CLIENT_NAME,C.CLIENT_ADDRESS,C.CLIENT_TEL,M.BANK_ACCOUNT ,M.BANK_NAME, M.CARD_NUM,M.CARD_CO
-		FROM PRODUCTIMG I RIGHT OUTER JOIN PRODUCT P ON P.PRODUCT_ID = I.PRODUCT_ID
-                                    RIGHT OUTER JOIN DEAL D ON D.PRODUCT_ID = P.PRODUCT_ID
-                                    RIGHT OUTER JOIN CLIENT C ON D.DEAL_BUYER = C.CLIENT_ID
-                                    RIGHT OUTER JOIN PAYMENT M ON M.CLIENT_ID = C.CLIENT_ID
-                                   
-        WHERE D.DEAL_BUYER= #{dealBuyer} AND DEAL_NO= #{dealNo}
+	<select id="dealJoinDetailB"
+		resultType="co.sam.shoeshi.common.CamelHashMap">
+		SELECT TO_CHAR(D.DEAL_DATE, 'YYYY-MM-DD') AS DEAL_DATE
+		,D.DEAL_NO,D.DEAL_STATE,D.DEAL_PRICE,D.DEAL_BUYER,D.DEAL_SELLER,
+		D.PRODUCT_ID,D.PRODUCT_SIZE ,P.PRODUCT_NAME, P.PRODUCT_MAKER,
+		I.PRODUCTIMG_PATH,
+		I.PRODUCTIMG_NAME1,C.CLIENT_NAME,C.CLIENT_ADDRESS,C.CLIENT_TEL,M.BANK_ACCOUNT
+		,M.BANK_NAME, M.CARD_NUM,M.CARD_CO
+		FROM PRODUCTIMG I RIGHT OUTER JOIN
+		PRODUCT P ON P.PRODUCT_ID = I.PRODUCT_ID
+		RIGHT OUTER JOIN DEAL D ON D.PRODUCT_ID = P.PRODUCT_ID
+		<if test="dealBuyer != null">RIGHT OUTER JOIN CLIENT C ON D.DEAL_BUYER = C.CLIENT_ID</if>
+		<if test="dealSeller != null">RIGHT OUTER JOIN CLIENT C ON D.DEAL_SELLER = C.CLIENT_ID</if>
+		RIGHT OUTER JOIN PAYMENT M ON M.CLIENT_ID = C.CLIENT_ID
+		WHERE D.DEAL_NO= #{dealNo}
+		<if test="dealBuyer != null">AND D.DEAL_BUYER = #{dealBuyer}</if>
+		<if test="dealSeller != null">AND D.DEAL_SELLER = #{dealSeller}</if>
 	</select>
 	
 	
@@ -77,8 +108,9 @@
 		INSERT INTO DEAL(DEAL_NO, DEAL_STATE, DEAL_PRICE, DEAL_BUYER, DEAL_SELLER, PRODUCT_ID, PRODUCT_SIZE)
 		VALUES(#{dealNo}, #{dealState}, #{dealPrice}, #{dealBuyer}, #{dealSeller}, #{productId}, #{productSize})
 	</insert>
-	
-	<update id="dealUpdate" parameterType="co.sam.shoeshi.deal.service.DealVO">
+
+	<update id="dealUpdate"
+		parameterType="co.sam.shoeshi.deal.service.DealVO">
 		UPDATE DEAL
 		<set>
 			<if test="dealNo != null">DEAL_NO = #{dealNo},</if>
@@ -93,8 +125,9 @@
 		</set>
 		WHERE DEAL_NO = #{dealNo}
 	</update>
-	
-	<delete id="dealDelete" parameterType="co.sam.shoeshi.deal.service.DealVO">
+
+	<delete id="dealDelete"
+		parameterType="co.sam.shoeshi.deal.service.DealVO">
 		DELETE FROM DEAL WHERE DEAL_NO = #{dealNo}
 	</delete>
 

@@ -33,7 +33,7 @@ body {
 .payment {
 	width: 400px;
 	/* border: 1px solid #000; */
-	margin: auto; /*중앙 정렬*/
+	margin: 50px auto 100px; /*중앙 정렬*/
 	padding: 10px 20px 0 20px;
 	margin-bottom: 100px;
 	font-family: 'Noto Sans KR', sans-serif;
@@ -41,6 +41,7 @@ body {
 	background-color: #fff;
 	line-height: 1.5em;
 	color: #222;
+	min-height: 50vh;
 	
 }
 
@@ -147,10 +148,12 @@ body {
 }
 
 .signup-title {
-	padding-top: 100px;
-	text-align: center;
+	/* padding-top: 100px; */
+	text-align: left;
 	font-weight: bold;
-	text-align: center;
+	margin-bottom: 50px;
+	
+	
 }
 
 .field.id div {
@@ -170,8 +173,8 @@ body {
 <body>
 
 
-	<h3 class="signup-title">거래정보 수정</h3>
 	<div class="payment">
+	<h3 class="signup-title">거래정보 수정</h3>
 
 		<form action="paymentedit.do" method="post" id="frm"
 			onsubmit="return formCheck()">
