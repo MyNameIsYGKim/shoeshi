@@ -87,15 +87,17 @@ a {
 	padding-right: 10px;
 }
 
-#product>.complete>.info table tr>td {
-	
+#product>.complete>.info table tr>#won {
+		color: #ff006c;
+	font-weight: bold;
+	text-align: left;
+	padding-right: 10px;
 }
 
-#product>.complete>.info table tr>td:last-child {
+#product>.complete>.info table tr>#editprice {
 	color: #ff006c;
 	font-weight: bold;
 	text-align: right;
-	padding-right: 10px;
 }
 
 #product>.complete>.info table tr>td>article {
@@ -295,8 +297,8 @@ h1 {
 										<p>${b.productName}</p>
 									</div>
 								</article></td>
-							<td align="center">${b.productSize }</td>
-							<td><fmt:formatNumber value="${b.bidPrice}" pattern="#,###" />원</td>
+							<td id="editsize" align="center" contenteditable="false">${b.productSize }</td>
+							<td id="editprice" contenteditable="false">${b.bidPrice}</td><td id="won">원</td>
 						</tr>
 
 
@@ -351,6 +353,12 @@ h1 {
 					<a href="buybidlist.do"
 						class="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04">
 						목록보기 </a>
+						<form id="editform" action="" method="post">
+						<button id="edit" class="flex-c-m stext-101 cl10 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04" onclick="edit()">수정</button>
+						<button id="save" class="flex-c-m stext-101 cl10 size-104 bg1 bor1 hov-btn1 p-lr-15 trans-04" style="display:none;" onclick="save()">저장</button>
+					<!-- 	<button id="cancel" class="flex-c-m stext-101 cl10 size-104 bg5 bor1 hov-btn1 p-lr-15 trans-04" style="background: fuchsia;red; display:none;">취소</button> -->
+					<input type="hidden" id="bidno" name="bidno" value="${b.bidNo }">
+					</form>
 				</div>
 
 			</section>
@@ -364,6 +372,26 @@ h1 {
 
 	</div>
 	<script type="text/javascript">
+	$(function(){
+		alert($('#editprice:eq(0)').html());
+	})
+		function edit(){
+		editables = document.querySelectorAll('#editsize, #editprice')
+		${editprice2}
+		$('#edit').hide();
+		$('#save').show();
+/* 		$('#cancel').show(); */
+		editables[0].contentEditable = 'true';
+		editables[1].contentEditable = 'true';
+	}
+ 	function save(){
+ 		/* $('#editsize:eq(0)').html()="" */
+		editables[0].contentEditable = 'false';
+		editables[1].contentEditable = 'false';
+		
+	} 
+	
+	
 		function selectProduct(p) {
 			document.getElementById("productId").value = p;
 			document.getElementById("productselectform").submit();
