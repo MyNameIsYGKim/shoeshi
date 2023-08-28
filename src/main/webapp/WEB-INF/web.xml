@@ -7,7 +7,7 @@
 	<listener>
 		<listener-class>org.apache.tiles.extras.complete.CompleteAutoloadTilesListener</listener-class>
 	</listener>
-	
+
 	<filter>
 		<filter-name>encoding</filter-name>
 		<filter-class>co.sam.shoeshi.common.EncodingFilter</filter-class>
@@ -25,7 +25,7 @@
 		<servlet-name>Tiles Dispatch Servlet</servlet-name>
 		<url-pattern>*.tiles</url-pattern>
 	</servlet-mapping>
-	
+
 	<filter>
 		<filter-name>Set Character Encoding</filter-name>
 		<filter-class>org.apache.catalina.filters.SetCharacterEncodingFilter</filter-class>
@@ -39,4 +39,14 @@
 		<filter-name>Set Character Encoding</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
+	
+	<error-page>
+        <error-code>404</error-code>
+        <location>/WEB-INF/views/error/error404.jsp</location>
+    </error-page>
+    <error-page>
+        <error-code>500</error-code>
+        <location>/WEB-INF/views/error/error500.jsp</location>
+    </error-page>
+
 </web-app>

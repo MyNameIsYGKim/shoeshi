@@ -78,4 +78,14 @@ public class DealServiceImpl implements DealService {
 		return map.dealSelectList3();
 	}
 
+	@Override
+	public List<DealVO> dealSelectList2(String key2, String AdminDealSearchValue2) {
+		return map.dealSelectList2(key2, AdminDealSearchValue2);
+	}
+
+	@Override
+	public List<DealVO> dealSelectList3(String key3, String AdminDealSearchValue3) {
+		return map.dealSelectList3(key3, AdminDealSearchValue3);
+	}
+
 }

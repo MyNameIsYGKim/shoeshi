@@ -18,4 +18,6 @@ public interface DealService {
 	List<DealVO> dealStateList3();
 	List<DealVO> dealSelectList2();
 	List<DealVO> dealSelectList3();
+	List<DealVO> dealSelectList2(String key2, String AdminDealSearchValue);
+	List<DealVO> dealSelectList3(String key3, String AdminDealSearchValue);
 }

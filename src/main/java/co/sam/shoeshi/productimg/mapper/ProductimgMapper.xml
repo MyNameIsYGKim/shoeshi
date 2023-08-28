@@ -34,7 +34,9 @@
 
 	<delete id="productimgDelete"
 		parameterType="co.sam.shoeshi.productimg.service.ProductimgVO">
+		<if test="productId != null">
 		DELETE FROM PRODUCTIMG WHERE PRODUCT_ID = #{productId}
+		</if>
 	</delete>
 
 </mapper>

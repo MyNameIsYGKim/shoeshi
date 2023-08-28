@@ -12,7 +12,7 @@
 			OR PRODUCT_MAKER LIKE LOWER('%'||#{AdminProductSearchValue}||'%')</if>
 		<if test='key == "adminProductName"'>WHERE PRODUCT_NAME LIKE UPPER('%'||#{AdminProductSearchValue}||'%')
 			OR PRODUCT_NAME LIKE LOWER('%'||#{AdminProductSearchValue}||'%')</if>
-		ORDER BY PRODUCT_ID
+		ORDER BY PRODUCT_ID DESC
 	</select>
 	
 	<select id="productSelect" resultType="co.sam.shoeshi.product.service.ProductVO">

@@ -20,4 +20,6 @@ public interface DealMapper {
 	List<DealVO> dealStateList3();
 	List<DealVO> dealSelectList2();
 	List<DealVO> dealSelectList3();
+	List<DealVO> dealSelectList2(@Param("key2") String key2, @Param("AdminDealSearchValue2") String AdminDealSearchValue2);
+	List<DealVO> dealSelectList3(@Param("key3") String key3, @Param("AdminDealSearchValue3") String AdminDealSearchValue3);
 }

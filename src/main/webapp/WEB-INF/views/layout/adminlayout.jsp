@@ -53,22 +53,28 @@
 </head>
 
 <body class="animsition">
-
+	
 	<!-- Header -->
 	<tiles:insertAttribute name="header" />
 
 	<!-- Product -->
+	<c:if test='${author eq "ADMIN" }'>
 	
 	<div style="float: left;" >
 	<tiles:insertAttribute name="sidebar" />
 	</div>
 	
 	<div style="min-height: 700px">
-	<c:if test="${author eq 'ADMIN'}">
 	<tiles:insertAttribute name="body" ignore="true" />
-	</c:if>
 	</div>
-
+		
+	</c:if>
+	<c:if test='${author != "ADMIN" }'>
+		<!-- <script type="text/javascript">
+			alert('<c:out value="접근불가"/>');
+			</script> -->
+		<img src="img/denied.png">
+	</c:if>
 
 	<!-- Footer -->
 	<tiles:insertAttribute name="footer" />
@@ -79,7 +85,7 @@
 			class="zmdi zmdi-chevron-up"></i>
 		</span>
 	</div>
-
+	
 	<!--===============================================================================================-->
 	<script src="coza/vendor/jquery/jquery-3.2.1.min.js"></script>
 	<!--===============================================================================================-->

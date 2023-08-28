@@ -121,8 +121,8 @@ form input[type="text"], form input[type="number"], form input[type="file"]
 		</table>
 		</div>
 		<div class="button-container">
-			<button type="button" onclick="productUpdate('E')" class="btn btn-primary 1">수정</button>
-			<button type="button" onclick="productUpdate('D')" class="btn btn-primary 2">삭제</button>
+			<button type="button" onclick="productUpdate('E')" class="btn btn-primary">수정</button>
+			<button type="button" onclick="productUpdate('D')" class="btn btn-primary">삭제</button>
 			<button type="button" onclick="lcoation.href=adminproductmanage.do" 
 				class="btn btn-primary 3">취소</button>
 		</div>

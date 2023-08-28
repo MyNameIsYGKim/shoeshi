@@ -70,20 +70,19 @@
 					<div class="card">
 						<div class="card-body">
 							<div class="formbox" align="center">
-								<form id="adminClientForm" method="post">
+								<form id="adminClientForm" method="post" enctype="multipart/form-data"
+									style="padding-right: 7.5px;">
 									<select id="key" name="key">
 										<option value="adminClientId">ID</option>
 										<option value="adminClientName">Name</option>
 										<option value="adminClientAddress">Address</option>
 									</select>
-										<input type="text" id="clientSearchVal" name="clientSearchVal" size="30">
+										<input type="text" id="clientSearchVal" name="clientSearchVal" 
+											size="30" style="padding: 5px;">
 										<input type="button" onclick="searchList()" value="검색"
-											class="searchbtn" onmouseover="this.style.background='gray'"
-											onmouseout="this.style.background='#FAFAFA'">
+											class="btn btn-primary">
 										<input type="button" onclick="location.href='adminclientinsertform.do'"
-											value="등록" class="insertbtn"
-											onmouseover="this.style.background='gray'"
-											onmouseout="this.style.background='#FAFAFA'">
+											value="등록" class="btn btn-primary pull-right">
 								</form>
 							</div>
 							<div>
@@ -101,17 +100,16 @@
 									<tbody>
 										<c:if test="${not empty clients }">
 											<c:forEach items="${clients }" var="n" begin="0" end="14">
-												<tr>
+												<tr style="line-height: 35px;">
 													<td>${n.clientId }</td>
 													<td>${n.clientName }</td>
 													<td>${n.clientAddress }</td>
 													<td>${n.clientTel }</td>
 													<td>${n.clientAuthor }</td>
 													<td>
-														<button type="button" id="clienteditbtn" class="clienteditbtn"
-															onclick="selectClient('${n.clientId}')"
-															onmouseover="this.style.background='gray'"
-															onmouseout="this.style.background='#FAFAFA'">
+														<button type="button" id="clienteditbtn" 
+															class="btn btn-primary pull-right"
+															onclick="selectClient('${n.clientId}')">
 															관리</button>
 													</td>
 												</tr>
@@ -150,8 +148,8 @@
 	
 	function searchList(){
 		let key = document.getElementById("key").value;
-		let AdminDealSearchValue = document.getElementById("AdminClientSearchValue").value;
-		let payload = "key="+key+"&AdminClientSearchValue="+AdminClientSearchValue;
+		let clientSearchVal = document.getElementById("clientSearchVal").value;
+		let payload = "key="+key+"&clientSearchVal="+clientSearchVal;
 		let url = "ajaxclientsearch.do";
 		
 		fetch(url, {
@@ -177,19 +175,18 @@
 	
 	function htmlView(data){
 		return `
-				<tr>
+				<tr style="line-height: 35px;">
 					<td>\${data.clientId }</td>
 					<td>\${data.clientName }</td>
 					<td>\${data.clientAddress }</td>
 					<td>\${data.clientTel }</td>
 					<td>\${data.clientAuthor }</td>
 					<td>
-					<button type="button" class="clienteditbtn"
-						onclick="selectClient(${n.clientId})"
-						onmouseover="this.style.background='gray'"
-						onmouseout="this.style.background='#FAFAFA'">
+					<button type="button" id="clienteditbtn"
+						class="btn btn-primary pull-right"
+						onclick="selectClient('${n.clientId}')">
 						관리</button>
-				</td>
+					</td>
 				</tr>
 		`
 	}

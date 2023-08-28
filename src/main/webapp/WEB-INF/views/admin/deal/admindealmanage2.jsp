@@ -64,7 +64,7 @@
 	margin-bottom: 10px;
 }
 
-#AdminDealSearchValue {
+#AdminDealSearchValue2 {
 	border: 1px solid gray;
 	border-radius: 3px;
 	display: inline;
@@ -98,7 +98,7 @@
 										OnClick="location.href ='admindealmanage.do'"
 										style="cursor: pointer;">
 										<h4 class="textstyle">
-											도착( ${fn:length(states1) } ) <i class="mdi mdi-chart-line mdi-24px float-right"></i>
+											대기( ${fn:length(states1) } ) <i class="mdi mdi-chart-line mdi-24px float-right"></i>
 										</h4>
 									</div>
 								</div>
@@ -109,7 +109,7 @@
 										OnClick="location.href ='admindealmanage2.do'"
 										style="cursor: pointer;">
 										<h4 class="textstyle">
-											완료( ${fn:length(states2) } ) <i class="mdi mdi-bookmark-outline mdi-24px float-right"></i>
+											합격( ${fn:length(states2) } ) <i class="mdi mdi-bookmark-outline mdi-24px float-right"></i>
 										</h4>
 									</div>
 								</div>
@@ -120,7 +120,7 @@
 										OnClick="location.href ='admindealmanage3.do'"
 										style="cursor: pointer;">
 										<h4 class="textstyle">
-											실패( ${fn:length(states3) } ) <i class="mdi mdi-diamond mdi-24px float-right"></i>
+											불합격( ${fn:length(states3) } ) <i class="mdi mdi-diamond mdi-24px float-right"></i>
 										</h4>
 									</div>
 								</div>
@@ -132,17 +132,17 @@
 									<div class="card-body">
 										<div class="formbox" align="center">
 											<form id="adminDealForm" method="post" enctype="multipart/form-data">
-												<select id="key" name="key">
+												<select id="key2" name="key2">
 													<option value="adminDealDate">날짜</option>
 													<option value="adminDealProductId">제품번호</option>
 													<option value="adminDealBuyer">구매자</option>
 													<option value="adminDealSeller">판매자</option>
 													<option value="adminDealState">검수결과</option>
 												</select>
-												<input type="text" id="AdminDealSearchValue" name="AdminDealSearchValue" size="30">
+												<input type="text" id="AdminDealSearchValue2" name="AdminDealSearchValue2" 
+													size="30" style="padding: 5px;">
 												<input type="button" onclick="searchList()" value="검색"
-													class="searchbtn" onmouseover="this.style.background='gray'"
-													onmouseout="this.style.background='#FAFAFA'">
+													class="btn btn-primary">
 											</form>
 										</div>
 										<div>
@@ -162,9 +162,9 @@
 												</thead>
 												<!-- 더미 데이터 -->
 												<tbody>
-													<c:if test="${not empty deals }">
-														<c:forEach items="${deals }" var="n" begin="0" end="14">
-															<tr>
+													<c:if test="${not empty deals2 }">
+														<c:forEach items="${deals2 }" var="n" begin="0" end="14">
+															<tr style="line-height: 35px;">
 																<td align="center">${n.dealNo }</td>
 																<td align="center">${n.dealDate }</td>
 																<td align="center">${n.productId }</td>
@@ -174,10 +174,8 @@
 																<td>${n.dealPrice }</td>
 																<td align="center">${n.dealState }</td>
 																<td>
-																	<button type="button" class="dealeditbtn"
-																		onclick="selectDeal(${n.dealNo})"
-																		onmouseover="this.style.background='gray'"
-																		onmouseout="this.style.background='#FAFAFA'">
+																	<button type="button" class="btn btn-primary pull-right"
+																		onclick="selectDeal(${n.dealNo})">
 																		관리</button>
 																</td>
 															</tr>
@@ -186,7 +184,7 @@
 															<td colspan="9" align="center">· · ·</td>
 														</tr>
 													</c:if>
-													<c:if test="${empty deals }">
+													<c:if test="${empty deals2 }">
 														<tr>
 															<td colspan="9" align="center">Empty.</td>
 														</tr>
@@ -220,10 +218,10 @@
 	}
 	
 	function searchList(){
-		let key = document.getElementById("key").value;
-		let AdminDealSearchValue = document.getElementById("AdminDealSearchValue").value;
-		let payload = "key="+key+"&AdminDealSearchValue="+AdminDealSearchValue;
-		let url = "adminajaxdealsearch.do";
+		let key = document.getElementById("key2").value;
+		let AdminDealSearchValue2 = document.getElementById("AdminDealSearchValue2").value;
+		let payload = "key2="+key2+"&AdminDealSearchValue2="+AdminDealSearchValue2;
+		let url = "adminajaxdealsearch2.do";
 		
 		fetch(url, {
 			method: "POST",
@@ -248,7 +246,7 @@
 	
 	function htmlView(data){
 		return `
-				<tr>
+				<tr style="line-height: 35px;">
 					<td align="center">\${data.dealNo }</td>
 					<td align="center">\${data.dealDate }</td>
 					<td align="center">\${data.productId }</td>
@@ -258,10 +256,8 @@
 					<td>\${data.dealPrice }</td>
 					<td align="center">\${data.dealState }</td>
 					<td>
-					<button type="button" class="dealeditbtn"
-						onclick="selectDeal(${n.dealNo})"
-						onmouseover="this.style.background='gray'"
-						onmouseout="this.style.background='#FAFAFA'">
+					<button type="button" class="btn btn-primary pull-right"
+						onclick="selectDeal(${n.dealNo})">
 						관리</button>
 					</td>
 				</tr>

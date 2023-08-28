@@ -42,7 +42,7 @@ public class AdminDealEdit extends HttpServlet {
 			stateValue = "완료";
 			vo.setDealComent("");
 		}else if(request.getParameter("key").equals("dealEditCancel")) {
-			stateValue = "실패";
+			stateValue = "취소";
 			vo.setDealComent(request.getParameter("dealComent"));
 		}else {
 			vo.setDealComent("");
