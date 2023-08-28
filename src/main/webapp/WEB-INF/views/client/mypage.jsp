@@ -1,298 +1,276 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="https://kit.fontawesome.com/20962f3e4b.js"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+<link rel="stylesheet"
+	href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+<link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="./css/product.css">
 
+<style type="text/css">
+.nodata {
+	color: #000;
+	font-size: 20px;
+	height: 300px;
+}
 
+h1 {
+	margin: 50px 0 30px;
+}
 
+a {
+	text-decoration: none;
+}
+
+.minh {
+	margin: 50px 30px;
+	min-height: 60vh;
+}
+
+.styled-table {
+	border-collapse: collapse;
+	margin: 25px 0;
+	font-size: 0.9em;
+	font-family: sans-serif;
+	min-width: 400px;
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.styled-table thead tr {
+	background-color: #000;
+	color: #ffffff;
+	text-align: left;
+}
+
+.styled-table th, .styled-table td {
+	padding: 12px 15px;
+}
+
+.styled-table tbody tr {
+	border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+	background-color: #f3f3f3;
+}
+
+.styled-table tbody tr:last-of-type {
+	border-bottom: 2px solid #009879;
+}
+
+.styled-table tbody tr.active-row {
+	font-weight: bold;
+	color: #009879;
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+table tr {
+	border-bottom: 1px solid #d3d3d3;
+}
+
+table th {
+	padding: 12px 0;
+	background: #fff;
+	color: #383838;
+	font-size: 0.95em;
+	text-align: center;
+	letter-spacing: -0.1em;
+}
+
+table .empty {
+	display: none;
+}
+
+table td {
+	text-align: center;
+}
+
+table td:nth-child(5) {
+	color: #ff006c;
+	font-weight: bold;
+}
+
+table tr>td>input {
+	
+}
+
+table td>article {
+	padding: 6px;
+	overflow: hidden;
+}
+
+table td>article>a {
+	float: left;
+	display: inline-block;
+}
+
+table td>article>a>img {
+	width: 80px;
+}
+
+table td>article>div {
+	float: left;
+	margin-left: 10px;
+}
+
+table td>article>div>span {
+	text-align: left;
+}
+
+table td>article>div>p {
+	text-align: left;
+	color: #777;
+	margin-top: 4px;
+}
+
+.signup-title {
+	text-align: left;
+	font-weight: bold;
+	margin-bottom: 50px;
+}
+
+.numred {
+	color: #ff6b6b;
+	font-weight: bold;
+}
+
+.menublack {
+	color: black;
+	font-weight: bold;
+}
+
+.menulight {
+	color: #777;
+}
+
+.numberbold {
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.row-sm4 {
+	font-size: 14px;
+}
+
+.tabblack {
+	height: 68px;
+	margin: 0 auto;
+	border-bottom: 2px solid #000;
+}
+
+.dealtab {
+	height: 68px;
+	border-bottom: 2px solid #d3d3d3;
+	margin: 0 auto;
+}
+
+.wide100000 {
+	width: 100%;
+	display: flex;
+	align-items: center;
+}
+
+.bmar {
+	margin-top: 100px;
+}
+</style>
 </head>
 <body>
-	<section class="sec-product-detail bg0 p-t-65 p-b-60">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-6 col-lg-7 p-b-30">
-					<div class="p-l-25 p-r-30 p-lr-0-lg">
-						<div class="wrap-slick3 flex-sb flex-w">
-							<div class="wrap-slick3-dots"></div>
-							<div class="wrap-slick3-arrows flex-sb-m flex-w"></div>
 
-							<div class="slick3 gallery-lb">
-								<div class="item-slick3" data-thumb="img/1.png">
-									<div class="wrap-pic-w pos-relative">
-										<img src="img/1.png" alt="IMG-PRODUCT"> <a
-											class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-											href="img/1.png"> <i class="fa fa-expand"></i>
-										</a>
-									</div>
-								</div>
+	<div class="minh">
 
-								<div class="item-slick3"
-									data-thumb="img/1-2.png">
-									<div class="wrap-pic-w pos-relative">
-										<img src="img/1-2.png" alt="IMG-PRODUCT">
 
-										<a
-											class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-											href="img/1-2.png"> <i
-											class="fa fa-expand"></i>
-										</a>
-									</div>
-								</div>
 
-								<div class="item-slick3"
-									data-thumb="img/1-3.png">
-									<div class="wrap-pic-w pos-relative">
-										<img src="img/1-3.png" alt="IMG-PRODUCT">
-
-										<a
-											class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-											href="img/1-3.png"> <i
-											class="fa fa-expand"></i>
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-md-6 col-lg-5 p-b-30">
-					<div class="p-r-50 p-t-5 p-lr-0-lg">
-
-						<span class="mtext-106 cl2">JORDAN</span>
-						
-						<h4 class="mtext-105 cl2 js-name-detail p-t-23">에어 조던 1 레트로 로우 OG SP 트래비스 스캇 세일 앤 리저록</h4>
-
-						<p class="stext-102 cl3">Air Jordan 1 Retro Low OG SP Travis Scott Sail and Ridgerock</p>
-
-						<!--  -->
-						<div class="p-t-33">
-    <div class="flex-w p-b-15">
-        <div class="size-216 flex-l-m respon6">사이즈</div>
-        <div class="size-217 respon6-next">
-            <div class="rs1-select2 bor8 bg0">
-                <select class="js-select2" name="time">
-                    <option>모든 사이즈</option>
-                    <option>260</option>
-                    <option>270</option>
-                    <option>280</option>
-                    <option>290</option>
-                </select>
-                <div class="dropDownSelect2"></div>
-            </div>
-        </div>
-    </div>
-
-    <div class="flex-w p-b-10">
-        <div class="flex-c-m respon6">
-            <div class="size-217">
-
-             
-
-                <button class="flex-c-m stext-101 cl0 size-150 bg1 bor1 hov-btn1 p-lr-15 trans-04">
-
-                    <span>1,200,000원</span><span>구매</span>
-                </button>
-            </div>
-            <div class="size-217">
-                <button class="flex-c-m stext-101 cl0 bg10000 size-150 bor1 hov-btn1 p-lr-15 trans-04">
-                    <span>1,300,000원</span><span>판매</span>
-                </button>
-            </div>
-            <span class="size-151"></span>
-        </div>
-    </div>
-</div>
-
-						</div>
-						
-						<div>
-						
-						</div>
-
-						<!--  -->
-						<div class="flex-w flex-m p-l-100 p-t-40 respon7">
-							<div class="flex-m bor9 p-r-10 m-r-11">
-								<a href="#"
-									class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 js-addwish-detail tooltip100"
-									data-tooltip="Add to Wishlist"> <i
-									class="zmdi zmdi-favorite"></i>
-								</a>
-							</div>
-
-							<a href="#"
-								class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100"
-								data-tooltip="Facebook"> <i class="fa fa-facebook"></i>
-							</a> <a href="#"
-								class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100"
-								data-tooltip="Twitter"> <i class="fa fa-twitter"></i>
-							</a> <a href="#"
-								class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100"
-								data-tooltip="Google Plus"> <i class="fa fa-google-plus"></i>
-							</a>
-						</div>
-					</div>
-				</div>
-				
+		<div align="center">
+			<div>
+				<h3 class="signup-title">판매내역</h3>
 			</div>
-
-			<div class="bor10 m-t-50 p-t-43 p-b-40">
-				<!-- Tab01 -->
-				<div class="tab01">
-					<!-- Nav tabs -->
-					<ul class="nav nav-tabs" role="tablist">
-						<li class="nav-item p-b-10"><a class="nav-link active"
-							data-toggle="tab" href="#description" role="tab">Description</a>
-						</li>
-
-						<li class="nav-item p-b-10"><a class="nav-link"
-							data-toggle="tab" href="#information" role="tab">Additional
-								information</a></li>
-
-						<li class="nav-item p-b-10"><a class="nav-link"
-							data-toggle="tab" href="#reviews" role="tab">Reviews (1)</a></li>
-					</ul>
-
-					<!-- Tab panes -->
-					<div class="tab-content p-t-43">
-						<!-- - -->
-						<div class="tab-pane fade show active" id="description"
-							role="tabpanel">
-							<div class="how-pos2 p-lr-15-md">
-								<p class="stext-102 cl6">Aenean sit amet gravida nisi. Nam
-									fermentum est felis, quis feugiat nunc fringilla sit amet. Ut
-									in blandit ipsum. Quisque luctus dui at ante aliquet, in
-									hendrerit lectus interdum. Morbi elementum sapien rhoncus
-									pretium maximus. Nulla lectus enim, cursus et elementum sed,
-									sodales vitae eros. Ut ex quam, porta consequat interdum in,
-									faucibus eu velit. Quisque rhoncus ex ac libero varius
-									molestie. Aenean tempor sit amet orci nec iaculis. Cras sit
-									amet nulla libero. Curabitur dignissim, nunc nec laoreet
-									consequat, purus nunc porta lacus, vel efficitur tellus augue
-									in ipsum. Cras in arcu sed metus rutrum iaculis. Nulla non
-									tempor erat. Duis in egestas nunc.</p>
-							</div>
-						</div>
-
-						<!-- - -->
-						<div class="tab-pane fade" id="information" role="tabpanel">
-							<div class="row">
-								<div class="col-sm-10 col-md-8 col-lg-6 m-lr-auto">
-									<ul class="p-lr-28 p-lr-15-sm">
-										<li class="flex-w flex-t p-b-7"><span
-											class="stext-102 cl3 size-205"> Weight </span> <span
-											class="stext-102 cl6 size-206"> 0.79 kg </span></li>
-
-										<li class="flex-w flex-t p-b-7"><span
-											class="stext-102 cl3 size-205"> Dimensions </span> <span
-											class="stext-102 cl6 size-206"> 110 x 33 x 100 cm </span></li>
-
-										<li class="flex-w flex-t p-b-7"><span
-											class="stext-102 cl3 size-205"> Materials </span> <span
-											class="stext-102 cl6 size-206"> 60% cotton </span></li>
-
-										<li class="flex-w flex-t p-b-7"><span
-											class="stext-102 cl3 size-205"> Color </span> <span
-											class="stext-102 cl6 size-206"> Black, Blue, Grey,
-												Green, Red, White </span></li>
-
-										<li class="flex-w flex-t p-b-7"><span
-											class="stext-102 cl3 size-205"> Size </span> <span
-											class="stext-102 cl6 size-206"> XL, L, M, S </span></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-
-						<!-- - -->
-						<div class="tab-pane fade" id="reviews" role="tabpanel">
-							<div class="row">
-								<div class="col-sm-10 col-md-8 col-lg-6 m-lr-auto">
-									<div class="p-b-30 m-lr-15-sm">
-										<!-- Review -->
-										<div class="flex-w flex-t p-b-68">
-											<div class="wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6">
-												<img src="images/avatar-01.jpg" alt="AVATAR">
-											</div>
-
-											<div class="size-207">
-												<div class="flex-w flex-sb-m p-b-17">
-													<span class="mtext-107 cl2 p-r-20"> Ariana Grande </span> <span
-														class="fs-18 cl11"> <i class="zmdi zmdi-star"></i>
-														<i class="zmdi zmdi-star"></i> <i class="zmdi zmdi-star"></i>
-														<i class="zmdi zmdi-star"></i> <i
-														class="zmdi zmdi-star-half"></i>
-													</span>
-												</div>
-
-												<p class="stext-102 cl6">Quod autem in homine
-													praestantissimum atque optimum est, id deseruit. Apud
-													ceteros autem philosophos</p>
-											</div>
-										</div>
-
-										<!-- Add review -->
-										<form class="w-full">
-											<h5 class="mtext-108 cl2 p-b-7">Add a review</h5>
-
-											<p class="stext-102 cl6">Your email address will not be
-												published. Required fields are marked *</p>
-
-											<div class="flex-w flex-m p-t-50 p-b-23">
-												<span class="stext-102 cl3 m-r-16"> Your Rating </span> <span
-													class="wrap-rating fs-18 cl11 pointer"> <i
-													class="item-rating pointer zmdi zmdi-star-outline"></i> <i
-													class="item-rating pointer zmdi zmdi-star-outline"></i> <i
-													class="item-rating pointer zmdi zmdi-star-outline"></i> <i
-													class="item-rating pointer zmdi zmdi-star-outline"></i> <i
-													class="item-rating pointer zmdi zmdi-star-outline"></i> <input
-													class="dis-none" type="number" name="rating">
-												</span>
-											</div>
-
-											<div class="row p-b-25">
-												<div class="col-12 p-b-5">
-													<label class="stext-102 cl3" for="review">Your
-														review</label>
-													<textarea
-														class="size-110 bor8 stext-102 cl2 p-lr-20 p-tb-10"
-														id="review" name="review"></textarea>
-												</div>
-
-												<div class="col-sm-6 p-b-5">
-													<label class="stext-102 cl3" for="name">Name</label> <input
-														class="size-111 bor8 stext-102 cl2 p-lr-20" id="name"
-														type="text" name="name">
-												</div>
-
-												<div class="col-sm-6 p-b-5">
-													<label class="stext-102 cl3" for="email">Email</label> <input
-														class="size-111 bor8 stext-102 cl2 p-lr-20" id="email"
-														type="text" name="email">
-												</div>
-											</div>
-
-											<button
-												class="flex-c-m stext-101 cl0 size-112 bg7 bor11 hov-btn3 p-lr-15 trans-04 m-b-10">
-												Submit</button>
-										</form>
-									</div>
-								</div>
-							</div>
-						</div>
+			<div class="row wide100000">
+				<div class="tabblack col-md-4" onclick="selectBidType('SELL')"
+					style="cursor: pointer;">
+					<div class="col">
+						<div class="row-sm8 numberbold ">${scount.bidCount}</div>
+						<div class="menublack row-sm4">판매입찰</div>
 					</div>
-				
+				</div>
+				<div class="col-md-4 tabblack"
+					onclick="location.href='sdeallist.do'" style="cursor: pointer;">
+					<div class="col">
+						<div class="row-sm8 numberbold numred">${scount.dealCount}</div>
+						<div class="row-sm4 menublack">진행중</div>
+					</div>
+				</div>
+				<div class="col-md-4 tabblack" onclick="buybidlist.do"
+					style="cursor: pointer;">
+					<div class="col">
+						<div class="row-sm8 numberbold">${scount.finishCount}</div>
+						<div class="row-sm4 menublack">완료</div>
+					</div>
+				</div>
+			</div>
+			<div class="bmar">
+				<h3 class="signup-title">구매내역</h3>
+			</div>
+			<div class="row wide100000">
+				<div class="tabblack col-md-4" onclick="selectBidType('BUY')"
+					style="cursor: pointer;">
+					<div class="col">
+						<div class="row-sm8 numberbold ">${bcount.bidCount}</div>
+						<div class="menublack row-sm4">구매입찰</div>
+					</div>
+				</div>
+				<div class="col-md-4 tabblack"
+					onclick="location.href='sdeallist.do'" style="cursor: pointer;">
+					<div class="col">
+						<div class="row-sm8 numberbold numred">${bcount.dealCount}</div>
+						<div class="row-sm4 menublack">진행중</div>
+					</div>
+				</div>
+				<div class="col-md-4 tabblack" onclick="buybidlist.do"
+					style="cursor: pointer;">
+					<div class="col">
+						<div class="row-sm8 numberbold">${bcount.finishCount}</div>
+						<div class="row-sm4 menublack">완료</div>
+					</div>
+				</div>
 			</div>
 		</div>
 
-		<div class="bg6 flex-c-m flex-w size-302 m-t-73 p-tb-15">
-			<span class="stext-107 cl6 p-lr-25"> SKU: JAK-01 </span> <span
-				class="stext-107 cl6 p-lr-25"> Categories: Jacket, Men </span>
-		</div>
-	</section>
+		<form id="dealdetailform" action="sdealdetail.do" method="get">
+			<input type="hidden" id="dealNo" name="dealNo"> <input
+				type="hidden" id="dealType" name="dealType">
+		</form>
+
+	</div>
+	<script type="text/javascript">
+	function dealDetail(dealNo,dealType) {
+		document.getElementById("dealNo").value = dealNo;
+		document.getElementById("dealType").value = dealType;
+		document.getElementById("dealdetailform").submit();
+	}
+	
+	</script>
 </body>
-
 </html>

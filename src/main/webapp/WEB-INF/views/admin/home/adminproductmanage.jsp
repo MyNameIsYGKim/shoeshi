@@ -9,9 +9,8 @@
 <style>
 .admintitle {
 	font-weight: bold;
-	text-align: center;
-	margin-top: 20px;
-	margin-bottom: 40px;
+	margin-top: 50px;
+	margin-bottom:30px;
 }
 
 .tableset {
@@ -46,13 +45,13 @@
 
 </head>
 <body>
-	<div class="container bodymargin">
-		<h1 class="admintitle">제품조회</h1>
+	<div>
 		<!-- partial -->
 		<div>
+		<h3 class="admintitle">제품조회</h3>
 			<div>
 				<div>
-					<div class="row" style="margin-top: 5px; margin-bottom: 5px;">
+					<div class="row" style="margin-bottom: 5px;">
 						<div class="col-12 grid-margin">
 							<div class="card">
 								<div class="card-body">

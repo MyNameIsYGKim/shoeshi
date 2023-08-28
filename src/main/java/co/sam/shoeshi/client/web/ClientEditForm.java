@@ -27,10 +27,10 @@ public class ClientEditForm extends HttpServlet {
 		ClientService dao = new ClientServiceImpl();
 		ClientVO vo = new ClientVO();
 		
-		vo.setClientId((String)session.getAttribute("id"));
+		vo.setClientId((String)session.getAttribute("clientId"));
 		vo = dao.clientSelect(vo);
 		request.setAttribute("n", vo);
-		String viewName = "client/clienteditform";
+		String viewName = "my/client/clienteditform";
 		ViewResolve.forward(request, response, viewName);
 	}
 

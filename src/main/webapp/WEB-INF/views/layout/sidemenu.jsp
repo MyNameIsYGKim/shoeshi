@@ -6,26 +6,37 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link href="css/styles.css" rel="stylesheet" />
 <style>
-/* Sidebar styles */
 .fontb {
-	color: black;
+	color: #000;
 }
 
 .sidebar123 {
+	text-decoration: none;
 	text-align: left;
 	width: 150px;
 	background-color: rgba(255, 255, 255, 0);
-	color: black;
-	position: fixed;
-	top: 0;
-	left: 0;
-	height: 100%;
-	overflow-x: hidden;
+	margin-top: 50px;
 	z-index: 0;
-	padding-top: 100px;
-	margin-left: 123px;
 	border: none;
+}
+
+.menufont {
+	color: #aaa;
+}
+
+.menutitle {
+	color: #000;
+}
+
+.sidebar123 h3 {
+	font-weight: bold;
+}
+
+.sidebar123 h5 {
+	margin-top: 30px;
+	font-weight: bold;
 }
 
 .sidebar123 ul {
@@ -38,10 +49,8 @@
 }
 
 .sidebar123 a {
-	color: black;
 	text-decoration: none;
-	display: block;
-	padding: 10px;
+	padding: 0;
 }
 
 /* .sidebar a:hover {
@@ -49,31 +58,47 @@
 } */
 
 /* Main content styles */
-.main-content {
-	margin-left: 300px; /* Adjust this value to match the sidebar width */
-	margin-right: 123px;
-	margin-top: 50px; /* Adjust as needed */
-	margin-bottom: 50px; /* Adjust as needed */
-	padding: 20px;
-	margin-top: 50px;
-}
 </style>
 </head>
 
 <body>
-	<div>
+	<div class="sidebar123">
 		<ul>
-			<li><a href="mypage.do"><h3>마이페이지</h3></a></li>
-			<li><a href="clienteditform.do">회원정보 수정</a></li>
-			<li><a href="paymenteditform.do">거래정보 수정</a></li>
-			<li><a href="deallist.do">거래내역</a></li>
-			<li><a href="cartlist.do">Cart</a></li>
+			<li><a href="mypage.do" class="menutitle"><h3>마이페이지</h3></a></li>
+			<li><h5 class="menutitle">내 정보</h5></li>
+			<li><a href="#" onclick="selectEditType('client')"
+				class="menufont">회원정보 수정</a></li>
+			<li><a href="#" onclick="selectEditType('payment')"
+				class="menufont">결제정보 수정</a></li>
+			<li><h5 class="menutitle">쇼핑 정보</h5></li>
+			<li><a href="#" onclick="selectBidType('SELL')" class="menufont">판매내역</a></li>
+			<li><a href="#" onclick="selectBidType('BUY')" class="menufont">구매내역</a></li>
+			<li><a href="paymentform.do" class="menufont">Cart</a></li>
+
 
 			<!-- Add more menu items as needed -->
 		</ul>
 	</div>
+	<div>
+		<form id="clientEditForm" method="post" action="passwordcheckform.do">
+			<input type="hidden" id="editType" name="editType">
+		</form>
+		<form id="bidTypeForm" method="post" action="bidlist.do">
+			<input type="hidden" id="bidType" name="bidType">
+		</form>
+	</div>
+	<script type="text/javascript">
+		function selectEditType(str) {
 
+			document.getElementById("editType").value = str;
+			document.getElementById("clientEditForm").submit();
+		}
+		function selectBidType(str) {
 
+			document.getElementById("bidType").value = str;
+			document.getElementById("bidTypeForm").submit();
+		}
+	</script>
 
 </body>
 

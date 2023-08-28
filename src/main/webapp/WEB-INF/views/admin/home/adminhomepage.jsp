@@ -7,6 +7,10 @@
 <link href="css/styles.css" rel="stylesheet" />
 <title>Admin</title>
 <style>
+.container {
+	margin: 0 auto;
+}
+
 .buttonall {
 	display: flex;
 	justify-content: center;
@@ -100,8 +104,7 @@ divstyle2 {
 
 
 <body>
-	<div class="container bodymargin">
-		<h1 class="admintitle">관리자 페이지</h1>
+	<div class="">
 		<!-- partial -->
 		<div>
 			<div>

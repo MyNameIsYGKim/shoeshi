@@ -4,22 +4,40 @@
 	<select id="clientSelectList"
 		resultType="co.sam.shoeshi.client.service.ClientVO">
 		SELECT * FROM CLIENT
+		<if test='key == "id"'>WHERE CLIENT_ID LIKE UPPER('%'||#{clientSearchVal}||'%')
+			OR CLIENT_ID LIKE LOWER('%'||#{clientSearchVal}||'%')</if>
+		<if test='key == "name"'>WHERE CLIENT_NAME LIKE UPPER('%'||#{clientSearchVal}||'%')
+			OR CLIENT_NAME LIKE LOWER('%'||#{clientSearchVal}||'%')</if>
+		<if test='key == "address"'>WHERE CLIENT_ADDRESS LIKE '%'||#{clientSearchVal}||'%'
+		</if>
 	</select>
+
+
 	<select id="clientIdFind"
 		resultType="co.sam.shoeshi.client.service.ClientVO">
-		SELECT CLIENTID FROM CLIENT WHERE CLIENT_NAME =
+		SELECT CLIENT_ID FROM CLIENT WHERE CLIENT_NAME =
 		#{clientName} AND CLIENT_TEL = #{clientTel}
 	</select>
+
+
 	<select id="clientSelect"
 		resultType="co.sam.shoeshi.client.service.ClientVO">
 		SELECT * FROM CLIENT WHERE CLIENT_ID = #{clientId}
 	</select>
+
+
 	<insert id="clientInsert"
 		parameterType="co.sam.shoeshi.client.service.ClientVO">
+		BEGIN
 		INSERT INTO CLIENT(CLIENT_ID, CLIENT_PASSWORD,
 		CLIENT_NAME, CLIENT_ADDRESS, CLIENT_TEL)
-		VALUES(#{clientId},#{clientPassword},#{clientName},#{clientAddress},#{clientTel})
+		VALUES(#{clientId},#{clientPassword},#{clientName},#{clientAddress},#{clientTel});
+		INSERT INTO PAYMENT(CLIENT_ID)
+		VALUES(#{clientId});
+		END;
 	</insert>
+
+
 	<update id="clientUpdate"
 		parameterType="co.sam.shoeshi.client.service.ClientVO">
 		UPDATE CLIENT
@@ -30,6 +48,8 @@
 		</set>
 		WHERE CLIENT_ID = #{clientId}
 	</update>
+
+
 	<delete id="clientDelete"
 		parameterType="co.sam.shoeshi.client.service.ClientVO">
 		DELETE FROM CLIENT WHERE CLIENT_ID = #{clientId}

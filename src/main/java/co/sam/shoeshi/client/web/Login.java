@@ -15,9 +15,7 @@ import co.sam.shoeshi.client.service.ClientVO;
 import co.sam.shoeshi.client.serviceImpl.ClientServiceImpl;
 import co.sam.shoeshi.common.ViewResolve;
 
-/**
- * Servlet implementation class Login
- */
+
 @WebServlet("/login.do")
 public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -36,18 +34,16 @@ public class Login extends HttpServlet {
 		String id = request.getParameter("clientId");
 		String pwd = request.getParameter("clientPassword");
 		vo.setClientId(id);
-		vo.setClientPassword(pwd);
-
 		vo = dao.clientSelect(vo);
 
 		if (vo != null) {
 			if (vo.getClientPassword().equals(pwd)) {
-				session.setAttribute("id", vo.getClientId());
-				session.setAttribute("password", vo.getClientPassword());
-				session.setAttribute("name", vo.getClientName());
-				session.setAttribute("address", vo.getClientAddress());
-				session.setAttribute("tel", vo.getClientTel());
-				session.setAttribute("author", vo.getClientAuthor());
+				session.setAttribute("clientId", vo.getClientId());
+//				session.setAttribute("clientPassword", vo.getClientPassword());
+				session.setAttribute("clientName", vo.getClientName());
+				session.setAttribute("clientAddress", vo.getClientAddress());
+				session.setAttribute("clientTel", vo.getClientTel());
+				session.setAttribute("clientAuthor", vo.getClientAuthor());
 				response.setContentType("text/html; charset=UTF-8");
 				PrintWriter writer = response.getWriter();
 				writer.println("<script>alert('로그인 되었습니다.'); location.href='http://localhost/example/home.do'</script>");

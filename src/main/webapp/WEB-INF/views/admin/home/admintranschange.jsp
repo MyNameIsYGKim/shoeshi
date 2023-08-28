@@ -16,9 +16,8 @@ style>.textstyle {
 
 .admintitle {
 	font-weight: bold;
-	text-align: center;
-	margin-top: 20px;
-	margin-bottom: 40px;
+	margin-top: 50px;
+	margin-bottom:30px;
 }
 
 .buttonhap {
@@ -156,10 +155,10 @@ style>.textstyle {
 
 </head>
 <body>
-	<div class="container bodymargin">
-		<h1 class="admintitle">거래목록</h1>
+	<div>
+<div style="display: inline-block flex;">
 
-
+			<h3 class="admintitle">거래목록</h3>
 		<div class="buttonall">
 			<div class="buttontest">
 				<div>
@@ -190,7 +189,7 @@ style>.textstyle {
 			</div>
 		</div>
 
-
+</div>
 
 
 

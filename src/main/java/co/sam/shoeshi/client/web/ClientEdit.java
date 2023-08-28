@@ -28,10 +28,13 @@ public class ClientEdit extends HttpServlet {
 		HttpSession session = request.getSession();
 		request.setCharacterEncoding("UTF-8");
 		
-		vo.setClientId((String) session.getAttribute("id"));
+		vo.setClientId((String) session.getAttribute("clientId"));
 		vo.setClientPassword(request.getParameter("clientPassword"));
 		vo.setClientAddress(request.getParameter("clientAddress"));
 		vo.setClientTel(request.getParameter("clientTel"));
+		session.setAttribute("clientPassword", vo.getClientPassword());
+		session.setAttribute("clientAddress", vo.getClientAddress());
+		session.setAttribute("clientTel", vo.getClientTel());
 
 		int n = dao.clientUpdate(vo);
 		if (n == 0) {
@@ -44,7 +47,7 @@ public class ClientEdit extends HttpServlet {
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter writer = response.getWriter();
 			writer.println(
-					"<script>alert('정보가 수정되었습니다.'); location.href='http://localhost/example/clienteditform.do'</script>");
+					"<script>alert('정보가 수정되었습니다.'); location.href='http://localhost/example/mypage.do'</script>");
 			writer.close();
 		}
 	}

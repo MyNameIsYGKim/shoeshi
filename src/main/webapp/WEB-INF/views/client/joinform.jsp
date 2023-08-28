@@ -19,16 +19,27 @@
 	outline: none; /*focus 했을때 테두리 나오게 */
 }
 
+.ipradi {
+	border-radius: 7px;
+}
+
+.idradi {
+	border-top-left-radius: 7px;
+	border-bottom-left-radius: 7px;
+}
+
+.btnradi {
+	border-top-right-radius: 7px;
+	border-bottom-right-radius: 7px;
+}
+
 .div-padding {
 	padding: 20px, 0px;
 }
 
 body {
-	font-family: 'Noto Sans KR', sans-serif;
-	font-size: 14px;
-	background-color: #f5f6f7;
-	line-height: 1.5em;
-	color: #222;
+	background-color: #fff;
+	f
 	margin: 0;
 }
 
@@ -41,9 +52,13 @@ a {
 .member {
 	width: 400px;
 	/* border: 1px solid #000; */
-	margin: auto; /*중앙 정렬*/
+	margin: 50px auto 100px; /*중앙 정렬*/
 	padding: 10px 20px 0 20px;
 	margin-bottom: 100px;
+	ont-family: 'Noto Sans KR', sans-serif;
+	font-size: 14px;
+	line-height: 1.5em;
+	color: #222;s
 }
 
 .member .field {
@@ -147,10 +162,11 @@ a {
 }
 
 .signup-title {
-	padding-top: 100px;
-	text-align: center;
+	
+	text-align: left;
 	font-weight: bold;
-	text-align: center;
+	margin-bottom: 50px
+	
 }
 
 .field.id div {
@@ -170,8 +186,8 @@ a {
 <body>
 
 
-	<h3 class="signup-title">회원가입</h3>
 	<div class="member">
+	<h3 class="signup-title">회원가입</h3>
 		<!-- 2. 필드 -->
 
 		<form id="frm" action="join.do" onsubmit="return formCheck()"
@@ -181,8 +197,9 @@ a {
 				<b>아이디</b>
 				<div>
 					<input type="text" placeholder="아이디 입력" id="clientId"
-						name="clientId" required="required">
-					<button type="button" id="btn" value="No" onclick="idCheck()">중복확인</button>
+						class="idradi" name="clientId" required="required">
+					<button type="button" id="btn" value="No" onclick="idCheck()"
+						class="btnradi">중복확인</button>
 
 					<!-- <input type="button"
 						value="중복확인" id="btn" value="No" onclick="idCheck()"> -->
@@ -190,47 +207,40 @@ a {
 			</div>
 
 			<div class="field">
-				<b>비밀번호</b> <input placeholder="비밀번호 입력" class="userpw"
+				<b>비밀번호</b> <input placeholder="비밀번호 입력" class="userpw ipradi"
 					type="password" id="clientPassword" name="clientPassword">
 			</div>
 			<div class="field">
-				<b>비밀번호 재확인</b> <input class="userpw-confirm" placeholder="비밀번호 확인"
-					type="password" id="passwordCheck" required="required">
+				<b>비밀번호 재확인</b> <input class="userpw-confirm ipradi"
+					placeholder="비밀번호 확인" type="password" id="passwordCheck"
+					required="required">
 			</div>
 			<div class="field">
 				<b>이름</b> <input type="text" id="clientName" name="clientName"
-					required="required" placeholder="이름 입력">
+					required="required" placeholder="이름 입력" class="ipradi">
 
 			</div>
 
-			<!-- 5. 이메일_전화번호 -->
-			<!-- <div class="field">
-				<b>본인 확인 이메일<small>(선택)</small></b> <input type="email"
-					placeholder="선택입력">
-			</div> -->
+
 
 			<div class="field">
-				<!-- <div class="field tel-number"> -->
-				<b>휴대전화</b>
-				<!-- <select>
-					<option value="">대한민국 +82</option>
-				</select> -->
+
+				<b>전화번호</b>
+
 				<div>
 					<input type="tel" placeholder="전화번호 입력" id="clientTel"
-						name="clientTel">
-					<!-- <input type="button" value="인증번호 받기"> -->
+						name="clientTel" class="ipradi">
 				</div>
-				<!-- <input type="number" placeholder="인증번호를 입력하세요"> -->
+				
 			</div>
 			<div class="field">
 				<b>주소</b> <input type="text" placeholder="주소 입력" id="clientAddress"
-					name="clientAddress">
-				<!-- <input
-					type="text" placeholder="상세 주소"> -->
+					name="clientAddress" class="ipradi">
+				
 			</div>
 
 			<!-- 6. 가입하기 버튼 -->
-			<input type="submit" value="가입하기">
+			<input type="submit" value="가입하기" class="ipradi">
 		</form>
 	</div>
 

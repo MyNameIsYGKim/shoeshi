@@ -1,72 +1,108 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="ko">
+<html>
+
 <head>
-<meta charset="utf-8" />
-
-<title>사이드바</title>
-
+<meta charset="UTF-8">
+<title>Insert title here</title>
 <link href="css/styles.css" rel="stylesheet" />
-
 <style>
-.container {
-	margin: 0;
+.fontb {
+	color: #000;
 }
 
-.admintitle {
+.sidebar123 {
+	text-decoration: none;
+	text-align: left;
+	width: 150px;
+	background-color: rgba(255, 255, 255, 0);
+	margin-top: 50px;
+	z-index: 0;
+	border: none;
+}
+
+.menufont {
+	color: #aaa;
+}
+
+.menutitle {
+	color: #000;
+}
+
+.sidebar123 h3 {
 	font-weight: bold;
-	text-align: center;
-	margin-top: 20px;
-	margin-bottom: 40px;
 }
 
-.tableset {
-	text-align: center;
+.sidebar123 h5 {
+	margin-top: 30px;
+	font-weight: bold;
 }
 
-.bodymargin {
+.sidebar123 ul {
+	list-style-type: none;
+	padding: 0;
+}
+
+.sidebar123 li {
 	margin-bottom: 10px;
 }
+
+.sidebar123 a {
+	text-decoration: none;
+	padding: 0;
+}
+
+/* .sidebar a:hover {
+	background-color: #555;
+} */
+
+/* Main content styles */
 </style>
 </head>
+
 <body>
-	<div id="layoutSidenav" style="height: 100vh;">
-		<div>
-			<nav class="sb-sidenav accordion sb-sidenav-dark">
-				<div class="sb-sidenav-menu">
-					<div class="nav" style="margin-left: 20px;">
-						<div class="sb-sidenav-menu-heading">Core</div>
-						<a class="nav-link" href="adminhomepage.do">
-							<div>Admin</div>
-						</a>
-						<div class="sb-sidenav-menu-heading">제품관리</div>
-						<nav class="sb-sidenav-menu-nested nav">
-							<a class="nav-link" href="adminproductmanage.do">제품조회</a>
-						</nav>
+	<div class="sidebar123">
+		<ul>
+			<li><a href="adminhomepage.do" class="menutitle"><h3>ADMIN</h3></a></li>
+			<li><h5 class="menutitle">제품관리</h5></li>
+			<li><a href="adminproductmanage.do"
+				onclick="selectEditType('client')" class="menufont">제품조회</a></li>
 
-						<div class="collapse" id="collapseLayouts"
-							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-						</div>
+			<li><h5 class="menutitle">검수관리</h5></li>
+			<li><a href="admintranschange.do"
+				onclick="selectEditType('client')" class="menufont">거래목록</a></li>
+			
+			<li><h5 class="menutitle">회원관리</h5></li>
+			<li><a href="adminusermanage.do"
+				onclick="selectEditType('client')" class="menufont">회원목록</a></li>
 
-						<div class="sb-sidenav-menu-heading">검수관리</div>
-						<nav class="sb-sidenav-menu-nested nav">
-							<a class="nav-link" href="admintranschange.do">거래목록</a>
-						</nav>
 
-						<div class="collapse" id="collapseLayouts"
-							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-						</div>
 
-						<div class="sb-sidenav-menu-heading" style="width: 185px;">회원관리</div>
-						<nav class="sb-sidenav-menu-nested nav">
-							<a class="nav-link" href="adminusermanage.do">회원목록</a>
-						</nav>
-					</div>
-				</div>
-			</nav>
-		</div>
-
+			<!-- Add more menu items as needed -->
+		</ul>
 	</div>
+	<div>
+		<form id="clientEditForm" method="post" action="passwordcheckform.do">
+			<input type="hidden" id="editType" name="editType">
+		</form>
+		<form id="bidTypeForm" method="post" action="bidlist.do">
+			<input type="hidden" id="bidType" name="bidType">
+		</form>
+	</div>
+	<script type="text/javascript">
+		function selectEditType(str) {
+
+			document.getElementById("editType").value = str;
+			document.getElementById("clientEditForm").submit();
+		}
+		function selectBidType(str) {
+
+			document.getElementById("bidType").value = str;
+			document.getElementById("bidTypeForm").submit();
+		}
+	</script>
+
 </body>
+
 </html>

@@ -15,9 +15,8 @@
 
 .admintitle {
 	font-weight: bold;
-	text-align: center;
-	margin-top: 20px;
-	margin-bottom: 40px;
+	margin-top: 45px;
+	margin-bottom:30px;
 }
 
 .buttonhap {
@@ -117,9 +116,9 @@
 
 </head>
 <body>
-	<div class="container bodymargin">
-		<h1 class="admintitle">유저 목록</h1>
+	<div>
 		<div class="row" style="margin-top: 5px; margin-bottom: 5px;">
+		<h3 class="admintitle">유저 목록</h3>
 			<div class="col-12 grid-margin">
 				<div class="card">
 					<div class="card-body">

@@ -25,26 +25,24 @@
 }
 
 body {
-	font-family: 'Noto Sans KR', sans-serif;
-	font-size: 14px;
-	background-color: #f5f6f7;
-	line-height: 1.5em;
-	color: #222;
-	margin: 0;
+	
 }
 
-a {
-	text-decoration: none;
-	color: #222;
-}
 
 /*member sign in*/
 .payment {
 	width: 400px;
 	/* border: 1px solid #000; */
-	margin: auto; /*중앙 정렬*/
+	margin: 50px auto 100px; /*중앙 정렬*/
 	padding: 10px 20px 0 20px;
 	margin-bottom: 100px;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: 14px;
+	background-color: #fff;
+	line-height: 1.5em;
+	color: #222;
+	min-height: 50vh;
+	
 }
 
 .payment .field {
@@ -63,12 +61,14 @@ a {
 	padding: 10px;
 	width: 100%;
 	margin-bottom: 5px;
+	border-radius: 7px;
 }
 
 .payment input[type=button], .payment input[type=submit], .payment button[type=button]
 	{
 	background-color: #000000;
 	color: #fff
+	
 }
 
 .payment input:focus, .payment select:focus {
@@ -148,10 +148,12 @@ a {
 }
 
 .signup-title {
-	padding-top: 100px;
-	text-align: center;
+	/* padding-top: 100px; */
+	text-align: left;
 	font-weight: bold;
-	text-align: center;
+	margin-bottom: 50px;
+	
+	
 }
 
 .field.id div {
@@ -171,8 +173,8 @@ a {
 <body>
 
 
-	<h3 class="signup-title">회원정보 수정</h3>
 	<div class="payment">
+	<h3 class="signup-title">거래정보 수정</h3>
 
 		<form action="paymentedit.do" method="post" id="frm"
 			onsubmit="return formCheck()">

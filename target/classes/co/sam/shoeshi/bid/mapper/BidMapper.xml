@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="co.sam.shoeshi.bid.mapper.BidMapper">
-	<select id="bidSelectList" resultType="co.sam.shoeshi.bid.service.BidVO">
+	<select id="bidSelectList"
+		resultType="co.sam.shoeshi.bid.service.BidVO">
 		SELECT * FROM BID
 		<if test='key == "bidNo"'>WHERE BID_NO LIKE '%'||#{val}||'%'</if>
 		<if test='key == "productId"'>WHERE PRODUCT_ID LIKE '%'||#{val}||'%'</if>
@@ -9,20 +10,102 @@
 		<if test='key == "clientId"'>WHERE CLIENT_ID LIKE '%'||#{val}||'%'</if>
 		ORDER BY BID_NO
 	</select>
-	
-	<select id="bidSelect" resultType="co.sam.shoeshi.bid.service.BidVO">
+
+	<select id="bidSelect"
+		resultType="co.sam.shoeshi.bid.service.BidVO">
 		SELECT * FROM BID WHERE BID_NO = #{bidNo}
 		<if test="clientId != null">
 			AND CLIENT_ID = #{clientId}
 		</if>
 	</select>
-	
-	<insert id="bidInsert" parameterType="co.sam.shoeshi.bid.service.BidVO">
-		INSERT INTO BID(BID_NO, PRODUCT_ID, BID_PRICE, BID_TYPE, CLIENT_ID, PRODUCT_SIZE)
-		VALUES(#{bidNo}, #{productId}, #{bidPrice}, #{bidType}, #{clientId}, #{productSize})
+	<select id="bidSelectB"
+		resultType="co.sam.shoeshi.bid.service.BidVO">
+		SELECT * FROM BID WHERE CLIENT_ID = #{clientId} AND
+		BID_TYPE = 'BUY'
+	</select>
+	<select id="bidSelectS"
+		resultType="co.sam.shoeshi.bid.service.BidVO">
+		SELECT * FROM BID WHERE CLIENT_ID = #{clientId} AND
+		BID_TYPE = 'SELL'
+	</select>
+
+	<select id="bidSearchList"
+		resultType="co.sam.shoeshi.common.CamelHashMap">
+
+		SELECT * FROM
+		(SELECT COUNT(*)as B_COUNT, PRODUCT_SIZE , TO_CHAR
+		(BID_PRICE,'999,999,999,999') as BID_PRICE
+		FROM
+		BID
+		WHERE PRODUCT_ID =
+		#{pid}
+		AND BID_TYPE = #{type}
+		<if test='size != 0'>AND PRODUCT_SIZE = #{size}</if>
+		GROUP BY PRODUCT_SIZE,BID_PRICE
+		<if test='type == "BUY"'>ORDER BY BID_PRICE DESC</if>
+		<if test='type == "SELL"'>ORDER BY BID_PRICE ASC</if>
+		)
+ 		<![CDATA[ WHERE ROWNUM < 6 ]]>
+
+	</select>
+
+	<insert id="bidInsert"
+		parameterType="co.sam.shoeshi.bid.service.BidVO">
+		<selectKey resultType="int" keyProperty="bidNo"
+			order="BEFORE">
+			SELECT CASE WHEN MAX(BID_NO) IS NULL THEN 1
+			ELSE
+			MAX(BID_NO) + 1
+			END AS BID_NO FROM BID
+		</selectKey>
+		INSERT INTO BID(BID_NO, PRODUCT_ID, BID_PRICE, BID_TYPE, CLIENT_ID,
+		PRODUCT_SIZE)
+		VALUES(#{bidNo}, #{productId}, #{bidPrice}, #{bidType},
+		#{clientId}, #{productSize})
 	</insert>
-	
-	<update id="bidUpdate" parameterType="co.sam.shoeshi.bid.service.BidVO">
+
+
+	<select id="searchSellPrice"
+		resultType="co.sam.shoeshi.common.CamelHashMap">
+		SELECT TO_CHAR(MAX(BID_PRICE),'999,999,999,999') AS SELL_PRICE FROM
+		BID
+		WHERE PRODUCT_ID = #{pid}
+		AND BID_TYPE='BUY'
+		<if test='size != 0'>AND PRODUCT_SIZE = #{size}</if>
+
+	</select>
+
+	<select id="searchBuyPrice"
+		resultType="co.sam.shoeshi.common.CamelHashMap">
+		SELECT TO_CHAR(MIN(BID_PRICE),'999,999,999,999') AS BUY_PRICE FROM BID
+		WHERE PRODUCT_ID = #{pid}
+		AND BID_TYPE='SELL'
+		<if test='size != 0'>AND PRODUCT_SIZE = #{size}</if>
+
+	</select>
+
+	<select id="bidJoinSelectList"
+		resultType="co.sam.shoeshi.common.CamelHashMap">
+		SELECT
+		B.BID_NO,B.BID_PRICE,B.PRODUCT_SIZE,B.BID_TYPE,
+		P.PRODUCT_NAME, P.PRODUCT_MAKER, P.PRODUCT_ID,
+		I.PRODUCTIMG_PATH,
+		I.PRODUCTIMG_NAME1
+
+		FROM PRODUCTIMG I RIGHT OUTER JOIN PRODUCT P ON P.PRODUCT_ID =
+		I.PRODUCT_ID
+		RIGHT OUTER JOIN BID B ON B.PRODUCT_ID = P.PRODUCT_ID
+		WHERE B.CLIENT_ID =
+		#{clientId}
+		<if test='bidType == "BUY" '>AND B.BID_TYPE = 'BUY'</if>
+		<if test='bidType == "SELL" '>AND B.BID_TYPE = 'SELL'</if>
+
+
+
+	</select>
+
+	<update id="bidUpdate"
+		parameterType="co.sam.shoeshi.bid.service.BidVO">
 		UPDATE BID
 		<set>
 			<!-- 한개만 있어도 무조건 콤마, 마지막거 제외 -->
@@ -35,11 +118,55 @@
 		</set>
 		WHERE BID_NO = #{bidNo}
 	</update>
-	
-	<delete id="bidDelete" parameterType="co.sam.shoeshi.bid.service.BidVO">
+
+	<delete id="bidDelete"
+		parameterType="co.sam.shoeshi.bid.service.BidVO">
 		DELETE FROM BID WHERE BID_NO = #{bidNo}
 	</delete>
 
+	<select id="bidSelectSell"
+		resultType="co.sam.shoeshi.bid.service.BidVO">
+		SELECT BID_NO FROM BID WHERE BID_TYPE = #{bidType} AND
+		PRODUCT_ID = #{productId} AND PRODUCT_SIZE = #{productSize}
+	</select>
+	<select id="bidSelectBuy"
+		resultType="co.sam.shoeshi.bid.service.BidVO">
+		SELECT BID_NO FROM BID WHERE BID_TYPE = #{bidType} AND
+		PRODUCT_ID = #{productId} AND PRODUCT_SIZE = #{productSize}
+	</select>
+
+	<select id="bidJoinSelect"
+		resultType="co.sam.shoeshi.common.CamelHashMap">
+		SELECT B.*, P.PRODUCT_NAME, P.PRODUCT_MAKER,
+		I.PRODUCTIMG_PATH,
+		I.PRODUCTIMG_NAME1,C.CLIENT_NAME,C.CLIENT_ADDRESS,C.CLIENT_TEL,M.BANK_ACCOUNT
+		,M.BANK_NAME, M.CARD_NUM,M.CARD_CO
+		FROM PRODUCTIMG I RIGHT OUTER JOIN
+		PRODUCT P ON P.PRODUCT_ID = I.PRODUCT_ID
+		RIGHT OUTER JOIN BID B ON
+		B.PRODUCT_ID = P.PRODUCT_ID
+		RIGHT OUTER JOIN CLIENT C ON B.CLIENT_ID = C.CLIENT_ID
+		RIGHT OUTER JOIN
+		PAYMENT M ON M.CLIENT_ID = C.CLIENT_ID
+		WHERE B.BID_NO = #{bidNo}
+		
+	</select>
+	
+	<select id="countDeal"
+		resultType="co.sam.shoeshi.common.CamelHashMap">
+		 SELECT
+    		NVL((SELECT COUNT(*) FROM BID WHERE CLIENT_ID= #{clientId} AND BID_TYPE= #{bidType}),0) AS BID_COUNT,
+    		<if test="bidType == 'BUY'">NVL((SELECT COUNT(*) FROM DEAL WHERE DEAL_BUYER= #{clientId} AND 
+    		(DEAL_STATE != '완료' OR DEAL_STATE !='취소')),0) AS DEAL_COUNT,
+   			NVL((SELECT COUNT(*) FROM DEAL WHERE DEAL_BUYER= #{clientId} AND 
+   			(DEAL_STATE = '완료' OR DEAL_STATE = '취소')),0) AS FINISH_COUNT</if>
+   			<if test="bidType == 'SELL'">NVL((SELECT COUNT(*) FROM DEAL WHERE DEAL_SELLER= #{clientId} AND 
+    		(DEAL_STATE != '완료' OR DEAL_STATE !='취소')),0) AS DEAL_COUNT,
+   			NVL((SELECT COUNT(*) FROM DEAL WHERE DEAL_SELLER= #{clientId} AND 
+   			(DEAL_STATE = '완료' OR DEAL_STATE = '취소')),0) AS FINISH_COUNT</if>
+    		from dual
+		
+	</select>
 </mapper>
 
 
