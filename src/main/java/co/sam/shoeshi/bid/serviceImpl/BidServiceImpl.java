@@ -34,6 +34,7 @@ public class BidServiceImpl implements BidService {
 		return map.searchBuyPrice(productId, size);
 	}
 
+
 	@Override
 	public List<BidVO> bidSelectList() {
 		return map.bidSelectList();
@@ -88,6 +89,7 @@ public class BidServiceImpl implements BidService {
 		
 		return map.bidJoinSelectList(vo);
 	}
+
 
 	@Override
 	public HashMap<String, Object> bidJoinSelect(BidVO vo) {

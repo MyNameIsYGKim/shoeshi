@@ -121,12 +121,7 @@ a {
 
 /*찾기 및 회원가입*/
 .find-signup-wrap {
-	height: 100px;
-	grid-template-columns: 1fr 1fr 1fr;
-}
-/*찾기 및 회원가입 글자 희미하게 바꾸기*/
-.find-signup-wrap a {
-	color: rgb(150, 150, 150);
+	text-align: center;
 }
 /*아이디 찾기*/
 .find-id {

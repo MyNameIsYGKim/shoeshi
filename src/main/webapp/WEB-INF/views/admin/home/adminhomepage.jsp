@@ -7,47 +7,42 @@
 <link href="css/styles.css" rel="stylesheet" />
 <title>Admin</title>
 <style>
+
 .buttonall {
-	display: inline-flex;
-	width: 100%;
+	display: flex;
+	justify-content: center;
 }
+
 
 .buttontest {
 	width: 33.33%;
 	display: inline;
-	width: 33.33%;
 }
 
 .button1 {
-	height: 100px;
-	background-color: blue;
-	border: 1px solid;
-	border-radius: 15px;
-	margin: 3px;
+	height: 50px;
+	border-bottom: 4px solid black;
+	margin: 10px;
 	text-align: center;
 }
 
 .button2 {
-	height: 100px;
-	background-color: #CC33CC;
-	margin: 3px;
-	border: 1px solid;
-	border-radius: 15px;
+	height: 50px;
+	border-bottom: 4px solid black;
+	margin: 10px;
 	text-align: center;
 }
 
 .button3 {
-	height: 100px;
-	background-color: green;
-	margin: 3px;
-	border: 1px solid;
-	border-radius: 15px;
+	height: 50px;
+	border-bottom: 4px solid black;
+	margin: 10px;
 	text-align: center;
 }
 
 .textstyle {
-	margin-top: 38px;
-	color: white;
+	margin-top: 20px;
+	color: black;
 	font-weight: bold;
 }
 
@@ -56,30 +51,6 @@
 	text-align: center;
 	margin-top: 20px;
 	margin-bottom: 40px;
-}
-
-.buttonhap {
-	width: 50px;
-	background-color: green;
-	border-radius: 5px;
-	border: 1px solid;
-	font-weight: bold;
-}
-
-.buttonbull {
-	width: 50px;
-	background-color: red;
-	border-radius: 5px;
-	border: 1px solid;
-	font-weight: bold;
-}
-
-.buttonboru {
-	width: 50px;
-	background-color: yellow;
-	border-radius: 5px;
-	border: 1px solid;
-	font-weight: bold;
 }
 
 .tableset {
@@ -145,12 +116,13 @@ divstyle2 {
 									OnClick="location.href ='adminproductmanage.do'"
 									style="cursor: pointer;">
 									<h4 class="textstyle">
-										물품조회(수정, 삭제) <i
+										물품조회 <i
 											class="mdi mdi-chart-line mdi-24px float-right"></i>
 									</h4>
 								</div>
 							</div>
 						</div>
+
 					</div>
 					<div class="buttontest">
 						<div>
@@ -159,6 +131,7 @@ divstyle2 {
 								<h4 class="textstyle">
 									거래 목록 <i class="mdi mdi-bookmark-outline mdi-24px float-right"></i>
 								</h4>
+
 							</div>
 						</div>
 					</div>
@@ -250,7 +223,7 @@ divstyle2 {
 						<div class="col-12 grid-margin">
 							<div class="card">
 								<div class="card-body">
-									<h4 style="font-weight: bold; text-align: center;">물품 검수</h4>
+									<h4 style="font-weight: bold; text-align: center;">제품 검수</h4>
 									<div>
 										<table class="table tableset">
 											<thead>
@@ -266,95 +239,95 @@ divstyle2 {
 											</thead>
 											<tbody>
 												<tr>
-										<td>111</td>
-										<td>product</td>
-										<td>100,000원</td>
-										<td>판매자</td>
-										<td>구매자</td>
-										<td>날짜</td>
-										<td>
-											<form>
-												<select name="검수" id="lang">
-													<option value="준비중">준비중</option>
-													<option value="합격">합격</option>
-													<option value="보류">보류</option>
-													<option value="불합격">불합격</option>
-												</select>
-											</form>
-										</td>
-									</tr>
-									<tr>
-										<td>222</td>
-										<td>product</td>
-										<td>100,000원</td>
-										<td>판매자</td>
-										<td>구매자</td>
-										<td>날짜</td>
-										<td>
-											<form>
-												<select name="검수" id="lang">
-													<option value="준비중">준비중</option>
-													<option value="합격">합격</option>
-													<option value="보류">보류</option>
-													<option value="불합격">불합격</option>
-												</select>
-											</form>
-										</td>
-									</tr>
-									<tr>
-										<td>333</td>
-										<td>product</td>
-										<td>100,000원</td>
-										<td>판매자</td>
-										<td>구매자</td>
-										<td>날짜</td>
-										<td>
-											<form>
-												<select name="검수" id="lang">
-													<option value="준비중">준비중</option>
-													<option value="합격">합격</option>
-													<option value="보류">보류</option>
-													<option value="불합격">불합격</option>
-												</select>
-											</form>
-										</td>
-									</tr>
-									<tr>
-										<td>444</td>
-										<td>product</td>
-										<td>100,000원</td>
-										<td>판매자</td>
-										<td>구매자</td>
-										<td>날짜</td>
-										<td>
-											<form>
-												<select name="검수" id="lang">
-													<option value="준비중">준비중</option>
-													<option value="합격">합격</option>
-													<option value="보류">보류</option>
-													<option value="불합격">불합격</option>
-												</select>
-											</form>
-										</td>
-									</tr>
-									<tr>
-										<td>555</td>
-										<td>product</td>
-										<td>100,000원</td>
-										<td>판매자</td>
-										<td>구매자</td>
-										<td>날짜</td>
-										<td>
-											<form>
-												<select name="검수" id="lang">
-													<option value="준비중">준비중</option>
-													<option value="합격">합격</option>
-													<option value="보류">보류</option>
-													<option value="불합격">불합격</option>
-												</select>
-											</form>
-										</td>
-									</tr>
+													<td>111</td>
+													<td>product</td>
+													<td>100,000원</td>
+													<td>판매자</td>
+													<td>구매자</td>
+													<td>날짜</td>
+													<td>
+														<form>
+															<select name="검수" id="lang">
+																<option value="준비중">준비중</option>
+																<option value="합격">합격</option>
+																<option value="보류">보류</option>
+																<option value="불합격">불합격</option>
+															</select>
+														</form>
+													</td>
+												</tr>
+												<tr>
+													<td>222</td>
+													<td>product</td>
+													<td>100,000원</td>
+													<td>판매자</td>
+													<td>구매자</td>
+													<td>날짜</td>
+													<td>
+														<form>
+															<select name="검수" id="lang">
+																<option value="준비중">준비중</option>
+																<option value="합격">합격</option>
+																<option value="보류">보류</option>
+																<option value="불합격">불합격</option>
+															</select>
+														</form>
+													</td>
+												</tr>
+												<tr>
+													<td>333</td>
+													<td>product</td>
+													<td>100,000원</td>
+													<td>판매자</td>
+													<td>구매자</td>
+													<td>날짜</td>
+													<td>
+														<form>
+															<select name="검수" id="lang">
+																<option value="준비중">준비중</option>
+																<option value="합격">합격</option>
+																<option value="보류">보류</option>
+																<option value="불합격">불합격</option>
+															</select>
+														</form>
+													</td>
+												</tr>
+												<tr>
+													<td>444</td>
+													<td>product</td>
+													<td>100,000원</td>
+													<td>판매자</td>
+													<td>구매자</td>
+													<td>날짜</td>
+													<td>
+														<form>
+															<select name="검수" id="lang">
+																<option value="준비중">준비중</option>
+																<option value="합격">합격</option>
+																<option value="보류">보류</option>
+																<option value="불합격">불합격</option>
+															</select>
+														</form>
+													</td>
+												</tr>
+												<tr>
+													<td>555</td>
+													<td>product</td>
+													<td>100,000원</td>
+													<td>판매자</td>
+													<td>구매자</td>
+													<td>날짜</td>
+													<td>
+														<form>
+															<select name="검수" id="lang">
+																<option value="준비중">준비중</option>
+																<option value="합격">합격</option>
+																<option value="보류">보류</option>
+																<option value="불합격">불합격</option>
+															</select>
+														</form>
+													</td>
+												</tr>
 											</tbody>
 										</table>
 									</div>

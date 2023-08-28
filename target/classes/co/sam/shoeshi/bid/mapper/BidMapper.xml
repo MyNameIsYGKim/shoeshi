@@ -64,7 +64,6 @@
 		#{clientId}, #{productSize})
 	</insert>
 
-
 	<select id="searchSellPrice"
 		resultType="co.sam.shoeshi.common.CamelHashMap">
 		SELECT TO_CHAR(MAX(BID_PRICE),'999,999,999,999') AS SELL_PRICE FROM
@@ -84,11 +83,13 @@
 
 	</select>
 
+
 	<select id="bidJoinSelectList"
 		resultType="co.sam.shoeshi.common.CamelHashMap">
 		SELECT
 		B.BID_NO,B.BID_PRICE,B.PRODUCT_SIZE,B.BID_TYPE,
-		P.PRODUCT_NAME, P.PRODUCT_MAKER, P.PRODUCT_ID,
+		P.PRODUCT_NAME,
+		P.PRODUCT_MAKER, P.PRODUCT_ID,
 		I.PRODUCTIMG_PATH,
 		I.PRODUCTIMG_NAME1
 
@@ -106,6 +107,7 @@
 
 	<update id="bidUpdate"
 		parameterType="co.sam.shoeshi.bid.service.BidVO">
+
 		UPDATE BID
 		<set>
 			<!-- 한개만 있어도 무조건 콤마, 마지막거 제외 -->
@@ -126,13 +128,15 @@
 
 	<select id="bidSelectSell"
 		resultType="co.sam.shoeshi.bid.service.BidVO">
-		SELECT BID_NO FROM BID WHERE BID_TYPE = #{bidType} AND
-		PRODUCT_ID = #{productId} AND PRODUCT_SIZE = #{productSize}
+		SELECT MIN(BID_NO) as BID_NO, MAX(BID_PRICE) as BID_PRICE
+		FROM BID WHERE BID_TYPE = #{bidType} AND PRODUCT_ID = #{productId} AND
+		PRODUCT_SIZE = #{productSize} AND CLIENT_ID != #{clientId}
 	</select>
 	<select id="bidSelectBuy"
 		resultType="co.sam.shoeshi.bid.service.BidVO">
-		SELECT BID_NO FROM BID WHERE BID_TYPE = #{bidType} AND
-		PRODUCT_ID = #{productId} AND PRODUCT_SIZE = #{productSize}
+		SELECT MIN(BID_NO) as BID_NO, MIN(BID_PRICE) as BID_PRICE
+		FROM BID WHERE BID_TYPE = #{bidType} AND PRODUCT_ID = #{productId} AND
+		PRODUCT_SIZE = #{productSize} AND CLIENT_ID != #{clientId}
 	</select>
 
 	<select id="bidJoinSelect"
@@ -145,27 +149,33 @@
 		PRODUCT P ON P.PRODUCT_ID = I.PRODUCT_ID
 		RIGHT OUTER JOIN BID B ON
 		B.PRODUCT_ID = P.PRODUCT_ID
-		RIGHT OUTER JOIN CLIENT C ON B.CLIENT_ID = C.CLIENT_ID
+		RIGHT OUTER JOIN CLIENT C ON B.CLIENT_ID =
+		C.CLIENT_ID
 		RIGHT OUTER JOIN
 		PAYMENT M ON M.CLIENT_ID = C.CLIENT_ID
 		WHERE B.BID_NO = #{bidNo}
-		
+
 	</select>
-	
+
 	<select id="countDeal"
 		resultType="co.sam.shoeshi.common.CamelHashMap">
-		 SELECT
-    		NVL((SELECT COUNT(*) FROM BID WHERE CLIENT_ID= #{clientId} AND BID_TYPE= #{bidType}),0) AS BID_COUNT,
-    		<if test="bidType == 'BUY'">NVL((SELECT COUNT(*) FROM DEAL WHERE DEAL_BUYER= #{clientId} AND 
-    		(DEAL_STATE != '완료' OR DEAL_STATE !='취소')),0) AS DEAL_COUNT,
-   			NVL((SELECT COUNT(*) FROM DEAL WHERE DEAL_BUYER= #{clientId} AND 
-   			(DEAL_STATE = '완료' OR DEAL_STATE = '취소')),0) AS FINISH_COUNT</if>
-   			<if test="bidType == 'SELL'">NVL((SELECT COUNT(*) FROM DEAL WHERE DEAL_SELLER= #{clientId} AND 
-    		(DEAL_STATE != '완료' OR DEAL_STATE !='취소')),0) AS DEAL_COUNT,
-   			NVL((SELECT COUNT(*) FROM DEAL WHERE DEAL_SELLER= #{clientId} AND 
-   			(DEAL_STATE = '완료' OR DEAL_STATE = '취소')),0) AS FINISH_COUNT</if>
-    		from dual
-		
+		SELECT
+		NVL((SELECT COUNT(*) FROM BID WHERE CLIENT_ID= #{clientId} AND BID_TYPE=
+		#{bidType}),0) AS BID_COUNT,
+		<if test="bidType == 'BUY'">NVL((SELECT COUNT(*) FROM DEAL WHERE DEAL_BUYER=
+			#{clientId} AND
+			(DEAL_STATE != '완료' OR DEAL_STATE !='취소')),0) AS DEAL_COUNT,
+			NVL((SELECT COUNT(*) FROM DEAL WHERE DEAL_BUYER= #{clientId} AND
+			(DEAL_STATE = '완료' OR DEAL_STATE = '취소')),0) AS FINISH_COUNT
+		</if>
+		<if test="bidType == 'SELL'">NVL((SELECT COUNT(*) FROM DEAL WHERE DEAL_SELLER=
+			#{clientId} AND
+			(DEAL_STATE != '완료' OR DEAL_STATE !='취소')),0) AS DEAL_COUNT,
+			NVL((SELECT COUNT(*) FROM DEAL WHERE DEAL_SELLER= #{clientId} AND
+			(DEAL_STATE = '완료' OR DEAL_STATE = '취소')),0) AS FINISH_COUNT
+		</if>
+		from dual
+
 	</select>
 </mapper>
 

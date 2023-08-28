@@ -45,25 +45,23 @@
 		<div>
 			<nav class="sb-sidenav accordion sb-sidenav-dark">
 				<div class="sb-sidenav-menu">
-					<div class="nav">
+					<div class="nav" style="margin-left: 20px;">
 						<div class="sb-sidenav-menu-heading">Core</div>
 						<a class="nav-link" href="adminhomepage.do">
 							<div>Admin</div>
 						</a>
-						<div class="sb-sidenav-menu-heading">물품관리</div>
+						<div class="sb-sidenav-menu-heading">제품관리</div>
 						<nav class="sb-sidenav-menu-nested nav">
-							<a class="nav-link" href="adminproductmanage.do">물품조회(수정, 삭제)</a>
+							<a class="nav-link" href="adminproductmanage.do">제품조회</a>
 						</nav>
 
 						<div class="collapse" id="collapseLayouts"
 							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 						</div>
 
-
-
-
-						<div class="sb-sidenav-menu-heading">거래관리</div>
+						<div class="sb-sidenav-menu-heading">검수관리</div>
 						<nav class="sb-sidenav-menu-nested nav">
+
 							<a class="nav-link" href="admindealmanage.do">거래목록</a>
 						</nav>
 
@@ -72,13 +70,14 @@
 						</div>
 						<nav class="sb-sidenav-menu-nested nav">
 							<a class="nav-link" href="admindealmanage.do">거래상태 변경</a>
+
 						</nav>
 
 						<div class="collapse" id="collapseLayouts"
 							aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 						</div>
 
-						<div class="sb-sidenav-menu-heading">회원관리</div>
+						<div class="sb-sidenav-menu-heading" style="width: 185px;">회원관리</div>
 						<nav class="sb-sidenav-menu-nested nav">
 							<a class="nav-link" href="adminclientlist.do">회원목록</a>
 						</nav>

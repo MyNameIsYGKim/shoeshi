@@ -29,6 +29,19 @@ a {
 	color: #222;
 }
 
+.ipradi{
+border-radius: 7px;
+}
+.telradi{
+border-top-left-radius: 7px;
+border-bottom-left-radius: 7px;
+}
+
+.btnradi{
+border-top-right-radius: 7px;
+border-bottom-right-radius: 7px;
+}
+
 /*member sign in*/
 .member {
 	width: 400px;

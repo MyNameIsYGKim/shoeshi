@@ -12,12 +12,7 @@
 .tdc {
 	text-align: center;
 }
-=======
-.tdc{
-text-align: center;
-}
 
->>>>>>> branch 'master' of https://github.com/MyNameIsYGKim/shoeshi.git
 
 .leftgo {
 	position: relative;
@@ -212,6 +207,7 @@ ul.tabs li.current {
 												<c:forEach items="${bidList}" var="l">
 													<tr class="alert" role="alert">
 														<td id="BUYempty" class="tdc" colspan="3"></td>
+
 													</tr>
 												</c:forEach>
 
@@ -231,8 +227,10 @@ ul.tabs li.current {
 											<tbody id="SELLTbody">
 
 												<c:forEach items="${bidList}" var="l">
+
 													<tr align="center" class="alert" role="alert">
 														<td id="SELLempty" class="tdc" colspan="3"></td>
+
 													</tr>
 												</c:forEach>
 

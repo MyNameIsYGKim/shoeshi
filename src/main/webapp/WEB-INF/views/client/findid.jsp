@@ -18,6 +18,16 @@
 	box-sizing: border-box; /*전체에 박스사이징*/
 	outline: none; /*focus 했을때 테두리 나오게 */
 }
+.mg100000{
+margin: 70px 0;
+}
+.ipradi{
+border-radius: 7px;
+}
+.telradi{
+border-top-left-radius: 7px;
+border-bottom-left-radius: 7px;
+}
 
 h3{
 margin-top: 50px;
@@ -62,6 +72,7 @@ a {
 /*input 중 radio 는 width 가 100%면 안되니까 */
 .member input:not(input[type=radio]), .member select {
 	border: 1px solid #dadada;
+	
 	padding: 10px;
 	width: 100%;
 	margin-bottom: 5px;
@@ -74,6 +85,7 @@ a {
 
 .member input:focus, .member select:focus {
 	border: 1px solid #2db400;
+	border-radius: 7px;
 }
 
 .field.birth div { /*field 이면서 birth*/
@@ -140,6 +152,7 @@ a {
 
 </head>
 <body>
+<div class="mg100000">
 	<h3 class="searchpw-title">아이디 찾기</h3>
 	<div class="member">
 		<!-- 2. 필드 -->
@@ -160,6 +173,5 @@ a {
 		<!-- 6. 찾기 버튼 -->
 		<input type="submit" value="아이디 찾기" class="ipradi">
 	</div>
-
 </body>
 </html>

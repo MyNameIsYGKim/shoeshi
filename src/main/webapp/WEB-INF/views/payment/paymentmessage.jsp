@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <title>케이마켓::대한민국 1등 온라인 쇼핑몰</title>
 <script
@@ -260,8 +261,10 @@ h1 {
 
 }
 </style>
+
 </head>
 <body>
+
 	<div id="wrapper">
 
 		<main id="product">
@@ -370,6 +373,7 @@ h1 {
 		}
 		
 	</script>
+
 </body>
 <script type="text/javascript">
 $(function(){

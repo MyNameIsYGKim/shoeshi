@@ -82,7 +82,7 @@
 
 
 	<div id="hd">
-		<h1 class="visually-hidden">Headers examples</h1>
+		
 		<!-- 요기 -->
 		<nav class="pyyy123">
 			<div class="container d-flex flex-wrap ">
