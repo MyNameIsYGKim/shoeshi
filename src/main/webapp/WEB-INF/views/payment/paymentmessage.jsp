@@ -36,7 +36,7 @@ a {
 #product>.complete>.message>h2 {
 	font-size: 32px;
 	font-weight: bold;
-	text-align: left;
+	text-align: center;
 	color: #000;
 	padding: 0px;
 }
@@ -256,7 +256,7 @@ h1 {
 	height: 100vh;
 }
 .signup-title {
-	text-align: left;
+	text-align: center;
 	font-weight: bold;
 
 }
@@ -264,102 +264,121 @@ h1 {
 
 </head>
 <body>
-    <div id="wrapper">
-        
-        <main id="product">
-           
-            <section class="complete">
-                
-                <article class="message">
+
+	<div id="wrapper">
+
+		<main id="product">
+
+			<section class="complete">
+
+				<article class="message">
                     <h2 id="sellTitle">
                         고객님의 주문이 정상적으로 완료되었습니다.
                         <i class="far fa-smile" aria-hidden="true"></i>
                     </h2>
                     
                 </article>
-                <!-- 상품정보 -->
-                <article class="info">
-                    <h1>상품정보</h1>
-                    <table border="0">
-                        <tr>
-                            <th>상품명</th>
-                            <th>상품금액</th>
-                            <th>할인금액</th>
-                            <th>수량</th>
-                            <th>주문금액</th>
-                        </tr>
-                        <tr>
-                            <td>
-                                <article>
-                                    <img src="${p.productimgPath}${p.productimgName2}"
-										alt="IMG-PRODUCT">
-                                    <div>
-                                        <h2>
-                                            <a href="productselect.do?productId=${p.productId }">${p.productName }</a>
-                                        </h2>
-                                        <p>${p.productMaker}</p>
-                                    </div>
-                                </article>
-                            </td>
-                            <td>${dealPrice }원</td>
-                            <td>0원</td>
-                            <td>1</td>
-                            <td>${dealPrice }원</td>
-                        </tr>
-                        
-                        
-                    </table>
-                </article>
-                <!-- 주문정보 -->
-                <article class="order">
-                    <h1 id="dealinfo">주문정보</h1>
-                    <table border="0">
-                        <tr>
-                            <td id="dealNo">주문번호</td>
-                            <td>${dealNo }</td>
-                            <td id="dealPrice" rowspan="3">총 결제금액</td>
-                            <td rowspan="3">
-                                <span>${dealPrice }</span>원
-                            </td>
-                        </tr>
-                        <tr id="howPay">
-                            <td id="dealType">결제방법</td>
-                            <td>${payment }</td>
-                        </tr>
-                        <tr>
-                            <td id="clientVO">주문자/연락처</td>
-                            <td>${clientName }/0${clientTel }</td>
-                        </tr>
-                    </table>
-                </article>
-                <!-- 배송정보 -->
-                <article class="delivery">
-                    <h1 id="sendInfo">배송정보</h1>
-                    <table border="0">
-                        <tr>
-                            <td id="who">수취인</td>
-                            <td>${clientName }</td>
-                            <td id="whoInfo">주문자 정보</td>
-                        </tr>
-                        <tr>
-                            <td>연락처</td>
-                            <td>0${clientTel }</td>
-                            <td rowspan="2">
-                                ${clientName }
-                                <br> 0${clientTel }
-                            </td>
-                        </tr>
-                        <tr>
-                            <td id="clientAddress">배송지 주소</td>
-                            <td>${clientAddress}</td>
-                        </tr>
-                    </table>
-                </article>
-               
-            </section>
-        </main>
-       
-    </div>
+				<!-- 상품정보 -->
+				<article class="info">
+					<h1></h1>
+
+					<table border="0">
+						<tr>
+							<th>상품정보</th>
+							<th>사이즈</th>
+							<th>금액</th>
+						</tr>
+						<tr>
+							<td><article style="cursor: pointer;"
+									onclick="selectProduct(${b.productId})">
+									<a href="#"> <%-- <img src="${b.productimgPath}${b.productimgName1}" alt="1"> --%>
+									<img src="attech/product/1-1.png" alt="1">
+										
+									</a>
+									<div>
+										<p>
+											<a href="#">${b.productMaker}1</a>
+											
+										</p>
+										<p>${b.productName}1</p>
+									</div>
+								</article></td>
+							<td align="center">${b.productSize}1</td>
+							<td><fmt:formatNumber value="${dealPrice }" pattern="#,###" />1원</td>
+						</tr>
+
+
+					</table>
+				</article>
+				<!-- 결제정보 -->
+				
+
+				<!--결제정보 -->
+				<article class="order">
+					<h1>결제방법</h1>
+					<table border="0">
+						<tr>
+							<td>결제수단</td>
+							<td></td>
+							<td></td>
+							<td>${b.cardCo}</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td colspan="2">${b.cardNum}</td>
+						</tr>
+
+					</table>
+				</article>
+				<!-- 배송정보 -->
+				<article class="delivery">
+					<h1>배송정보</h1>
+					<table border="0">
+						<tr>
+							<td id="who">수취인</td>
+							<td></td>
+							<td></td>
+							<td id="whoInfo">${b.clientName}</td>
+						</tr>
+						<tr>
+							<td>연락처</td>
+							<td></td>
+							<td colspan="2"><fmt:formatNumber value="${b.clientTel }"
+									pattern="00000000000" /></td>
+
+						</tr>
+						<tr>
+							<td>배송지 주소</td>
+							<td colspan="3">${b.clientAddress }</td>
+						</tr>
+					</table>
+				</article>
+
+				<div class="flex-c-m flex-w w-full p-t-45">
+					<a href="buybidlist.do"
+						class="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04">
+						목록보기 </a>
+				</div>
+
+			</section>
+		</main>
+
+	</div>
+	<div>
+		<form id="productselectform" action="productselect.do" method="get">
+			<input type="hidden" id="productId" name="productId">
+		</form>
+
+	</div>
+	<script type="text/javascript">
+		function selectProduct(p) {
+			document.getElementById("productId").value = p;
+			document.getElementById("productselectform").submit();
+		}
+		
+	</script>
+
 </body>
 <script type="text/javascript">
 $(function(){
