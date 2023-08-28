@@ -5,6 +5,7 @@
 <head>
 <meta charset="utf-8" />
 <link href="css/styles.css" rel="stylesheet" />
+
 <title>Admin</title>
 <style>
 .container {
@@ -98,52 +99,121 @@ divstyle2 {
 .bodymargin {
 	margin-bottom: 10px;
 }
+
+/*상단 메뉴 스타일*/
+.nodata {
+	color: #000;
+	font-size: 20px;
+	height: 300px;
+}
+
+h1 {
+	margin: 50px 0 30px;
+}
+
+a {
+	text-decoration: none;
+}
+
+.signup-title {
+	text-align: left;
+	font-weight: bold;
+	margin-bottom: 50px;
+}
+
+.numred {
+	color: #ff6b6b;
+	font-weight: bold;
+}
+
+.menublack {
+	color: black;
+	font-weight: bold;
+}
+
+.menulight {
+	color: #777;
+}
+
+.numberbold {
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.row-sm4 {
+	font-size: 14px;
+}
+
+.tabblack {
+	height: 68px;
+	margin: 0 auto;
+	border-bottom: 2px solid #000;
+}
+
+.dealtab {
+	height: 68px;
+	border-bottom: 2px solid #d3d3d3;
+	margin: 0 auto;
+}
+
+.wide100000 {
+	width: 100%;
+	display: flex;
+	align-items: center;
+}
+
+.bmar {
+	margin-top: 100px;
+}
 </style>
 
 </head>
 
 
 <body>
-	<div class="">
+	<div style="margin-top: 30px; margin-bottom: 30px;">
 		<!-- partial -->
 		<div>
 			<div>
 				<div>
-					<div class="buttonall">
-						<div class="buttontest">
-							<div>
-								<div class="button1"
-									OnClick="location.href ='adminproductmanage.do'"
+
+
+					<div class="minh"  style="margin-top : 50px;">
+
+
+
+						<div align="center">
+							<div class="row wide100000">
+								<div class="tabblack col-md-4" onclick="location.href='adminproductmanage.do';"
 									style="cursor: pointer;">
-									<h4 class="textstyle">
-										물품조회 <i class="mdi mdi-chart-line mdi-24px float-right"></i>
-									</h4>
+									<div class="col">
+										<div class="menublack row-sm4">제품조회</div>
+									</div>
+								</div>
+								<div class="col-md-4 tabblack"
+									onclick="location.href='admintranschange.do';" style="cursor: pointer;">
+									<div class="col">
+										<div class="row-sm4 menublack">검수목록</div>
+									</div>
+								</div>
+								<div class="col-md-4 tabblack" onclick="location.href='adminusermanage.do';"
+									style="cursor: pointer;">
+									<div class="col">
+										<div class="row-sm4 menublack">회원목록</div>
+									</div>
 								</div>
 							</div>
 						</div>
-						<div class="buttontest">
-							<div>
-								<div class="button2"
-									OnClick="location.href ='admintranschange.do'"
-									style="cursor: pointer;">
-									<h4 class="textstyle">
-										거래 목록 <i class="mdi mdi-bookmark-outline mdi-24px float-right"></i>
-									</h4>
-								</div>
-							</div>
-						</div>
-						<div class="buttontest">
-							<div>
-								<div class="button3"
-									OnClick="location.href ='adminusermanage.do'"
-									style="cursor: pointer;">
-									<h4 class="textstyle">
-										회원목록 <i class="mdi mdi-diamond mdi-24px float-right"></i>
-									</h4>
-								</div>
-							</div>
-						</div>
+
+						<form id="dealdetailform" action="sdealdetail.do" method="get">
+							<input type="hidden" id="dealNo" name="dealNo"> <input
+								type="hidden" id="dealType" name="dealType">
+						</form>
+
 					</div>
+
+
+
 					<div class="row" style="margin-top: 5px; margin-bottom: 5px;">
 						<div class="col-12 grid-margin">
 							<div class="card">

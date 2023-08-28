@@ -3,6 +3,7 @@ package co.sam.shoeshi.product.web;
 import java.io.IOException;
 import java.util.HashMap;
 
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -31,7 +32,7 @@ public class ProductSelect extends HttpServlet {
 		vo.setProductId(Integer.valueOf(request.getParameter("productId")));
 		product = dao.productJoinSelect(vo);
 		request.setAttribute("p", product);
-
+		
 		String viewName = "product/productselect";
 		ViewResolve.forward(request, response, viewName);
 	}

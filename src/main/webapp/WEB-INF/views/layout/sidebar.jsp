@@ -71,7 +71,7 @@
 
 			<li><h5 class="menutitle">검수관리</h5></li>
 			<li><a href="admintranschange.do"
-				onclick="selectEditType('client')" class="menufont">거래목록</a></li>
+				onclick="selectEditType('client')" class="menufont">검수목록</a></li>
 			
 			<li><h5 class="menutitle">회원관리</h5></li>
 			<li><a href="adminusermanage.do"

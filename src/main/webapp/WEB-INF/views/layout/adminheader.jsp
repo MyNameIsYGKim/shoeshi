@@ -100,14 +100,14 @@
 					</c:if>
 					<c:if test="${empty clientId}">
 						<li class="nav-item"><a href="loginform.do"
-							class="nav-link px-2 fontw">로그인</a></li>
+							class="nav-link px-2 fontw" style="color : white;">로그인</a></li>
 					</c:if>
 					<c:if test="${not empty clientId }">
 						<li class="nav-item"><a href="mypage.do"
-							class="nav-link px-2 fontw fontstyle">마이페이지</a></li>
+							class="nav-link px-2 fontw fontstyle" >마이페이지</a></li>
 						<li class="nav-item"><a href="logout.do"
-							class="nav-link px-2 fontw fontstyle">로그아웃</a></li>
-						<li class="nav-link px-2 fontw fontstyle">${clientName }님</li>
+							class="nav-link px-2 fontw fontstyle" >로그아웃</a></li>
+						<li class="nav-link px-2 fontw fontstyle" >${clientName }님</li>
 					</c:if>
 				</ul>
 			</div>
