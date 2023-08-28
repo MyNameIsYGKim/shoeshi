@@ -17,6 +17,9 @@ import co.sam.shoeshi.client.service.ClientService;
 import co.sam.shoeshi.client.service.ClientVO;
 import co.sam.shoeshi.client.serviceImpl.ClientServiceImpl;
 import co.sam.shoeshi.common.ViewResolve;
+import co.sam.shoeshi.payment.service.PaymentService;
+import co.sam.shoeshi.payment.service.PaymentVO;
+import co.sam.shoeshi.payment.serviceImple.PaymentServiceImpl;
 import co.sam.shoeshi.product.service.ProductService;
 import co.sam.shoeshi.product.service.ProductVO;
 import co.sam.shoeshi.product.serviceImpl.ProductServiceImpl;
@@ -53,7 +56,14 @@ public class BidInsert extends HttpServlet {
 
 		ClientVO vo3 = new ClientVO();
 		ClientService dao3 = new ClientServiceImpl();
-
+		
+		PaymentVO vo4 = new PaymentVO();
+		PaymentService dao4 = new PaymentServiceImpl();
+		vo4.setClientId(clientId);
+		vo4 = dao4.paymentSelect(vo4);
+		request.setAttribute("pay", vo4);
+		
+		
 		if (request.getParameter("buttonType").equals("bid")) {
 			vo2.setBidPrice(Integer.parseInt(request.getParameter("bidPrice")));
 			vo2.setBidType(request.getParameter("bidType"));
@@ -67,29 +77,24 @@ public class BidInsert extends HttpServlet {
 				ViewResolve.forward(request, response, viewName);
 			}
 		} else if (request.getParameter("buttonType").equals("deal")) {
-
 			try {
 
 				if (request.getParameter("bidType").equals("BUY")) {
 					vo2.setBidType("SELL");
 					vo2 = dao2.bidSelectBuy(vo2);
-					
 				} else if (request.getParameter("bidType").equals("SELL")) {
 					vo2.setBidType("BUY");
 					vo2 = dao2.bidSelectSell(vo2);
 				}
 				vo2 = dao2.bidSelect(vo2);
 				request.setAttribute("b", vo2);
-				
 				vo3.setClientId(clientId);
 				vo3 = dao3.clientSelect(vo3);
 				request.setAttribute("c", vo3);
-				
-
+				request.setAttribute("alertBid","\""+vo2.getBidNo()+"\""+"이안에 값이 없다면 try catch오류");
 				ViewResolve.forward(request, response, viewName2);
 			} catch (Exception e) {
-				request.setAttribute("alertBid",
-						"남은 입찰정보가 본인이 등록한 입찰이거나, " + request.getParameter("bidType2") + "할 입찰정보가 없습니다.");
+				request.setAttribute("alertBid",request.getParameter("bidType2")+"할 수 있는 입찰이 없거나, " + "본인이 등록한 입찰정보에 대해서는 " + request.getParameter("bidType2") + "할 수 없습니다.");
 				ViewResolve.forward(request, response, viewName);
 			}
 		}

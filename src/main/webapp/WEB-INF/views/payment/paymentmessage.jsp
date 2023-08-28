@@ -229,45 +229,45 @@
                 </article>
                 <!-- 주문정보 -->
                 <article class="order">
-                    <h1>주문정보</h1>
+                    <h1 id="dealinfo">주문정보</h1>
                     <table border="0">
                         <tr>
-                            <td>주문번호</td>
+                            <td id="dealNo">주문번호</td>
                             <td>${dealNo }</td>
-                            <td rowspan="3">총 결제금액</td>
+                            <td id="dealPrice" rowspan="3">총 결제금액</td>
                             <td rowspan="3">
                                 <span>${dealPrice }</span>원
                             </td>
                         </tr>
-                        <tr>
-                            <td>결제방법</td>
+                        <tr id="howPay">
+                            <td id="dealType">결제방법</td>
                             <td>${payment }</td>
                         </tr>
                         <tr>
-                            <td>주문자/연락처</td>
-                            <td>${clientName }/${clientTel }</td>
+                            <td id="clientVO">주문자/연락처</td>
+                            <td>${clientName }/0${clientTel }</td>
                         </tr>
                     </table>
                 </article>
                 <!-- 배송정보 -->
                 <article class="delivery">
-                    <h1>배송정보</h1>
+                    <h1 id="sendInfo">배송정보</h1>
                     <table border="0">
                         <tr>
-                            <td>수취인</td>
+                            <td id="who">수취인</td>
                             <td>${clientName }</td>
-                            <td>주문자 정보</td>
+                            <td id="whoInfo">주문자 정보</td>
                         </tr>
                         <tr>
                             <td>연락처</td>
-                            <td>${clientTel }</td>
+                            <td>0${clientTel }</td>
                             <td rowspan="2">
                                 ${clientName }
-                                <br> ${clientTel }
+                                <br> 0${clientTel }
                             </td>
                         </tr>
                         <tr>
-                            <td>배송지 주소</td>
+                            <td id="clientAddress">배송지 주소</td>
                             <td>${clientAddress}</td>
                         </tr>
                     </table>
@@ -280,7 +280,18 @@
 </body>
 <script type="text/javascript">
 $(function(){
-		alert("${payment}")
+		if("${payment}"==""){
+			$('#howPay').hide();
+			$('#sellTitle').text("고객님의 판매가 정상적으로 진행되었습니다.");
+			$('#dealinfo').text("판매정보");
+			$('#dealNo').text("판매번호");
+			$('#dealPrice').text("총 판매금액");
+			$('#clientVO').text("판매자/연락처");
+			$('#sendInfo').text("발송정보");
+			$('#who').text("발송인");
+			$('#whoInfo').text("판매자 정보");
+			$('#clientAddress').text("발송지 주소");
+		}
 })
 </script>
 </html>
