@@ -87,15 +87,17 @@ a {
 	padding-right: 10px;
 }
 
-#product>.complete>.info table tr>td {
-	
+#product>.complete>.info table tr>#won {
+	color: #ff006c;
+	font-weight: bold;
+	text-align: left;
+	padding-right: 10px;
 }
 
-#product>.complete>.info table tr>td:last-child {
+#product>.complete>.info table tr>#editprice {
 	color: #ff006c;
 	font-weight: bold;
 	text-align: right;
-	padding-right: 10px;
 }
 
 #product>.complete>.info table tr>td>article {
@@ -254,10 +256,10 @@ h1 {
 	margin-top: 20px;
 	height: 100vh;
 }
+
 .signup-title {
 	text-align: left;
 	font-weight: bold;
-
 }
 </style>
 </head>
@@ -295,8 +297,9 @@ h1 {
 										<p>${b.productName}</p>
 									</div>
 								</article></td>
-							<td align="center">${b.productSize }</td>
-							<td><fmt:formatNumber value="${b.bidPrice}" pattern="#,###" />원</td>
+							<td id="editsize" align="center" contenteditable="false">${b.productSize }</td>
+							<td id="editprice" contenteditable="false">${b.bidPrice}</td>
+							<td id="won">원</td>
 						</tr>
 
 
@@ -326,6 +329,7 @@ h1 {
 						</tr>
 					</table>
 				</article>
+
 
 				<!--결제정보 -->
 				<article class="order">
@@ -373,6 +377,31 @@ h1 {
 					<a href="buybidlist.do"
 						class="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04">
 						목록보기 </a>
+
+					<button id="edit"
+						class="flex-c-m stext-101 cl10 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04"
+						onclick="edit()" type="button">수정</button>
+					<form id="editform" action="sellbiddetailedit.do" method="post"
+						onsubmit="return formCheck()">
+						<input type="hidden" id="bidNo" name="bidNo" value="${b.bidNo }">
+						<input type="hidden" id="editPrice" name="editPrice"> <input
+							type="hidden" id="editSize" name="editSize"> <input
+							type="hidden" id="productid" name="productid"
+							value="${b.productId }">
+					</form>
+					<form id="biddelete" action="biddelete.do" method="post">
+						<input type="hidden" id="bidNo" name="bidNo" value="${b.bidNo }">
+					</form>
+					<button id="save"
+						class="flex-c-m stext-101 cl10 size-104 bg5 bor1 hov-btn1 p-lr-15 trans-04"
+						style="display: none;" type="submit" form="editform">저장</button>
+					<button id="cancel" type="button"
+						class="flex-c-m stext-101 cl10 size-104 bg5 bor1 hov-btn1 p-lr-15 trans-04"
+						style="background: fuchsia; display: none;" onclick="cancel()">취소</button>
+					<button id="delete"
+						class="flex-c-m stext-101 cl10 size-104 bg5 bor1 hov-btn1 p-lr-15 trans-04"
+						style="background: red; display: none;" type="submit"
+						form="biddelete">삭제</button>
 				</div>
 
 			</section>
@@ -380,12 +409,64 @@ h1 {
 
 	</div>
 	<div>
+
 		<form id="productselectform" action="productselect.do" method="get">
 			<input type="hidden" id="productId" name="productId">
 		</form>
 
 	</div>
 	<script type="text/javascript">
+	
+	function edit(){
+ 		editables = document.querySelectorAll('#editsize, #editprice');
+		$('#edit').hide();
+		$('#save').show();
+		$('#cancel').show();
+		$('#delete').show();
+ 		editables[0].contentEditable = 'true';
+		editables[1].contentEditable = 'true';
+		document.getElementById("editsize").focus(); 
+	}
+		
+ 	
+ 	function cancel(){
+ 	 	editables = document.querySelectorAll('#editsize, #editprice'); 
+		editables[0].contentEditable = 'false';
+		editables[1].contentEditable = 'false';
+ 		$('#edit').show();
+		$('#save').hide();
+		$('#cancel').hide();
+		$('#delete').hide();
+ 		$('#editprice:eq(0)').html(${b.bidPrice });
+ 		$('#editsize:eq(0)').html(${b.productSize });
+ 	}
+ 	
+ 	function formCheck(){
+ 	 	editables = document.querySelectorAll('#editsize, #editprice'); 
+ 		
+ 		let editprice = $('#editprice:eq(0)').html();
+ 		let editsize = $('#editsize:eq(0)').html();
+ 		if(editprice.length==0){
+			alert("가격을 입력하시오.");
+			return false;
+			document.getElementById("editprice").focus(); 
+			}else if(editsize.length==0){
+			alert("사이즈를 입력하시오.");
+			return false;
+			document.getElementById("editsize").focus(); 
+			}else{
+				$('#edit').show();
+				$('#save').hide();
+				$('#cancel').hide();
+				$('#delete').hide();
+				editables[0].contentEditable = 'false';
+				editables[1].contentEditable = 'false';
+		 		document.getElementById("editPrice").value = editprice; 
+		 		document.getElementById("editSize").value = editsize; 
+		 		return true;
+			}
+	} 
+	
 		function selectProduct(p) {
 			document.getElementById("productId").value = p;
 			document.getElementById("productselectform").submit();

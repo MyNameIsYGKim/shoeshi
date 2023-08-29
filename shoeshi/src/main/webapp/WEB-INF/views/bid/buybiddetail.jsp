@@ -356,22 +356,30 @@ h1 {
 						class="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04">
 						목록보기 </a>
 
-						<button id="edit"
-							class="flex-c-m stext-101 cl10 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04"
-							onclick="edit()" type="button">수정</button>
+					<button id="edit"
+						class="flex-c-m stext-101 cl10 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04"
+						onclick="edit()" type="button">수정</button>
 					<form id="editform" action="buybiddetailedit.do" method="post"
 						onsubmit="return formCheck()">
 						<input type="hidden" id="bidNo" name="bidNo" value="${b.bidNo }">
 						<input type="hidden" id="editPrice" name="editPrice"> <input
-							type="hidden" id="editSize" name="editSize">
-							<input type="hidden" id="productid" name="productid" value="${b.productId }">
+							type="hidden" id="editSize" name="editSize"> <input
+							type="hidden" id="productid" name="productid"
+							value="${b.productId }">
 					</form>
-						<button id="save"
-							class="flex-c-m stext-101 cl10 size-104 bg5 bor1 hov-btn1 p-lr-15 trans-04"
-							style="display: none;" type="submit" form="editform">저장</button>
-						<button id="cancel" type="button"
-							class="flex-c-m stext-101 cl10 size-104 bg5 bor1 hov-btn1 p-lr-15 trans-04"
-							style="background: fuchsia; red; display: none;" onclick="cancel()">취소</button>
+					<form id="biddelete" action="biddelete.do" method="post">
+						<input type="hidden" id="bidNo" name="bidNo" value="${b.bidNo }">
+					</form>
+					<button id="save"
+						class="flex-c-m stext-101 cl10 size-104 bg5 bor1 hov-btn1 p-lr-15 trans-04"
+						style="display: none;" type="submit" form="editform">저장</button>
+					<button id="cancel" type="button"
+						class="flex-c-m stext-101 cl10 size-104 bg5 bor1 hov-btn1 p-lr-15 trans-04"
+						style="background: fuchsia; display: none;" onclick="cancel()">취소</button>
+					<button id="delete"
+						class="flex-c-m stext-101 cl10 size-104 bg5 bor1 hov-btn1 p-lr-15 trans-04"
+						style="background: red; display: none;" type="submit"
+						form="biddelete">삭제</button>
 				</div>
 
 			</section>
@@ -379,7 +387,8 @@ h1 {
 
 	</div>
 	<div>
-		 <form id="productselectform" action="productselect.do" method="get">
+
+		<form id="productselectform" action="productselect.do" method="get">
 			<input type="hidden" id="productId" name="productId">
 		</form>
 
@@ -393,6 +402,7 @@ h1 {
 		$('#edit').hide();
 		$('#save').show();
 		$('#cancel').show();
+		$('#delete').show();
  		editables[0].contentEditable = 'true';
 		editables[1].contentEditable = 'true';
 		document.getElementById("editsize").focus(); 
@@ -406,6 +416,7 @@ h1 {
  		$('#edit').show();
 		$('#save').hide();
 		$('#cancel').hide();
+		$('#delete').hide();
  		$('#editprice:eq(0)').html(${b.bidPrice });
  		$('#editsize:eq(0)').html(${b.productSize });
  	}
@@ -427,6 +438,7 @@ h1 {
 				$('#edit').show();
 				$('#save').hide();
 				$('#cancel').hide();
+				$('#delete').hide();
 				editables[0].contentEditable = 'false';
 				editables[1].contentEditable = 'false';
 		 		document.getElementById("editPrice").value = editprice; 

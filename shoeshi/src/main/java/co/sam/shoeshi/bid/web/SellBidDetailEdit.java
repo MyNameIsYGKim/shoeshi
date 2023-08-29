@@ -14,11 +14,11 @@ import co.sam.shoeshi.bid.service.BidVO;
 import co.sam.shoeshi.bid.serviceImpl.BidServiceImpl;
 import co.sam.shoeshi.common.ViewResolve;
 
-@WebServlet("/buybiddetailedit.do")
-public class BuyBidDetailEdit extends HttpServlet {
+@WebServlet("/sellbiddetailedit.do")
+public class SellBidDetailEdit extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public BuyBidDetailEdit() {
+	public SellBidDetailEdit() {
 		super();
 	}
 
@@ -37,7 +37,7 @@ public class BuyBidDetailEdit extends HttpServlet {
 		/*-----------------------------------------------------*/
 		vo.setBidNo(Integer.valueOf(request.getParameter("bidNo")));
 		bidDetail = dao.bidJoinSelect(vo);
-		String viewName = "my/bid/buybiddetail";
+		String viewName = "my/bid/sellbiddetail";
 		request.setAttribute("b", bidDetail);
 		ViewResolve.forward(request, response, viewName);
 

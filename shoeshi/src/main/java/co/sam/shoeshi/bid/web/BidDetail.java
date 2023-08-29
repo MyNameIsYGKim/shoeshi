@@ -40,7 +40,6 @@ public class BidDetail extends HttpServlet {
 		}
 
 		request.setAttribute("b", bidDetail);
-		System.out.println(bidDetail);
 		ViewResolve.forward(request, response, viewName);
 	}
 
