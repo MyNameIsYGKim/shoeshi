@@ -14,7 +14,7 @@
 			OR PRODUCT_MAKER LIKE LOWER('%'||#{AdminProductSearchValue}||'%')</if>
 		<if test='key == "adminProductName"'>WHERE PRODUCT_NAME LIKE UPPER('%'||#{AdminProductSearchValue}||'%')
 			OR PRODUCT_NAME LIKE LOWER('%'||#{AdminProductSearchValue}||'%')</if>
-		ORDER BY PRODUCT_ID
+		ORDER BY PRODUCT_ID DESC
 	</select>
 	
 	<select id="productSelect" resultType="co.sam.shoeshi.product.service.ProductVO">
@@ -23,7 +23,7 @@
 	
 	<insert id="productInsert" parameterType="co.sam.shoeshi.product.service.ProductVO">
 		INSERT INTO PRODUCT(PRODUCT_ID, PRODUCT_MAKER, PRODUCT_NAME, PRODUCT_PRICE)
-		VALUES(#{productId}, #{productMaker}, #{productName}, #{productPrice})
+		VALUES((SELECT NVL(MAX(PRODUCT_ID), 0) + 1 FROM PRODUCT), #{productMaker}, #{productName}, #{productPrice})
 	</insert>
 	
 	<update id="productUpdate" parameterType="co.sam.shoeshi.product.service.ProductVO">

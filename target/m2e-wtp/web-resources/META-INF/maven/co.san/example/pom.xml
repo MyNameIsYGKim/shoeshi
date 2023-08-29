@@ -20,7 +20,15 @@
 		<maven.compiler.target>11</maven.compiler.target>
 	</properties>
 
+
 	<dependencies>
+
+		<!-- https://mvnrepository.com/artifact/servlets.com/cos -->
+		<dependency>
+			<groupId>servlets.com</groupId>
+			<artifactId>cos</artifactId>
+			<version>05Nov2002</version>
+		</dependency>
 
 		<dependency>
 			<groupId>com.google.guava</groupId>
