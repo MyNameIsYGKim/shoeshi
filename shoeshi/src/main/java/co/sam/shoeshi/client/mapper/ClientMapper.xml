@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.sam.shoeshi.client.mapper.ClientMapper">
+	<select id="clientSelectList"
+		resultType="co.sam.shoeshi.client.service.ClientVO">
+		SELECT * FROM CLIENT
+		<if test='key == "adminClientId"'>WHERE CLIENT_ID LIKE UPPER('%'||#{clientSearchVal}||'%')
+			OR CLIENT_ID LIKE LOWER('%'||#{clientSearchVal}||'%')</if>
+		<if test='key == "adminClientName"'>WHERE CLIENT_NAME LIKE UPPER('%'||#{clientSearchVal}||'%')
+			OR CLIENT_NAME LIKE LOWER('%'||#{clientSearchVal}||'%')</if>
+		<if test='key == "adminClientAddress"'>WHERE CLIENT_ADDRESS LIKE '%'||#{clientSearchVal}||'%'</if>
+	</select>
+
+
+	<select id="clientIdFind"
+		resultType="co.sam.shoeshi.client.service.ClientVO">
+		SELECT CLIENT_ID FROM CLIENT WHERE CLIENT_NAME =
+		#{clientName} AND CLIENT_TEL = #{clientTel}
+	</select>
+
+
+	<select id="clientSelect"
+		resultType="co.sam.shoeshi.client.service.ClientVO">
+		SELECT * FROM CLIENT WHERE CLIENT_ID = #{clientId}
+	</select>
+
+
+	<insert id="clientInsert"
+		parameterType="co.sam.shoeshi.client.service.ClientVO">
+		BEGIN
+		INSERT INTO CLIENT(CLIENT_ID, CLIENT_PASSWORD,
+		CLIENT_NAME, CLIENT_ADDRESS, CLIENT_TEL)
+		VALUES(#{clientId},#{clientPassword},#{clientName},#{clientAddress},#{clientTel});
+		INSERT INTO PAYMENT(CLIENT_ID)
+		VALUES(#{clientId});
+		END;
+	</insert>
+	<insert id="adminClientInsert"
+		parameterType="co.sam.shoeshi.client.service.ClientVO">
+		INSERT INTO CLIENT(CLIENT_ID, CLIENT_PASSWORD,
+		CLIENT_NAME, CLIENT_ADDRESS, CLIENT_TEL, CLIENT_AUTHOR)
+		VALUES(#{clientId},#{clientPassword},#{clientName},
+		#{clientAddress},#{clientTel},${clientAuthor})
+	</insert>
+	<update id="clientUpdate"
+		parameterType="co.sam.shoeshi.client.service.ClientVO">
+		UPDATE CLIENT
+		<set>
+			<if test="clientId != null">CLIENT_ID = #{clientId},</if>
+			<if test="clientPassword != null">CLIENT_PASSWORD = #{clientPassword},</if>
+			<if test="clientName != null">CLIENT_NAME = #{clientName},</if>
+			<if test="clientAddress !=null">CLIENT_ADDRESS = #{clientAddress},</if>
+			<if test="clientTel !=null">CLIENT_TEL = #{clientTel},</if>
+			<if test="clientAuthor != null">CLIENT_AUTHOR = #{clientAuthor},</if>
+		</set>
+		WHERE CLIENT_ID = #{clientId}
+	</update>
+
+
+	<delete id="clientDelete"
+		parameterType="co.sam.shoeshi.client.service.ClientVO">
+		DELETE FROM CLIENT WHERE CLIENT_ID = #{clientId}
+	</delete>
+</mapper>
