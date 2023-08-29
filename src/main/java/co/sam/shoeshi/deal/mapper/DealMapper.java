@@ -3,6 +3,8 @@ package co.sam.shoeshi.deal.mapper;
 import java.util.HashMap;
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import co.sam.shoeshi.deal.service.DealVO;
 
 public interface DealMapper {
