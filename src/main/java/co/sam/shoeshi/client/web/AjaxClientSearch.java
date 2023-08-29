@@ -26,7 +26,7 @@ public class AjaxClientSearch extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ClientService dao = new ClientServiceImpl();
-		List<ClientVO> clients = new ArrayList<>();
+		List<ClientVO> clients = new ArrayList<ClientVO>();
 		
 		String key = request.getParameter("key");
 		String clientSearchVal = request.getParameter("clientSearchVal");

@@ -218,7 +218,7 @@
 	}
 	
 	function searchList(){
-		let key = document.getElementById("key3").value;
+		let key3 = document.getElementById("key3").value;
 		let AdminDealSearchValue3 = document.getElementById("AdminDealSearchValue3").value;
 		let payload = "key3="+key3+"&AdminDealSearchValue3="+AdminDealSearchValue3;
 		let url = "adminajaxdealsearch3.do";
@@ -257,7 +257,7 @@
 				<td align="center">\${data.dealState }</td>
 				<td>
 					<button type="button" class="btn btn-primary pull-right"
-						onclick="selectDeal(${n.dealNo})">
+						onclick="selectDeal(\${data.dealNo})">
 						관리</button>
 				</td>
 				</tr>

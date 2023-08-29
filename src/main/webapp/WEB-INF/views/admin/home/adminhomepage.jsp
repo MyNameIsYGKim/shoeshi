@@ -200,7 +200,6 @@ divstyle2 {
 										<table class="table">
 											<thead>
 												<tr>
-													<th>#</th>
 													<th>아이디</th>
 													<th>이름</th>
 													<th>주소</th>
@@ -211,7 +210,6 @@ divstyle2 {
 												<c:if test="${not empty clients }">
 													<c:forEach items="${clients }" var="n"  begin="1" end="5">
 														<tr>
-															<td>"n"</td>
 															<td>${n.clientId }</td>
 															<td>${n.clientName }</td>
 															<td>${n.clientAddress }</td>

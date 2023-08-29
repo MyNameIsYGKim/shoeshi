@@ -181,7 +181,7 @@
 					<td>
 					<button type="button" id="producteditbtn" 
 						class="btn btn-primary pull-right"
-						onclick="selectProduct(${n.productId})">
+						onclick="selectProduct(\${data.productId})">
 						관리</button>
 					</td>
 				</tr>

@@ -107,8 +107,7 @@
 													<td>${n.clientTel }</td>
 													<td>${n.clientAuthor }</td>
 													<td>
-														<button type="button" id="clienteditbtn" 
-															class="btn btn-primary pull-right"
+														<button type="button" class="btn btn-primary pull-right"
 															onclick="selectClient('${n.clientId}')">
 															관리</button>
 													</td>
@@ -182,9 +181,8 @@
 					<td>\${data.clientTel }</td>
 					<td>\${data.clientAuthor }</td>
 					<td>
-					<button type="button" id="clienteditbtn"
-						class="btn btn-primary pull-right"
-						onclick="selectClient('${n.clientId}')">
+					<button type="button" class="btn btn-primary pull-right"
+						onclick="selectClient(\'${data.clientId}')">
 						관리</button>
 					</td>
 				</tr>

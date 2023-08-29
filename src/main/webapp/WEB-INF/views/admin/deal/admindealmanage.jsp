@@ -257,7 +257,7 @@
 					<td align="center">\${data.dealState }</td>
 					<td>
 					<button type="button" class="btn btn-primary pull-right"
-						onclick="selectDeal(${n.dealNo})">
+						onclick="selectDeal(\${data.dealNo})">
 						관리</button>
 					</td>
 				</tr>
