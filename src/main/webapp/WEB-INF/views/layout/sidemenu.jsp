@@ -73,7 +73,6 @@
 			<li><h5 class="menutitle">쇼핑 정보</h5></li>
 			<li><a href="#" onclick="selectBidType('SELL')" class="menufont">판매내역</a></li>
 			<li><a href="#" onclick="selectBidType('BUY')" class="menufont">구매내역</a></li>
-			<li><a href="paymenttest.do" class="menufont">Cart</a></li>
 
 
 			<!-- Add more menu items as needed -->
