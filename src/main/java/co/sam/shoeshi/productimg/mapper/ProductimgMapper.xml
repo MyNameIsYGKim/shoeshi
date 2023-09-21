@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="co.sam.shoeshi.productimg.mapper.ProductimgMapper">
+	<select id="productimgSelectList"
+		resultType="co.sam.shoeshi.productimg.service.ProductimgVO">
+		SELECT * FROM PRODUCTIMG
+	</select>
+
+	<select id="productimgSelect"
+		resultType="co.sam.shoeshi.productimg.service.ProductimgVO">
+		SELECT * FROM PRODUCT WHERE PRODUCT_ID = #{productId}
+	</select>
+
+	<insert id="productimgInsert"
+		parameterType="co.sam.shoeshi.productimg.service.ProductimgVO">
+		INSERT INTO PRODUCTIMG(PRODUCT_ID, PRODUCTIMG_PATH,
+		PRODUCTIMG_NAME1, PRODUCTIMG_NAME2, PRODUCTIMG_NAME3)
+		VALUES(#{productId}, #{productimgPath}, #{productimgName1}, #{productimgName2},#{productimgName3})
+	</insert>
+
+	<update id="productimgUpdate"
+		parameterType="co.sam.shoeshi.productimg.service.ProductimgVO">
+		UPDATE PRODUCTIMG
+		<set>
+			<if test="productId != null">PRODUCT_ID = #{productId},</if>
+			<if test="productimgPath != null">PRODUCTIMG_PATH = #{productimgPath},</if>
+			<if test="productimgName != null">PRODUCTIMG_NAME1 = #{productimgName1},</if>
+			<if test="productimgName != null">PRODUCTIMG_NAME2 = #{productimgName2},</if>
+			<if test="productimgName != null">PRODUCTIMG_NAME3 = #{productimgName3},</if>
+		</set>
+		WHERE PRODUCT_ID = #{productId}
+	</update>
+
+	<delete id="productimgDelete"
+		parameterType="co.sam.shoeshi.productimg.service.ProductimgVO">
+		DELETE FROM PRODUCTIMG WHERE PRODUCT_ID = #{productId}
+	</delete>
+
+</mapper>
